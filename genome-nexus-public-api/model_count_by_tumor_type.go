@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CountByTumorType type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CountByTumorType{}
+
 // CountByTumorType struct for CountByTumorType
 type CountByTumorType struct {
 	// Tumor Type
@@ -43,7 +46,7 @@ func NewCountByTumorTypeWithDefaults() *CountByTumorType {
 
 // GetTumorType returns the TumorType field value if set, zero value otherwise.
 func (o *CountByTumorType) GetTumorType() string {
-	if o == nil || isNil(o.TumorType) {
+	if o == nil || IsNil(o.TumorType) {
 		var ret string
 		return ret
 	}
@@ -53,15 +56,15 @@ func (o *CountByTumorType) GetTumorType() string {
 // GetTumorTypeOk returns a tuple with the TumorType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CountByTumorType) GetTumorTypeOk() (*string, bool) {
-	if o == nil || isNil(o.TumorType) {
-    return nil, false
+	if o == nil || IsNil(o.TumorType) {
+		return nil, false
 	}
 	return o.TumorType, true
 }
 
 // HasTumorType returns a boolean if a field has been set.
 func (o *CountByTumorType) HasTumorType() bool {
-	if o != nil && !isNil(o.TumorType) {
+	if o != nil && !IsNil(o.TumorType) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *CountByTumorType) SetTumorType(v string) {
 
 // GetTumorTypeCount returns the TumorTypeCount field value if set, zero value otherwise.
 func (o *CountByTumorType) GetTumorTypeCount() int32 {
-	if o == nil || isNil(o.TumorTypeCount) {
+	if o == nil || IsNil(o.TumorTypeCount) {
 		var ret int32
 		return ret
 	}
@@ -85,15 +88,15 @@ func (o *CountByTumorType) GetTumorTypeCount() int32 {
 // GetTumorTypeCountOk returns a tuple with the TumorTypeCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CountByTumorType) GetTumorTypeCountOk() (*int32, bool) {
-	if o == nil || isNil(o.TumorTypeCount) {
-    return nil, false
+	if o == nil || IsNil(o.TumorTypeCount) {
+		return nil, false
 	}
 	return o.TumorTypeCount, true
 }
 
 // HasTumorTypeCount returns a boolean if a field has been set.
 func (o *CountByTumorType) HasTumorTypeCount() bool {
-	if o != nil && !isNil(o.TumorTypeCount) {
+	if o != nil && !IsNil(o.TumorTypeCount) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *CountByTumorType) SetTumorTypeCount(v int32) {
 
 // GetVariantCount returns the VariantCount field value if set, zero value otherwise.
 func (o *CountByTumorType) GetVariantCount() int32 {
-	if o == nil || isNil(o.VariantCount) {
+	if o == nil || IsNil(o.VariantCount) {
 		var ret int32
 		return ret
 	}
@@ -117,15 +120,15 @@ func (o *CountByTumorType) GetVariantCount() int32 {
 // GetVariantCountOk returns a tuple with the VariantCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CountByTumorType) GetVariantCountOk() (*int32, bool) {
-	if o == nil || isNil(o.VariantCount) {
-    return nil, false
+	if o == nil || IsNil(o.VariantCount) {
+		return nil, false
 	}
 	return o.VariantCount, true
 }
 
 // HasVariantCount returns a boolean if a field has been set.
 func (o *CountByTumorType) HasVariantCount() bool {
-	if o != nil && !isNil(o.VariantCount) {
+	if o != nil && !IsNil(o.VariantCount) {
 		return true
 	}
 
@@ -138,17 +141,25 @@ func (o *CountByTumorType) SetVariantCount(v int32) {
 }
 
 func (o CountByTumorType) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.TumorType) {
-		toSerialize["tumorType"] = o.TumorType
-	}
-	if !isNil(o.TumorTypeCount) {
-		toSerialize["tumorTypeCount"] = o.TumorTypeCount
-	}
-	if !isNil(o.VariantCount) {
-		toSerialize["variantCount"] = o.VariantCount
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CountByTumorType) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TumorType) {
+		toSerialize["tumorType"] = o.TumorType
+	}
+	if !IsNil(o.TumorTypeCount) {
+		toSerialize["tumorTypeCount"] = o.TumorTypeCount
+	}
+	if !IsNil(o.VariantCount) {
+		toSerialize["variantCount"] = o.VariantCount
+	}
+	return toSerialize, nil
 }
 
 type NullableCountByTumorType struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnsemblFilter type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnsemblFilter{}
+
 // EnsemblFilter struct for EnsemblFilter
 type EnsemblFilter struct {
 	// List of Ensembl gene IDs. For example [\"ENSG00000136999\", \"ENSG00000272398\", \"ENSG00000198695\"]
@@ -45,7 +48,7 @@ func NewEnsemblFilterWithDefaults() *EnsemblFilter {
 
 // GetGeneIds returns the GeneIds field value if set, zero value otherwise.
 func (o *EnsemblFilter) GetGeneIds() []string {
-	if o == nil || isNil(o.GeneIds) {
+	if o == nil || IsNil(o.GeneIds) {
 		var ret []string
 		return ret
 	}
@@ -55,15 +58,15 @@ func (o *EnsemblFilter) GetGeneIds() []string {
 // GetGeneIdsOk returns a tuple with the GeneIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnsemblFilter) GetGeneIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.GeneIds) {
-    return nil, false
+	if o == nil || IsNil(o.GeneIds) {
+		return nil, false
 	}
 	return o.GeneIds, true
 }
 
 // HasGeneIds returns a boolean if a field has been set.
 func (o *EnsemblFilter) HasGeneIds() bool {
-	if o != nil && !isNil(o.GeneIds) {
+	if o != nil && !IsNil(o.GeneIds) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *EnsemblFilter) SetGeneIds(v []string) {
 
 // GetHugoSymbols returns the HugoSymbols field value if set, zero value otherwise.
 func (o *EnsemblFilter) GetHugoSymbols() []string {
-	if o == nil || isNil(o.HugoSymbols) {
+	if o == nil || IsNil(o.HugoSymbols) {
 		var ret []string
 		return ret
 	}
@@ -87,15 +90,15 @@ func (o *EnsemblFilter) GetHugoSymbols() []string {
 // GetHugoSymbolsOk returns a tuple with the HugoSymbols field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnsemblFilter) GetHugoSymbolsOk() ([]string, bool) {
-	if o == nil || isNil(o.HugoSymbols) {
-    return nil, false
+	if o == nil || IsNil(o.HugoSymbols) {
+		return nil, false
 	}
 	return o.HugoSymbols, true
 }
 
 // HasHugoSymbols returns a boolean if a field has been set.
 func (o *EnsemblFilter) HasHugoSymbols() bool {
-	if o != nil && !isNil(o.HugoSymbols) {
+	if o != nil && !IsNil(o.HugoSymbols) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *EnsemblFilter) SetHugoSymbols(v []string) {
 
 // GetProteinIds returns the ProteinIds field value if set, zero value otherwise.
 func (o *EnsemblFilter) GetProteinIds() []string {
-	if o == nil || isNil(o.ProteinIds) {
+	if o == nil || IsNil(o.ProteinIds) {
 		var ret []string
 		return ret
 	}
@@ -119,15 +122,15 @@ func (o *EnsemblFilter) GetProteinIds() []string {
 // GetProteinIdsOk returns a tuple with the ProteinIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnsemblFilter) GetProteinIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.ProteinIds) {
-    return nil, false
+	if o == nil || IsNil(o.ProteinIds) {
+		return nil, false
 	}
 	return o.ProteinIds, true
 }
 
 // HasProteinIds returns a boolean if a field has been set.
 func (o *EnsemblFilter) HasProteinIds() bool {
-	if o != nil && !isNil(o.ProteinIds) {
+	if o != nil && !IsNil(o.ProteinIds) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *EnsemblFilter) SetProteinIds(v []string) {
 
 // GetTranscriptIds returns the TranscriptIds field value if set, zero value otherwise.
 func (o *EnsemblFilter) GetTranscriptIds() []string {
-	if o == nil || isNil(o.TranscriptIds) {
+	if o == nil || IsNil(o.TranscriptIds) {
 		var ret []string
 		return ret
 	}
@@ -151,15 +154,15 @@ func (o *EnsemblFilter) GetTranscriptIds() []string {
 // GetTranscriptIdsOk returns a tuple with the TranscriptIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnsemblFilter) GetTranscriptIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.TranscriptIds) {
-    return nil, false
+	if o == nil || IsNil(o.TranscriptIds) {
+		return nil, false
 	}
 	return o.TranscriptIds, true
 }
 
 // HasTranscriptIds returns a boolean if a field has been set.
 func (o *EnsemblFilter) HasTranscriptIds() bool {
-	if o != nil && !isNil(o.TranscriptIds) {
+	if o != nil && !IsNil(o.TranscriptIds) {
 		return true
 	}
 
@@ -172,20 +175,28 @@ func (o *EnsemblFilter) SetTranscriptIds(v []string) {
 }
 
 func (o EnsemblFilter) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.GeneIds) {
-		toSerialize["geneIds"] = o.GeneIds
-	}
-	if !isNil(o.HugoSymbols) {
-		toSerialize["hugoSymbols"] = o.HugoSymbols
-	}
-	if !isNil(o.ProteinIds) {
-		toSerialize["proteinIds"] = o.ProteinIds
-	}
-	if !isNil(o.TranscriptIds) {
-		toSerialize["transcriptIds"] = o.TranscriptIds
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnsemblFilter) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.GeneIds) {
+		toSerialize["geneIds"] = o.GeneIds
+	}
+	if !IsNil(o.HugoSymbols) {
+		toSerialize["hugoSymbols"] = o.HugoSymbols
+	}
+	if !IsNil(o.ProteinIds) {
+		toSerialize["proteinIds"] = o.ProteinIds
+	}
+	if !IsNil(o.TranscriptIds) {
+		toSerialize["transcriptIds"] = o.TranscriptIds
+	}
+	return toSerialize, nil
 }
 
 type NullableEnsemblFilter struct {

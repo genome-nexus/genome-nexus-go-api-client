@@ -1,11 +1,11 @@
-# \PtmControllerApi
+# \PtmControllerAPI
 
 All URIs are relative to *http://www.genomenexus.org*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**FetchPostTranslationalModificationsByPtmFilterPOST**](PtmControllerApi.md#FetchPostTranslationalModificationsByPtmFilterPOST) | **Post** /ptm/experimental | Retrieves PTM entries by Ensembl Transcript IDs
-[**FetchPostTranslationalModificationsGET**](PtmControllerApi.md#FetchPostTranslationalModificationsGET) | **Get** /ptm/experimental | Retrieves PTM entries by Ensembl Transcript ID
+[**FetchPostTranslationalModificationsByPtmFilterPOST**](PtmControllerAPI.md#FetchPostTranslationalModificationsByPtmFilterPOST) | **Post** /ptm/experimental | Retrieves PTM entries by Ensembl Transcript IDs
+[**FetchPostTranslationalModificationsGET**](PtmControllerAPI.md#FetchPostTranslationalModificationsGET) | **Get** /ptm/experimental | Retrieves PTM entries by Ensembl Transcript ID
 
 
 
@@ -21,24 +21,24 @@ Retrieves PTM entries by Ensembl Transcript IDs
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    ptmFilter := *openapiclient.NewPtmFilter() // PtmFilter | List of Ensembl transcript IDs. For example [\"ENST00000420316\", \"ENST00000646891\", \"ENST00000371953\"]
+	ptmFilter := *openapiclient.NewPtmFilter() // PtmFilter | List of Ensembl transcript IDs. For example [\"ENST00000420316\", \"ENST00000646891\", \"ENST00000371953\"]
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PtmControllerApi.FetchPostTranslationalModificationsByPtmFilterPOST(context.Background()).PtmFilter(ptmFilter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PtmControllerApi.FetchPostTranslationalModificationsByPtmFilterPOST``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchPostTranslationalModificationsByPtmFilterPOST`: []PostTranslationalModification
-    fmt.Fprintf(os.Stdout, "Response from `PtmControllerApi.FetchPostTranslationalModificationsByPtmFilterPOST`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PtmControllerAPI.FetchPostTranslationalModificationsByPtmFilterPOST(context.Background()).PtmFilter(ptmFilter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PtmControllerAPI.FetchPostTranslationalModificationsByPtmFilterPOST``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchPostTranslationalModificationsByPtmFilterPOST`: []PostTranslationalModification
+	fmt.Fprintf(os.Stdout, "Response from `PtmControllerAPI.FetchPostTranslationalModificationsByPtmFilterPOST`: %v\n", resp)
 }
 ```
 
@@ -85,24 +85,24 @@ Retrieves PTM entries by Ensembl Transcript ID
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    ensemblTranscriptId := "ensemblTranscriptId_example" // string | Ensembl Transcript ID. For example ENST00000646891 (optional)
+	ensemblTranscriptId := "ensemblTranscriptId_example" // string | Ensembl Transcript ID. For example ENST00000646891 (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PtmControllerApi.FetchPostTranslationalModificationsGET(context.Background()).EnsemblTranscriptId(ensemblTranscriptId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PtmControllerApi.FetchPostTranslationalModificationsGET``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchPostTranslationalModificationsGET`: []PostTranslationalModification
-    fmt.Fprintf(os.Stdout, "Response from `PtmControllerApi.FetchPostTranslationalModificationsGET`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PtmControllerAPI.FetchPostTranslationalModificationsGET(context.Background()).EnsemblTranscriptId(ensemblTranscriptId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PtmControllerAPI.FetchPostTranslationalModificationsGET``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchPostTranslationalModificationsGET`: []PostTranslationalModification
+	fmt.Fprintf(os.Stdout, "Response from `PtmControllerAPI.FetchPostTranslationalModificationsGET`: %v\n", resp)
 }
 ```
 

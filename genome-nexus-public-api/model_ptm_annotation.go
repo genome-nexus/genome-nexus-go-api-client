@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PtmAnnotation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PtmAnnotation{}
+
 // PtmAnnotation struct for PtmAnnotation
 type PtmAnnotation struct {
 	Annotation [][]PostTranslationalModification `json:"annotation,omitempty"`
@@ -39,7 +42,7 @@ func NewPtmAnnotationWithDefaults() *PtmAnnotation {
 
 // GetAnnotation returns the Annotation field value if set, zero value otherwise.
 func (o *PtmAnnotation) GetAnnotation() [][]PostTranslationalModification {
-	if o == nil || isNil(o.Annotation) {
+	if o == nil || IsNil(o.Annotation) {
 		var ret [][]PostTranslationalModification
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *PtmAnnotation) GetAnnotation() [][]PostTranslationalModification {
 // GetAnnotationOk returns a tuple with the Annotation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PtmAnnotation) GetAnnotationOk() ([][]PostTranslationalModification, bool) {
-	if o == nil || isNil(o.Annotation) {
-    return nil, false
+	if o == nil || IsNil(o.Annotation) {
+		return nil, false
 	}
 	return o.Annotation, true
 }
 
 // HasAnnotation returns a boolean if a field has been set.
 func (o *PtmAnnotation) HasAnnotation() bool {
-	if o != nil && !isNil(o.Annotation) {
+	if o != nil && !IsNil(o.Annotation) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *PtmAnnotation) SetAnnotation(v [][]PostTranslationalModification) {
 
 // GetLicense returns the License field value if set, zero value otherwise.
 func (o *PtmAnnotation) GetLicense() string {
-	if o == nil || isNil(o.License) {
+	if o == nil || IsNil(o.License) {
 		var ret string
 		return ret
 	}
@@ -81,15 +84,15 @@ func (o *PtmAnnotation) GetLicense() string {
 // GetLicenseOk returns a tuple with the License field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PtmAnnotation) GetLicenseOk() (*string, bool) {
-	if o == nil || isNil(o.License) {
-    return nil, false
+	if o == nil || IsNil(o.License) {
+		return nil, false
 	}
 	return o.License, true
 }
 
 // HasLicense returns a boolean if a field has been set.
 func (o *PtmAnnotation) HasLicense() bool {
-	if o != nil && !isNil(o.License) {
+	if o != nil && !IsNil(o.License) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *PtmAnnotation) SetLicense(v string) {
 }
 
 func (o PtmAnnotation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Annotation) {
-		toSerialize["annotation"] = o.Annotation
-	}
-	if !isNil(o.License) {
-		toSerialize["license"] = o.License
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PtmAnnotation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Annotation) {
+		toSerialize["annotation"] = o.Annotation
+	}
+	if !IsNil(o.License) {
+		toSerialize["license"] = o.License
+	}
+	return toSerialize, nil
 }
 
 type NullablePtmAnnotation struct {

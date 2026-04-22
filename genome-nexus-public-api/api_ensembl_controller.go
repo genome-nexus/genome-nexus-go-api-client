@@ -13,19 +13,19 @@ package genome_nexus_public_api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// EnsemblControllerApiService EnsemblControllerApi service
-type EnsemblControllerApiService service
+// EnsemblControllerAPIService EnsemblControllerAPI service
+type EnsemblControllerAPIService service
 
 type ApiFetchCanonicalEnsemblGeneIdByEntrezGeneIdGETRequest struct {
 	ctx context.Context
-	ApiService *EnsemblControllerApiService
+	ApiService *EnsemblControllerAPIService
 	entrezGeneId string
 }
 
@@ -40,7 +40,7 @@ FetchCanonicalEnsemblGeneIdByEntrezGeneIdGET Retrieves Ensembl canonical gene id
  @param entrezGeneId An Entrez Gene Id. For example 23140
  @return ApiFetchCanonicalEnsemblGeneIdByEntrezGeneIdGETRequest
 */
-func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByEntrezGeneIdGET(ctx context.Context, entrezGeneId string) ApiFetchCanonicalEnsemblGeneIdByEntrezGeneIdGETRequest {
+func (a *EnsemblControllerAPIService) FetchCanonicalEnsemblGeneIdByEntrezGeneIdGET(ctx context.Context, entrezGeneId string) ApiFetchCanonicalEnsemblGeneIdByEntrezGeneIdGETRequest {
 	return ApiFetchCanonicalEnsemblGeneIdByEntrezGeneIdGETRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -50,7 +50,7 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByEntrezGeneIdG
 
 // Execute executes the request
 //  @return EnsemblGene
-func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByEntrezGeneIdGETExecute(r ApiFetchCanonicalEnsemblGeneIdByEntrezGeneIdGETRequest) (*EnsemblGene, *http.Response, error) {
+func (a *EnsemblControllerAPIService) FetchCanonicalEnsemblGeneIdByEntrezGeneIdGETExecute(r ApiFetchCanonicalEnsemblGeneIdByEntrezGeneIdGETRequest) (*EnsemblGene, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -58,13 +58,13 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByEntrezGeneIdG
 		localVarReturnValue  *EnsemblGene
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnsemblControllerApiService.FetchCanonicalEnsemblGeneIdByEntrezGeneIdGET")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnsemblControllerAPIService.FetchCanonicalEnsemblGeneIdByEntrezGeneIdGET")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ensembl/canonical-gene/entrez/{entrezGeneId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"entrezGeneId"+"}", url.PathEscape(parameterToString(r.entrezGeneId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"entrezGeneId"+"}", url.PathEscape(parameterValueToString(r.entrezGeneId, "entrezGeneId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -97,9 +97,9 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByEntrezGeneIdG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -126,7 +126,7 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByEntrezGeneIdG
 
 type ApiFetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOSTRequest struct {
 	ctx context.Context
-	ApiService *EnsemblControllerApiService
+	ApiService *EnsemblControllerAPIService
 	entrezGeneIds *[]string
 }
 
@@ -146,7 +146,7 @@ FetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOST Retrieves canonical Ensembl Gene 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOSTRequest
 */
-func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOST(ctx context.Context) ApiFetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOSTRequest {
+func (a *EnsemblControllerAPIService) FetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOST(ctx context.Context) ApiFetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOSTRequest {
 	return ApiFetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOSTRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -155,7 +155,7 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByEntrezGeneIds
 
 // Execute executes the request
 //  @return []EnsemblGene
-func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOSTExecute(r ApiFetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOSTRequest) ([]EnsemblGene, *http.Response, error) {
+func (a *EnsemblControllerAPIService) FetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOSTExecute(r ApiFetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOSTRequest) ([]EnsemblGene, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -163,7 +163,7 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByEntrezGeneIds
 		localVarReturnValue  []EnsemblGene
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnsemblControllerApiService.FetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOST")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnsemblControllerAPIService.FetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOST")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -206,9 +206,9 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByEntrezGeneIds
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -235,7 +235,7 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByEntrezGeneIds
 
 type ApiFetchCanonicalEnsemblGeneIdByHugoSymbolGETRequest struct {
 	ctx context.Context
-	ApiService *EnsemblControllerApiService
+	ApiService *EnsemblControllerAPIService
 	hugoSymbol string
 }
 
@@ -250,7 +250,7 @@ FetchCanonicalEnsemblGeneIdByHugoSymbolGET Retrieves Ensembl canonical gene id b
  @param hugoSymbol A Hugo Symbol. For example TP53
  @return ApiFetchCanonicalEnsemblGeneIdByHugoSymbolGETRequest
 */
-func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByHugoSymbolGET(ctx context.Context, hugoSymbol string) ApiFetchCanonicalEnsemblGeneIdByHugoSymbolGETRequest {
+func (a *EnsemblControllerAPIService) FetchCanonicalEnsemblGeneIdByHugoSymbolGET(ctx context.Context, hugoSymbol string) ApiFetchCanonicalEnsemblGeneIdByHugoSymbolGETRequest {
 	return ApiFetchCanonicalEnsemblGeneIdByHugoSymbolGETRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -260,7 +260,7 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByHugoSymbolGET
 
 // Execute executes the request
 //  @return EnsemblGene
-func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByHugoSymbolGETExecute(r ApiFetchCanonicalEnsemblGeneIdByHugoSymbolGETRequest) (*EnsemblGene, *http.Response, error) {
+func (a *EnsemblControllerAPIService) FetchCanonicalEnsemblGeneIdByHugoSymbolGETExecute(r ApiFetchCanonicalEnsemblGeneIdByHugoSymbolGETRequest) (*EnsemblGene, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -268,13 +268,13 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByHugoSymbolGET
 		localVarReturnValue  *EnsemblGene
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnsemblControllerApiService.FetchCanonicalEnsemblGeneIdByHugoSymbolGET")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnsemblControllerAPIService.FetchCanonicalEnsemblGeneIdByHugoSymbolGET")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ensembl/canonical-gene/hgnc/{hugoSymbol}"
-	localVarPath = strings.Replace(localVarPath, "{"+"hugoSymbol"+"}", url.PathEscape(parameterToString(r.hugoSymbol, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"hugoSymbol"+"}", url.PathEscape(parameterValueToString(r.hugoSymbol, "hugoSymbol")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -307,9 +307,9 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByHugoSymbolGET
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -336,7 +336,7 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByHugoSymbolGET
 
 type ApiFetchCanonicalEnsemblGeneIdByHugoSymbolsPOSTRequest struct {
 	ctx context.Context
-	ApiService *EnsemblControllerApiService
+	ApiService *EnsemblControllerAPIService
 	hugoSymbols *[]string
 }
 
@@ -356,7 +356,7 @@ FetchCanonicalEnsemblGeneIdByHugoSymbolsPOST Retrieves canonical Ensembl Gene ID
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFetchCanonicalEnsemblGeneIdByHugoSymbolsPOSTRequest
 */
-func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByHugoSymbolsPOST(ctx context.Context) ApiFetchCanonicalEnsemblGeneIdByHugoSymbolsPOSTRequest {
+func (a *EnsemblControllerAPIService) FetchCanonicalEnsemblGeneIdByHugoSymbolsPOST(ctx context.Context) ApiFetchCanonicalEnsemblGeneIdByHugoSymbolsPOSTRequest {
 	return ApiFetchCanonicalEnsemblGeneIdByHugoSymbolsPOSTRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -365,7 +365,7 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByHugoSymbolsPO
 
 // Execute executes the request
 //  @return []EnsemblGene
-func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByHugoSymbolsPOSTExecute(r ApiFetchCanonicalEnsemblGeneIdByHugoSymbolsPOSTRequest) ([]EnsemblGene, *http.Response, error) {
+func (a *EnsemblControllerAPIService) FetchCanonicalEnsemblGeneIdByHugoSymbolsPOSTExecute(r ApiFetchCanonicalEnsemblGeneIdByHugoSymbolsPOSTRequest) ([]EnsemblGene, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -373,7 +373,7 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByHugoSymbolsPO
 		localVarReturnValue  []EnsemblGene
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnsemblControllerApiService.FetchCanonicalEnsemblGeneIdByHugoSymbolsPOST")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnsemblControllerAPIService.FetchCanonicalEnsemblGeneIdByHugoSymbolsPOST")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -416,9 +416,9 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByHugoSymbolsPO
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -445,7 +445,7 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblGeneIdByHugoSymbolsPO
 
 type ApiFetchCanonicalEnsemblTranscriptByHugoSymbolGETRequest struct {
 	ctx context.Context
-	ApiService *EnsemblControllerApiService
+	ApiService *EnsemblControllerAPIService
 	hugoSymbol string
 	isoformOverrideSource *string
 }
@@ -467,7 +467,7 @@ FetchCanonicalEnsemblTranscriptByHugoSymbolGET Retrieves Ensembl canonical trans
  @param hugoSymbol A Hugo Symbol. For example TP53
  @return ApiFetchCanonicalEnsemblTranscriptByHugoSymbolGETRequest
 */
-func (a *EnsemblControllerApiService) FetchCanonicalEnsemblTranscriptByHugoSymbolGET(ctx context.Context, hugoSymbol string) ApiFetchCanonicalEnsemblTranscriptByHugoSymbolGETRequest {
+func (a *EnsemblControllerAPIService) FetchCanonicalEnsemblTranscriptByHugoSymbolGET(ctx context.Context, hugoSymbol string) ApiFetchCanonicalEnsemblTranscriptByHugoSymbolGETRequest {
 	return ApiFetchCanonicalEnsemblTranscriptByHugoSymbolGETRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -477,7 +477,7 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblTranscriptByHugoSymbo
 
 // Execute executes the request
 //  @return EnsemblTranscript
-func (a *EnsemblControllerApiService) FetchCanonicalEnsemblTranscriptByHugoSymbolGETExecute(r ApiFetchCanonicalEnsemblTranscriptByHugoSymbolGETRequest) (*EnsemblTranscript, *http.Response, error) {
+func (a *EnsemblControllerAPIService) FetchCanonicalEnsemblTranscriptByHugoSymbolGETExecute(r ApiFetchCanonicalEnsemblTranscriptByHugoSymbolGETRequest) (*EnsemblTranscript, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -485,20 +485,23 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblTranscriptByHugoSymbo
 		localVarReturnValue  *EnsemblTranscript
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnsemblControllerApiService.FetchCanonicalEnsemblTranscriptByHugoSymbolGET")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnsemblControllerAPIService.FetchCanonicalEnsemblTranscriptByHugoSymbolGET")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ensembl/canonical-transcript/hgnc/{hugoSymbol}"
-	localVarPath = strings.Replace(localVarPath, "{"+"hugoSymbol"+"}", url.PathEscape(parameterToString(r.hugoSymbol, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"hugoSymbol"+"}", url.PathEscape(parameterValueToString(r.hugoSymbol, "hugoSymbol")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.isoformOverrideSource != nil {
-		localVarQueryParams.Add("isoformOverrideSource", parameterToString(*r.isoformOverrideSource, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "isoformOverrideSource", r.isoformOverrideSource, "form", "")
+	} else {
+		var defaultValue string = "uniprot"
+		r.isoformOverrideSource = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -527,9 +530,9 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblTranscriptByHugoSymbo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -556,7 +559,7 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblTranscriptByHugoSymbo
 
 type ApiFetchCanonicalEnsemblTranscriptsByHugoSymbolsPOSTRequest struct {
 	ctx context.Context
-	ApiService *EnsemblControllerApiService
+	ApiService *EnsemblControllerAPIService
 	hugoSymbols *[]string
 	isoformOverrideSource *string
 }
@@ -583,7 +586,7 @@ FetchCanonicalEnsemblTranscriptsByHugoSymbolsPOST Retrieves Ensembl canonical tr
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFetchCanonicalEnsemblTranscriptsByHugoSymbolsPOSTRequest
 */
-func (a *EnsemblControllerApiService) FetchCanonicalEnsemblTranscriptsByHugoSymbolsPOST(ctx context.Context) ApiFetchCanonicalEnsemblTranscriptsByHugoSymbolsPOSTRequest {
+func (a *EnsemblControllerAPIService) FetchCanonicalEnsemblTranscriptsByHugoSymbolsPOST(ctx context.Context) ApiFetchCanonicalEnsemblTranscriptsByHugoSymbolsPOSTRequest {
 	return ApiFetchCanonicalEnsemblTranscriptsByHugoSymbolsPOSTRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -592,7 +595,7 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblTranscriptsByHugoSymb
 
 // Execute executes the request
 //  @return []EnsemblTranscript
-func (a *EnsemblControllerApiService) FetchCanonicalEnsemblTranscriptsByHugoSymbolsPOSTExecute(r ApiFetchCanonicalEnsemblTranscriptsByHugoSymbolsPOSTRequest) ([]EnsemblTranscript, *http.Response, error) {
+func (a *EnsemblControllerAPIService) FetchCanonicalEnsemblTranscriptsByHugoSymbolsPOSTExecute(r ApiFetchCanonicalEnsemblTranscriptsByHugoSymbolsPOSTRequest) ([]EnsemblTranscript, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -600,7 +603,7 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblTranscriptsByHugoSymb
 		localVarReturnValue  []EnsemblTranscript
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnsemblControllerApiService.FetchCanonicalEnsemblTranscriptsByHugoSymbolsPOST")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnsemblControllerAPIService.FetchCanonicalEnsemblTranscriptsByHugoSymbolsPOST")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -615,7 +618,10 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblTranscriptsByHugoSymb
 	}
 
 	if r.isoformOverrideSource != nil {
-		localVarQueryParams.Add("isoformOverrideSource", parameterToString(*r.isoformOverrideSource, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "isoformOverrideSource", r.isoformOverrideSource, "form", "")
+	} else {
+		var defaultValue string = "uniprot"
+		r.isoformOverrideSource = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -646,9 +652,9 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblTranscriptsByHugoSymb
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -675,7 +681,7 @@ func (a *EnsemblControllerApiService) FetchCanonicalEnsemblTranscriptsByHugoSymb
 
 type ApiFetchEnsemblTranscriptByTranscriptIdGETRequest struct {
 	ctx context.Context
-	ApiService *EnsemblControllerApiService
+	ApiService *EnsemblControllerAPIService
 	transcriptId string
 }
 
@@ -690,7 +696,7 @@ FetchEnsemblTranscriptByTranscriptIdGET Retrieves the transcript by an Ensembl t
  @param transcriptId An Ensembl transcript ID. For example ENST00000361390
  @return ApiFetchEnsemblTranscriptByTranscriptIdGETRequest
 */
-func (a *EnsemblControllerApiService) FetchEnsemblTranscriptByTranscriptIdGET(ctx context.Context, transcriptId string) ApiFetchEnsemblTranscriptByTranscriptIdGETRequest {
+func (a *EnsemblControllerAPIService) FetchEnsemblTranscriptByTranscriptIdGET(ctx context.Context, transcriptId string) ApiFetchEnsemblTranscriptByTranscriptIdGETRequest {
 	return ApiFetchEnsemblTranscriptByTranscriptIdGETRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -700,7 +706,7 @@ func (a *EnsemblControllerApiService) FetchEnsemblTranscriptByTranscriptIdGET(ct
 
 // Execute executes the request
 //  @return EnsemblTranscript
-func (a *EnsemblControllerApiService) FetchEnsemblTranscriptByTranscriptIdGETExecute(r ApiFetchEnsemblTranscriptByTranscriptIdGETRequest) (*EnsemblTranscript, *http.Response, error) {
+func (a *EnsemblControllerAPIService) FetchEnsemblTranscriptByTranscriptIdGETExecute(r ApiFetchEnsemblTranscriptByTranscriptIdGETRequest) (*EnsemblTranscript, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -708,13 +714,13 @@ func (a *EnsemblControllerApiService) FetchEnsemblTranscriptByTranscriptIdGETExe
 		localVarReturnValue  *EnsemblTranscript
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnsemblControllerApiService.FetchEnsemblTranscriptByTranscriptIdGET")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnsemblControllerAPIService.FetchEnsemblTranscriptByTranscriptIdGET")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/ensembl/transcript/{transcriptId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"transcriptId"+"}", url.PathEscape(parameterToString(r.transcriptId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"transcriptId"+"}", url.PathEscape(parameterValueToString(r.transcriptId, "transcriptId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -747,9 +753,9 @@ func (a *EnsemblControllerApiService) FetchEnsemblTranscriptByTranscriptIdGETExe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -776,7 +782,7 @@ func (a *EnsemblControllerApiService) FetchEnsemblTranscriptByTranscriptIdGETExe
 
 type ApiFetchEnsemblTranscriptsByEnsemblFilterPOSTRequest struct {
 	ctx context.Context
-	ApiService *EnsemblControllerApiService
+	ApiService *EnsemblControllerAPIService
 	ensemblFilter *EnsemblFilter
 }
 
@@ -796,7 +802,7 @@ FetchEnsemblTranscriptsByEnsemblFilterPOST Retrieves Ensembl Transcripts by Ense
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFetchEnsemblTranscriptsByEnsemblFilterPOSTRequest
 */
-func (a *EnsemblControllerApiService) FetchEnsemblTranscriptsByEnsemblFilterPOST(ctx context.Context) ApiFetchEnsemblTranscriptsByEnsemblFilterPOSTRequest {
+func (a *EnsemblControllerAPIService) FetchEnsemblTranscriptsByEnsemblFilterPOST(ctx context.Context) ApiFetchEnsemblTranscriptsByEnsemblFilterPOSTRequest {
 	return ApiFetchEnsemblTranscriptsByEnsemblFilterPOSTRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -805,7 +811,7 @@ func (a *EnsemblControllerApiService) FetchEnsemblTranscriptsByEnsemblFilterPOST
 
 // Execute executes the request
 //  @return []EnsemblTranscript
-func (a *EnsemblControllerApiService) FetchEnsemblTranscriptsByEnsemblFilterPOSTExecute(r ApiFetchEnsemblTranscriptsByEnsemblFilterPOSTRequest) ([]EnsemblTranscript, *http.Response, error) {
+func (a *EnsemblControllerAPIService) FetchEnsemblTranscriptsByEnsemblFilterPOSTExecute(r ApiFetchEnsemblTranscriptsByEnsemblFilterPOSTRequest) ([]EnsemblTranscript, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -813,7 +819,7 @@ func (a *EnsemblControllerApiService) FetchEnsemblTranscriptsByEnsemblFilterPOST
 		localVarReturnValue  []EnsemblTranscript
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnsemblControllerApiService.FetchEnsemblTranscriptsByEnsemblFilterPOST")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnsemblControllerAPIService.FetchEnsemblTranscriptsByEnsemblFilterPOST")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -856,9 +862,9 @@ func (a *EnsemblControllerApiService) FetchEnsemblTranscriptsByEnsemblFilterPOST
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -885,7 +891,7 @@ func (a *EnsemblControllerApiService) FetchEnsemblTranscriptsByEnsemblFilterPOST
 
 type ApiFetchEnsemblTranscriptsGETRequest struct {
 	ctx context.Context
-	ApiService *EnsemblControllerApiService
+	ApiService *EnsemblControllerAPIService
 	geneId *string
 	proteinId *string
 	hugoSymbol *string
@@ -919,7 +925,7 @@ FetchEnsemblTranscriptsGET Retrieves Ensembl Transcripts by protein ID, and gene
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFetchEnsemblTranscriptsGETRequest
 */
-func (a *EnsemblControllerApiService) FetchEnsemblTranscriptsGET(ctx context.Context) ApiFetchEnsemblTranscriptsGETRequest {
+func (a *EnsemblControllerAPIService) FetchEnsemblTranscriptsGET(ctx context.Context) ApiFetchEnsemblTranscriptsGETRequest {
 	return ApiFetchEnsemblTranscriptsGETRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -928,7 +934,7 @@ func (a *EnsemblControllerApiService) FetchEnsemblTranscriptsGET(ctx context.Con
 
 // Execute executes the request
 //  @return []EnsemblTranscript
-func (a *EnsemblControllerApiService) FetchEnsemblTranscriptsGETExecute(r ApiFetchEnsemblTranscriptsGETRequest) ([]EnsemblTranscript, *http.Response, error) {
+func (a *EnsemblControllerAPIService) FetchEnsemblTranscriptsGETExecute(r ApiFetchEnsemblTranscriptsGETRequest) ([]EnsemblTranscript, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -936,7 +942,7 @@ func (a *EnsemblControllerApiService) FetchEnsemblTranscriptsGETExecute(r ApiFet
 		localVarReturnValue  []EnsemblTranscript
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnsemblControllerApiService.FetchEnsemblTranscriptsGET")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnsemblControllerAPIService.FetchEnsemblTranscriptsGET")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -948,13 +954,13 @@ func (a *EnsemblControllerApiService) FetchEnsemblTranscriptsGETExecute(r ApiFet
 	localVarFormParams := url.Values{}
 
 	if r.geneId != nil {
-		localVarQueryParams.Add("geneId", parameterToString(*r.geneId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "geneId", r.geneId, "form", "")
 	}
 	if r.proteinId != nil {
-		localVarQueryParams.Add("proteinId", parameterToString(*r.proteinId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "proteinId", r.proteinId, "form", "")
 	}
 	if r.hugoSymbol != nil {
-		localVarQueryParams.Add("hugoSymbol", parameterToString(*r.hugoSymbol, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "hugoSymbol", r.hugoSymbol, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -983,9 +989,9 @@ func (a *EnsemblControllerApiService) FetchEnsemblTranscriptsGETExecute(r ApiFet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1012,7 +1018,7 @@ func (a *EnsemblControllerApiService) FetchEnsemblTranscriptsGETExecute(r ApiFet
 
 type ApiFetchGeneXrefsGETRequest struct {
 	ctx context.Context
-	ApiService *EnsemblControllerApiService
+	ApiService *EnsemblControllerAPIService
 	accession *string
 }
 
@@ -1032,7 +1038,7 @@ FetchGeneXrefsGET Perform lookups of Ensembl identifiers and retrieve their exte
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFetchGeneXrefsGETRequest
 */
-func (a *EnsemblControllerApiService) FetchGeneXrefsGET(ctx context.Context) ApiFetchGeneXrefsGETRequest {
+func (a *EnsemblControllerAPIService) FetchGeneXrefsGET(ctx context.Context) ApiFetchGeneXrefsGETRequest {
 	return ApiFetchGeneXrefsGETRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1041,7 +1047,7 @@ func (a *EnsemblControllerApiService) FetchGeneXrefsGET(ctx context.Context) Api
 
 // Execute executes the request
 //  @return []GeneXref
-func (a *EnsemblControllerApiService) FetchGeneXrefsGETExecute(r ApiFetchGeneXrefsGETRequest) ([]GeneXref, *http.Response, error) {
+func (a *EnsemblControllerAPIService) FetchGeneXrefsGETExecute(r ApiFetchGeneXrefsGETRequest) ([]GeneXref, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1049,7 +1055,7 @@ func (a *EnsemblControllerApiService) FetchGeneXrefsGETExecute(r ApiFetchGeneXre
 		localVarReturnValue  []GeneXref
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnsemblControllerApiService.FetchGeneXrefsGET")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnsemblControllerAPIService.FetchGeneXrefsGET")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1063,7 +1069,7 @@ func (a *EnsemblControllerApiService) FetchGeneXrefsGETExecute(r ApiFetchGeneXre
 		return localVarReturnValue, nil, reportError("accession is required and must be specified")
 	}
 
-	localVarQueryParams.Add("accession", parameterToString(*r.accession, ""))
+	parameterAddToHeaderOrQuery(localVarQueryParams, "accession", r.accession, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1091,9 +1097,9 @@ func (a *EnsemblControllerApiService) FetchGeneXrefsGETExecute(r ApiFetchGeneXre
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

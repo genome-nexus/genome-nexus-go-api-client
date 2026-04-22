@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PostTranslationalModification type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PostTranslationalModification{}
+
 // PostTranslationalModification struct for PostTranslationalModification
 type PostTranslationalModification struct {
 	EnsemblTranscriptIds []string `json:"ensemblTranscriptIds,omitempty"`
@@ -44,7 +47,7 @@ func NewPostTranslationalModificationWithDefaults() *PostTranslationalModificati
 
 // GetEnsemblTranscriptIds returns the EnsemblTranscriptIds field value if set, zero value otherwise.
 func (o *PostTranslationalModification) GetEnsemblTranscriptIds() []string {
-	if o == nil || isNil(o.EnsemblTranscriptIds) {
+	if o == nil || IsNil(o.EnsemblTranscriptIds) {
 		var ret []string
 		return ret
 	}
@@ -54,15 +57,15 @@ func (o *PostTranslationalModification) GetEnsemblTranscriptIds() []string {
 // GetEnsemblTranscriptIdsOk returns a tuple with the EnsemblTranscriptIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PostTranslationalModification) GetEnsemblTranscriptIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.EnsemblTranscriptIds) {
-    return nil, false
+	if o == nil || IsNil(o.EnsemblTranscriptIds) {
+		return nil, false
 	}
 	return o.EnsemblTranscriptIds, true
 }
 
 // HasEnsemblTranscriptIds returns a boolean if a field has been set.
 func (o *PostTranslationalModification) HasEnsemblTranscriptIds() bool {
-	if o != nil && !isNil(o.EnsemblTranscriptIds) {
+	if o != nil && !IsNil(o.EnsemblTranscriptIds) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *PostTranslationalModification) SetEnsemblTranscriptIds(v []string) {
 
 // GetPosition returns the Position field value if set, zero value otherwise.
 func (o *PostTranslationalModification) GetPosition() int32 {
-	if o == nil || isNil(o.Position) {
+	if o == nil || IsNil(o.Position) {
 		var ret int32
 		return ret
 	}
@@ -86,15 +89,15 @@ func (o *PostTranslationalModification) GetPosition() int32 {
 // GetPositionOk returns a tuple with the Position field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PostTranslationalModification) GetPositionOk() (*int32, bool) {
-	if o == nil || isNil(o.Position) {
-    return nil, false
+	if o == nil || IsNil(o.Position) {
+		return nil, false
 	}
 	return o.Position, true
 }
 
 // HasPosition returns a boolean if a field has been set.
 func (o *PostTranslationalModification) HasPosition() bool {
-	if o != nil && !isNil(o.Position) {
+	if o != nil && !IsNil(o.Position) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *PostTranslationalModification) SetPosition(v int32) {
 
 // GetPubmedIds returns the PubmedIds field value if set, zero value otherwise.
 func (o *PostTranslationalModification) GetPubmedIds() []string {
-	if o == nil || isNil(o.PubmedIds) {
+	if o == nil || IsNil(o.PubmedIds) {
 		var ret []string
 		return ret
 	}
@@ -118,15 +121,15 @@ func (o *PostTranslationalModification) GetPubmedIds() []string {
 // GetPubmedIdsOk returns a tuple with the PubmedIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PostTranslationalModification) GetPubmedIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.PubmedIds) {
-    return nil, false
+	if o == nil || IsNil(o.PubmedIds) {
+		return nil, false
 	}
 	return o.PubmedIds, true
 }
 
 // HasPubmedIds returns a boolean if a field has been set.
 func (o *PostTranslationalModification) HasPubmedIds() bool {
-	if o != nil && !isNil(o.PubmedIds) {
+	if o != nil && !IsNil(o.PubmedIds) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *PostTranslationalModification) SetPubmedIds(v []string) {
 
 // GetSequence returns the Sequence field value if set, zero value otherwise.
 func (o *PostTranslationalModification) GetSequence() string {
-	if o == nil || isNil(o.Sequence) {
+	if o == nil || IsNil(o.Sequence) {
 		var ret string
 		return ret
 	}
@@ -150,15 +153,15 @@ func (o *PostTranslationalModification) GetSequence() string {
 // GetSequenceOk returns a tuple with the Sequence field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PostTranslationalModification) GetSequenceOk() (*string, bool) {
-	if o == nil || isNil(o.Sequence) {
-    return nil, false
+	if o == nil || IsNil(o.Sequence) {
+		return nil, false
 	}
 	return o.Sequence, true
 }
 
 // HasSequence returns a boolean if a field has been set.
 func (o *PostTranslationalModification) HasSequence() bool {
-	if o != nil && !isNil(o.Sequence) {
+	if o != nil && !IsNil(o.Sequence) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *PostTranslationalModification) SetSequence(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *PostTranslationalModification) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -182,15 +185,15 @@ func (o *PostTranslationalModification) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PostTranslationalModification) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
-    return nil, false
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *PostTranslationalModification) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -204,7 +207,7 @@ func (o *PostTranslationalModification) SetType(v string) {
 
 // GetUniprotAccession returns the UniprotAccession field value if set, zero value otherwise.
 func (o *PostTranslationalModification) GetUniprotAccession() string {
-	if o == nil || isNil(o.UniprotAccession) {
+	if o == nil || IsNil(o.UniprotAccession) {
 		var ret string
 		return ret
 	}
@@ -214,15 +217,15 @@ func (o *PostTranslationalModification) GetUniprotAccession() string {
 // GetUniprotAccessionOk returns a tuple with the UniprotAccession field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PostTranslationalModification) GetUniprotAccessionOk() (*string, bool) {
-	if o == nil || isNil(o.UniprotAccession) {
-    return nil, false
+	if o == nil || IsNil(o.UniprotAccession) {
+		return nil, false
 	}
 	return o.UniprotAccession, true
 }
 
 // HasUniprotAccession returns a boolean if a field has been set.
 func (o *PostTranslationalModification) HasUniprotAccession() bool {
-	if o != nil && !isNil(o.UniprotAccession) {
+	if o != nil && !IsNil(o.UniprotAccession) {
 		return true
 	}
 
@@ -236,7 +239,7 @@ func (o *PostTranslationalModification) SetUniprotAccession(v string) {
 
 // GetUniprotEntry returns the UniprotEntry field value if set, zero value otherwise.
 func (o *PostTranslationalModification) GetUniprotEntry() string {
-	if o == nil || isNil(o.UniprotEntry) {
+	if o == nil || IsNil(o.UniprotEntry) {
 		var ret string
 		return ret
 	}
@@ -246,15 +249,15 @@ func (o *PostTranslationalModification) GetUniprotEntry() string {
 // GetUniprotEntryOk returns a tuple with the UniprotEntry field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PostTranslationalModification) GetUniprotEntryOk() (*string, bool) {
-	if o == nil || isNil(o.UniprotEntry) {
-    return nil, false
+	if o == nil || IsNil(o.UniprotEntry) {
+		return nil, false
 	}
 	return o.UniprotEntry, true
 }
 
 // HasUniprotEntry returns a boolean if a field has been set.
 func (o *PostTranslationalModification) HasUniprotEntry() bool {
-	if o != nil && !isNil(o.UniprotEntry) {
+	if o != nil && !IsNil(o.UniprotEntry) {
 		return true
 	}
 
@@ -267,29 +270,37 @@ func (o *PostTranslationalModification) SetUniprotEntry(v string) {
 }
 
 func (o PostTranslationalModification) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.EnsemblTranscriptIds) {
-		toSerialize["ensemblTranscriptIds"] = o.EnsemblTranscriptIds
-	}
-	if !isNil(o.Position) {
-		toSerialize["position"] = o.Position
-	}
-	if !isNil(o.PubmedIds) {
-		toSerialize["pubmedIds"] = o.PubmedIds
-	}
-	if !isNil(o.Sequence) {
-		toSerialize["sequence"] = o.Sequence
-	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !isNil(o.UniprotAccession) {
-		toSerialize["uniprotAccession"] = o.UniprotAccession
-	}
-	if !isNil(o.UniprotEntry) {
-		toSerialize["uniprotEntry"] = o.UniprotEntry
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PostTranslationalModification) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.EnsemblTranscriptIds) {
+		toSerialize["ensemblTranscriptIds"] = o.EnsemblTranscriptIds
+	}
+	if !IsNil(o.Position) {
+		toSerialize["position"] = o.Position
+	}
+	if !IsNil(o.PubmedIds) {
+		toSerialize["pubmedIds"] = o.PubmedIds
+	}
+	if !IsNil(o.Sequence) {
+		toSerialize["sequence"] = o.Sequence
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.UniprotAccession) {
+		toSerialize["uniprotAccession"] = o.UniprotAccession
+	}
+	if !IsNil(o.UniprotEntry) {
+		toSerialize["uniprotEntry"] = o.UniprotEntry
+	}
+	return toSerialize, nil
 }
 
 type NullablePostTranslationalModification struct {

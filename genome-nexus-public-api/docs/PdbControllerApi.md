@@ -1,11 +1,11 @@
-# \PdbControllerApi
+# \PdbControllerAPI
 
 All URIs are relative to *http://www.genomenexus.org*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**FetchPdbHeaderGET**](PdbControllerApi.md#FetchPdbHeaderGET) | **Get** /pdb/header/{pdbId} | Retrieves PDB header info by a PDB id
-[**FetchPdbHeaderPOST**](PdbControllerApi.md#FetchPdbHeaderPOST) | **Post** /pdb/header | Retrieves PDB header info by a PDB id
+[**FetchPdbHeaderGET**](PdbControllerAPI.md#FetchPdbHeaderGET) | **Get** /pdb/header/{pdbId} | Retrieves PDB header info by a PDB id
+[**FetchPdbHeaderPOST**](PdbControllerAPI.md#FetchPdbHeaderPOST) | **Post** /pdb/header | Retrieves PDB header info by a PDB id
 
 
 
@@ -21,24 +21,24 @@ Retrieves PDB header info by a PDB id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pdbId := "pdbId_example" // string | PDB id, for example 1a37
+	pdbId := "pdbId_example" // string | PDB id, for example 1a37
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PdbControllerApi.FetchPdbHeaderGET(context.Background(), pdbId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PdbControllerApi.FetchPdbHeaderGET``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchPdbHeaderGET`: PdbHeader
-    fmt.Fprintf(os.Stdout, "Response from `PdbControllerApi.FetchPdbHeaderGET`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PdbControllerAPI.FetchPdbHeaderGET(context.Background(), pdbId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PdbControllerAPI.FetchPdbHeaderGET``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchPdbHeaderGET`: PdbHeader
+	fmt.Fprintf(os.Stdout, "Response from `PdbControllerAPI.FetchPdbHeaderGET`: %v\n", resp)
 }
 ```
 
@@ -89,24 +89,24 @@ Retrieves PDB header info by a PDB id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pdbIds := []string{"Property_example"} // []string | List of pdb ids, for example [\"1a37\",\"1a4o\"]
+	pdbIds := []string{"Property_example"} // []string | List of pdb ids, for example [\"1a37\",\"1a4o\"]
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PdbControllerApi.FetchPdbHeaderPOST(context.Background()).PdbIds(pdbIds).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PdbControllerApi.FetchPdbHeaderPOST``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchPdbHeaderPOST`: []PdbHeader
-    fmt.Fprintf(os.Stdout, "Response from `PdbControllerApi.FetchPdbHeaderPOST`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PdbControllerAPI.FetchPdbHeaderPOST(context.Background()).PdbIds(pdbIds).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PdbControllerAPI.FetchPdbHeaderPOST``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchPdbHeaderPOST`: []PdbHeader
+	fmt.Fprintf(os.Stdout, "Response from `PdbControllerAPI.FetchPdbHeaderPOST`: %v\n", resp)
 }
 ```
 

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VEPInfo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VEPInfo{}
+
 // VEPInfo struct for VEPInfo
 type VEPInfo struct {
 	Cache *Version `json:"cache,omitempty"`
@@ -40,7 +43,7 @@ func NewVEPInfoWithDefaults() *VEPInfo {
 
 // GetCache returns the Cache field value if set, zero value otherwise.
 func (o *VEPInfo) GetCache() Version {
-	if o == nil || isNil(o.Cache) {
+	if o == nil || IsNil(o.Cache) {
 		var ret Version
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *VEPInfo) GetCache() Version {
 // GetCacheOk returns a tuple with the Cache field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VEPInfo) GetCacheOk() (*Version, bool) {
-	if o == nil || isNil(o.Cache) {
-    return nil, false
+	if o == nil || IsNil(o.Cache) {
+		return nil, false
 	}
 	return o.Cache, true
 }
 
 // HasCache returns a boolean if a field has been set.
 func (o *VEPInfo) HasCache() bool {
-	if o != nil && !isNil(o.Cache) {
+	if o != nil && !IsNil(o.Cache) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *VEPInfo) SetCache(v Version) {
 
 // GetComment returns the Comment field value if set, zero value otherwise.
 func (o *VEPInfo) GetComment() string {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		var ret string
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *VEPInfo) GetComment() string {
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VEPInfo) GetCommentOk() (*string, bool) {
-	if o == nil || isNil(o.Comment) {
-    return nil, false
+	if o == nil || IsNil(o.Comment) {
+		return nil, false
 	}
 	return o.Comment, true
 }
 
 // HasComment returns a boolean if a field has been set.
 func (o *VEPInfo) HasComment() bool {
-	if o != nil && !isNil(o.Comment) {
+	if o != nil && !IsNil(o.Comment) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *VEPInfo) SetComment(v string) {
 
 // GetServer returns the Server field value if set, zero value otherwise.
 func (o *VEPInfo) GetServer() Version {
-	if o == nil || isNil(o.Server) {
+	if o == nil || IsNil(o.Server) {
 		var ret Version
 		return ret
 	}
@@ -114,15 +117,15 @@ func (o *VEPInfo) GetServer() Version {
 // GetServerOk returns a tuple with the Server field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VEPInfo) GetServerOk() (*Version, bool) {
-	if o == nil || isNil(o.Server) {
-    return nil, false
+	if o == nil || IsNil(o.Server) {
+		return nil, false
 	}
 	return o.Server, true
 }
 
 // HasServer returns a boolean if a field has been set.
 func (o *VEPInfo) HasServer() bool {
-	if o != nil && !isNil(o.Server) {
+	if o != nil && !IsNil(o.Server) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *VEPInfo) SetServer(v Version) {
 }
 
 func (o VEPInfo) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Cache) {
-		toSerialize["cache"] = o.Cache
-	}
-	if !isNil(o.Comment) {
-		toSerialize["comment"] = o.Comment
-	}
-	if !isNil(o.Server) {
-		toSerialize["server"] = o.Server
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VEPInfo) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Cache) {
+		toSerialize["cache"] = o.Cache
+	}
+	if !IsNil(o.Comment) {
+		toSerialize["comment"] = o.Comment
+	}
+	if !IsNil(o.Server) {
+		toSerialize["server"] = o.Server
+	}
+	return toSerialize, nil
 }
 
 type NullableVEPInfo struct {

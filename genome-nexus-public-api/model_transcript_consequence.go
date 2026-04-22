@@ -12,7 +12,12 @@ package genome_nexus_public_api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the TranscriptConsequence type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TranscriptConsequence{}
 
 // TranscriptConsequence struct for TranscriptConsequence
 type TranscriptConsequence struct {
@@ -58,7 +63,63 @@ type TranscriptConsequence struct {
 	UniprotId *string `json:"uniprotId,omitempty"`
 	// Variant allele
 	VariantAllele *string `json:"variant_allele,omitempty"`
+	// All effects (VEP)
+	AllEffects *string `json:"all_effects,omitempty"`
+	// Biotype of the transcript
+	Biotype *string `json:"biotype,omitempty"`
+	// CCDS transcript identifier
+	Ccds *string `json:"ccds,omitempty"`
+	// cDNA position
+	CdnaPosition *string `json:"cdna_position,omitempty"`
+	// CDS position
+	CdsPosition *string `json:"cds_position,omitempty"`
+	// ClinVar clinical significance
+	ClinSig []string `json:"clin_sig,omitempty"`
+	// Distance to transcript
+	Distance *int32 `json:"distance,omitempty"`
+	// Overlapping protein domains
+	Domains []map[string]string `json:"domains,omitempty"`
+	// Indicates if gene is associated with a phenotype
+	GenePheno *int32 `json:"gene_pheno,omitempty"`
+	// HGVS offset
+	HgvsOffset *int32 `json:"hgvs_offset,omitempty"`
+	// High information position in motif
+	HighInfPos *string `json:"high_inf_pos,omitempty"`
+	// VEP predicted impact
+	Impact *string `json:"impact,omitempty"`
+	// Intron number
+	Intron *string `json:"intron,omitempty"`
+	// Allele minimisation flag
+	Minimised *int32 `json:"minimised,omitempty"`
+	// Overlapping regulatory motif name
+	MotifName *string `json:"motif_name,omitempty"`
+	// Position in motif
+	MotifPos *int32 `json:"motif_pos,omitempty"`
+	// Motif score change
+	MotifScoreChange *float64 `json:"motif_score_change,omitempty"`
+	// Variant associated with a phenotype
+	Pheno []int32 `json:"pheno,omitempty"`
+	// VEP pick flag (chosen transcript)
+	Pick *int32 `json:"pick,omitempty"`
+	// PubMed IDs for publications
+	Pubmed []int32 `json:"pubmed,omitempty"`
+	// Somatic status flags
+	Somatic []int32 `json:"somatic,omitempty"`
+	// UniProtKB/Swiss-Prot accessions
+	Swissprot []string `json:"swissprot,omitempty"`
+	// Source of gene symbol
+	SymbolSource *string `json:"symbol_source,omitempty"`
+	// UniProtKB/TrEMBL accessions
+	Trembl []string `json:"trembl,omitempty"`
+	// Transcript support level
+	Tsl *int32 `json:"tsl,omitempty"`
+	// UniParc identifier
+	Uniparc *string `json:"uniparc,omitempty"`
+	// Sequence Ontology variant class
+	VariantClass *string `json:"variant_class,omitempty"`
 }
+
+type _TranscriptConsequence TranscriptConsequence
 
 // NewTranscriptConsequence instantiates a new TranscriptConsequence object
 // This constructor will assign default values to properties that have it defined,
@@ -80,7 +141,7 @@ func NewTranscriptConsequenceWithDefaults() *TranscriptConsequence {
 
 // GetAminoAcids returns the AminoAcids field value if set, zero value otherwise.
 func (o *TranscriptConsequence) GetAminoAcids() string {
-	if o == nil || isNil(o.AminoAcids) {
+	if o == nil || IsNil(o.AminoAcids) {
 		var ret string
 		return ret
 	}
@@ -90,15 +151,15 @@ func (o *TranscriptConsequence) GetAminoAcids() string {
 // GetAminoAcidsOk returns a tuple with the AminoAcids field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetAminoAcidsOk() (*string, bool) {
-	if o == nil || isNil(o.AminoAcids) {
-    return nil, false
+	if o == nil || IsNil(o.AminoAcids) {
+		return nil, false
 	}
 	return o.AminoAcids, true
 }
 
 // HasAminoAcids returns a boolean if a field has been set.
 func (o *TranscriptConsequence) HasAminoAcids() bool {
-	if o != nil && !isNil(o.AminoAcids) {
+	if o != nil && !IsNil(o.AminoAcids) {
 		return true
 	}
 
@@ -112,7 +173,7 @@ func (o *TranscriptConsequence) SetAminoAcids(v string) {
 
 // GetCanonical returns the Canonical field value if set, zero value otherwise.
 func (o *TranscriptConsequence) GetCanonical() string {
-	if o == nil || isNil(o.Canonical) {
+	if o == nil || IsNil(o.Canonical) {
 		var ret string
 		return ret
 	}
@@ -122,15 +183,15 @@ func (o *TranscriptConsequence) GetCanonical() string {
 // GetCanonicalOk returns a tuple with the Canonical field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetCanonicalOk() (*string, bool) {
-	if o == nil || isNil(o.Canonical) {
-    return nil, false
+	if o == nil || IsNil(o.Canonical) {
+		return nil, false
 	}
 	return o.Canonical, true
 }
 
 // HasCanonical returns a boolean if a field has been set.
 func (o *TranscriptConsequence) HasCanonical() bool {
-	if o != nil && !isNil(o.Canonical) {
+	if o != nil && !IsNil(o.Canonical) {
 		return true
 	}
 
@@ -144,7 +205,7 @@ func (o *TranscriptConsequence) SetCanonical(v string) {
 
 // GetCodons returns the Codons field value if set, zero value otherwise.
 func (o *TranscriptConsequence) GetCodons() string {
-	if o == nil || isNil(o.Codons) {
+	if o == nil || IsNil(o.Codons) {
 		var ret string
 		return ret
 	}
@@ -154,15 +215,15 @@ func (o *TranscriptConsequence) GetCodons() string {
 // GetCodonsOk returns a tuple with the Codons field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetCodonsOk() (*string, bool) {
-	if o == nil || isNil(o.Codons) {
-    return nil, false
+	if o == nil || IsNil(o.Codons) {
+		return nil, false
 	}
 	return o.Codons, true
 }
 
 // HasCodons returns a boolean if a field has been set.
 func (o *TranscriptConsequence) HasCodons() bool {
-	if o != nil && !isNil(o.Codons) {
+	if o != nil && !IsNil(o.Codons) {
 		return true
 	}
 
@@ -176,7 +237,7 @@ func (o *TranscriptConsequence) SetCodons(v string) {
 
 // GetConsequenceTerms returns the ConsequenceTerms field value if set, zero value otherwise.
 func (o *TranscriptConsequence) GetConsequenceTerms() []string {
-	if o == nil || isNil(o.ConsequenceTerms) {
+	if o == nil || IsNil(o.ConsequenceTerms) {
 		var ret []string
 		return ret
 	}
@@ -186,15 +247,15 @@ func (o *TranscriptConsequence) GetConsequenceTerms() []string {
 // GetConsequenceTermsOk returns a tuple with the ConsequenceTerms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetConsequenceTermsOk() ([]string, bool) {
-	if o == nil || isNil(o.ConsequenceTerms) {
-    return nil, false
+	if o == nil || IsNil(o.ConsequenceTerms) {
+		return nil, false
 	}
 	return o.ConsequenceTerms, true
 }
 
 // HasConsequenceTerms returns a boolean if a field has been set.
 func (o *TranscriptConsequence) HasConsequenceTerms() bool {
-	if o != nil && !isNil(o.ConsequenceTerms) {
+	if o != nil && !IsNil(o.ConsequenceTerms) {
 		return true
 	}
 
@@ -208,7 +269,7 @@ func (o *TranscriptConsequence) SetConsequenceTerms(v []string) {
 
 // GetExon returns the Exon field value if set, zero value otherwise.
 func (o *TranscriptConsequence) GetExon() string {
-	if o == nil || isNil(o.Exon) {
+	if o == nil || IsNil(o.Exon) {
 		var ret string
 		return ret
 	}
@@ -218,15 +279,15 @@ func (o *TranscriptConsequence) GetExon() string {
 // GetExonOk returns a tuple with the Exon field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetExonOk() (*string, bool) {
-	if o == nil || isNil(o.Exon) {
-    return nil, false
+	if o == nil || IsNil(o.Exon) {
+		return nil, false
 	}
 	return o.Exon, true
 }
 
 // HasExon returns a boolean if a field has been set.
 func (o *TranscriptConsequence) HasExon() bool {
-	if o != nil && !isNil(o.Exon) {
+	if o != nil && !IsNil(o.Exon) {
 		return true
 	}
 
@@ -240,7 +301,7 @@ func (o *TranscriptConsequence) SetExon(v string) {
 
 // GetGeneId returns the GeneId field value if set, zero value otherwise.
 func (o *TranscriptConsequence) GetGeneId() string {
-	if o == nil || isNil(o.GeneId) {
+	if o == nil || IsNil(o.GeneId) {
 		var ret string
 		return ret
 	}
@@ -250,15 +311,15 @@ func (o *TranscriptConsequence) GetGeneId() string {
 // GetGeneIdOk returns a tuple with the GeneId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetGeneIdOk() (*string, bool) {
-	if o == nil || isNil(o.GeneId) {
-    return nil, false
+	if o == nil || IsNil(o.GeneId) {
+		return nil, false
 	}
 	return o.GeneId, true
 }
 
 // HasGeneId returns a boolean if a field has been set.
 func (o *TranscriptConsequence) HasGeneId() bool {
-	if o != nil && !isNil(o.GeneId) {
+	if o != nil && !IsNil(o.GeneId) {
 		return true
 	}
 
@@ -272,7 +333,7 @@ func (o *TranscriptConsequence) SetGeneId(v string) {
 
 // GetGeneSymbol returns the GeneSymbol field value if set, zero value otherwise.
 func (o *TranscriptConsequence) GetGeneSymbol() string {
-	if o == nil || isNil(o.GeneSymbol) {
+	if o == nil || IsNil(o.GeneSymbol) {
 		var ret string
 		return ret
 	}
@@ -282,15 +343,15 @@ func (o *TranscriptConsequence) GetGeneSymbol() string {
 // GetGeneSymbolOk returns a tuple with the GeneSymbol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetGeneSymbolOk() (*string, bool) {
-	if o == nil || isNil(o.GeneSymbol) {
-    return nil, false
+	if o == nil || IsNil(o.GeneSymbol) {
+		return nil, false
 	}
 	return o.GeneSymbol, true
 }
 
 // HasGeneSymbol returns a boolean if a field has been set.
 func (o *TranscriptConsequence) HasGeneSymbol() bool {
-	if o != nil && !isNil(o.GeneSymbol) {
+	if o != nil && !IsNil(o.GeneSymbol) {
 		return true
 	}
 
@@ -304,7 +365,7 @@ func (o *TranscriptConsequence) SetGeneSymbol(v string) {
 
 // GetHgncId returns the HgncId field value if set, zero value otherwise.
 func (o *TranscriptConsequence) GetHgncId() string {
-	if o == nil || isNil(o.HgncId) {
+	if o == nil || IsNil(o.HgncId) {
 		var ret string
 		return ret
 	}
@@ -314,15 +375,15 @@ func (o *TranscriptConsequence) GetHgncId() string {
 // GetHgncIdOk returns a tuple with the HgncId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetHgncIdOk() (*string, bool) {
-	if o == nil || isNil(o.HgncId) {
-    return nil, false
+	if o == nil || IsNil(o.HgncId) {
+		return nil, false
 	}
 	return o.HgncId, true
 }
 
 // HasHgncId returns a boolean if a field has been set.
 func (o *TranscriptConsequence) HasHgncId() bool {
-	if o != nil && !isNil(o.HgncId) {
+	if o != nil && !IsNil(o.HgncId) {
 		return true
 	}
 
@@ -336,7 +397,7 @@ func (o *TranscriptConsequence) SetHgncId(v string) {
 
 // GetHgvsc returns the Hgvsc field value if set, zero value otherwise.
 func (o *TranscriptConsequence) GetHgvsc() string {
-	if o == nil || isNil(o.Hgvsc) {
+	if o == nil || IsNil(o.Hgvsc) {
 		var ret string
 		return ret
 	}
@@ -346,15 +407,15 @@ func (o *TranscriptConsequence) GetHgvsc() string {
 // GetHgvscOk returns a tuple with the Hgvsc field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetHgvscOk() (*string, bool) {
-	if o == nil || isNil(o.Hgvsc) {
-    return nil, false
+	if o == nil || IsNil(o.Hgvsc) {
+		return nil, false
 	}
 	return o.Hgvsc, true
 }
 
 // HasHgvsc returns a boolean if a field has been set.
 func (o *TranscriptConsequence) HasHgvsc() bool {
-	if o != nil && !isNil(o.Hgvsc) {
+	if o != nil && !IsNil(o.Hgvsc) {
 		return true
 	}
 
@@ -368,7 +429,7 @@ func (o *TranscriptConsequence) SetHgvsc(v string) {
 
 // GetHgvsg returns the Hgvsg field value if set, zero value otherwise.
 func (o *TranscriptConsequence) GetHgvsg() string {
-	if o == nil || isNil(o.Hgvsg) {
+	if o == nil || IsNil(o.Hgvsg) {
 		var ret string
 		return ret
 	}
@@ -378,15 +439,15 @@ func (o *TranscriptConsequence) GetHgvsg() string {
 // GetHgvsgOk returns a tuple with the Hgvsg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetHgvsgOk() (*string, bool) {
-	if o == nil || isNil(o.Hgvsg) {
-    return nil, false
+	if o == nil || IsNil(o.Hgvsg) {
+		return nil, false
 	}
 	return o.Hgvsg, true
 }
 
 // HasHgvsg returns a boolean if a field has been set.
 func (o *TranscriptConsequence) HasHgvsg() bool {
-	if o != nil && !isNil(o.Hgvsg) {
+	if o != nil && !IsNil(o.Hgvsg) {
 		return true
 	}
 
@@ -400,7 +461,7 @@ func (o *TranscriptConsequence) SetHgvsg(v string) {
 
 // GetHgvsp returns the Hgvsp field value if set, zero value otherwise.
 func (o *TranscriptConsequence) GetHgvsp() string {
-	if o == nil || isNil(o.Hgvsp) {
+	if o == nil || IsNil(o.Hgvsp) {
 		var ret string
 		return ret
 	}
@@ -410,15 +471,15 @@ func (o *TranscriptConsequence) GetHgvsp() string {
 // GetHgvspOk returns a tuple with the Hgvsp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetHgvspOk() (*string, bool) {
-	if o == nil || isNil(o.Hgvsp) {
-    return nil, false
+	if o == nil || IsNil(o.Hgvsp) {
+		return nil, false
 	}
 	return o.Hgvsp, true
 }
 
 // HasHgvsp returns a boolean if a field has been set.
 func (o *TranscriptConsequence) HasHgvsp() bool {
-	if o != nil && !isNil(o.Hgvsp) {
+	if o != nil && !IsNil(o.Hgvsp) {
 		return true
 	}
 
@@ -432,7 +493,7 @@ func (o *TranscriptConsequence) SetHgvsp(v string) {
 
 // GetPolyphenPrediction returns the PolyphenPrediction field value if set, zero value otherwise.
 func (o *TranscriptConsequence) GetPolyphenPrediction() string {
-	if o == nil || isNil(o.PolyphenPrediction) {
+	if o == nil || IsNil(o.PolyphenPrediction) {
 		var ret string
 		return ret
 	}
@@ -442,15 +503,15 @@ func (o *TranscriptConsequence) GetPolyphenPrediction() string {
 // GetPolyphenPredictionOk returns a tuple with the PolyphenPrediction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetPolyphenPredictionOk() (*string, bool) {
-	if o == nil || isNil(o.PolyphenPrediction) {
-    return nil, false
+	if o == nil || IsNil(o.PolyphenPrediction) {
+		return nil, false
 	}
 	return o.PolyphenPrediction, true
 }
 
 // HasPolyphenPrediction returns a boolean if a field has been set.
 func (o *TranscriptConsequence) HasPolyphenPrediction() bool {
-	if o != nil && !isNil(o.PolyphenPrediction) {
+	if o != nil && !IsNil(o.PolyphenPrediction) {
 		return true
 	}
 
@@ -464,7 +525,7 @@ func (o *TranscriptConsequence) SetPolyphenPrediction(v string) {
 
 // GetPolyphenScore returns the PolyphenScore field value if set, zero value otherwise.
 func (o *TranscriptConsequence) GetPolyphenScore() float64 {
-	if o == nil || isNil(o.PolyphenScore) {
+	if o == nil || IsNil(o.PolyphenScore) {
 		var ret float64
 		return ret
 	}
@@ -474,15 +535,15 @@ func (o *TranscriptConsequence) GetPolyphenScore() float64 {
 // GetPolyphenScoreOk returns a tuple with the PolyphenScore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetPolyphenScoreOk() (*float64, bool) {
-	if o == nil || isNil(o.PolyphenScore) {
-    return nil, false
+	if o == nil || IsNil(o.PolyphenScore) {
+		return nil, false
 	}
 	return o.PolyphenScore, true
 }
 
 // HasPolyphenScore returns a boolean if a field has been set.
 func (o *TranscriptConsequence) HasPolyphenScore() bool {
-	if o != nil && !isNil(o.PolyphenScore) {
+	if o != nil && !IsNil(o.PolyphenScore) {
 		return true
 	}
 
@@ -496,7 +557,7 @@ func (o *TranscriptConsequence) SetPolyphenScore(v float64) {
 
 // GetProteinEnd returns the ProteinEnd field value if set, zero value otherwise.
 func (o *TranscriptConsequence) GetProteinEnd() int32 {
-	if o == nil || isNil(o.ProteinEnd) {
+	if o == nil || IsNil(o.ProteinEnd) {
 		var ret int32
 		return ret
 	}
@@ -506,15 +567,15 @@ func (o *TranscriptConsequence) GetProteinEnd() int32 {
 // GetProteinEndOk returns a tuple with the ProteinEnd field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetProteinEndOk() (*int32, bool) {
-	if o == nil || isNil(o.ProteinEnd) {
-    return nil, false
+	if o == nil || IsNil(o.ProteinEnd) {
+		return nil, false
 	}
 	return o.ProteinEnd, true
 }
 
 // HasProteinEnd returns a boolean if a field has been set.
 func (o *TranscriptConsequence) HasProteinEnd() bool {
-	if o != nil && !isNil(o.ProteinEnd) {
+	if o != nil && !IsNil(o.ProteinEnd) {
 		return true
 	}
 
@@ -528,7 +589,7 @@ func (o *TranscriptConsequence) SetProteinEnd(v int32) {
 
 // GetProteinId returns the ProteinId field value if set, zero value otherwise.
 func (o *TranscriptConsequence) GetProteinId() string {
-	if o == nil || isNil(o.ProteinId) {
+	if o == nil || IsNil(o.ProteinId) {
 		var ret string
 		return ret
 	}
@@ -538,15 +599,15 @@ func (o *TranscriptConsequence) GetProteinId() string {
 // GetProteinIdOk returns a tuple with the ProteinId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetProteinIdOk() (*string, bool) {
-	if o == nil || isNil(o.ProteinId) {
-    return nil, false
+	if o == nil || IsNil(o.ProteinId) {
+		return nil, false
 	}
 	return o.ProteinId, true
 }
 
 // HasProteinId returns a boolean if a field has been set.
 func (o *TranscriptConsequence) HasProteinId() bool {
-	if o != nil && !isNil(o.ProteinId) {
+	if o != nil && !IsNil(o.ProteinId) {
 		return true
 	}
 
@@ -560,7 +621,7 @@ func (o *TranscriptConsequence) SetProteinId(v string) {
 
 // GetProteinStart returns the ProteinStart field value if set, zero value otherwise.
 func (o *TranscriptConsequence) GetProteinStart() int32 {
-	if o == nil || isNil(o.ProteinStart) {
+	if o == nil || IsNil(o.ProteinStart) {
 		var ret int32
 		return ret
 	}
@@ -570,15 +631,15 @@ func (o *TranscriptConsequence) GetProteinStart() int32 {
 // GetProteinStartOk returns a tuple with the ProteinStart field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetProteinStartOk() (*int32, bool) {
-	if o == nil || isNil(o.ProteinStart) {
-    return nil, false
+	if o == nil || IsNil(o.ProteinStart) {
+		return nil, false
 	}
 	return o.ProteinStart, true
 }
 
 // HasProteinStart returns a boolean if a field has been set.
 func (o *TranscriptConsequence) HasProteinStart() bool {
-	if o != nil && !isNil(o.ProteinStart) {
+	if o != nil && !IsNil(o.ProteinStart) {
 		return true
 	}
 
@@ -592,7 +653,7 @@ func (o *TranscriptConsequence) SetProteinStart(v int32) {
 
 // GetRefseqTranscriptIds returns the RefseqTranscriptIds field value if set, zero value otherwise.
 func (o *TranscriptConsequence) GetRefseqTranscriptIds() []string {
-	if o == nil || isNil(o.RefseqTranscriptIds) {
+	if o == nil || IsNil(o.RefseqTranscriptIds) {
 		var ret []string
 		return ret
 	}
@@ -602,15 +663,15 @@ func (o *TranscriptConsequence) GetRefseqTranscriptIds() []string {
 // GetRefseqTranscriptIdsOk returns a tuple with the RefseqTranscriptIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetRefseqTranscriptIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.RefseqTranscriptIds) {
-    return nil, false
+	if o == nil || IsNil(o.RefseqTranscriptIds) {
+		return nil, false
 	}
 	return o.RefseqTranscriptIds, true
 }
 
 // HasRefseqTranscriptIds returns a boolean if a field has been set.
 func (o *TranscriptConsequence) HasRefseqTranscriptIds() bool {
-	if o != nil && !isNil(o.RefseqTranscriptIds) {
+	if o != nil && !IsNil(o.RefseqTranscriptIds) {
 		return true
 	}
 
@@ -624,7 +685,7 @@ func (o *TranscriptConsequence) SetRefseqTranscriptIds(v []string) {
 
 // GetSiftPrediction returns the SiftPrediction field value if set, zero value otherwise.
 func (o *TranscriptConsequence) GetSiftPrediction() string {
-	if o == nil || isNil(o.SiftPrediction) {
+	if o == nil || IsNil(o.SiftPrediction) {
 		var ret string
 		return ret
 	}
@@ -634,15 +695,15 @@ func (o *TranscriptConsequence) GetSiftPrediction() string {
 // GetSiftPredictionOk returns a tuple with the SiftPrediction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetSiftPredictionOk() (*string, bool) {
-	if o == nil || isNil(o.SiftPrediction) {
-    return nil, false
+	if o == nil || IsNil(o.SiftPrediction) {
+		return nil, false
 	}
 	return o.SiftPrediction, true
 }
 
 // HasSiftPrediction returns a boolean if a field has been set.
 func (o *TranscriptConsequence) HasSiftPrediction() bool {
-	if o != nil && !isNil(o.SiftPrediction) {
+	if o != nil && !IsNil(o.SiftPrediction) {
 		return true
 	}
 
@@ -656,7 +717,7 @@ func (o *TranscriptConsequence) SetSiftPrediction(v string) {
 
 // GetSiftScore returns the SiftScore field value if set, zero value otherwise.
 func (o *TranscriptConsequence) GetSiftScore() float64 {
-	if o == nil || isNil(o.SiftScore) {
+	if o == nil || IsNil(o.SiftScore) {
 		var ret float64
 		return ret
 	}
@@ -666,15 +727,15 @@ func (o *TranscriptConsequence) GetSiftScore() float64 {
 // GetSiftScoreOk returns a tuple with the SiftScore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetSiftScoreOk() (*float64, bool) {
-	if o == nil || isNil(o.SiftScore) {
-    return nil, false
+	if o == nil || IsNil(o.SiftScore) {
+		return nil, false
 	}
 	return o.SiftScore, true
 }
 
 // HasSiftScore returns a boolean if a field has been set.
 func (o *TranscriptConsequence) HasSiftScore() bool {
-	if o != nil && !isNil(o.SiftScore) {
+	if o != nil && !IsNil(o.SiftScore) {
 		return true
 	}
 
@@ -700,7 +761,7 @@ func (o *TranscriptConsequence) GetTranscriptId() string {
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetTranscriptIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.TranscriptId, true
 }
@@ -712,7 +773,7 @@ func (o *TranscriptConsequence) SetTranscriptId(v string) {
 
 // GetUniprotId returns the UniprotId field value if set, zero value otherwise.
 func (o *TranscriptConsequence) GetUniprotId() string {
-	if o == nil || isNil(o.UniprotId) {
+	if o == nil || IsNil(o.UniprotId) {
 		var ret string
 		return ret
 	}
@@ -722,15 +783,15 @@ func (o *TranscriptConsequence) GetUniprotId() string {
 // GetUniprotIdOk returns a tuple with the UniprotId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetUniprotIdOk() (*string, bool) {
-	if o == nil || isNil(o.UniprotId) {
-    return nil, false
+	if o == nil || IsNil(o.UniprotId) {
+		return nil, false
 	}
 	return o.UniprotId, true
 }
 
 // HasUniprotId returns a boolean if a field has been set.
 func (o *TranscriptConsequence) HasUniprotId() bool {
-	if o != nil && !isNil(o.UniprotId) {
+	if o != nil && !IsNil(o.UniprotId) {
 		return true
 	}
 
@@ -744,7 +805,7 @@ func (o *TranscriptConsequence) SetUniprotId(v string) {
 
 // GetVariantAllele returns the VariantAllele field value if set, zero value otherwise.
 func (o *TranscriptConsequence) GetVariantAllele() string {
-	if o == nil || isNil(o.VariantAllele) {
+	if o == nil || IsNil(o.VariantAllele) {
 		var ret string
 		return ret
 	}
@@ -754,15 +815,15 @@ func (o *TranscriptConsequence) GetVariantAllele() string {
 // GetVariantAlleleOk returns a tuple with the VariantAllele field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TranscriptConsequence) GetVariantAlleleOk() (*string, bool) {
-	if o == nil || isNil(o.VariantAllele) {
-    return nil, false
+	if o == nil || IsNil(o.VariantAllele) {
+		return nil, false
 	}
 	return o.VariantAllele, true
 }
 
 // HasVariantAllele returns a boolean if a field has been set.
 func (o *TranscriptConsequence) HasVariantAllele() bool {
-	if o != nil && !isNil(o.VariantAllele) {
+	if o != nil && !IsNil(o.VariantAllele) {
 		return true
 	}
 
@@ -774,75 +835,1063 @@ func (o *TranscriptConsequence) SetVariantAllele(v string) {
 	o.VariantAllele = &v
 }
 
+// GetAllEffects returns the AllEffects field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetAllEffects() string {
+	if o == nil || IsNil(o.AllEffects) {
+		var ret string
+		return ret
+	}
+	return *o.AllEffects
+}
+
+// GetAllEffectsOk returns a tuple with the AllEffects field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetAllEffectsOk() (*string, bool) {
+	if o == nil || IsNil(o.AllEffects) {
+		return nil, false
+	}
+	return o.AllEffects, true
+}
+
+// HasAllEffects returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasAllEffects() bool {
+	if o != nil && !IsNil(o.AllEffects) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllEffects gets a reference to the given string and assigns it to the AllEffects field.
+func (o *TranscriptConsequence) SetAllEffects(v string) {
+	o.AllEffects = &v
+}
+
+// GetBiotype returns the Biotype field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetBiotype() string {
+	if o == nil || IsNil(o.Biotype) {
+		var ret string
+		return ret
+	}
+	return *o.Biotype
+}
+
+// GetBiotypeOk returns a tuple with the Biotype field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetBiotypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Biotype) {
+		return nil, false
+	}
+	return o.Biotype, true
+}
+
+// HasBiotype returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasBiotype() bool {
+	if o != nil && !IsNil(o.Biotype) {
+		return true
+	}
+
+	return false
+}
+
+// SetBiotype gets a reference to the given string and assigns it to the Biotype field.
+func (o *TranscriptConsequence) SetBiotype(v string) {
+	o.Biotype = &v
+}
+
+// GetCcds returns the Ccds field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetCcds() string {
+	if o == nil || IsNil(o.Ccds) {
+		var ret string
+		return ret
+	}
+	return *o.Ccds
+}
+
+// GetCcdsOk returns a tuple with the Ccds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetCcdsOk() (*string, bool) {
+	if o == nil || IsNil(o.Ccds) {
+		return nil, false
+	}
+	return o.Ccds, true
+}
+
+// HasCcds returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasCcds() bool {
+	if o != nil && !IsNil(o.Ccds) {
+		return true
+	}
+
+	return false
+}
+
+// SetCcds gets a reference to the given string and assigns it to the Ccds field.
+func (o *TranscriptConsequence) SetCcds(v string) {
+	o.Ccds = &v
+}
+
+// GetCdnaPosition returns the CdnaPosition field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetCdnaPosition() string {
+	if o == nil || IsNil(o.CdnaPosition) {
+		var ret string
+		return ret
+	}
+	return *o.CdnaPosition
+}
+
+// GetCdnaPositionOk returns a tuple with the CdnaPosition field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetCdnaPositionOk() (*string, bool) {
+	if o == nil || IsNil(o.CdnaPosition) {
+		return nil, false
+	}
+	return o.CdnaPosition, true
+}
+
+// HasCdnaPosition returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasCdnaPosition() bool {
+	if o != nil && !IsNil(o.CdnaPosition) {
+		return true
+	}
+
+	return false
+}
+
+// SetCdnaPosition gets a reference to the given string and assigns it to the CdnaPosition field.
+func (o *TranscriptConsequence) SetCdnaPosition(v string) {
+	o.CdnaPosition = &v
+}
+
+// GetCdsPosition returns the CdsPosition field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetCdsPosition() string {
+	if o == nil || IsNil(o.CdsPosition) {
+		var ret string
+		return ret
+	}
+	return *o.CdsPosition
+}
+
+// GetCdsPositionOk returns a tuple with the CdsPosition field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetCdsPositionOk() (*string, bool) {
+	if o == nil || IsNil(o.CdsPosition) {
+		return nil, false
+	}
+	return o.CdsPosition, true
+}
+
+// HasCdsPosition returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasCdsPosition() bool {
+	if o != nil && !IsNil(o.CdsPosition) {
+		return true
+	}
+
+	return false
+}
+
+// SetCdsPosition gets a reference to the given string and assigns it to the CdsPosition field.
+func (o *TranscriptConsequence) SetCdsPosition(v string) {
+	o.CdsPosition = &v
+}
+
+// GetClinSig returns the ClinSig field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetClinSig() []string {
+	if o == nil || IsNil(o.ClinSig) {
+		var ret []string
+		return ret
+	}
+	return o.ClinSig
+}
+
+// GetClinSigOk returns a tuple with the ClinSig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetClinSigOk() ([]string, bool) {
+	if o == nil || IsNil(o.ClinSig) {
+		return nil, false
+	}
+	return o.ClinSig, true
+}
+
+// HasClinSig returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasClinSig() bool {
+	if o != nil && !IsNil(o.ClinSig) {
+		return true
+	}
+
+	return false
+}
+
+// SetClinSig gets a reference to the given []string and assigns it to the ClinSig field.
+func (o *TranscriptConsequence) SetClinSig(v []string) {
+	o.ClinSig = v
+}
+
+// GetDistance returns the Distance field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetDistance() int32 {
+	if o == nil || IsNil(o.Distance) {
+		var ret int32
+		return ret
+	}
+	return *o.Distance
+}
+
+// GetDistanceOk returns a tuple with the Distance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetDistanceOk() (*int32, bool) {
+	if o == nil || IsNil(o.Distance) {
+		return nil, false
+	}
+	return o.Distance, true
+}
+
+// HasDistance returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasDistance() bool {
+	if o != nil && !IsNil(o.Distance) {
+		return true
+	}
+
+	return false
+}
+
+// SetDistance gets a reference to the given int32 and assigns it to the Distance field.
+func (o *TranscriptConsequence) SetDistance(v int32) {
+	o.Distance = &v
+}
+
+// GetDomains returns the Domains field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetDomains() []map[string]string {
+	if o == nil || IsNil(o.Domains) {
+		var ret []map[string]string
+		return ret
+	}
+	return o.Domains
+}
+
+// GetDomainsOk returns a tuple with the Domains field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetDomainsOk() ([]map[string]string, bool) {
+	if o == nil || IsNil(o.Domains) {
+		return nil, false
+	}
+	return o.Domains, true
+}
+
+// HasDomains returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasDomains() bool {
+	if o != nil && !IsNil(o.Domains) {
+		return true
+	}
+
+	return false
+}
+
+// SetDomains gets a reference to the given []map[string]string and assigns it to the Domains field.
+func (o *TranscriptConsequence) SetDomains(v []map[string]string) {
+	o.Domains = v
+}
+
+// GetGenePheno returns the GenePheno field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetGenePheno() int32 {
+	if o == nil || IsNil(o.GenePheno) {
+		var ret int32
+		return ret
+	}
+	return *o.GenePheno
+}
+
+// GetGenePhenoOk returns a tuple with the GenePheno field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetGenePhenoOk() (*int32, bool) {
+	if o == nil || IsNil(o.GenePheno) {
+		return nil, false
+	}
+	return o.GenePheno, true
+}
+
+// HasGenePheno returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasGenePheno() bool {
+	if o != nil && !IsNil(o.GenePheno) {
+		return true
+	}
+
+	return false
+}
+
+// SetGenePheno gets a reference to the given int32 and assigns it to the GenePheno field.
+func (o *TranscriptConsequence) SetGenePheno(v int32) {
+	o.GenePheno = &v
+}
+
+// GetHgvsOffset returns the HgvsOffset field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetHgvsOffset() int32 {
+	if o == nil || IsNil(o.HgvsOffset) {
+		var ret int32
+		return ret
+	}
+	return *o.HgvsOffset
+}
+
+// GetHgvsOffsetOk returns a tuple with the HgvsOffset field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetHgvsOffsetOk() (*int32, bool) {
+	if o == nil || IsNil(o.HgvsOffset) {
+		return nil, false
+	}
+	return o.HgvsOffset, true
+}
+
+// HasHgvsOffset returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasHgvsOffset() bool {
+	if o != nil && !IsNil(o.HgvsOffset) {
+		return true
+	}
+
+	return false
+}
+
+// SetHgvsOffset gets a reference to the given int32 and assigns it to the HgvsOffset field.
+func (o *TranscriptConsequence) SetHgvsOffset(v int32) {
+	o.HgvsOffset = &v
+}
+
+// GetHighInfPos returns the HighInfPos field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetHighInfPos() string {
+	if o == nil || IsNil(o.HighInfPos) {
+		var ret string
+		return ret
+	}
+	return *o.HighInfPos
+}
+
+// GetHighInfPosOk returns a tuple with the HighInfPos field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetHighInfPosOk() (*string, bool) {
+	if o == nil || IsNil(o.HighInfPos) {
+		return nil, false
+	}
+	return o.HighInfPos, true
+}
+
+// HasHighInfPos returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasHighInfPos() bool {
+	if o != nil && !IsNil(o.HighInfPos) {
+		return true
+	}
+
+	return false
+}
+
+// SetHighInfPos gets a reference to the given string and assigns it to the HighInfPos field.
+func (o *TranscriptConsequence) SetHighInfPos(v string) {
+	o.HighInfPos = &v
+}
+
+// GetImpact returns the Impact field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetImpact() string {
+	if o == nil || IsNil(o.Impact) {
+		var ret string
+		return ret
+	}
+	return *o.Impact
+}
+
+// GetImpactOk returns a tuple with the Impact field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetImpactOk() (*string, bool) {
+	if o == nil || IsNil(o.Impact) {
+		return nil, false
+	}
+	return o.Impact, true
+}
+
+// HasImpact returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasImpact() bool {
+	if o != nil && !IsNil(o.Impact) {
+		return true
+	}
+
+	return false
+}
+
+// SetImpact gets a reference to the given string and assigns it to the Impact field.
+func (o *TranscriptConsequence) SetImpact(v string) {
+	o.Impact = &v
+}
+
+// GetIntron returns the Intron field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetIntron() string {
+	if o == nil || IsNil(o.Intron) {
+		var ret string
+		return ret
+	}
+	return *o.Intron
+}
+
+// GetIntronOk returns a tuple with the Intron field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetIntronOk() (*string, bool) {
+	if o == nil || IsNil(o.Intron) {
+		return nil, false
+	}
+	return o.Intron, true
+}
+
+// HasIntron returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasIntron() bool {
+	if o != nil && !IsNil(o.Intron) {
+		return true
+	}
+
+	return false
+}
+
+// SetIntron gets a reference to the given string and assigns it to the Intron field.
+func (o *TranscriptConsequence) SetIntron(v string) {
+	o.Intron = &v
+}
+
+// GetMinimised returns the Minimised field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetMinimised() int32 {
+	if o == nil || IsNil(o.Minimised) {
+		var ret int32
+		return ret
+	}
+	return *o.Minimised
+}
+
+// GetMinimisedOk returns a tuple with the Minimised field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetMinimisedOk() (*int32, bool) {
+	if o == nil || IsNil(o.Minimised) {
+		return nil, false
+	}
+	return o.Minimised, true
+}
+
+// HasMinimised returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasMinimised() bool {
+	if o != nil && !IsNil(o.Minimised) {
+		return true
+	}
+
+	return false
+}
+
+// SetMinimised gets a reference to the given int32 and assigns it to the Minimised field.
+func (o *TranscriptConsequence) SetMinimised(v int32) {
+	o.Minimised = &v
+}
+
+// GetMotifName returns the MotifName field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetMotifName() string {
+	if o == nil || IsNil(o.MotifName) {
+		var ret string
+		return ret
+	}
+	return *o.MotifName
+}
+
+// GetMotifNameOk returns a tuple with the MotifName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetMotifNameOk() (*string, bool) {
+	if o == nil || IsNil(o.MotifName) {
+		return nil, false
+	}
+	return o.MotifName, true
+}
+
+// HasMotifName returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasMotifName() bool {
+	if o != nil && !IsNil(o.MotifName) {
+		return true
+	}
+
+	return false
+}
+
+// SetMotifName gets a reference to the given string and assigns it to the MotifName field.
+func (o *TranscriptConsequence) SetMotifName(v string) {
+	o.MotifName = &v
+}
+
+// GetMotifPos returns the MotifPos field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetMotifPos() int32 {
+	if o == nil || IsNil(o.MotifPos) {
+		var ret int32
+		return ret
+	}
+	return *o.MotifPos
+}
+
+// GetMotifPosOk returns a tuple with the MotifPos field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetMotifPosOk() (*int32, bool) {
+	if o == nil || IsNil(o.MotifPos) {
+		return nil, false
+	}
+	return o.MotifPos, true
+}
+
+// HasMotifPos returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasMotifPos() bool {
+	if o != nil && !IsNil(o.MotifPos) {
+		return true
+	}
+
+	return false
+}
+
+// SetMotifPos gets a reference to the given int32 and assigns it to the MotifPos field.
+func (o *TranscriptConsequence) SetMotifPos(v int32) {
+	o.MotifPos = &v
+}
+
+// GetMotifScoreChange returns the MotifScoreChange field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetMotifScoreChange() float64 {
+	if o == nil || IsNil(o.MotifScoreChange) {
+		var ret float64
+		return ret
+	}
+	return *o.MotifScoreChange
+}
+
+// GetMotifScoreChangeOk returns a tuple with the MotifScoreChange field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetMotifScoreChangeOk() (*float64, bool) {
+	if o == nil || IsNil(o.MotifScoreChange) {
+		return nil, false
+	}
+	return o.MotifScoreChange, true
+}
+
+// HasMotifScoreChange returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasMotifScoreChange() bool {
+	if o != nil && !IsNil(o.MotifScoreChange) {
+		return true
+	}
+
+	return false
+}
+
+// SetMotifScoreChange gets a reference to the given float64 and assigns it to the MotifScoreChange field.
+func (o *TranscriptConsequence) SetMotifScoreChange(v float64) {
+	o.MotifScoreChange = &v
+}
+
+// GetPheno returns the Pheno field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetPheno() []int32 {
+	if o == nil || IsNil(o.Pheno) {
+		var ret []int32
+		return ret
+	}
+	return o.Pheno
+}
+
+// GetPhenoOk returns a tuple with the Pheno field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetPhenoOk() ([]int32, bool) {
+	if o == nil || IsNil(o.Pheno) {
+		return nil, false
+	}
+	return o.Pheno, true
+}
+
+// HasPheno returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasPheno() bool {
+	if o != nil && !IsNil(o.Pheno) {
+		return true
+	}
+
+	return false
+}
+
+// SetPheno gets a reference to the given []int32 and assigns it to the Pheno field.
+func (o *TranscriptConsequence) SetPheno(v []int32) {
+	o.Pheno = v
+}
+
+// GetPick returns the Pick field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetPick() int32 {
+	if o == nil || IsNil(o.Pick) {
+		var ret int32
+		return ret
+	}
+	return *o.Pick
+}
+
+// GetPickOk returns a tuple with the Pick field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetPickOk() (*int32, bool) {
+	if o == nil || IsNil(o.Pick) {
+		return nil, false
+	}
+	return o.Pick, true
+}
+
+// HasPick returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasPick() bool {
+	if o != nil && !IsNil(o.Pick) {
+		return true
+	}
+
+	return false
+}
+
+// SetPick gets a reference to the given int32 and assigns it to the Pick field.
+func (o *TranscriptConsequence) SetPick(v int32) {
+	o.Pick = &v
+}
+
+// GetPubmed returns the Pubmed field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetPubmed() []int32 {
+	if o == nil || IsNil(o.Pubmed) {
+		var ret []int32
+		return ret
+	}
+	return o.Pubmed
+}
+
+// GetPubmedOk returns a tuple with the Pubmed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetPubmedOk() ([]int32, bool) {
+	if o == nil || IsNil(o.Pubmed) {
+		return nil, false
+	}
+	return o.Pubmed, true
+}
+
+// HasPubmed returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasPubmed() bool {
+	if o != nil && !IsNil(o.Pubmed) {
+		return true
+	}
+
+	return false
+}
+
+// SetPubmed gets a reference to the given []int32 and assigns it to the Pubmed field.
+func (o *TranscriptConsequence) SetPubmed(v []int32) {
+	o.Pubmed = v
+}
+
+// GetSomatic returns the Somatic field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetSomatic() []int32 {
+	if o == nil || IsNil(o.Somatic) {
+		var ret []int32
+		return ret
+	}
+	return o.Somatic
+}
+
+// GetSomaticOk returns a tuple with the Somatic field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetSomaticOk() ([]int32, bool) {
+	if o == nil || IsNil(o.Somatic) {
+		return nil, false
+	}
+	return o.Somatic, true
+}
+
+// HasSomatic returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasSomatic() bool {
+	if o != nil && !IsNil(o.Somatic) {
+		return true
+	}
+
+	return false
+}
+
+// SetSomatic gets a reference to the given []int32 and assigns it to the Somatic field.
+func (o *TranscriptConsequence) SetSomatic(v []int32) {
+	o.Somatic = v
+}
+
+// GetSwissprot returns the Swissprot field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetSwissprot() []string {
+	if o == nil || IsNil(o.Swissprot) {
+		var ret []string
+		return ret
+	}
+	return o.Swissprot
+}
+
+// GetSwissprotOk returns a tuple with the Swissprot field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetSwissprotOk() ([]string, bool) {
+	if o == nil || IsNil(o.Swissprot) {
+		return nil, false
+	}
+	return o.Swissprot, true
+}
+
+// HasSwissprot returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasSwissprot() bool {
+	if o != nil && !IsNil(o.Swissprot) {
+		return true
+	}
+
+	return false
+}
+
+// SetSwissprot gets a reference to the given []string and assigns it to the Swissprot field.
+func (o *TranscriptConsequence) SetSwissprot(v []string) {
+	o.Swissprot = v
+}
+
+// GetSymbolSource returns the SymbolSource field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetSymbolSource() string {
+	if o == nil || IsNil(o.SymbolSource) {
+		var ret string
+		return ret
+	}
+	return *o.SymbolSource
+}
+
+// GetSymbolSourceOk returns a tuple with the SymbolSource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetSymbolSourceOk() (*string, bool) {
+	if o == nil || IsNil(o.SymbolSource) {
+		return nil, false
+	}
+	return o.SymbolSource, true
+}
+
+// HasSymbolSource returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasSymbolSource() bool {
+	if o != nil && !IsNil(o.SymbolSource) {
+		return true
+	}
+
+	return false
+}
+
+// SetSymbolSource gets a reference to the given string and assigns it to the SymbolSource field.
+func (o *TranscriptConsequence) SetSymbolSource(v string) {
+	o.SymbolSource = &v
+}
+
+// GetTrembl returns the Trembl field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetTrembl() []string {
+	if o == nil || IsNil(o.Trembl) {
+		var ret []string
+		return ret
+	}
+	return o.Trembl
+}
+
+// GetTremblOk returns a tuple with the Trembl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetTremblOk() ([]string, bool) {
+	if o == nil || IsNil(o.Trembl) {
+		return nil, false
+	}
+	return o.Trembl, true
+}
+
+// HasTrembl returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasTrembl() bool {
+	if o != nil && !IsNil(o.Trembl) {
+		return true
+	}
+
+	return false
+}
+
+// SetTrembl gets a reference to the given []string and assigns it to the Trembl field.
+func (o *TranscriptConsequence) SetTrembl(v []string) {
+	o.Trembl = v
+}
+
+// GetTsl returns the Tsl field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetTsl() int32 {
+	if o == nil || IsNil(o.Tsl) {
+		var ret int32
+		return ret
+	}
+	return *o.Tsl
+}
+
+// GetTslOk returns a tuple with the Tsl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetTslOk() (*int32, bool) {
+	if o == nil || IsNil(o.Tsl) {
+		return nil, false
+	}
+	return o.Tsl, true
+}
+
+// HasTsl returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasTsl() bool {
+	if o != nil && !IsNil(o.Tsl) {
+		return true
+	}
+
+	return false
+}
+
+// SetTsl gets a reference to the given int32 and assigns it to the Tsl field.
+func (o *TranscriptConsequence) SetTsl(v int32) {
+	o.Tsl = &v
+}
+
+// GetUniparc returns the Uniparc field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetUniparc() string {
+	if o == nil || IsNil(o.Uniparc) {
+		var ret string
+		return ret
+	}
+	return *o.Uniparc
+}
+
+// GetUniparcOk returns a tuple with the Uniparc field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetUniparcOk() (*string, bool) {
+	if o == nil || IsNil(o.Uniparc) {
+		return nil, false
+	}
+	return o.Uniparc, true
+}
+
+// HasUniparc returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasUniparc() bool {
+	if o != nil && !IsNil(o.Uniparc) {
+		return true
+	}
+
+	return false
+}
+
+// SetUniparc gets a reference to the given string and assigns it to the Uniparc field.
+func (o *TranscriptConsequence) SetUniparc(v string) {
+	o.Uniparc = &v
+}
+
+// GetVariantClass returns the VariantClass field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetVariantClass() string {
+	if o == nil || IsNil(o.VariantClass) {
+		var ret string
+		return ret
+	}
+	return *o.VariantClass
+}
+
+// GetVariantClassOk returns a tuple with the VariantClass field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetVariantClassOk() (*string, bool) {
+	if o == nil || IsNil(o.VariantClass) {
+		return nil, false
+	}
+	return o.VariantClass, true
+}
+
+// HasVariantClass returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasVariantClass() bool {
+	if o != nil && !IsNil(o.VariantClass) {
+		return true
+	}
+
+	return false
+}
+
+// SetVariantClass gets a reference to the given string and assigns it to the VariantClass field.
+func (o *TranscriptConsequence) SetVariantClass(v string) {
+	o.VariantClass = &v
+}
+
 func (o TranscriptConsequence) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.AminoAcids) {
-		toSerialize["amino_acids"] = o.AminoAcids
-	}
-	if !isNil(o.Canonical) {
-		toSerialize["canonical"] = o.Canonical
-	}
-	if !isNil(o.Codons) {
-		toSerialize["codons"] = o.Codons
-	}
-	if !isNil(o.ConsequenceTerms) {
-		toSerialize["consequence_terms"] = o.ConsequenceTerms
-	}
-	if !isNil(o.Exon) {
-		toSerialize["exon"] = o.Exon
-	}
-	if !isNil(o.GeneId) {
-		toSerialize["gene_id"] = o.GeneId
-	}
-	if !isNil(o.GeneSymbol) {
-		toSerialize["gene_symbol"] = o.GeneSymbol
-	}
-	if !isNil(o.HgncId) {
-		toSerialize["hgnc_id"] = o.HgncId
-	}
-	if !isNil(o.Hgvsc) {
-		toSerialize["hgvsc"] = o.Hgvsc
-	}
-	if !isNil(o.Hgvsg) {
-		toSerialize["hgvsg"] = o.Hgvsg
-	}
-	if !isNil(o.Hgvsp) {
-		toSerialize["hgvsp"] = o.Hgvsp
-	}
-	if !isNil(o.PolyphenPrediction) {
-		toSerialize["polyphen_prediction"] = o.PolyphenPrediction
-	}
-	if !isNil(o.PolyphenScore) {
-		toSerialize["polyphen_score"] = o.PolyphenScore
-	}
-	if !isNil(o.ProteinEnd) {
-		toSerialize["protein_end"] = o.ProteinEnd
-	}
-	if !isNil(o.ProteinId) {
-		toSerialize["protein_id"] = o.ProteinId
-	}
-	if !isNil(o.ProteinStart) {
-		toSerialize["protein_start"] = o.ProteinStart
-	}
-	if !isNil(o.RefseqTranscriptIds) {
-		toSerialize["refseq_transcript_ids"] = o.RefseqTranscriptIds
-	}
-	if !isNil(o.SiftPrediction) {
-		toSerialize["sift_prediction"] = o.SiftPrediction
-	}
-	if !isNil(o.SiftScore) {
-		toSerialize["sift_score"] = o.SiftScore
-	}
-	if true {
-		toSerialize["transcript_id"] = o.TranscriptId
-	}
-	if !isNil(o.UniprotId) {
-		toSerialize["uniprotId"] = o.UniprotId
-	}
-	if !isNil(o.VariantAllele) {
-		toSerialize["variant_allele"] = o.VariantAllele
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TranscriptConsequence) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AminoAcids) {
+		toSerialize["amino_acids"] = o.AminoAcids
+	}
+	if !IsNil(o.Canonical) {
+		toSerialize["canonical"] = o.Canonical
+	}
+	if !IsNil(o.Codons) {
+		toSerialize["codons"] = o.Codons
+	}
+	if !IsNil(o.ConsequenceTerms) {
+		toSerialize["consequence_terms"] = o.ConsequenceTerms
+	}
+	if !IsNil(o.Exon) {
+		toSerialize["exon"] = o.Exon
+	}
+	if !IsNil(o.GeneId) {
+		toSerialize["gene_id"] = o.GeneId
+	}
+	if !IsNil(o.GeneSymbol) {
+		toSerialize["gene_symbol"] = o.GeneSymbol
+	}
+	if !IsNil(o.HgncId) {
+		toSerialize["hgnc_id"] = o.HgncId
+	}
+	if !IsNil(o.Hgvsc) {
+		toSerialize["hgvsc"] = o.Hgvsc
+	}
+	if !IsNil(o.Hgvsg) {
+		toSerialize["hgvsg"] = o.Hgvsg
+	}
+	if !IsNil(o.Hgvsp) {
+		toSerialize["hgvsp"] = o.Hgvsp
+	}
+	if !IsNil(o.PolyphenPrediction) {
+		toSerialize["polyphen_prediction"] = o.PolyphenPrediction
+	}
+	if !IsNil(o.PolyphenScore) {
+		toSerialize["polyphen_score"] = o.PolyphenScore
+	}
+	if !IsNil(o.ProteinEnd) {
+		toSerialize["protein_end"] = o.ProteinEnd
+	}
+	if !IsNil(o.ProteinId) {
+		toSerialize["protein_id"] = o.ProteinId
+	}
+	if !IsNil(o.ProteinStart) {
+		toSerialize["protein_start"] = o.ProteinStart
+	}
+	if !IsNil(o.RefseqTranscriptIds) {
+		toSerialize["refseq_transcript_ids"] = o.RefseqTranscriptIds
+	}
+	if !IsNil(o.SiftPrediction) {
+		toSerialize["sift_prediction"] = o.SiftPrediction
+	}
+	if !IsNil(o.SiftScore) {
+		toSerialize["sift_score"] = o.SiftScore
+	}
+	toSerialize["transcript_id"] = o.TranscriptId
+	if !IsNil(o.UniprotId) {
+		toSerialize["uniprotId"] = o.UniprotId
+	}
+	if !IsNil(o.VariantAllele) {
+		toSerialize["variant_allele"] = o.VariantAllele
+	}
+	if !IsNil(o.AllEffects) {
+		toSerialize["all_effects"] = o.AllEffects
+	}
+	if !IsNil(o.Biotype) {
+		toSerialize["biotype"] = o.Biotype
+	}
+	if !IsNil(o.Ccds) {
+		toSerialize["ccds"] = o.Ccds
+	}
+	if !IsNil(o.CdnaPosition) {
+		toSerialize["cdna_position"] = o.CdnaPosition
+	}
+	if !IsNil(o.CdsPosition) {
+		toSerialize["cds_position"] = o.CdsPosition
+	}
+	if !IsNil(o.ClinSig) {
+		toSerialize["clin_sig"] = o.ClinSig
+	}
+	if !IsNil(o.Distance) {
+		toSerialize["distance"] = o.Distance
+	}
+	if !IsNil(o.Domains) {
+		toSerialize["domains"] = o.Domains
+	}
+	if !IsNil(o.GenePheno) {
+		toSerialize["gene_pheno"] = o.GenePheno
+	}
+	if !IsNil(o.HgvsOffset) {
+		toSerialize["hgvs_offset"] = o.HgvsOffset
+	}
+	if !IsNil(o.HighInfPos) {
+		toSerialize["high_inf_pos"] = o.HighInfPos
+	}
+	if !IsNil(o.Impact) {
+		toSerialize["impact"] = o.Impact
+	}
+	if !IsNil(o.Intron) {
+		toSerialize["intron"] = o.Intron
+	}
+	if !IsNil(o.Minimised) {
+		toSerialize["minimised"] = o.Minimised
+	}
+	if !IsNil(o.MotifName) {
+		toSerialize["motif_name"] = o.MotifName
+	}
+	if !IsNil(o.MotifPos) {
+		toSerialize["motif_pos"] = o.MotifPos
+	}
+	if !IsNil(o.MotifScoreChange) {
+		toSerialize["motif_score_change"] = o.MotifScoreChange
+	}
+	if !IsNil(o.Pheno) {
+		toSerialize["pheno"] = o.Pheno
+	}
+	if !IsNil(o.Pick) {
+		toSerialize["pick"] = o.Pick
+	}
+	if !IsNil(o.Pubmed) {
+		toSerialize["pubmed"] = o.Pubmed
+	}
+	if !IsNil(o.Somatic) {
+		toSerialize["somatic"] = o.Somatic
+	}
+	if !IsNil(o.Swissprot) {
+		toSerialize["swissprot"] = o.Swissprot
+	}
+	if !IsNil(o.SymbolSource) {
+		toSerialize["symbol_source"] = o.SymbolSource
+	}
+	if !IsNil(o.Trembl) {
+		toSerialize["trembl"] = o.Trembl
+	}
+	if !IsNil(o.Tsl) {
+		toSerialize["tsl"] = o.Tsl
+	}
+	if !IsNil(o.Uniparc) {
+		toSerialize["uniparc"] = o.Uniparc
+	}
+	if !IsNil(o.VariantClass) {
+		toSerialize["variant_class"] = o.VariantClass
+	}
+	return toSerialize, nil
+}
+
+func (o *TranscriptConsequence) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"transcript_id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTranscriptConsequence := _TranscriptConsequence{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTranscriptConsequence)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TranscriptConsequence(varTranscriptConsequence)
+
+	return err
 }
 
 type NullableTranscriptConsequence struct {

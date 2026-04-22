@@ -1,11 +1,11 @@
-# \PfamControllerApi
+# \PfamControllerAPI
 
 All URIs are relative to *http://www.genomenexus.org*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**FetchPfamDomainsByAccessionGET**](PfamControllerApi.md#FetchPfamDomainsByAccessionGET) | **Get** /pfam/domain/{pfamAccession} | Retrieves a PFAM domain by a PFAM domain ID
-[**FetchPfamDomainsByPfamAccessionPOST**](PfamControllerApi.md#FetchPfamDomainsByPfamAccessionPOST) | **Post** /pfam/domain | Retrieves PFAM domains by PFAM domain accession IDs
+[**FetchPfamDomainsByAccessionGET**](PfamControllerAPI.md#FetchPfamDomainsByAccessionGET) | **Get** /pfam/domain/{pfamAccession} | Retrieves a PFAM domain by a PFAM domain ID
+[**FetchPfamDomainsByPfamAccessionPOST**](PfamControllerAPI.md#FetchPfamDomainsByPfamAccessionPOST) | **Post** /pfam/domain | Retrieves PFAM domains by PFAM domain accession IDs
 
 
 
@@ -21,24 +21,24 @@ Retrieves a PFAM domain by a PFAM domain ID
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pfamAccession := "pfamAccession_example" // string | A PFAM domain accession ID. For example PF02827
+	pfamAccession := "pfamAccession_example" // string | A PFAM domain accession ID. For example PF02827
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PfamControllerApi.FetchPfamDomainsByAccessionGET(context.Background(), pfamAccession).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PfamControllerApi.FetchPfamDomainsByAccessionGET``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchPfamDomainsByAccessionGET`: PfamDomain
-    fmt.Fprintf(os.Stdout, "Response from `PfamControllerApi.FetchPfamDomainsByAccessionGET`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PfamControllerAPI.FetchPfamDomainsByAccessionGET(context.Background(), pfamAccession).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PfamControllerAPI.FetchPfamDomainsByAccessionGET``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchPfamDomainsByAccessionGET`: PfamDomain
+	fmt.Fprintf(os.Stdout, "Response from `PfamControllerAPI.FetchPfamDomainsByAccessionGET`: %v\n", resp)
 }
 ```
 
@@ -89,24 +89,24 @@ Retrieves PFAM domains by PFAM domain accession IDs
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    pfamAccessions := []string{"Property_example"} // []string | List of PFAM domain accession IDs. For example [\"PF02827\",\"PF00093\",\"PF15276\"]
+	pfamAccessions := []string{"Property_example"} // []string | List of PFAM domain accession IDs. For example [\"PF02827\",\"PF00093\",\"PF15276\"]
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PfamControllerApi.FetchPfamDomainsByPfamAccessionPOST(context.Background()).PfamAccessions(pfamAccessions).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PfamControllerApi.FetchPfamDomainsByPfamAccessionPOST``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchPfamDomainsByPfamAccessionPOST`: []PfamDomain
-    fmt.Fprintf(os.Stdout, "Response from `PfamControllerApi.FetchPfamDomainsByPfamAccessionPOST`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PfamControllerAPI.FetchPfamDomainsByPfamAccessionPOST(context.Background()).PfamAccessions(pfamAccessions).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PfamControllerAPI.FetchPfamDomainsByPfamAccessionPOST``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchPfamDomainsByPfamAccessionPOST`: []PfamDomain
+	fmt.Fprintf(os.Stdout, "Response from `PfamControllerAPI.FetchPfamDomainsByPfamAccessionPOST`: %v\n", resp)
 }
 ```
 

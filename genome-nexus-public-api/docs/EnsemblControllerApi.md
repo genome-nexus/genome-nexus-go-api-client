@@ -1,19 +1,19 @@
-# \EnsemblControllerApi
+# \EnsemblControllerAPI
 
 All URIs are relative to *http://www.genomenexus.org*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**FetchCanonicalEnsemblGeneIdByEntrezGeneIdGET**](EnsemblControllerApi.md#FetchCanonicalEnsemblGeneIdByEntrezGeneIdGET) | **Get** /ensembl/canonical-gene/entrez/{entrezGeneId} | Retrieves Ensembl canonical gene id by Entrez Gene Id
-[**FetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOST**](EnsemblControllerApi.md#FetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOST) | **Post** /ensembl/canonical-gene/entrez | Retrieves canonical Ensembl Gene ID by Entrez Gene Ids
-[**FetchCanonicalEnsemblGeneIdByHugoSymbolGET**](EnsemblControllerApi.md#FetchCanonicalEnsemblGeneIdByHugoSymbolGET) | **Get** /ensembl/canonical-gene/hgnc/{hugoSymbol} | Retrieves Ensembl canonical gene id by Hugo Symbol
-[**FetchCanonicalEnsemblGeneIdByHugoSymbolsPOST**](EnsemblControllerApi.md#FetchCanonicalEnsemblGeneIdByHugoSymbolsPOST) | **Post** /ensembl/canonical-gene/hgnc | Retrieves canonical Ensembl Gene ID by Hugo Symbols
-[**FetchCanonicalEnsemblTranscriptByHugoSymbolGET**](EnsemblControllerApi.md#FetchCanonicalEnsemblTranscriptByHugoSymbolGET) | **Get** /ensembl/canonical-transcript/hgnc/{hugoSymbol} | Retrieves Ensembl canonical transcript by Hugo Symbol
-[**FetchCanonicalEnsemblTranscriptsByHugoSymbolsPOST**](EnsemblControllerApi.md#FetchCanonicalEnsemblTranscriptsByHugoSymbolsPOST) | **Post** /ensembl/canonical-transcript/hgnc | Retrieves Ensembl canonical transcripts by Hugo Symbols
-[**FetchEnsemblTranscriptByTranscriptIdGET**](EnsemblControllerApi.md#FetchEnsemblTranscriptByTranscriptIdGET) | **Get** /ensembl/transcript/{transcriptId} | Retrieves the transcript by an Ensembl transcript ID
-[**FetchEnsemblTranscriptsByEnsemblFilterPOST**](EnsemblControllerApi.md#FetchEnsemblTranscriptsByEnsemblFilterPOST) | **Post** /ensembl/transcript | Retrieves Ensembl Transcripts by Ensembl transcript IDs, hugo Symbols, protein IDs, or gene IDs
-[**FetchEnsemblTranscriptsGET**](EnsemblControllerApi.md#FetchEnsemblTranscriptsGET) | **Get** /ensembl/transcript | Retrieves Ensembl Transcripts by protein ID, and gene ID. Retrieves all transcripts in case no query parameter provided
-[**FetchGeneXrefsGET**](EnsemblControllerApi.md#FetchGeneXrefsGET) | **Get** /ensembl/xrefs | Perform lookups of Ensembl identifiers and retrieve their external references in other databases
+[**FetchCanonicalEnsemblGeneIdByEntrezGeneIdGET**](EnsemblControllerAPI.md#FetchCanonicalEnsemblGeneIdByEntrezGeneIdGET) | **Get** /ensembl/canonical-gene/entrez/{entrezGeneId} | Retrieves Ensembl canonical gene id by Entrez Gene Id
+[**FetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOST**](EnsemblControllerAPI.md#FetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOST) | **Post** /ensembl/canonical-gene/entrez | Retrieves canonical Ensembl Gene ID by Entrez Gene Ids
+[**FetchCanonicalEnsemblGeneIdByHugoSymbolGET**](EnsemblControllerAPI.md#FetchCanonicalEnsemblGeneIdByHugoSymbolGET) | **Get** /ensembl/canonical-gene/hgnc/{hugoSymbol} | Retrieves Ensembl canonical gene id by Hugo Symbol
+[**FetchCanonicalEnsemblGeneIdByHugoSymbolsPOST**](EnsemblControllerAPI.md#FetchCanonicalEnsemblGeneIdByHugoSymbolsPOST) | **Post** /ensembl/canonical-gene/hgnc | Retrieves canonical Ensembl Gene ID by Hugo Symbols
+[**FetchCanonicalEnsemblTranscriptByHugoSymbolGET**](EnsemblControllerAPI.md#FetchCanonicalEnsemblTranscriptByHugoSymbolGET) | **Get** /ensembl/canonical-transcript/hgnc/{hugoSymbol} | Retrieves Ensembl canonical transcript by Hugo Symbol
+[**FetchCanonicalEnsemblTranscriptsByHugoSymbolsPOST**](EnsemblControllerAPI.md#FetchCanonicalEnsemblTranscriptsByHugoSymbolsPOST) | **Post** /ensembl/canonical-transcript/hgnc | Retrieves Ensembl canonical transcripts by Hugo Symbols
+[**FetchEnsemblTranscriptByTranscriptIdGET**](EnsemblControllerAPI.md#FetchEnsemblTranscriptByTranscriptIdGET) | **Get** /ensembl/transcript/{transcriptId} | Retrieves the transcript by an Ensembl transcript ID
+[**FetchEnsemblTranscriptsByEnsemblFilterPOST**](EnsemblControllerAPI.md#FetchEnsemblTranscriptsByEnsemblFilterPOST) | **Post** /ensembl/transcript | Retrieves Ensembl Transcripts by Ensembl transcript IDs, hugo Symbols, protein IDs, or gene IDs
+[**FetchEnsemblTranscriptsGET**](EnsemblControllerAPI.md#FetchEnsemblTranscriptsGET) | **Get** /ensembl/transcript | Retrieves Ensembl Transcripts by protein ID, and gene ID. Retrieves all transcripts in case no query parameter provided
+[**FetchGeneXrefsGET**](EnsemblControllerAPI.md#FetchGeneXrefsGET) | **Get** /ensembl/xrefs | Perform lookups of Ensembl identifiers and retrieve their external references in other databases
 
 
 
@@ -29,24 +29,24 @@ Retrieves Ensembl canonical gene id by Entrez Gene Id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    entrezGeneId := "entrezGeneId_example" // string | An Entrez Gene Id. For example 23140
+	entrezGeneId := "entrezGeneId_example" // string | An Entrez Gene Id. For example 23140
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnsemblControllerApi.FetchCanonicalEnsemblGeneIdByEntrezGeneIdGET(context.Background(), entrezGeneId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnsemblControllerApi.FetchCanonicalEnsemblGeneIdByEntrezGeneIdGET``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchCanonicalEnsemblGeneIdByEntrezGeneIdGET`: EnsemblGene
-    fmt.Fprintf(os.Stdout, "Response from `EnsemblControllerApi.FetchCanonicalEnsemblGeneIdByEntrezGeneIdGET`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnsemblControllerAPI.FetchCanonicalEnsemblGeneIdByEntrezGeneIdGET(context.Background(), entrezGeneId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnsemblControllerAPI.FetchCanonicalEnsemblGeneIdByEntrezGeneIdGET``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchCanonicalEnsemblGeneIdByEntrezGeneIdGET`: EnsemblGene
+	fmt.Fprintf(os.Stdout, "Response from `EnsemblControllerAPI.FetchCanonicalEnsemblGeneIdByEntrezGeneIdGET`: %v\n", resp)
 }
 ```
 
@@ -97,24 +97,24 @@ Retrieves canonical Ensembl Gene ID by Entrez Gene Ids
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    entrezGeneIds := []string{"Property_example"} // []string | List of Entrez Gene Ids. For example [\"23140\",\"26009\",\"100131879\"]
+	entrezGeneIds := []string{"Property_example"} // []string | List of Entrez Gene Ids. For example [\"23140\",\"26009\",\"100131879\"]
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnsemblControllerApi.FetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOST(context.Background()).EntrezGeneIds(entrezGeneIds).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnsemblControllerApi.FetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOST``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOST`: []EnsemblGene
-    fmt.Fprintf(os.Stdout, "Response from `EnsemblControllerApi.FetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOST`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnsemblControllerAPI.FetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOST(context.Background()).EntrezGeneIds(entrezGeneIds).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnsemblControllerAPI.FetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOST``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOST`: []EnsemblGene
+	fmt.Fprintf(os.Stdout, "Response from `EnsemblControllerAPI.FetchCanonicalEnsemblGeneIdByEntrezGeneIdsPOST`: %v\n", resp)
 }
 ```
 
@@ -161,24 +161,24 @@ Retrieves Ensembl canonical gene id by Hugo Symbol
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    hugoSymbol := "hugoSymbol_example" // string | A Hugo Symbol. For example TP53
+	hugoSymbol := "hugoSymbol_example" // string | A Hugo Symbol. For example TP53
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnsemblControllerApi.FetchCanonicalEnsemblGeneIdByHugoSymbolGET(context.Background(), hugoSymbol).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnsemblControllerApi.FetchCanonicalEnsemblGeneIdByHugoSymbolGET``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchCanonicalEnsemblGeneIdByHugoSymbolGET`: EnsemblGene
-    fmt.Fprintf(os.Stdout, "Response from `EnsemblControllerApi.FetchCanonicalEnsemblGeneIdByHugoSymbolGET`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnsemblControllerAPI.FetchCanonicalEnsemblGeneIdByHugoSymbolGET(context.Background(), hugoSymbol).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnsemblControllerAPI.FetchCanonicalEnsemblGeneIdByHugoSymbolGET``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchCanonicalEnsemblGeneIdByHugoSymbolGET`: EnsemblGene
+	fmt.Fprintf(os.Stdout, "Response from `EnsemblControllerAPI.FetchCanonicalEnsemblGeneIdByHugoSymbolGET`: %v\n", resp)
 }
 ```
 
@@ -229,24 +229,24 @@ Retrieves canonical Ensembl Gene ID by Hugo Symbols
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    hugoSymbols := []string{"Property_example"} // []string | List of Hugo Symbols. For example [\"TP53\",\"PIK3CA\",\"BRCA1\"]
+	hugoSymbols := []string{"Property_example"} // []string | List of Hugo Symbols. For example [\"TP53\",\"PIK3CA\",\"BRCA1\"]
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnsemblControllerApi.FetchCanonicalEnsemblGeneIdByHugoSymbolsPOST(context.Background()).HugoSymbols(hugoSymbols).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnsemblControllerApi.FetchCanonicalEnsemblGeneIdByHugoSymbolsPOST``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchCanonicalEnsemblGeneIdByHugoSymbolsPOST`: []EnsemblGene
-    fmt.Fprintf(os.Stdout, "Response from `EnsemblControllerApi.FetchCanonicalEnsemblGeneIdByHugoSymbolsPOST`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnsemblControllerAPI.FetchCanonicalEnsemblGeneIdByHugoSymbolsPOST(context.Background()).HugoSymbols(hugoSymbols).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnsemblControllerAPI.FetchCanonicalEnsemblGeneIdByHugoSymbolsPOST``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchCanonicalEnsemblGeneIdByHugoSymbolsPOST`: []EnsemblGene
+	fmt.Fprintf(os.Stdout, "Response from `EnsemblControllerAPI.FetchCanonicalEnsemblGeneIdByHugoSymbolsPOST`: %v\n", resp)
 }
 ```
 
@@ -293,25 +293,25 @@ Retrieves Ensembl canonical transcript by Hugo Symbol
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    hugoSymbol := "hugoSymbol_example" // string | A Hugo Symbol. For example TP53
-    isoformOverrideSource := "isoformOverrideSource_example" // string | Isoform override source. For example uniprot (optional) (default to "uniprot")
+	hugoSymbol := "hugoSymbol_example" // string | A Hugo Symbol. For example TP53
+	isoformOverrideSource := "isoformOverrideSource_example" // string | Isoform override source. For example uniprot (optional) (default to "uniprot")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnsemblControllerApi.FetchCanonicalEnsemblTranscriptByHugoSymbolGET(context.Background(), hugoSymbol).IsoformOverrideSource(isoformOverrideSource).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnsemblControllerApi.FetchCanonicalEnsemblTranscriptByHugoSymbolGET``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchCanonicalEnsemblTranscriptByHugoSymbolGET`: EnsemblTranscript
-    fmt.Fprintf(os.Stdout, "Response from `EnsemblControllerApi.FetchCanonicalEnsemblTranscriptByHugoSymbolGET`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnsemblControllerAPI.FetchCanonicalEnsemblTranscriptByHugoSymbolGET(context.Background(), hugoSymbol).IsoformOverrideSource(isoformOverrideSource).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnsemblControllerAPI.FetchCanonicalEnsemblTranscriptByHugoSymbolGET``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchCanonicalEnsemblTranscriptByHugoSymbolGET`: EnsemblTranscript
+	fmt.Fprintf(os.Stdout, "Response from `EnsemblControllerAPI.FetchCanonicalEnsemblTranscriptByHugoSymbolGET`: %v\n", resp)
 }
 ```
 
@@ -363,25 +363,25 @@ Retrieves Ensembl canonical transcripts by Hugo Symbols
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    hugoSymbols := []string{"Property_example"} // []string | List of Hugo Symbols. For example [\"TP53\",\"PIK3CA\",\"BRCA1\"]
-    isoformOverrideSource := "isoformOverrideSource_example" // string | Isoform override source. For example uniprot (optional) (default to "uniprot")
+	hugoSymbols := []string{"Property_example"} // []string | List of Hugo Symbols. For example [\"TP53\",\"PIK3CA\",\"BRCA1\"]
+	isoformOverrideSource := "isoformOverrideSource_example" // string | Isoform override source. For example uniprot (optional) (default to "uniprot")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnsemblControllerApi.FetchCanonicalEnsemblTranscriptsByHugoSymbolsPOST(context.Background()).HugoSymbols(hugoSymbols).IsoformOverrideSource(isoformOverrideSource).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnsemblControllerApi.FetchCanonicalEnsemblTranscriptsByHugoSymbolsPOST``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchCanonicalEnsemblTranscriptsByHugoSymbolsPOST`: []EnsemblTranscript
-    fmt.Fprintf(os.Stdout, "Response from `EnsemblControllerApi.FetchCanonicalEnsemblTranscriptsByHugoSymbolsPOST`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnsemblControllerAPI.FetchCanonicalEnsemblTranscriptsByHugoSymbolsPOST(context.Background()).HugoSymbols(hugoSymbols).IsoformOverrideSource(isoformOverrideSource).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnsemblControllerAPI.FetchCanonicalEnsemblTranscriptsByHugoSymbolsPOST``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchCanonicalEnsemblTranscriptsByHugoSymbolsPOST`: []EnsemblTranscript
+	fmt.Fprintf(os.Stdout, "Response from `EnsemblControllerAPI.FetchCanonicalEnsemblTranscriptsByHugoSymbolsPOST`: %v\n", resp)
 }
 ```
 
@@ -429,24 +429,24 @@ Retrieves the transcript by an Ensembl transcript ID
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    transcriptId := "transcriptId_example" // string | An Ensembl transcript ID. For example ENST00000361390
+	transcriptId := "transcriptId_example" // string | An Ensembl transcript ID. For example ENST00000361390
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnsemblControllerApi.FetchEnsemblTranscriptByTranscriptIdGET(context.Background(), transcriptId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnsemblControllerApi.FetchEnsemblTranscriptByTranscriptIdGET``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchEnsemblTranscriptByTranscriptIdGET`: EnsemblTranscript
-    fmt.Fprintf(os.Stdout, "Response from `EnsemblControllerApi.FetchEnsemblTranscriptByTranscriptIdGET`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnsemblControllerAPI.FetchEnsemblTranscriptByTranscriptIdGET(context.Background(), transcriptId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnsemblControllerAPI.FetchEnsemblTranscriptByTranscriptIdGET``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchEnsemblTranscriptByTranscriptIdGET`: EnsemblTranscript
+	fmt.Fprintf(os.Stdout, "Response from `EnsemblControllerAPI.FetchEnsemblTranscriptByTranscriptIdGET`: %v\n", resp)
 }
 ```
 
@@ -497,24 +497,24 @@ Retrieves Ensembl Transcripts by Ensembl transcript IDs, hugo Symbols, protein I
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    ensemblFilter := *openapiclient.NewEnsemblFilter() // EnsemblFilter | List of Ensembl transcript IDs. For example [\"ENST00000361390\", \"ENST00000361453\", \"ENST00000361624\"]<br>OR<br>List of Hugo Symbols. For example [\"TP53\", \"PIK3CA\", \"BRCA1\"]<br>OR<br>List of Ensembl protein IDs. For example [\"ENSP00000439985\", \"ENSP00000478460\", \"ENSP00000346196\"]<br>OR<br>List of Ensembl gene IDs. For example [\"ENSG00000136999\", \"ENSG00000272398\", \"ENSG00000198695\"]
+	ensemblFilter := *openapiclient.NewEnsemblFilter() // EnsemblFilter | List of Ensembl transcript IDs. For example [\"ENST00000361390\", \"ENST00000361453\", \"ENST00000361624\"]<br>OR<br>List of Hugo Symbols. For example [\"TP53\", \"PIK3CA\", \"BRCA1\"]<br>OR<br>List of Ensembl protein IDs. For example [\"ENSP00000439985\", \"ENSP00000478460\", \"ENSP00000346196\"]<br>OR<br>List of Ensembl gene IDs. For example [\"ENSG00000136999\", \"ENSG00000272398\", \"ENSG00000198695\"]
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnsemblControllerApi.FetchEnsemblTranscriptsByEnsemblFilterPOST(context.Background()).EnsemblFilter(ensemblFilter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnsemblControllerApi.FetchEnsemblTranscriptsByEnsemblFilterPOST``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchEnsemblTranscriptsByEnsemblFilterPOST`: []EnsemblTranscript
-    fmt.Fprintf(os.Stdout, "Response from `EnsemblControllerApi.FetchEnsemblTranscriptsByEnsemblFilterPOST`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnsemblControllerAPI.FetchEnsemblTranscriptsByEnsemblFilterPOST(context.Background()).EnsemblFilter(ensemblFilter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnsemblControllerAPI.FetchEnsemblTranscriptsByEnsemblFilterPOST``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchEnsemblTranscriptsByEnsemblFilterPOST`: []EnsemblTranscript
+	fmt.Fprintf(os.Stdout, "Response from `EnsemblControllerAPI.FetchEnsemblTranscriptsByEnsemblFilterPOST`: %v\n", resp)
 }
 ```
 
@@ -561,26 +561,26 @@ Retrieves Ensembl Transcripts by protein ID, and gene ID. Retrieves all transcri
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    geneId := "geneId_example" // string | An Ensembl gene ID. For example ENSG00000136999 (optional)
-    proteinId := "proteinId_example" // string | An Ensembl protein ID. For example ENSP00000439985 (optional)
-    hugoSymbol := "hugoSymbol_example" // string | A Hugo Symbol For example ARF5 (optional)
+	geneId := "geneId_example" // string | An Ensembl gene ID. For example ENSG00000136999 (optional)
+	proteinId := "proteinId_example" // string | An Ensembl protein ID. For example ENSP00000439985 (optional)
+	hugoSymbol := "hugoSymbol_example" // string | A Hugo Symbol For example ARF5 (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnsemblControllerApi.FetchEnsemblTranscriptsGET(context.Background()).GeneId(geneId).ProteinId(proteinId).HugoSymbol(hugoSymbol).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnsemblControllerApi.FetchEnsemblTranscriptsGET``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchEnsemblTranscriptsGET`: []EnsemblTranscript
-    fmt.Fprintf(os.Stdout, "Response from `EnsemblControllerApi.FetchEnsemblTranscriptsGET`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnsemblControllerAPI.FetchEnsemblTranscriptsGET(context.Background()).GeneId(geneId).ProteinId(proteinId).HugoSymbol(hugoSymbol).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnsemblControllerAPI.FetchEnsemblTranscriptsGET``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchEnsemblTranscriptsGET`: []EnsemblTranscript
+	fmt.Fprintf(os.Stdout, "Response from `EnsemblControllerAPI.FetchEnsemblTranscriptsGET`: %v\n", resp)
 }
 ```
 
@@ -629,24 +629,24 @@ Perform lookups of Ensembl identifiers and retrieve their external references in
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    accession := "accession_example" // string | Ensembl gene accession. For example ENSG00000169083
+	accession := "accession_example" // string | Ensembl gene accession. For example ENSG00000169083
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnsemblControllerApi.FetchGeneXrefsGET(context.Background()).Accession(accession).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnsemblControllerApi.FetchGeneXrefsGET``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchGeneXrefsGET`: []GeneXref
-    fmt.Fprintf(os.Stdout, "Response from `EnsemblControllerApi.FetchGeneXrefsGET`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnsemblControllerAPI.FetchGeneXrefsGET(context.Background()).Accession(accession).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnsemblControllerAPI.FetchGeneXrefsGET``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchGeneXrefsGET`: []GeneXref
+	fmt.Fprintf(os.Stdout, "Response from `EnsemblControllerAPI.FetchGeneXrefsGET`: %v\n", resp)
 }
 ```
 

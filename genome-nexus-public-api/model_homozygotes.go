@@ -12,7 +12,12 @@ package genome_nexus_public_api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the Homozygotes type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Homozygotes{}
 
 // Homozygotes struct for Homozygotes
 type Homozygotes struct {
@@ -26,6 +31,8 @@ type Homozygotes struct {
 	HomOth int32 `json:"hom_oth"`
 	HomSas int32 `json:"hom_sas"`
 }
+
+type _Homozygotes Homozygotes
 
 // NewHomozygotes instantiates a new Homozygotes object
 // This constructor will assign default values to properties that have it defined,
@@ -67,7 +74,7 @@ func (o *Homozygotes) GetHom() int32 {
 // and a boolean to check if the value has been set.
 func (o *Homozygotes) GetHomOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Hom, true
 }
@@ -91,7 +98,7 @@ func (o *Homozygotes) GetHomAfr() int32 {
 // and a boolean to check if the value has been set.
 func (o *Homozygotes) GetHomAfrOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.HomAfr, true
 }
@@ -115,7 +122,7 @@ func (o *Homozygotes) GetHomAmr() int32 {
 // and a boolean to check if the value has been set.
 func (o *Homozygotes) GetHomAmrOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.HomAmr, true
 }
@@ -139,7 +146,7 @@ func (o *Homozygotes) GetHomAsj() int32 {
 // and a boolean to check if the value has been set.
 func (o *Homozygotes) GetHomAsjOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.HomAsj, true
 }
@@ -163,7 +170,7 @@ func (o *Homozygotes) GetHomEas() int32 {
 // and a boolean to check if the value has been set.
 func (o *Homozygotes) GetHomEasOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.HomEas, true
 }
@@ -187,7 +194,7 @@ func (o *Homozygotes) GetHomFin() int32 {
 // and a boolean to check if the value has been set.
 func (o *Homozygotes) GetHomFinOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.HomFin, true
 }
@@ -211,7 +218,7 @@ func (o *Homozygotes) GetHomNfe() int32 {
 // and a boolean to check if the value has been set.
 func (o *Homozygotes) GetHomNfeOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.HomNfe, true
 }
@@ -235,7 +242,7 @@ func (o *Homozygotes) GetHomOth() int32 {
 // and a boolean to check if the value has been set.
 func (o *Homozygotes) GetHomOthOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.HomOth, true
 }
@@ -259,7 +266,7 @@ func (o *Homozygotes) GetHomSas() int32 {
 // and a boolean to check if the value has been set.
 func (o *Homozygotes) GetHomSasOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.HomSas, true
 }
@@ -270,35 +277,70 @@ func (o *Homozygotes) SetHomSas(v int32) {
 }
 
 func (o Homozygotes) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["hom"] = o.Hom
-	}
-	if true {
-		toSerialize["hom_afr"] = o.HomAfr
-	}
-	if true {
-		toSerialize["hom_amr"] = o.HomAmr
-	}
-	if true {
-		toSerialize["hom_asj"] = o.HomAsj
-	}
-	if true {
-		toSerialize["hom_eas"] = o.HomEas
-	}
-	if true {
-		toSerialize["hom_fin"] = o.HomFin
-	}
-	if true {
-		toSerialize["hom_nfe"] = o.HomNfe
-	}
-	if true {
-		toSerialize["hom_oth"] = o.HomOth
-	}
-	if true {
-		toSerialize["hom_sas"] = o.HomSas
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Homozygotes) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["hom"] = o.Hom
+	toSerialize["hom_afr"] = o.HomAfr
+	toSerialize["hom_amr"] = o.HomAmr
+	toSerialize["hom_asj"] = o.HomAsj
+	toSerialize["hom_eas"] = o.HomEas
+	toSerialize["hom_fin"] = o.HomFin
+	toSerialize["hom_nfe"] = o.HomNfe
+	toSerialize["hom_oth"] = o.HomOth
+	toSerialize["hom_sas"] = o.HomSas
+	return toSerialize, nil
+}
+
+func (o *Homozygotes) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"hom",
+		"hom_afr",
+		"hom_amr",
+		"hom_asj",
+		"hom_eas",
+		"hom_fin",
+		"hom_nfe",
+		"hom_oth",
+		"hom_sas",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varHomozygotes := _Homozygotes{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varHomozygotes)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Homozygotes(varHomozygotes)
+
+	return err
 }
 
 type NullableHomozygotes struct {

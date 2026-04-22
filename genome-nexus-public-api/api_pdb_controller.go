@@ -13,19 +13,19 @@ package genome_nexus_public_api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// PdbControllerApiService PdbControllerApi service
-type PdbControllerApiService service
+// PdbControllerAPIService PdbControllerAPI service
+type PdbControllerAPIService service
 
 type ApiFetchPdbHeaderGETRequest struct {
 	ctx context.Context
-	ApiService *PdbControllerApiService
+	ApiService *PdbControllerAPIService
 	pdbId string
 }
 
@@ -40,7 +40,7 @@ FetchPdbHeaderGET Retrieves PDB header info by a PDB id
  @param pdbId PDB id, for example 1a37
  @return ApiFetchPdbHeaderGETRequest
 */
-func (a *PdbControllerApiService) FetchPdbHeaderGET(ctx context.Context, pdbId string) ApiFetchPdbHeaderGETRequest {
+func (a *PdbControllerAPIService) FetchPdbHeaderGET(ctx context.Context, pdbId string) ApiFetchPdbHeaderGETRequest {
 	return ApiFetchPdbHeaderGETRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -50,7 +50,7 @@ func (a *PdbControllerApiService) FetchPdbHeaderGET(ctx context.Context, pdbId s
 
 // Execute executes the request
 //  @return PdbHeader
-func (a *PdbControllerApiService) FetchPdbHeaderGETExecute(r ApiFetchPdbHeaderGETRequest) (*PdbHeader, *http.Response, error) {
+func (a *PdbControllerAPIService) FetchPdbHeaderGETExecute(r ApiFetchPdbHeaderGETRequest) (*PdbHeader, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -58,13 +58,13 @@ func (a *PdbControllerApiService) FetchPdbHeaderGETExecute(r ApiFetchPdbHeaderGE
 		localVarReturnValue  *PdbHeader
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PdbControllerApiService.FetchPdbHeaderGET")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PdbControllerAPIService.FetchPdbHeaderGET")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/pdb/header/{pdbId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"pdbId"+"}", url.PathEscape(parameterToString(r.pdbId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pdbId"+"}", url.PathEscape(parameterValueToString(r.pdbId, "pdbId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -97,9 +97,9 @@ func (a *PdbControllerApiService) FetchPdbHeaderGETExecute(r ApiFetchPdbHeaderGE
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -126,7 +126,7 @@ func (a *PdbControllerApiService) FetchPdbHeaderGETExecute(r ApiFetchPdbHeaderGE
 
 type ApiFetchPdbHeaderPOSTRequest struct {
 	ctx context.Context
-	ApiService *PdbControllerApiService
+	ApiService *PdbControllerAPIService
 	pdbIds *[]string
 }
 
@@ -146,7 +146,7 @@ FetchPdbHeaderPOST Retrieves PDB header info by a PDB id
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFetchPdbHeaderPOSTRequest
 */
-func (a *PdbControllerApiService) FetchPdbHeaderPOST(ctx context.Context) ApiFetchPdbHeaderPOSTRequest {
+func (a *PdbControllerAPIService) FetchPdbHeaderPOST(ctx context.Context) ApiFetchPdbHeaderPOSTRequest {
 	return ApiFetchPdbHeaderPOSTRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -155,7 +155,7 @@ func (a *PdbControllerApiService) FetchPdbHeaderPOST(ctx context.Context) ApiFet
 
 // Execute executes the request
 //  @return []PdbHeader
-func (a *PdbControllerApiService) FetchPdbHeaderPOSTExecute(r ApiFetchPdbHeaderPOSTRequest) ([]PdbHeader, *http.Response, error) {
+func (a *PdbControllerAPIService) FetchPdbHeaderPOSTExecute(r ApiFetchPdbHeaderPOSTRequest) ([]PdbHeader, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -163,7 +163,7 @@ func (a *PdbControllerApiService) FetchPdbHeaderPOSTExecute(r ApiFetchPdbHeaderP
 		localVarReturnValue  []PdbHeader
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PdbControllerApiService.FetchPdbHeaderPOST")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PdbControllerAPIService.FetchPdbHeaderPOST")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -206,9 +206,9 @@ func (a *PdbControllerApiService) FetchPdbHeaderPOSTExecute(r ApiFetchPdbHeaderP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

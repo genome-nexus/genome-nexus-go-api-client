@@ -12,7 +12,12 @@ package genome_nexus_public_api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the VariantAnnotation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VariantAnnotation{}
 
 // VariantAnnotation struct for VariantAnnotation
 type VariantAnnotation struct {
@@ -57,6 +62,8 @@ type VariantAnnotation struct {
 	Variant string `json:"variant"`
 }
 
+type _VariantAnnotation VariantAnnotation
+
 // NewVariantAnnotation instantiates a new VariantAnnotation object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
@@ -80,7 +87,7 @@ func NewVariantAnnotationWithDefaults() *VariantAnnotation {
 
 // GetAlleleString returns the AlleleString field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetAlleleString() string {
-	if o == nil || isNil(o.AlleleString) {
+	if o == nil || IsNil(o.AlleleString) {
 		var ret string
 		return ret
 	}
@@ -90,15 +97,15 @@ func (o *VariantAnnotation) GetAlleleString() string {
 // GetAlleleStringOk returns a tuple with the AlleleString field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetAlleleStringOk() (*string, bool) {
-	if o == nil || isNil(o.AlleleString) {
-    return nil, false
+	if o == nil || IsNil(o.AlleleString) {
+		return nil, false
 	}
 	return o.AlleleString, true
 }
 
 // HasAlleleString returns a boolean if a field has been set.
 func (o *VariantAnnotation) HasAlleleString() bool {
-	if o != nil && !isNil(o.AlleleString) {
+	if o != nil && !IsNil(o.AlleleString) {
 		return true
 	}
 
@@ -112,7 +119,7 @@ func (o *VariantAnnotation) SetAlleleString(v string) {
 
 // GetAnnotationJSON returns the AnnotationJSON field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetAnnotationJSON() string {
-	if o == nil || isNil(o.AnnotationJSON) {
+	if o == nil || IsNil(o.AnnotationJSON) {
 		var ret string
 		return ret
 	}
@@ -122,15 +129,15 @@ func (o *VariantAnnotation) GetAnnotationJSON() string {
 // GetAnnotationJSONOk returns a tuple with the AnnotationJSON field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetAnnotationJSONOk() (*string, bool) {
-	if o == nil || isNil(o.AnnotationJSON) {
-    return nil, false
+	if o == nil || IsNil(o.AnnotationJSON) {
+		return nil, false
 	}
 	return o.AnnotationJSON, true
 }
 
 // HasAnnotationJSON returns a boolean if a field has been set.
 func (o *VariantAnnotation) HasAnnotationJSON() bool {
-	if o != nil && !isNil(o.AnnotationJSON) {
+	if o != nil && !IsNil(o.AnnotationJSON) {
 		return true
 	}
 
@@ -144,7 +151,7 @@ func (o *VariantAnnotation) SetAnnotationJSON(v string) {
 
 // GetAnnotationSummary returns the AnnotationSummary field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetAnnotationSummary() VariantAnnotationSummary {
-	if o == nil || isNil(o.AnnotationSummary) {
+	if o == nil || IsNil(o.AnnotationSummary) {
 		var ret VariantAnnotationSummary
 		return ret
 	}
@@ -154,15 +161,15 @@ func (o *VariantAnnotation) GetAnnotationSummary() VariantAnnotationSummary {
 // GetAnnotationSummaryOk returns a tuple with the AnnotationSummary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetAnnotationSummaryOk() (*VariantAnnotationSummary, bool) {
-	if o == nil || isNil(o.AnnotationSummary) {
-    return nil, false
+	if o == nil || IsNil(o.AnnotationSummary) {
+		return nil, false
 	}
 	return o.AnnotationSummary, true
 }
 
 // HasAnnotationSummary returns a boolean if a field has been set.
 func (o *VariantAnnotation) HasAnnotationSummary() bool {
-	if o != nil && !isNil(o.AnnotationSummary) {
+	if o != nil && !IsNil(o.AnnotationSummary) {
 		return true
 	}
 
@@ -176,7 +183,7 @@ func (o *VariantAnnotation) SetAnnotationSummary(v VariantAnnotationSummary) {
 
 // GetAssemblyName returns the AssemblyName field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetAssemblyName() string {
-	if o == nil || isNil(o.AssemblyName) {
+	if o == nil || IsNil(o.AssemblyName) {
 		var ret string
 		return ret
 	}
@@ -186,15 +193,15 @@ func (o *VariantAnnotation) GetAssemblyName() string {
 // GetAssemblyNameOk returns a tuple with the AssemblyName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetAssemblyNameOk() (*string, bool) {
-	if o == nil || isNil(o.AssemblyName) {
-    return nil, false
+	if o == nil || IsNil(o.AssemblyName) {
+		return nil, false
 	}
 	return o.AssemblyName, true
 }
 
 // HasAssemblyName returns a boolean if a field has been set.
 func (o *VariantAnnotation) HasAssemblyName() bool {
-	if o != nil && !isNil(o.AssemblyName) {
+	if o != nil && !IsNil(o.AssemblyName) {
 		return true
 	}
 
@@ -208,7 +215,7 @@ func (o *VariantAnnotation) SetAssemblyName(v string) {
 
 // GetClinvar returns the Clinvar field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetClinvar() ClinvarAnnotation {
-	if o == nil || isNil(o.Clinvar) {
+	if o == nil || IsNil(o.Clinvar) {
 		var ret ClinvarAnnotation
 		return ret
 	}
@@ -218,15 +225,15 @@ func (o *VariantAnnotation) GetClinvar() ClinvarAnnotation {
 // GetClinvarOk returns a tuple with the Clinvar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetClinvarOk() (*ClinvarAnnotation, bool) {
-	if o == nil || isNil(o.Clinvar) {
-    return nil, false
+	if o == nil || IsNil(o.Clinvar) {
+		return nil, false
 	}
 	return o.Clinvar, true
 }
 
 // HasClinvar returns a boolean if a field has been set.
 func (o *VariantAnnotation) HasClinvar() bool {
-	if o != nil && !isNil(o.Clinvar) {
+	if o != nil && !IsNil(o.Clinvar) {
 		return true
 	}
 
@@ -240,7 +247,7 @@ func (o *VariantAnnotation) SetClinvar(v ClinvarAnnotation) {
 
 // GetColocatedVariants returns the ColocatedVariants field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetColocatedVariants() []ColocatedVariant {
-	if o == nil || isNil(o.ColocatedVariants) {
+	if o == nil || IsNil(o.ColocatedVariants) {
 		var ret []ColocatedVariant
 		return ret
 	}
@@ -250,15 +257,15 @@ func (o *VariantAnnotation) GetColocatedVariants() []ColocatedVariant {
 // GetColocatedVariantsOk returns a tuple with the ColocatedVariants field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetColocatedVariantsOk() ([]ColocatedVariant, bool) {
-	if o == nil || isNil(o.ColocatedVariants) {
-    return nil, false
+	if o == nil || IsNil(o.ColocatedVariants) {
+		return nil, false
 	}
 	return o.ColocatedVariants, true
 }
 
 // HasColocatedVariants returns a boolean if a field has been set.
 func (o *VariantAnnotation) HasColocatedVariants() bool {
-	if o != nil && !isNil(o.ColocatedVariants) {
+	if o != nil && !IsNil(o.ColocatedVariants) {
 		return true
 	}
 
@@ -272,7 +279,7 @@ func (o *VariantAnnotation) SetColocatedVariants(v []ColocatedVariant) {
 
 // GetEnd returns the End field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetEnd() int32 {
-	if o == nil || isNil(o.End) {
+	if o == nil || IsNil(o.End) {
 		var ret int32
 		return ret
 	}
@@ -282,15 +289,15 @@ func (o *VariantAnnotation) GetEnd() int32 {
 // GetEndOk returns a tuple with the End field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetEndOk() (*int32, bool) {
-	if o == nil || isNil(o.End) {
-    return nil, false
+	if o == nil || IsNil(o.End) {
+		return nil, false
 	}
 	return o.End, true
 }
 
 // HasEnd returns a boolean if a field has been set.
 func (o *VariantAnnotation) HasEnd() bool {
-	if o != nil && !isNil(o.End) {
+	if o != nil && !IsNil(o.End) {
 		return true
 	}
 
@@ -304,7 +311,7 @@ func (o *VariantAnnotation) SetEnd(v int32) {
 
 // GetHgvsg returns the Hgvsg field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetHgvsg() string {
-	if o == nil || isNil(o.Hgvsg) {
+	if o == nil || IsNil(o.Hgvsg) {
 		var ret string
 		return ret
 	}
@@ -314,15 +321,15 @@ func (o *VariantAnnotation) GetHgvsg() string {
 // GetHgvsgOk returns a tuple with the Hgvsg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetHgvsgOk() (*string, bool) {
-	if o == nil || isNil(o.Hgvsg) {
-    return nil, false
+	if o == nil || IsNil(o.Hgvsg) {
+		return nil, false
 	}
 	return o.Hgvsg, true
 }
 
 // HasHgvsg returns a boolean if a field has been set.
 func (o *VariantAnnotation) HasHgvsg() bool {
-	if o != nil && !isNil(o.Hgvsg) {
+	if o != nil && !IsNil(o.Hgvsg) {
 		return true
 	}
 
@@ -336,7 +343,7 @@ func (o *VariantAnnotation) SetHgvsg(v string) {
 
 // GetHotspots returns the Hotspots field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetHotspots() HotspotAnnotation {
-	if o == nil || isNil(o.Hotspots) {
+	if o == nil || IsNil(o.Hotspots) {
 		var ret HotspotAnnotation
 		return ret
 	}
@@ -346,15 +353,15 @@ func (o *VariantAnnotation) GetHotspots() HotspotAnnotation {
 // GetHotspotsOk returns a tuple with the Hotspots field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetHotspotsOk() (*HotspotAnnotation, bool) {
-	if o == nil || isNil(o.Hotspots) {
-    return nil, false
+	if o == nil || IsNil(o.Hotspots) {
+		return nil, false
 	}
 	return o.Hotspots, true
 }
 
 // HasHotspots returns a boolean if a field has been set.
 func (o *VariantAnnotation) HasHotspots() bool {
-	if o != nil && !isNil(o.Hotspots) {
+	if o != nil && !IsNil(o.Hotspots) {
 		return true
 	}
 
@@ -380,7 +387,7 @@ func (o *VariantAnnotation) GetId() string {
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Id, true
 }
@@ -404,7 +411,7 @@ func (o *VariantAnnotation) GetIntergenicConsequences() []IntergenicConsequences
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetIntergenicConsequencesOk() ([]IntergenicConsequences, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.IntergenicConsequences, true
 }
@@ -416,7 +423,7 @@ func (o *VariantAnnotation) SetIntergenicConsequences(v []IntergenicConsequences
 
 // GetMostSevereConsequence returns the MostSevereConsequence field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetMostSevereConsequence() string {
-	if o == nil || isNil(o.MostSevereConsequence) {
+	if o == nil || IsNil(o.MostSevereConsequence) {
 		var ret string
 		return ret
 	}
@@ -426,15 +433,15 @@ func (o *VariantAnnotation) GetMostSevereConsequence() string {
 // GetMostSevereConsequenceOk returns a tuple with the MostSevereConsequence field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetMostSevereConsequenceOk() (*string, bool) {
-	if o == nil || isNil(o.MostSevereConsequence) {
-    return nil, false
+	if o == nil || IsNil(o.MostSevereConsequence) {
+		return nil, false
 	}
 	return o.MostSevereConsequence, true
 }
 
 // HasMostSevereConsequence returns a boolean if a field has been set.
 func (o *VariantAnnotation) HasMostSevereConsequence() bool {
-	if o != nil && !isNil(o.MostSevereConsequence) {
+	if o != nil && !IsNil(o.MostSevereConsequence) {
 		return true
 	}
 
@@ -448,7 +455,7 @@ func (o *VariantAnnotation) SetMostSevereConsequence(v string) {
 
 // GetMutationAssessor returns the MutationAssessor field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetMutationAssessor() MutationAssessorAnnotation {
-	if o == nil || isNil(o.MutationAssessor) {
+	if o == nil || IsNil(o.MutationAssessor) {
 		var ret MutationAssessorAnnotation
 		return ret
 	}
@@ -458,15 +465,15 @@ func (o *VariantAnnotation) GetMutationAssessor() MutationAssessorAnnotation {
 // GetMutationAssessorOk returns a tuple with the MutationAssessor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetMutationAssessorOk() (*MutationAssessorAnnotation, bool) {
-	if o == nil || isNil(o.MutationAssessor) {
-    return nil, false
+	if o == nil || IsNil(o.MutationAssessor) {
+		return nil, false
 	}
 	return o.MutationAssessor, true
 }
 
 // HasMutationAssessor returns a boolean if a field has been set.
 func (o *VariantAnnotation) HasMutationAssessor() bool {
-	if o != nil && !isNil(o.MutationAssessor) {
+	if o != nil && !IsNil(o.MutationAssessor) {
 		return true
 	}
 
@@ -480,7 +487,7 @@ func (o *VariantAnnotation) SetMutationAssessor(v MutationAssessorAnnotation) {
 
 // GetMyVariantInfo returns the MyVariantInfo field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetMyVariantInfo() MyVariantInfoAnnotation {
-	if o == nil || isNil(o.MyVariantInfo) {
+	if o == nil || IsNil(o.MyVariantInfo) {
 		var ret MyVariantInfoAnnotation
 		return ret
 	}
@@ -490,15 +497,15 @@ func (o *VariantAnnotation) GetMyVariantInfo() MyVariantInfoAnnotation {
 // GetMyVariantInfoOk returns a tuple with the MyVariantInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetMyVariantInfoOk() (*MyVariantInfoAnnotation, bool) {
-	if o == nil || isNil(o.MyVariantInfo) {
-    return nil, false
+	if o == nil || IsNil(o.MyVariantInfo) {
+		return nil, false
 	}
 	return o.MyVariantInfo, true
 }
 
 // HasMyVariantInfo returns a boolean if a field has been set.
 func (o *VariantAnnotation) HasMyVariantInfo() bool {
-	if o != nil && !isNil(o.MyVariantInfo) {
+	if o != nil && !IsNil(o.MyVariantInfo) {
 		return true
 	}
 
@@ -512,7 +519,7 @@ func (o *VariantAnnotation) SetMyVariantInfo(v MyVariantInfoAnnotation) {
 
 // GetNucleotideContext returns the NucleotideContext field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetNucleotideContext() NucleotideContextAnnotation {
-	if o == nil || isNil(o.NucleotideContext) {
+	if o == nil || IsNil(o.NucleotideContext) {
 		var ret NucleotideContextAnnotation
 		return ret
 	}
@@ -522,15 +529,15 @@ func (o *VariantAnnotation) GetNucleotideContext() NucleotideContextAnnotation {
 // GetNucleotideContextOk returns a tuple with the NucleotideContext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetNucleotideContextOk() (*NucleotideContextAnnotation, bool) {
-	if o == nil || isNil(o.NucleotideContext) {
-    return nil, false
+	if o == nil || IsNil(o.NucleotideContext) {
+		return nil, false
 	}
 	return o.NucleotideContext, true
 }
 
 // HasNucleotideContext returns a boolean if a field has been set.
 func (o *VariantAnnotation) HasNucleotideContext() bool {
-	if o != nil && !isNil(o.NucleotideContext) {
+	if o != nil && !IsNil(o.NucleotideContext) {
 		return true
 	}
 
@@ -544,7 +551,7 @@ func (o *VariantAnnotation) SetNucleotideContext(v NucleotideContextAnnotation) 
 
 // GetOncokb returns the Oncokb field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetOncokb() OncokbAnnotation {
-	if o == nil || isNil(o.Oncokb) {
+	if o == nil || IsNil(o.Oncokb) {
 		var ret OncokbAnnotation
 		return ret
 	}
@@ -554,15 +561,15 @@ func (o *VariantAnnotation) GetOncokb() OncokbAnnotation {
 // GetOncokbOk returns a tuple with the Oncokb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetOncokbOk() (*OncokbAnnotation, bool) {
-	if o == nil || isNil(o.Oncokb) {
-    return nil, false
+	if o == nil || IsNil(o.Oncokb) {
+		return nil, false
 	}
 	return o.Oncokb, true
 }
 
 // HasOncokb returns a boolean if a field has been set.
 func (o *VariantAnnotation) HasOncokb() bool {
-	if o != nil && !isNil(o.Oncokb) {
+	if o != nil && !IsNil(o.Oncokb) {
 		return true
 	}
 
@@ -588,7 +595,7 @@ func (o *VariantAnnotation) GetOriginalVariantQuery() string {
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetOriginalVariantQueryOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.OriginalVariantQuery, true
 }
@@ -600,7 +607,7 @@ func (o *VariantAnnotation) SetOriginalVariantQuery(v string) {
 
 // GetPtms returns the Ptms field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetPtms() PtmAnnotation {
-	if o == nil || isNil(o.Ptms) {
+	if o == nil || IsNil(o.Ptms) {
 		var ret PtmAnnotation
 		return ret
 	}
@@ -610,15 +617,15 @@ func (o *VariantAnnotation) GetPtms() PtmAnnotation {
 // GetPtmsOk returns a tuple with the Ptms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetPtmsOk() (*PtmAnnotation, bool) {
-	if o == nil || isNil(o.Ptms) {
-    return nil, false
+	if o == nil || IsNil(o.Ptms) {
+		return nil, false
 	}
 	return o.Ptms, true
 }
 
 // HasPtms returns a boolean if a field has been set.
 func (o *VariantAnnotation) HasPtms() bool {
-	if o != nil && !isNil(o.Ptms) {
+	if o != nil && !IsNil(o.Ptms) {
 		return true
 	}
 
@@ -632,7 +639,7 @@ func (o *VariantAnnotation) SetPtms(v PtmAnnotation) {
 
 // GetSeqRegionName returns the SeqRegionName field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetSeqRegionName() string {
-	if o == nil || isNil(o.SeqRegionName) {
+	if o == nil || IsNil(o.SeqRegionName) {
 		var ret string
 		return ret
 	}
@@ -642,15 +649,15 @@ func (o *VariantAnnotation) GetSeqRegionName() string {
 // GetSeqRegionNameOk returns a tuple with the SeqRegionName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetSeqRegionNameOk() (*string, bool) {
-	if o == nil || isNil(o.SeqRegionName) {
-    return nil, false
+	if o == nil || IsNil(o.SeqRegionName) {
+		return nil, false
 	}
 	return o.SeqRegionName, true
 }
 
 // HasSeqRegionName returns a boolean if a field has been set.
 func (o *VariantAnnotation) HasSeqRegionName() bool {
-	if o != nil && !isNil(o.SeqRegionName) {
+	if o != nil && !IsNil(o.SeqRegionName) {
 		return true
 	}
 
@@ -664,7 +671,7 @@ func (o *VariantAnnotation) SetSeqRegionName(v string) {
 
 // GetSignalAnnotation returns the SignalAnnotation field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetSignalAnnotation() SignalAnnotation {
-	if o == nil || isNil(o.SignalAnnotation) {
+	if o == nil || IsNil(o.SignalAnnotation) {
 		var ret SignalAnnotation
 		return ret
 	}
@@ -674,15 +681,15 @@ func (o *VariantAnnotation) GetSignalAnnotation() SignalAnnotation {
 // GetSignalAnnotationOk returns a tuple with the SignalAnnotation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetSignalAnnotationOk() (*SignalAnnotation, bool) {
-	if o == nil || isNil(o.SignalAnnotation) {
-    return nil, false
+	if o == nil || IsNil(o.SignalAnnotation) {
+		return nil, false
 	}
 	return o.SignalAnnotation, true
 }
 
 // HasSignalAnnotation returns a boolean if a field has been set.
 func (o *VariantAnnotation) HasSignalAnnotation() bool {
-	if o != nil && !isNil(o.SignalAnnotation) {
+	if o != nil && !IsNil(o.SignalAnnotation) {
 		return true
 	}
 
@@ -696,7 +703,7 @@ func (o *VariantAnnotation) SetSignalAnnotation(v SignalAnnotation) {
 
 // GetStart returns the Start field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetStart() int32 {
-	if o == nil || isNil(o.Start) {
+	if o == nil || IsNil(o.Start) {
 		var ret int32
 		return ret
 	}
@@ -706,15 +713,15 @@ func (o *VariantAnnotation) GetStart() int32 {
 // GetStartOk returns a tuple with the Start field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetStartOk() (*int32, bool) {
-	if o == nil || isNil(o.Start) {
-    return nil, false
+	if o == nil || IsNil(o.Start) {
+		return nil, false
 	}
 	return o.Start, true
 }
 
 // HasStart returns a boolean if a field has been set.
 func (o *VariantAnnotation) HasStart() bool {
-	if o != nil && !isNil(o.Start) {
+	if o != nil && !IsNil(o.Start) {
 		return true
 	}
 
@@ -728,7 +735,7 @@ func (o *VariantAnnotation) SetStart(v int32) {
 
 // GetStrand returns the Strand field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetStrand() int32 {
-	if o == nil || isNil(o.Strand) {
+	if o == nil || IsNil(o.Strand) {
 		var ret int32
 		return ret
 	}
@@ -738,15 +745,15 @@ func (o *VariantAnnotation) GetStrand() int32 {
 // GetStrandOk returns a tuple with the Strand field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetStrandOk() (*int32, bool) {
-	if o == nil || isNil(o.Strand) {
-    return nil, false
+	if o == nil || IsNil(o.Strand) {
+		return nil, false
 	}
 	return o.Strand, true
 }
 
 // HasStrand returns a boolean if a field has been set.
 func (o *VariantAnnotation) HasStrand() bool {
-	if o != nil && !isNil(o.Strand) {
+	if o != nil && !IsNil(o.Strand) {
 		return true
 	}
 
@@ -760,7 +767,7 @@ func (o *VariantAnnotation) SetStrand(v int32) {
 
 // GetSuccessfullyAnnotated returns the SuccessfullyAnnotated field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetSuccessfullyAnnotated() bool {
-	if o == nil || isNil(o.SuccessfullyAnnotated) {
+	if o == nil || IsNil(o.SuccessfullyAnnotated) {
 		var ret bool
 		return ret
 	}
@@ -770,15 +777,15 @@ func (o *VariantAnnotation) GetSuccessfullyAnnotated() bool {
 // GetSuccessfullyAnnotatedOk returns a tuple with the SuccessfullyAnnotated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetSuccessfullyAnnotatedOk() (*bool, bool) {
-	if o == nil || isNil(o.SuccessfullyAnnotated) {
-    return nil, false
+	if o == nil || IsNil(o.SuccessfullyAnnotated) {
+		return nil, false
 	}
 	return o.SuccessfullyAnnotated, true
 }
 
 // HasSuccessfullyAnnotated returns a boolean if a field has been set.
 func (o *VariantAnnotation) HasSuccessfullyAnnotated() bool {
-	if o != nil && !isNil(o.SuccessfullyAnnotated) {
+	if o != nil && !IsNil(o.SuccessfullyAnnotated) {
 		return true
 	}
 
@@ -792,7 +799,7 @@ func (o *VariantAnnotation) SetSuccessfullyAnnotated(v bool) {
 
 // GetTranscriptConsequences returns the TranscriptConsequences field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetTranscriptConsequences() []TranscriptConsequence {
-	if o == nil || isNil(o.TranscriptConsequences) {
+	if o == nil || IsNil(o.TranscriptConsequences) {
 		var ret []TranscriptConsequence
 		return ret
 	}
@@ -802,15 +809,15 @@ func (o *VariantAnnotation) GetTranscriptConsequences() []TranscriptConsequence 
 // GetTranscriptConsequencesOk returns a tuple with the TranscriptConsequences field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetTranscriptConsequencesOk() ([]TranscriptConsequence, bool) {
-	if o == nil || isNil(o.TranscriptConsequences) {
-    return nil, false
+	if o == nil || IsNil(o.TranscriptConsequences) {
+		return nil, false
 	}
 	return o.TranscriptConsequences, true
 }
 
 // HasTranscriptConsequences returns a boolean if a field has been set.
 func (o *VariantAnnotation) HasTranscriptConsequences() bool {
-	if o != nil && !isNil(o.TranscriptConsequences) {
+	if o != nil && !IsNil(o.TranscriptConsequences) {
 		return true
 	}
 
@@ -836,7 +843,7 @@ func (o *VariantAnnotation) GetVariant() string {
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetVariantOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Variant, true
 }
@@ -847,83 +854,123 @@ func (o *VariantAnnotation) SetVariant(v string) {
 }
 
 func (o VariantAnnotation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.AlleleString) {
-		toSerialize["allele_string"] = o.AlleleString
-	}
-	if !isNil(o.AnnotationJSON) {
-		toSerialize["annotationJSON"] = o.AnnotationJSON
-	}
-	if !isNil(o.AnnotationSummary) {
-		toSerialize["annotation_summary"] = o.AnnotationSummary
-	}
-	if !isNil(o.AssemblyName) {
-		toSerialize["assembly_name"] = o.AssemblyName
-	}
-	if !isNil(o.Clinvar) {
-		toSerialize["clinvar"] = o.Clinvar
-	}
-	if !isNil(o.ColocatedVariants) {
-		toSerialize["colocatedVariants"] = o.ColocatedVariants
-	}
-	if !isNil(o.End) {
-		toSerialize["end"] = o.End
-	}
-	if !isNil(o.Hgvsg) {
-		toSerialize["hgvsg"] = o.Hgvsg
-	}
-	if !isNil(o.Hotspots) {
-		toSerialize["hotspots"] = o.Hotspots
-	}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["intergenic_consequences"] = o.IntergenicConsequences
-	}
-	if !isNil(o.MostSevereConsequence) {
-		toSerialize["most_severe_consequence"] = o.MostSevereConsequence
-	}
-	if !isNil(o.MutationAssessor) {
-		toSerialize["mutation_assessor"] = o.MutationAssessor
-	}
-	if !isNil(o.MyVariantInfo) {
-		toSerialize["my_variant_info"] = o.MyVariantInfo
-	}
-	if !isNil(o.NucleotideContext) {
-		toSerialize["nucleotide_context"] = o.NucleotideContext
-	}
-	if !isNil(o.Oncokb) {
-		toSerialize["oncokb"] = o.Oncokb
-	}
-	if true {
-		toSerialize["originalVariantQuery"] = o.OriginalVariantQuery
-	}
-	if !isNil(o.Ptms) {
-		toSerialize["ptms"] = o.Ptms
-	}
-	if !isNil(o.SeqRegionName) {
-		toSerialize["seq_region_name"] = o.SeqRegionName
-	}
-	if !isNil(o.SignalAnnotation) {
-		toSerialize["signalAnnotation"] = o.SignalAnnotation
-	}
-	if !isNil(o.Start) {
-		toSerialize["start"] = o.Start
-	}
-	if !isNil(o.Strand) {
-		toSerialize["strand"] = o.Strand
-	}
-	if !isNil(o.SuccessfullyAnnotated) {
-		toSerialize["successfully_annotated"] = o.SuccessfullyAnnotated
-	}
-	if !isNil(o.TranscriptConsequences) {
-		toSerialize["transcript_consequences"] = o.TranscriptConsequences
-	}
-	if true {
-		toSerialize["variant"] = o.Variant
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VariantAnnotation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AlleleString) {
+		toSerialize["allele_string"] = o.AlleleString
+	}
+	if !IsNil(o.AnnotationJSON) {
+		toSerialize["annotationJSON"] = o.AnnotationJSON
+	}
+	if !IsNil(o.AnnotationSummary) {
+		toSerialize["annotation_summary"] = o.AnnotationSummary
+	}
+	if !IsNil(o.AssemblyName) {
+		toSerialize["assembly_name"] = o.AssemblyName
+	}
+	if !IsNil(o.Clinvar) {
+		toSerialize["clinvar"] = o.Clinvar
+	}
+	if !IsNil(o.ColocatedVariants) {
+		toSerialize["colocatedVariants"] = o.ColocatedVariants
+	}
+	if !IsNil(o.End) {
+		toSerialize["end"] = o.End
+	}
+	if !IsNil(o.Hgvsg) {
+		toSerialize["hgvsg"] = o.Hgvsg
+	}
+	if !IsNil(o.Hotspots) {
+		toSerialize["hotspots"] = o.Hotspots
+	}
+	toSerialize["id"] = o.Id
+	toSerialize["intergenic_consequences"] = o.IntergenicConsequences
+	if !IsNil(o.MostSevereConsequence) {
+		toSerialize["most_severe_consequence"] = o.MostSevereConsequence
+	}
+	if !IsNil(o.MutationAssessor) {
+		toSerialize["mutation_assessor"] = o.MutationAssessor
+	}
+	if !IsNil(o.MyVariantInfo) {
+		toSerialize["my_variant_info"] = o.MyVariantInfo
+	}
+	if !IsNil(o.NucleotideContext) {
+		toSerialize["nucleotide_context"] = o.NucleotideContext
+	}
+	if !IsNil(o.Oncokb) {
+		toSerialize["oncokb"] = o.Oncokb
+	}
+	toSerialize["originalVariantQuery"] = o.OriginalVariantQuery
+	if !IsNil(o.Ptms) {
+		toSerialize["ptms"] = o.Ptms
+	}
+	if !IsNil(o.SeqRegionName) {
+		toSerialize["seq_region_name"] = o.SeqRegionName
+	}
+	if !IsNil(o.SignalAnnotation) {
+		toSerialize["signalAnnotation"] = o.SignalAnnotation
+	}
+	if !IsNil(o.Start) {
+		toSerialize["start"] = o.Start
+	}
+	if !IsNil(o.Strand) {
+		toSerialize["strand"] = o.Strand
+	}
+	if !IsNil(o.SuccessfullyAnnotated) {
+		toSerialize["successfully_annotated"] = o.SuccessfullyAnnotated
+	}
+	if !IsNil(o.TranscriptConsequences) {
+		toSerialize["transcript_consequences"] = o.TranscriptConsequences
+	}
+	toSerialize["variant"] = o.Variant
+	return toSerialize, nil
+}
+
+func (o *VariantAnnotation) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"intergenic_consequences",
+		"originalVariantQuery",
+		"variant",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varVariantAnnotation := _VariantAnnotation{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varVariantAnnotation)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VariantAnnotation(varVariantAnnotation)
+
+	return err
 }
 
 type NullableVariantAnnotation struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Hgvs type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Hgvs{}
+
 // Hgvs struct for Hgvs
 type Hgvs struct {
 	Coding []string `json:"coding,omitempty"`
@@ -40,7 +43,7 @@ func NewHgvsWithDefaults() *Hgvs {
 
 // GetCoding returns the Coding field value if set, zero value otherwise.
 func (o *Hgvs) GetCoding() []string {
-	if o == nil || isNil(o.Coding) {
+	if o == nil || IsNil(o.Coding) {
 		var ret []string
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *Hgvs) GetCoding() []string {
 // GetCodingOk returns a tuple with the Coding field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Hgvs) GetCodingOk() ([]string, bool) {
-	if o == nil || isNil(o.Coding) {
-    return nil, false
+	if o == nil || IsNil(o.Coding) {
+		return nil, false
 	}
 	return o.Coding, true
 }
 
 // HasCoding returns a boolean if a field has been set.
 func (o *Hgvs) HasCoding() bool {
-	if o != nil && !isNil(o.Coding) {
+	if o != nil && !IsNil(o.Coding) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *Hgvs) SetCoding(v []string) {
 
 // GetGenomic returns the Genomic field value if set, zero value otherwise.
 func (o *Hgvs) GetGenomic() []string {
-	if o == nil || isNil(o.Genomic) {
+	if o == nil || IsNil(o.Genomic) {
 		var ret []string
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *Hgvs) GetGenomic() []string {
 // GetGenomicOk returns a tuple with the Genomic field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Hgvs) GetGenomicOk() ([]string, bool) {
-	if o == nil || isNil(o.Genomic) {
-    return nil, false
+	if o == nil || IsNil(o.Genomic) {
+		return nil, false
 	}
 	return o.Genomic, true
 }
 
 // HasGenomic returns a boolean if a field has been set.
 func (o *Hgvs) HasGenomic() bool {
-	if o != nil && !isNil(o.Genomic) {
+	if o != nil && !IsNil(o.Genomic) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *Hgvs) SetGenomic(v []string) {
 
 // GetProtein returns the Protein field value if set, zero value otherwise.
 func (o *Hgvs) GetProtein() []string {
-	if o == nil || isNil(o.Protein) {
+	if o == nil || IsNil(o.Protein) {
 		var ret []string
 		return ret
 	}
@@ -114,15 +117,15 @@ func (o *Hgvs) GetProtein() []string {
 // GetProteinOk returns a tuple with the Protein field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Hgvs) GetProteinOk() ([]string, bool) {
-	if o == nil || isNil(o.Protein) {
-    return nil, false
+	if o == nil || IsNil(o.Protein) {
+		return nil, false
 	}
 	return o.Protein, true
 }
 
 // HasProtein returns a boolean if a field has been set.
 func (o *Hgvs) HasProtein() bool {
-	if o != nil && !isNil(o.Protein) {
+	if o != nil && !IsNil(o.Protein) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *Hgvs) SetProtein(v []string) {
 }
 
 func (o Hgvs) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Coding) {
-		toSerialize["coding"] = o.Coding
-	}
-	if !isNil(o.Genomic) {
-		toSerialize["genomic"] = o.Genomic
-	}
-	if !isNil(o.Protein) {
-		toSerialize["protein"] = o.Protein
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Hgvs) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Coding) {
+		toSerialize["coding"] = o.Coding
+	}
+	if !IsNil(o.Genomic) {
+		toSerialize["genomic"] = o.Genomic
+	}
+	if !IsNil(o.Protein) {
+		toSerialize["protein"] = o.Protein
+	}
+	return toSerialize, nil
 }
 
 type NullableHgvs struct {

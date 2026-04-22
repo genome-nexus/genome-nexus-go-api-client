@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GeneralPopulationStats type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GeneralPopulationStats{}
+
 // GeneralPopulationStats struct for GeneralPopulationStats
 type GeneralPopulationStats struct {
 	Counts *SignalPopulationStats `json:"counts,omitempty"`
@@ -39,7 +42,7 @@ func NewGeneralPopulationStatsWithDefaults() *GeneralPopulationStats {
 
 // GetCounts returns the Counts field value if set, zero value otherwise.
 func (o *GeneralPopulationStats) GetCounts() SignalPopulationStats {
-	if o == nil || isNil(o.Counts) {
+	if o == nil || IsNil(o.Counts) {
 		var ret SignalPopulationStats
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *GeneralPopulationStats) GetCounts() SignalPopulationStats {
 // GetCountsOk returns a tuple with the Counts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GeneralPopulationStats) GetCountsOk() (*SignalPopulationStats, bool) {
-	if o == nil || isNil(o.Counts) {
-    return nil, false
+	if o == nil || IsNil(o.Counts) {
+		return nil, false
 	}
 	return o.Counts, true
 }
 
 // HasCounts returns a boolean if a field has been set.
 func (o *GeneralPopulationStats) HasCounts() bool {
-	if o != nil && !isNil(o.Counts) {
+	if o != nil && !IsNil(o.Counts) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *GeneralPopulationStats) SetCounts(v SignalPopulationStats) {
 
 // GetFrequencies returns the Frequencies field value if set, zero value otherwise.
 func (o *GeneralPopulationStats) GetFrequencies() SignalPopulationStats {
-	if o == nil || isNil(o.Frequencies) {
+	if o == nil || IsNil(o.Frequencies) {
 		var ret SignalPopulationStats
 		return ret
 	}
@@ -81,15 +84,15 @@ func (o *GeneralPopulationStats) GetFrequencies() SignalPopulationStats {
 // GetFrequenciesOk returns a tuple with the Frequencies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GeneralPopulationStats) GetFrequenciesOk() (*SignalPopulationStats, bool) {
-	if o == nil || isNil(o.Frequencies) {
-    return nil, false
+	if o == nil || IsNil(o.Frequencies) {
+		return nil, false
 	}
 	return o.Frequencies, true
 }
 
 // HasFrequencies returns a boolean if a field has been set.
 func (o *GeneralPopulationStats) HasFrequencies() bool {
-	if o != nil && !isNil(o.Frequencies) {
+	if o != nil && !IsNil(o.Frequencies) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *GeneralPopulationStats) SetFrequencies(v SignalPopulationStats) {
 }
 
 func (o GeneralPopulationStats) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Counts) {
-		toSerialize["counts"] = o.Counts
-	}
-	if !isNil(o.Frequencies) {
-		toSerialize["frequencies"] = o.Frequencies
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GeneralPopulationStats) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Counts) {
+		toSerialize["counts"] = o.Counts
+	}
+	if !IsNil(o.Frequencies) {
+		toSerialize["frequencies"] = o.Frequencies
+	}
+	return toSerialize, nil
 }
 
 type NullableGeneralPopulationStats struct {

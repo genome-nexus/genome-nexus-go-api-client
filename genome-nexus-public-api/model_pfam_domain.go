@@ -12,7 +12,12 @@ package genome_nexus_public_api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the PfamDomain type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PfamDomain{}
 
 // PfamDomain struct for PfamDomain
 type PfamDomain struct {
@@ -23,6 +28,8 @@ type PfamDomain struct {
 	// PFAM domain accession
 	PfamAccession string `json:"pfamAccession"`
 }
+
+type _PfamDomain PfamDomain
 
 // NewPfamDomain instantiates a new PfamDomain object
 // This constructor will assign default values to properties that have it defined,
@@ -45,7 +52,7 @@ func NewPfamDomainWithDefaults() *PfamDomain {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *PfamDomain) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -55,15 +62,15 @@ func (o *PfamDomain) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PfamDomain) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *PfamDomain) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -89,7 +96,7 @@ func (o *PfamDomain) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *PfamDomain) GetNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Name, true
 }
@@ -113,7 +120,7 @@ func (o *PfamDomain) GetPfamAccession() string {
 // and a boolean to check if the value has been set.
 func (o *PfamDomain) GetPfamAccessionOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.PfamAccession, true
 }
@@ -124,17 +131,59 @@ func (o *PfamDomain) SetPfamAccession(v string) {
 }
 
 func (o PfamDomain) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["pfamAccession"] = o.PfamAccession
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PfamDomain) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	toSerialize["name"] = o.Name
+	toSerialize["pfamAccession"] = o.PfamAccession
+	return toSerialize, nil
+}
+
+func (o *PfamDomain) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"pfamAccession",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPfamDomain := _PfamDomain{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPfamDomain)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PfamDomain(varPfamDomain)
+
+	return err
 }
 
 type NullablePfamDomain struct {

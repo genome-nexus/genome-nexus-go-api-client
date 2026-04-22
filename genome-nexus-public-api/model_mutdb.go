@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Mutdb type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Mutdb{}
+
 // Mutdb struct for Mutdb
 type Mutdb struct {
 	// alt
@@ -52,7 +55,7 @@ func NewMutdbWithDefaults() *Mutdb {
 
 // GetAlt returns the Alt field value if set, zero value otherwise.
 func (o *Mutdb) GetAlt() string {
-	if o == nil || isNil(o.Alt) {
+	if o == nil || IsNil(o.Alt) {
 		var ret string
 		return ret
 	}
@@ -62,15 +65,15 @@ func (o *Mutdb) GetAlt() string {
 // GetAltOk returns a tuple with the Alt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Mutdb) GetAltOk() (*string, bool) {
-	if o == nil || isNil(o.Alt) {
-    return nil, false
+	if o == nil || IsNil(o.Alt) {
+		return nil, false
 	}
 	return o.Alt, true
 }
 
 // HasAlt returns a boolean if a field has been set.
 func (o *Mutdb) HasAlt() bool {
-	if o != nil && !isNil(o.Alt) {
+	if o != nil && !IsNil(o.Alt) {
 		return true
 	}
 
@@ -84,7 +87,7 @@ func (o *Mutdb) SetAlt(v string) {
 
 // GetChrom returns the Chrom field value if set, zero value otherwise.
 func (o *Mutdb) GetChrom() string {
-	if o == nil || isNil(o.Chrom) {
+	if o == nil || IsNil(o.Chrom) {
 		var ret string
 		return ret
 	}
@@ -94,15 +97,15 @@ func (o *Mutdb) GetChrom() string {
 // GetChromOk returns a tuple with the Chrom field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Mutdb) GetChromOk() (*string, bool) {
-	if o == nil || isNil(o.Chrom) {
-    return nil, false
+	if o == nil || IsNil(o.Chrom) {
+		return nil, false
 	}
 	return o.Chrom, true
 }
 
 // HasChrom returns a boolean if a field has been set.
 func (o *Mutdb) HasChrom() bool {
-	if o != nil && !isNil(o.Chrom) {
+	if o != nil && !IsNil(o.Chrom) {
 		return true
 	}
 
@@ -116,7 +119,7 @@ func (o *Mutdb) SetChrom(v string) {
 
 // GetCosmicId returns the CosmicId field value if set, zero value otherwise.
 func (o *Mutdb) GetCosmicId() string {
-	if o == nil || isNil(o.CosmicId) {
+	if o == nil || IsNil(o.CosmicId) {
 		var ret string
 		return ret
 	}
@@ -126,15 +129,15 @@ func (o *Mutdb) GetCosmicId() string {
 // GetCosmicIdOk returns a tuple with the CosmicId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Mutdb) GetCosmicIdOk() (*string, bool) {
-	if o == nil || isNil(o.CosmicId) {
-    return nil, false
+	if o == nil || IsNil(o.CosmicId) {
+		return nil, false
 	}
 	return o.CosmicId, true
 }
 
 // HasCosmicId returns a boolean if a field has been set.
 func (o *Mutdb) HasCosmicId() bool {
-	if o != nil && !isNil(o.CosmicId) {
+	if o != nil && !IsNil(o.CosmicId) {
 		return true
 	}
 
@@ -148,7 +151,7 @@ func (o *Mutdb) SetCosmicId(v string) {
 
 // GetHg19 returns the Hg19 field value if set, zero value otherwise.
 func (o *Mutdb) GetHg19() Hg19 {
-	if o == nil || isNil(o.Hg19) {
+	if o == nil || IsNil(o.Hg19) {
 		var ret Hg19
 		return ret
 	}
@@ -158,15 +161,15 @@ func (o *Mutdb) GetHg19() Hg19 {
 // GetHg19Ok returns a tuple with the Hg19 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Mutdb) GetHg19Ok() (*Hg19, bool) {
-	if o == nil || isNil(o.Hg19) {
-    return nil, false
+	if o == nil || IsNil(o.Hg19) {
+		return nil, false
 	}
 	return o.Hg19, true
 }
 
 // HasHg19 returns a boolean if a field has been set.
 func (o *Mutdb) HasHg19() bool {
-	if o != nil && !isNil(o.Hg19) {
+	if o != nil && !IsNil(o.Hg19) {
 		return true
 	}
 
@@ -180,7 +183,7 @@ func (o *Mutdb) SetHg19(v Hg19) {
 
 // GetMutpredScore returns the MutpredScore field value if set, zero value otherwise.
 func (o *Mutdb) GetMutpredScore() float64 {
-	if o == nil || isNil(o.MutpredScore) {
+	if o == nil || IsNil(o.MutpredScore) {
 		var ret float64
 		return ret
 	}
@@ -190,15 +193,15 @@ func (o *Mutdb) GetMutpredScore() float64 {
 // GetMutpredScoreOk returns a tuple with the MutpredScore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Mutdb) GetMutpredScoreOk() (*float64, bool) {
-	if o == nil || isNil(o.MutpredScore) {
-    return nil, false
+	if o == nil || IsNil(o.MutpredScore) {
+		return nil, false
 	}
 	return o.MutpredScore, true
 }
 
 // HasMutpredScore returns a boolean if a field has been set.
 func (o *Mutdb) HasMutpredScore() bool {
-	if o != nil && !isNil(o.MutpredScore) {
+	if o != nil && !IsNil(o.MutpredScore) {
 		return true
 	}
 
@@ -212,7 +215,7 @@ func (o *Mutdb) SetMutpredScore(v float64) {
 
 // GetRef returns the Ref field value if set, zero value otherwise.
 func (o *Mutdb) GetRef() string {
-	if o == nil || isNil(o.Ref) {
+	if o == nil || IsNil(o.Ref) {
 		var ret string
 		return ret
 	}
@@ -222,15 +225,15 @@ func (o *Mutdb) GetRef() string {
 // GetRefOk returns a tuple with the Ref field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Mutdb) GetRefOk() (*string, bool) {
-	if o == nil || isNil(o.Ref) {
-    return nil, false
+	if o == nil || IsNil(o.Ref) {
+		return nil, false
 	}
 	return o.Ref, true
 }
 
 // HasRef returns a boolean if a field has been set.
 func (o *Mutdb) HasRef() bool {
-	if o != nil && !isNil(o.Ref) {
+	if o != nil && !IsNil(o.Ref) {
 		return true
 	}
 
@@ -244,7 +247,7 @@ func (o *Mutdb) SetRef(v string) {
 
 // GetRsid returns the Rsid field value if set, zero value otherwise.
 func (o *Mutdb) GetRsid() string {
-	if o == nil || isNil(o.Rsid) {
+	if o == nil || IsNil(o.Rsid) {
 		var ret string
 		return ret
 	}
@@ -254,15 +257,15 @@ func (o *Mutdb) GetRsid() string {
 // GetRsidOk returns a tuple with the Rsid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Mutdb) GetRsidOk() (*string, bool) {
-	if o == nil || isNil(o.Rsid) {
-    return nil, false
+	if o == nil || IsNil(o.Rsid) {
+		return nil, false
 	}
 	return o.Rsid, true
 }
 
 // HasRsid returns a boolean if a field has been set.
 func (o *Mutdb) HasRsid() bool {
-	if o != nil && !isNil(o.Rsid) {
+	if o != nil && !IsNil(o.Rsid) {
 		return true
 	}
 
@@ -276,7 +279,7 @@ func (o *Mutdb) SetRsid(v string) {
 
 // GetUniprotId returns the UniprotId field value if set, zero value otherwise.
 func (o *Mutdb) GetUniprotId() string {
-	if o == nil || isNil(o.UniprotId) {
+	if o == nil || IsNil(o.UniprotId) {
 		var ret string
 		return ret
 	}
@@ -286,15 +289,15 @@ func (o *Mutdb) GetUniprotId() string {
 // GetUniprotIdOk returns a tuple with the UniprotId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Mutdb) GetUniprotIdOk() (*string, bool) {
-	if o == nil || isNil(o.UniprotId) {
-    return nil, false
+	if o == nil || IsNil(o.UniprotId) {
+		return nil, false
 	}
 	return o.UniprotId, true
 }
 
 // HasUniprotId returns a boolean if a field has been set.
 func (o *Mutdb) HasUniprotId() bool {
-	if o != nil && !isNil(o.UniprotId) {
+	if o != nil && !IsNil(o.UniprotId) {
 		return true
 	}
 
@@ -307,32 +310,40 @@ func (o *Mutdb) SetUniprotId(v string) {
 }
 
 func (o Mutdb) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Alt) {
-		toSerialize["alt"] = o.Alt
-	}
-	if !isNil(o.Chrom) {
-		toSerialize["chrom"] = o.Chrom
-	}
-	if !isNil(o.CosmicId) {
-		toSerialize["cosmicId"] = o.CosmicId
-	}
-	if !isNil(o.Hg19) {
-		toSerialize["hg19"] = o.Hg19
-	}
-	if !isNil(o.MutpredScore) {
-		toSerialize["mutpredScore"] = o.MutpredScore
-	}
-	if !isNil(o.Ref) {
-		toSerialize["ref"] = o.Ref
-	}
-	if !isNil(o.Rsid) {
-		toSerialize["rsid"] = o.Rsid
-	}
-	if !isNil(o.UniprotId) {
-		toSerialize["uniprotId"] = o.UniprotId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Mutdb) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Alt) {
+		toSerialize["alt"] = o.Alt
+	}
+	if !IsNil(o.Chrom) {
+		toSerialize["chrom"] = o.Chrom
+	}
+	if !IsNil(o.CosmicId) {
+		toSerialize["cosmicId"] = o.CosmicId
+	}
+	if !IsNil(o.Hg19) {
+		toSerialize["hg19"] = o.Hg19
+	}
+	if !IsNil(o.MutpredScore) {
+		toSerialize["mutpredScore"] = o.MutpredScore
+	}
+	if !IsNil(o.Ref) {
+		toSerialize["ref"] = o.Ref
+	}
+	if !IsNil(o.Rsid) {
+		toSerialize["rsid"] = o.Rsid
+	}
+	if !IsNil(o.UniprotId) {
+		toSerialize["uniprotId"] = o.UniprotId
+	}
+	return toSerialize, nil
 }
 
 type NullableMutdb struct {

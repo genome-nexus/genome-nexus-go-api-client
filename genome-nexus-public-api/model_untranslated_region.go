@@ -12,7 +12,12 @@ package genome_nexus_public_api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the UntranslatedRegion type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UntranslatedRegion{}
 
 // UntranslatedRegion struct for UntranslatedRegion
 type UntranslatedRegion struct {
@@ -25,6 +30,8 @@ type UntranslatedRegion struct {
 	// Strand UTR is on, -1 for - and 1 for +
 	Strand int32 `json:"strand"`
 }
+
+type _UntranslatedRegion UntranslatedRegion
 
 // NewUntranslatedRegion instantiates a new UntranslatedRegion object
 // This constructor will assign default values to properties that have it defined,
@@ -61,7 +68,7 @@ func (o *UntranslatedRegion) GetType() string {
 // and a boolean to check if the value has been set.
 func (o *UntranslatedRegion) GetTypeOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Type, true
 }
@@ -85,7 +92,7 @@ func (o *UntranslatedRegion) GetStart() int32 {
 // and a boolean to check if the value has been set.
 func (o *UntranslatedRegion) GetStartOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Start, true
 }
@@ -109,7 +116,7 @@ func (o *UntranslatedRegion) GetEnd() int32 {
 // and a boolean to check if the value has been set.
 func (o *UntranslatedRegion) GetEndOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.End, true
 }
@@ -133,7 +140,7 @@ func (o *UntranslatedRegion) GetStrand() int32 {
 // and a boolean to check if the value has been set.
 func (o *UntranslatedRegion) GetStrandOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Strand, true
 }
@@ -144,20 +151,60 @@ func (o *UntranslatedRegion) SetStrand(v int32) {
 }
 
 func (o UntranslatedRegion) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if true {
-		toSerialize["start"] = o.Start
-	}
-	if true {
-		toSerialize["end"] = o.End
-	}
-	if true {
-		toSerialize["strand"] = o.Strand
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UntranslatedRegion) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["type"] = o.Type
+	toSerialize["start"] = o.Start
+	toSerialize["end"] = o.End
+	toSerialize["strand"] = o.Strand
+	return toSerialize, nil
+}
+
+func (o *UntranslatedRegion) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"type",
+		"start",
+		"end",
+		"strand",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUntranslatedRegion := _UntranslatedRegion{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUntranslatedRegion)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UntranslatedRegion(varUntranslatedRegion)
+
+	return err
 }
 
 type NullableUntranslatedRegion struct {

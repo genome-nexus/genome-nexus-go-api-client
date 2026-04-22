@@ -12,7 +12,12 @@ package genome_nexus_public_api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the EnsemblTranscript type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnsemblTranscript{}
 
 // EnsemblTranscript struct for EnsemblTranscript
 type EnsemblTranscript struct {
@@ -39,6 +44,8 @@ type EnsemblTranscript struct {
 	Utrs []UntranslatedRegion `json:"utrs,omitempty"`
 }
 
+type _EnsemblTranscript EnsemblTranscript
+
 // NewEnsemblTranscript instantiates a new EnsemblTranscript object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
@@ -61,7 +68,7 @@ func NewEnsemblTranscriptWithDefaults() *EnsemblTranscript {
 
 // GetUniprotId returns the UniprotId field value if set, zero value otherwise.
 func (o *EnsemblTranscript) GetUniprotId() string {
-	if o == nil || isNil(o.UniprotId) {
+	if o == nil || IsNil(o.UniprotId) {
 		var ret string
 		return ret
 	}
@@ -71,15 +78,15 @@ func (o *EnsemblTranscript) GetUniprotId() string {
 // GetUniprotIdOk returns a tuple with the UniprotId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnsemblTranscript) GetUniprotIdOk() (*string, bool) {
-	if o == nil || isNil(o.UniprotId) {
-    return nil, false
+	if o == nil || IsNil(o.UniprotId) {
+		return nil, false
 	}
 	return o.UniprotId, true
 }
 
 // HasUniprotId returns a boolean if a field has been set.
 func (o *EnsemblTranscript) HasUniprotId() bool {
-	if o != nil && !isNil(o.UniprotId) {
+	if o != nil && !IsNil(o.UniprotId) {
 		return true
 	}
 
@@ -105,7 +112,7 @@ func (o *EnsemblTranscript) GetTranscriptId() string {
 // and a boolean to check if the value has been set.
 func (o *EnsemblTranscript) GetTranscriptIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.TranscriptId, true
 }
@@ -129,7 +136,7 @@ func (o *EnsemblTranscript) GetGeneId() string {
 // and a boolean to check if the value has been set.
 func (o *EnsemblTranscript) GetGeneIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.GeneId, true
 }
@@ -153,7 +160,7 @@ func (o *EnsemblTranscript) GetProteinId() string {
 // and a boolean to check if the value has been set.
 func (o *EnsemblTranscript) GetProteinIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.ProteinId, true
 }
@@ -165,7 +172,7 @@ func (o *EnsemblTranscript) SetProteinId(v string) {
 
 // GetProteinLength returns the ProteinLength field value if set, zero value otherwise.
 func (o *EnsemblTranscript) GetProteinLength() int32 {
-	if o == nil || isNil(o.ProteinLength) {
+	if o == nil || IsNil(o.ProteinLength) {
 		var ret int32
 		return ret
 	}
@@ -175,15 +182,15 @@ func (o *EnsemblTranscript) GetProteinLength() int32 {
 // GetProteinLengthOk returns a tuple with the ProteinLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnsemblTranscript) GetProteinLengthOk() (*int32, bool) {
-	if o == nil || isNil(o.ProteinLength) {
-    return nil, false
+	if o == nil || IsNil(o.ProteinLength) {
+		return nil, false
 	}
 	return o.ProteinLength, true
 }
 
 // HasProteinLength returns a boolean if a field has been set.
 func (o *EnsemblTranscript) HasProteinLength() bool {
-	if o != nil && !isNil(o.ProteinLength) {
+	if o != nil && !IsNil(o.ProteinLength) {
 		return true
 	}
 
@@ -197,7 +204,7 @@ func (o *EnsemblTranscript) SetProteinLength(v int32) {
 
 // GetPfamDomains returns the PfamDomains field value if set, zero value otherwise.
 func (o *EnsemblTranscript) GetPfamDomains() []PfamDomainRange {
-	if o == nil || isNil(o.PfamDomains) {
+	if o == nil || IsNil(o.PfamDomains) {
 		var ret []PfamDomainRange
 		return ret
 	}
@@ -207,15 +214,15 @@ func (o *EnsemblTranscript) GetPfamDomains() []PfamDomainRange {
 // GetPfamDomainsOk returns a tuple with the PfamDomains field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnsemblTranscript) GetPfamDomainsOk() ([]PfamDomainRange, bool) {
-	if o == nil || isNil(o.PfamDomains) {
-    return nil, false
+	if o == nil || IsNil(o.PfamDomains) {
+		return nil, false
 	}
 	return o.PfamDomains, true
 }
 
 // HasPfamDomains returns a boolean if a field has been set.
 func (o *EnsemblTranscript) HasPfamDomains() bool {
-	if o != nil && !isNil(o.PfamDomains) {
+	if o != nil && !IsNil(o.PfamDomains) {
 		return true
 	}
 
@@ -229,7 +236,7 @@ func (o *EnsemblTranscript) SetPfamDomains(v []PfamDomainRange) {
 
 // GetHugoSymbols returns the HugoSymbols field value if set, zero value otherwise.
 func (o *EnsemblTranscript) GetHugoSymbols() []string {
-	if o == nil || isNil(o.HugoSymbols) {
+	if o == nil || IsNil(o.HugoSymbols) {
 		var ret []string
 		return ret
 	}
@@ -239,15 +246,15 @@ func (o *EnsemblTranscript) GetHugoSymbols() []string {
 // GetHugoSymbolsOk returns a tuple with the HugoSymbols field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnsemblTranscript) GetHugoSymbolsOk() ([]string, bool) {
-	if o == nil || isNil(o.HugoSymbols) {
-    return nil, false
+	if o == nil || IsNil(o.HugoSymbols) {
+		return nil, false
 	}
 	return o.HugoSymbols, true
 }
 
 // HasHugoSymbols returns a boolean if a field has been set.
 func (o *EnsemblTranscript) HasHugoSymbols() bool {
-	if o != nil && !isNil(o.HugoSymbols) {
+	if o != nil && !IsNil(o.HugoSymbols) {
 		return true
 	}
 
@@ -261,7 +268,7 @@ func (o *EnsemblTranscript) SetHugoSymbols(v []string) {
 
 // GetRefseqMrnaId returns the RefseqMrnaId field value if set, zero value otherwise.
 func (o *EnsemblTranscript) GetRefseqMrnaId() string {
-	if o == nil || isNil(o.RefseqMrnaId) {
+	if o == nil || IsNil(o.RefseqMrnaId) {
 		var ret string
 		return ret
 	}
@@ -271,15 +278,15 @@ func (o *EnsemblTranscript) GetRefseqMrnaId() string {
 // GetRefseqMrnaIdOk returns a tuple with the RefseqMrnaId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnsemblTranscript) GetRefseqMrnaIdOk() (*string, bool) {
-	if o == nil || isNil(o.RefseqMrnaId) {
-    return nil, false
+	if o == nil || IsNil(o.RefseqMrnaId) {
+		return nil, false
 	}
 	return o.RefseqMrnaId, true
 }
 
 // HasRefseqMrnaId returns a boolean if a field has been set.
 func (o *EnsemblTranscript) HasRefseqMrnaId() bool {
-	if o != nil && !isNil(o.RefseqMrnaId) {
+	if o != nil && !IsNil(o.RefseqMrnaId) {
 		return true
 	}
 
@@ -293,7 +300,7 @@ func (o *EnsemblTranscript) SetRefseqMrnaId(v string) {
 
 // GetCcdsId returns the CcdsId field value if set, zero value otherwise.
 func (o *EnsemblTranscript) GetCcdsId() string {
-	if o == nil || isNil(o.CcdsId) {
+	if o == nil || IsNil(o.CcdsId) {
 		var ret string
 		return ret
 	}
@@ -303,15 +310,15 @@ func (o *EnsemblTranscript) GetCcdsId() string {
 // GetCcdsIdOk returns a tuple with the CcdsId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnsemblTranscript) GetCcdsIdOk() (*string, bool) {
-	if o == nil || isNil(o.CcdsId) {
-    return nil, false
+	if o == nil || IsNil(o.CcdsId) {
+		return nil, false
 	}
 	return o.CcdsId, true
 }
 
 // HasCcdsId returns a boolean if a field has been set.
 func (o *EnsemblTranscript) HasCcdsId() bool {
-	if o != nil && !isNil(o.CcdsId) {
+	if o != nil && !IsNil(o.CcdsId) {
 		return true
 	}
 
@@ -325,7 +332,7 @@ func (o *EnsemblTranscript) SetCcdsId(v string) {
 
 // GetExons returns the Exons field value if set, zero value otherwise.
 func (o *EnsemblTranscript) GetExons() []Exon {
-	if o == nil || isNil(o.Exons) {
+	if o == nil || IsNil(o.Exons) {
 		var ret []Exon
 		return ret
 	}
@@ -335,15 +342,15 @@ func (o *EnsemblTranscript) GetExons() []Exon {
 // GetExonsOk returns a tuple with the Exons field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnsemblTranscript) GetExonsOk() ([]Exon, bool) {
-	if o == nil || isNil(o.Exons) {
-    return nil, false
+	if o == nil || IsNil(o.Exons) {
+		return nil, false
 	}
 	return o.Exons, true
 }
 
 // HasExons returns a boolean if a field has been set.
 func (o *EnsemblTranscript) HasExons() bool {
-	if o != nil && !isNil(o.Exons) {
+	if o != nil && !IsNil(o.Exons) {
 		return true
 	}
 
@@ -357,7 +364,7 @@ func (o *EnsemblTranscript) SetExons(v []Exon) {
 
 // GetUtrs returns the Utrs field value if set, zero value otherwise.
 func (o *EnsemblTranscript) GetUtrs() []UntranslatedRegion {
-	if o == nil || isNil(o.Utrs) {
+	if o == nil || IsNil(o.Utrs) {
 		var ret []UntranslatedRegion
 		return ret
 	}
@@ -367,15 +374,15 @@ func (o *EnsemblTranscript) GetUtrs() []UntranslatedRegion {
 // GetUtrsOk returns a tuple with the Utrs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnsemblTranscript) GetUtrsOk() ([]UntranslatedRegion, bool) {
-	if o == nil || isNil(o.Utrs) {
-    return nil, false
+	if o == nil || IsNil(o.Utrs) {
+		return nil, false
 	}
 	return o.Utrs, true
 }
 
 // HasUtrs returns a boolean if a field has been set.
 func (o *EnsemblTranscript) HasUtrs() bool {
-	if o != nil && !isNil(o.Utrs) {
+	if o != nil && !IsNil(o.Utrs) {
 		return true
 	}
 
@@ -388,41 +395,82 @@ func (o *EnsemblTranscript) SetUtrs(v []UntranslatedRegion) {
 }
 
 func (o EnsemblTranscript) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.UniprotId) {
-		toSerialize["uniprotId"] = o.UniprotId
-	}
-	if true {
-		toSerialize["transcriptId"] = o.TranscriptId
-	}
-	if true {
-		toSerialize["geneId"] = o.GeneId
-	}
-	if true {
-		toSerialize["proteinId"] = o.ProteinId
-	}
-	if !isNil(o.ProteinLength) {
-		toSerialize["proteinLength"] = o.ProteinLength
-	}
-	if !isNil(o.PfamDomains) {
-		toSerialize["pfamDomains"] = o.PfamDomains
-	}
-	if !isNil(o.HugoSymbols) {
-		toSerialize["hugoSymbols"] = o.HugoSymbols
-	}
-	if !isNil(o.RefseqMrnaId) {
-		toSerialize["refseqMrnaId"] = o.RefseqMrnaId
-	}
-	if !isNil(o.CcdsId) {
-		toSerialize["ccdsId"] = o.CcdsId
-	}
-	if !isNil(o.Exons) {
-		toSerialize["exons"] = o.Exons
-	}
-	if !isNil(o.Utrs) {
-		toSerialize["utrs"] = o.Utrs
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnsemblTranscript) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.UniprotId) {
+		toSerialize["uniprotId"] = o.UniprotId
+	}
+	toSerialize["transcriptId"] = o.TranscriptId
+	toSerialize["geneId"] = o.GeneId
+	toSerialize["proteinId"] = o.ProteinId
+	if !IsNil(o.ProteinLength) {
+		toSerialize["proteinLength"] = o.ProteinLength
+	}
+	if !IsNil(o.PfamDomains) {
+		toSerialize["pfamDomains"] = o.PfamDomains
+	}
+	if !IsNil(o.HugoSymbols) {
+		toSerialize["hugoSymbols"] = o.HugoSymbols
+	}
+	if !IsNil(o.RefseqMrnaId) {
+		toSerialize["refseqMrnaId"] = o.RefseqMrnaId
+	}
+	if !IsNil(o.CcdsId) {
+		toSerialize["ccdsId"] = o.CcdsId
+	}
+	if !IsNil(o.Exons) {
+		toSerialize["exons"] = o.Exons
+	}
+	if !IsNil(o.Utrs) {
+		toSerialize["utrs"] = o.Utrs
+	}
+	return toSerialize, nil
+}
+
+func (o *EnsemblTranscript) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"transcriptId",
+		"geneId",
+		"proteinId",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEnsemblTranscript := _EnsemblTranscript{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEnsemblTranscript)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnsemblTranscript(varEnsemblTranscript)
+
+	return err
 }
 
 type NullableEnsemblTranscript struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ArticleAbstract type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ArticleAbstract{}
+
 // ArticleAbstract struct for ArticleAbstract
 type ArticleAbstract struct {
 	Abstract *string `json:"abstract,omitempty"`
@@ -39,7 +42,7 @@ func NewArticleAbstractWithDefaults() *ArticleAbstract {
 
 // GetAbstract returns the Abstract field value if set, zero value otherwise.
 func (o *ArticleAbstract) GetAbstract() string {
-	if o == nil || isNil(o.Abstract) {
+	if o == nil || IsNil(o.Abstract) {
 		var ret string
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *ArticleAbstract) GetAbstract() string {
 // GetAbstractOk returns a tuple with the Abstract field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ArticleAbstract) GetAbstractOk() (*string, bool) {
-	if o == nil || isNil(o.Abstract) {
-    return nil, false
+	if o == nil || IsNil(o.Abstract) {
+		return nil, false
 	}
 	return o.Abstract, true
 }
 
 // HasAbstract returns a boolean if a field has been set.
 func (o *ArticleAbstract) HasAbstract() bool {
-	if o != nil && !isNil(o.Abstract) {
+	if o != nil && !IsNil(o.Abstract) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *ArticleAbstract) SetAbstract(v string) {
 
 // GetLink returns the Link field value if set, zero value otherwise.
 func (o *ArticleAbstract) GetLink() string {
-	if o == nil || isNil(o.Link) {
+	if o == nil || IsNil(o.Link) {
 		var ret string
 		return ret
 	}
@@ -81,15 +84,15 @@ func (o *ArticleAbstract) GetLink() string {
 // GetLinkOk returns a tuple with the Link field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ArticleAbstract) GetLinkOk() (*string, bool) {
-	if o == nil || isNil(o.Link) {
-    return nil, false
+	if o == nil || IsNil(o.Link) {
+		return nil, false
 	}
 	return o.Link, true
 }
 
 // HasLink returns a boolean if a field has been set.
 func (o *ArticleAbstract) HasLink() bool {
-	if o != nil && !isNil(o.Link) {
+	if o != nil && !IsNil(o.Link) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *ArticleAbstract) SetLink(v string) {
 }
 
 func (o ArticleAbstract) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Abstract) {
-		toSerialize["abstract"] = o.Abstract
-	}
-	if !isNil(o.Link) {
-		toSerialize["link"] = o.Link
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ArticleAbstract) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Abstract) {
+		toSerialize["abstract"] = o.Abstract
+	}
+	if !IsNil(o.Link) {
+		toSerialize["link"] = o.Link
+	}
+	return toSerialize, nil
 }
 
 type NullableArticleAbstract struct {

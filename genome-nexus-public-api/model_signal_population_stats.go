@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignalPopulationStats type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignalPopulationStats{}
+
 // SignalPopulationStats struct for SignalPopulationStats
 type SignalPopulationStats struct {
 	// African/African American
@@ -49,7 +52,7 @@ func NewSignalPopulationStatsWithDefaults() *SignalPopulationStats {
 
 // GetAfr returns the Afr field value if set, zero value otherwise.
 func (o *SignalPopulationStats) GetAfr() float64 {
-	if o == nil || isNil(o.Afr) {
+	if o == nil || IsNil(o.Afr) {
 		var ret float64
 		return ret
 	}
@@ -59,15 +62,15 @@ func (o *SignalPopulationStats) GetAfr() float64 {
 // GetAfrOk returns a tuple with the Afr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalPopulationStats) GetAfrOk() (*float64, bool) {
-	if o == nil || isNil(o.Afr) {
-    return nil, false
+	if o == nil || IsNil(o.Afr) {
+		return nil, false
 	}
 	return o.Afr, true
 }
 
 // HasAfr returns a boolean if a field has been set.
 func (o *SignalPopulationStats) HasAfr() bool {
-	if o != nil && !isNil(o.Afr) {
+	if o != nil && !IsNil(o.Afr) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *SignalPopulationStats) SetAfr(v float64) {
 
 // GetAsj returns the Asj field value if set, zero value otherwise.
 func (o *SignalPopulationStats) GetAsj() float64 {
-	if o == nil || isNil(o.Asj) {
+	if o == nil || IsNil(o.Asj) {
 		var ret float64
 		return ret
 	}
@@ -91,15 +94,15 @@ func (o *SignalPopulationStats) GetAsj() float64 {
 // GetAsjOk returns a tuple with the Asj field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalPopulationStats) GetAsjOk() (*float64, bool) {
-	if o == nil || isNil(o.Asj) {
-    return nil, false
+	if o == nil || IsNil(o.Asj) {
+		return nil, false
 	}
 	return o.Asj, true
 }
 
 // HasAsj returns a boolean if a field has been set.
 func (o *SignalPopulationStats) HasAsj() bool {
-	if o != nil && !isNil(o.Asj) {
+	if o != nil && !IsNil(o.Asj) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *SignalPopulationStats) SetAsj(v float64) {
 
 // GetAsn returns the Asn field value if set, zero value otherwise.
 func (o *SignalPopulationStats) GetAsn() float64 {
-	if o == nil || isNil(o.Asn) {
+	if o == nil || IsNil(o.Asn) {
 		var ret float64
 		return ret
 	}
@@ -123,15 +126,15 @@ func (o *SignalPopulationStats) GetAsn() float64 {
 // GetAsnOk returns a tuple with the Asn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalPopulationStats) GetAsnOk() (*float64, bool) {
-	if o == nil || isNil(o.Asn) {
-    return nil, false
+	if o == nil || IsNil(o.Asn) {
+		return nil, false
 	}
 	return o.Asn, true
 }
 
 // HasAsn returns a boolean if a field has been set.
 func (o *SignalPopulationStats) HasAsn() bool {
-	if o != nil && !isNil(o.Asn) {
+	if o != nil && !IsNil(o.Asn) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *SignalPopulationStats) SetAsn(v float64) {
 
 // GetEur returns the Eur field value if set, zero value otherwise.
 func (o *SignalPopulationStats) GetEur() float64 {
-	if o == nil || isNil(o.Eur) {
+	if o == nil || IsNil(o.Eur) {
 		var ret float64
 		return ret
 	}
@@ -155,15 +158,15 @@ func (o *SignalPopulationStats) GetEur() float64 {
 // GetEurOk returns a tuple with the Eur field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalPopulationStats) GetEurOk() (*float64, bool) {
-	if o == nil || isNil(o.Eur) {
-    return nil, false
+	if o == nil || IsNil(o.Eur) {
+		return nil, false
 	}
 	return o.Eur, true
 }
 
 // HasEur returns a boolean if a field has been set.
 func (o *SignalPopulationStats) HasEur() bool {
-	if o != nil && !isNil(o.Eur) {
+	if o != nil && !IsNil(o.Eur) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *SignalPopulationStats) SetEur(v float64) {
 
 // GetImpact returns the Impact field value if set, zero value otherwise.
 func (o *SignalPopulationStats) GetImpact() float64 {
-	if o == nil || isNil(o.Impact) {
+	if o == nil || IsNil(o.Impact) {
 		var ret float64
 		return ret
 	}
@@ -187,15 +190,15 @@ func (o *SignalPopulationStats) GetImpact() float64 {
 // GetImpactOk returns a tuple with the Impact field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalPopulationStats) GetImpactOk() (*float64, bool) {
-	if o == nil || isNil(o.Impact) {
-    return nil, false
+	if o == nil || IsNil(o.Impact) {
+		return nil, false
 	}
 	return o.Impact, true
 }
 
 // HasImpact returns a boolean if a field has been set.
 func (o *SignalPopulationStats) HasImpact() bool {
-	if o != nil && !isNil(o.Impact) {
+	if o != nil && !IsNil(o.Impact) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *SignalPopulationStats) SetImpact(v float64) {
 
 // GetOth returns the Oth field value if set, zero value otherwise.
 func (o *SignalPopulationStats) GetOth() float64 {
-	if o == nil || isNil(o.Oth) {
+	if o == nil || IsNil(o.Oth) {
 		var ret float64
 		return ret
 	}
@@ -219,15 +222,15 @@ func (o *SignalPopulationStats) GetOth() float64 {
 // GetOthOk returns a tuple with the Oth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalPopulationStats) GetOthOk() (*float64, bool) {
-	if o == nil || isNil(o.Oth) {
-    return nil, false
+	if o == nil || IsNil(o.Oth) {
+		return nil, false
 	}
 	return o.Oth, true
 }
 
 // HasOth returns a boolean if a field has been set.
 func (o *SignalPopulationStats) HasOth() bool {
-	if o != nil && !isNil(o.Oth) {
+	if o != nil && !IsNil(o.Oth) {
 		return true
 	}
 
@@ -240,26 +243,34 @@ func (o *SignalPopulationStats) SetOth(v float64) {
 }
 
 func (o SignalPopulationStats) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Afr) {
-		toSerialize["afr"] = o.Afr
-	}
-	if !isNil(o.Asj) {
-		toSerialize["asj"] = o.Asj
-	}
-	if !isNil(o.Asn) {
-		toSerialize["asn"] = o.Asn
-	}
-	if !isNil(o.Eur) {
-		toSerialize["eur"] = o.Eur
-	}
-	if !isNil(o.Impact) {
-		toSerialize["impact"] = o.Impact
-	}
-	if !isNil(o.Oth) {
-		toSerialize["oth"] = o.Oth
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignalPopulationStats) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Afr) {
+		toSerialize["afr"] = o.Afr
+	}
+	if !IsNil(o.Asj) {
+		toSerialize["asj"] = o.Asj
+	}
+	if !IsNil(o.Asn) {
+		toSerialize["asn"] = o.Asn
+	}
+	if !IsNil(o.Eur) {
+		toSerialize["eur"] = o.Eur
+	}
+	if !IsNil(o.Impact) {
+		toSerialize["impact"] = o.Impact
+	}
+	if !IsNil(o.Oth) {
+		toSerialize["oth"] = o.Oth
+	}
+	return toSerialize, nil
 }
 
 type NullableSignalPopulationStats struct {

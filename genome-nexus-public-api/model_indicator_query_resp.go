@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IndicatorQueryResp type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IndicatorQueryResp{}
+
 // IndicatorQueryResp struct for IndicatorQueryResp
 type IndicatorQueryResp struct {
 	AlleleExist *bool `json:"alleleExist,omitempty"`
@@ -61,7 +64,7 @@ func NewIndicatorQueryRespWithDefaults() *IndicatorQueryResp {
 
 // GetAlleleExist returns the AlleleExist field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetAlleleExist() bool {
-	if o == nil || isNil(o.AlleleExist) {
+	if o == nil || IsNil(o.AlleleExist) {
 		var ret bool
 		return ret
 	}
@@ -71,15 +74,15 @@ func (o *IndicatorQueryResp) GetAlleleExist() bool {
 // GetAlleleExistOk returns a tuple with the AlleleExist field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetAlleleExistOk() (*bool, bool) {
-	if o == nil || isNil(o.AlleleExist) {
-    return nil, false
+	if o == nil || IsNil(o.AlleleExist) {
+		return nil, false
 	}
 	return o.AlleleExist, true
 }
 
 // HasAlleleExist returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasAlleleExist() bool {
-	if o != nil && !isNil(o.AlleleExist) {
+	if o != nil && !IsNil(o.AlleleExist) {
 		return true
 	}
 
@@ -93,7 +96,7 @@ func (o *IndicatorQueryResp) SetAlleleExist(v bool) {
 
 // GetDataVersion returns the DataVersion field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetDataVersion() string {
-	if o == nil || isNil(o.DataVersion) {
+	if o == nil || IsNil(o.DataVersion) {
 		var ret string
 		return ret
 	}
@@ -103,15 +106,15 @@ func (o *IndicatorQueryResp) GetDataVersion() string {
 // GetDataVersionOk returns a tuple with the DataVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetDataVersionOk() (*string, bool) {
-	if o == nil || isNil(o.DataVersion) {
-    return nil, false
+	if o == nil || IsNil(o.DataVersion) {
+		return nil, false
 	}
 	return o.DataVersion, true
 }
 
 // HasDataVersion returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasDataVersion() bool {
-	if o != nil && !isNil(o.DataVersion) {
+	if o != nil && !IsNil(o.DataVersion) {
 		return true
 	}
 
@@ -125,7 +128,7 @@ func (o *IndicatorQueryResp) SetDataVersion(v string) {
 
 // GetDiagnosticImplications returns the DiagnosticImplications field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetDiagnosticImplications() []Implication {
-	if o == nil || isNil(o.DiagnosticImplications) {
+	if o == nil || IsNil(o.DiagnosticImplications) {
 		var ret []Implication
 		return ret
 	}
@@ -135,15 +138,15 @@ func (o *IndicatorQueryResp) GetDiagnosticImplications() []Implication {
 // GetDiagnosticImplicationsOk returns a tuple with the DiagnosticImplications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetDiagnosticImplicationsOk() ([]Implication, bool) {
-	if o == nil || isNil(o.DiagnosticImplications) {
-    return nil, false
+	if o == nil || IsNil(o.DiagnosticImplications) {
+		return nil, false
 	}
 	return o.DiagnosticImplications, true
 }
 
 // HasDiagnosticImplications returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasDiagnosticImplications() bool {
-	if o != nil && !isNil(o.DiagnosticImplications) {
+	if o != nil && !IsNil(o.DiagnosticImplications) {
 		return true
 	}
 
@@ -157,7 +160,7 @@ func (o *IndicatorQueryResp) SetDiagnosticImplications(v []Implication) {
 
 // GetDiagnosticSummary returns the DiagnosticSummary field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetDiagnosticSummary() string {
-	if o == nil || isNil(o.DiagnosticSummary) {
+	if o == nil || IsNil(o.DiagnosticSummary) {
 		var ret string
 		return ret
 	}
@@ -167,15 +170,15 @@ func (o *IndicatorQueryResp) GetDiagnosticSummary() string {
 // GetDiagnosticSummaryOk returns a tuple with the DiagnosticSummary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetDiagnosticSummaryOk() (*string, bool) {
-	if o == nil || isNil(o.DiagnosticSummary) {
-    return nil, false
+	if o == nil || IsNil(o.DiagnosticSummary) {
+		return nil, false
 	}
 	return o.DiagnosticSummary, true
 }
 
 // HasDiagnosticSummary returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasDiagnosticSummary() bool {
-	if o != nil && !isNil(o.DiagnosticSummary) {
+	if o != nil && !IsNil(o.DiagnosticSummary) {
 		return true
 	}
 
@@ -189,7 +192,7 @@ func (o *IndicatorQueryResp) SetDiagnosticSummary(v string) {
 
 // GetGeneExist returns the GeneExist field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetGeneExist() bool {
-	if o == nil || isNil(o.GeneExist) {
+	if o == nil || IsNil(o.GeneExist) {
 		var ret bool
 		return ret
 	}
@@ -199,15 +202,15 @@ func (o *IndicatorQueryResp) GetGeneExist() bool {
 // GetGeneExistOk returns a tuple with the GeneExist field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetGeneExistOk() (*bool, bool) {
-	if o == nil || isNil(o.GeneExist) {
-    return nil, false
+	if o == nil || IsNil(o.GeneExist) {
+		return nil, false
 	}
 	return o.GeneExist, true
 }
 
 // HasGeneExist returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasGeneExist() bool {
-	if o != nil && !isNil(o.GeneExist) {
+	if o != nil && !IsNil(o.GeneExist) {
 		return true
 	}
 
@@ -221,7 +224,7 @@ func (o *IndicatorQueryResp) SetGeneExist(v bool) {
 
 // GetGeneSummary returns the GeneSummary field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetGeneSummary() string {
-	if o == nil || isNil(o.GeneSummary) {
+	if o == nil || IsNil(o.GeneSummary) {
 		var ret string
 		return ret
 	}
@@ -231,15 +234,15 @@ func (o *IndicatorQueryResp) GetGeneSummary() string {
 // GetGeneSummaryOk returns a tuple with the GeneSummary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetGeneSummaryOk() (*string, bool) {
-	if o == nil || isNil(o.GeneSummary) {
-    return nil, false
+	if o == nil || IsNil(o.GeneSummary) {
+		return nil, false
 	}
 	return o.GeneSummary, true
 }
 
 // HasGeneSummary returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasGeneSummary() bool {
-	if o != nil && !isNil(o.GeneSummary) {
+	if o != nil && !IsNil(o.GeneSummary) {
 		return true
 	}
 
@@ -253,7 +256,7 @@ func (o *IndicatorQueryResp) SetGeneSummary(v string) {
 
 // GetHighestDiagnosticImplicationLevel returns the HighestDiagnosticImplicationLevel field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetHighestDiagnosticImplicationLevel() string {
-	if o == nil || isNil(o.HighestDiagnosticImplicationLevel) {
+	if o == nil || IsNil(o.HighestDiagnosticImplicationLevel) {
 		var ret string
 		return ret
 	}
@@ -263,15 +266,15 @@ func (o *IndicatorQueryResp) GetHighestDiagnosticImplicationLevel() string {
 // GetHighestDiagnosticImplicationLevelOk returns a tuple with the HighestDiagnosticImplicationLevel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetHighestDiagnosticImplicationLevelOk() (*string, bool) {
-	if o == nil || isNil(o.HighestDiagnosticImplicationLevel) {
-    return nil, false
+	if o == nil || IsNil(o.HighestDiagnosticImplicationLevel) {
+		return nil, false
 	}
 	return o.HighestDiagnosticImplicationLevel, true
 }
 
 // HasHighestDiagnosticImplicationLevel returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasHighestDiagnosticImplicationLevel() bool {
-	if o != nil && !isNil(o.HighestDiagnosticImplicationLevel) {
+	if o != nil && !IsNil(o.HighestDiagnosticImplicationLevel) {
 		return true
 	}
 
@@ -285,7 +288,7 @@ func (o *IndicatorQueryResp) SetHighestDiagnosticImplicationLevel(v string) {
 
 // GetHighestPrognosticImplicationLevel returns the HighestPrognosticImplicationLevel field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetHighestPrognosticImplicationLevel() string {
-	if o == nil || isNil(o.HighestPrognosticImplicationLevel) {
+	if o == nil || IsNil(o.HighestPrognosticImplicationLevel) {
 		var ret string
 		return ret
 	}
@@ -295,15 +298,15 @@ func (o *IndicatorQueryResp) GetHighestPrognosticImplicationLevel() string {
 // GetHighestPrognosticImplicationLevelOk returns a tuple with the HighestPrognosticImplicationLevel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetHighestPrognosticImplicationLevelOk() (*string, bool) {
-	if o == nil || isNil(o.HighestPrognosticImplicationLevel) {
-    return nil, false
+	if o == nil || IsNil(o.HighestPrognosticImplicationLevel) {
+		return nil, false
 	}
 	return o.HighestPrognosticImplicationLevel, true
 }
 
 // HasHighestPrognosticImplicationLevel returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasHighestPrognosticImplicationLevel() bool {
-	if o != nil && !isNil(o.HighestPrognosticImplicationLevel) {
+	if o != nil && !IsNil(o.HighestPrognosticImplicationLevel) {
 		return true
 	}
 
@@ -317,7 +320,7 @@ func (o *IndicatorQueryResp) SetHighestPrognosticImplicationLevel(v string) {
 
 // GetHighestResistanceLevel returns the HighestResistanceLevel field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetHighestResistanceLevel() string {
-	if o == nil || isNil(o.HighestResistanceLevel) {
+	if o == nil || IsNil(o.HighestResistanceLevel) {
 		var ret string
 		return ret
 	}
@@ -327,15 +330,15 @@ func (o *IndicatorQueryResp) GetHighestResistanceLevel() string {
 // GetHighestResistanceLevelOk returns a tuple with the HighestResistanceLevel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetHighestResistanceLevelOk() (*string, bool) {
-	if o == nil || isNil(o.HighestResistanceLevel) {
-    return nil, false
+	if o == nil || IsNil(o.HighestResistanceLevel) {
+		return nil, false
 	}
 	return o.HighestResistanceLevel, true
 }
 
 // HasHighestResistanceLevel returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasHighestResistanceLevel() bool {
-	if o != nil && !isNil(o.HighestResistanceLevel) {
+	if o != nil && !IsNil(o.HighestResistanceLevel) {
 		return true
 	}
 
@@ -349,7 +352,7 @@ func (o *IndicatorQueryResp) SetHighestResistanceLevel(v string) {
 
 // GetHighestSensitiveLevel returns the HighestSensitiveLevel field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetHighestSensitiveLevel() string {
-	if o == nil || isNil(o.HighestSensitiveLevel) {
+	if o == nil || IsNil(o.HighestSensitiveLevel) {
 		var ret string
 		return ret
 	}
@@ -359,15 +362,15 @@ func (o *IndicatorQueryResp) GetHighestSensitiveLevel() string {
 // GetHighestSensitiveLevelOk returns a tuple with the HighestSensitiveLevel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetHighestSensitiveLevelOk() (*string, bool) {
-	if o == nil || isNil(o.HighestSensitiveLevel) {
-    return nil, false
+	if o == nil || IsNil(o.HighestSensitiveLevel) {
+		return nil, false
 	}
 	return o.HighestSensitiveLevel, true
 }
 
 // HasHighestSensitiveLevel returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasHighestSensitiveLevel() bool {
-	if o != nil && !isNil(o.HighestSensitiveLevel) {
+	if o != nil && !IsNil(o.HighestSensitiveLevel) {
 		return true
 	}
 
@@ -381,7 +384,7 @@ func (o *IndicatorQueryResp) SetHighestSensitiveLevel(v string) {
 
 // GetHotspot returns the Hotspot field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetHotspot() bool {
-	if o == nil || isNil(o.Hotspot) {
+	if o == nil || IsNil(o.Hotspot) {
 		var ret bool
 		return ret
 	}
@@ -391,15 +394,15 @@ func (o *IndicatorQueryResp) GetHotspot() bool {
 // GetHotspotOk returns a tuple with the Hotspot field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetHotspotOk() (*bool, bool) {
-	if o == nil || isNil(o.Hotspot) {
-    return nil, false
+	if o == nil || IsNil(o.Hotspot) {
+		return nil, false
 	}
 	return o.Hotspot, true
 }
 
 // HasHotspot returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasHotspot() bool {
-	if o != nil && !isNil(o.Hotspot) {
+	if o != nil && !IsNil(o.Hotspot) {
 		return true
 	}
 
@@ -413,7 +416,7 @@ func (o *IndicatorQueryResp) SetHotspot(v bool) {
 
 // GetLastUpdate returns the LastUpdate field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetLastUpdate() string {
-	if o == nil || isNil(o.LastUpdate) {
+	if o == nil || IsNil(o.LastUpdate) {
 		var ret string
 		return ret
 	}
@@ -423,15 +426,15 @@ func (o *IndicatorQueryResp) GetLastUpdate() string {
 // GetLastUpdateOk returns a tuple with the LastUpdate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetLastUpdateOk() (*string, bool) {
-	if o == nil || isNil(o.LastUpdate) {
-    return nil, false
+	if o == nil || IsNil(o.LastUpdate) {
+		return nil, false
 	}
 	return o.LastUpdate, true
 }
 
 // HasLastUpdate returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasLastUpdate() bool {
-	if o != nil && !isNil(o.LastUpdate) {
+	if o != nil && !IsNil(o.LastUpdate) {
 		return true
 	}
 
@@ -445,7 +448,7 @@ func (o *IndicatorQueryResp) SetLastUpdate(v string) {
 
 // GetMutationEffect returns the MutationEffect field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetMutationEffect() MutationEffectResp {
-	if o == nil || isNil(o.MutationEffect) {
+	if o == nil || IsNil(o.MutationEffect) {
 		var ret MutationEffectResp
 		return ret
 	}
@@ -455,15 +458,15 @@ func (o *IndicatorQueryResp) GetMutationEffect() MutationEffectResp {
 // GetMutationEffectOk returns a tuple with the MutationEffect field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetMutationEffectOk() (*MutationEffectResp, bool) {
-	if o == nil || isNil(o.MutationEffect) {
-    return nil, false
+	if o == nil || IsNil(o.MutationEffect) {
+		return nil, false
 	}
 	return o.MutationEffect, true
 }
 
 // HasMutationEffect returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasMutationEffect() bool {
-	if o != nil && !isNil(o.MutationEffect) {
+	if o != nil && !IsNil(o.MutationEffect) {
 		return true
 	}
 
@@ -477,7 +480,7 @@ func (o *IndicatorQueryResp) SetMutationEffect(v MutationEffectResp) {
 
 // GetOncogenic returns the Oncogenic field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetOncogenic() string {
-	if o == nil || isNil(o.Oncogenic) {
+	if o == nil || IsNil(o.Oncogenic) {
 		var ret string
 		return ret
 	}
@@ -487,15 +490,15 @@ func (o *IndicatorQueryResp) GetOncogenic() string {
 // GetOncogenicOk returns a tuple with the Oncogenic field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetOncogenicOk() (*string, bool) {
-	if o == nil || isNil(o.Oncogenic) {
-    return nil, false
+	if o == nil || IsNil(o.Oncogenic) {
+		return nil, false
 	}
 	return o.Oncogenic, true
 }
 
 // HasOncogenic returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasOncogenic() bool {
-	if o != nil && !isNil(o.Oncogenic) {
+	if o != nil && !IsNil(o.Oncogenic) {
 		return true
 	}
 
@@ -509,7 +512,7 @@ func (o *IndicatorQueryResp) SetOncogenic(v string) {
 
 // GetOtherSignificantResistanceLevels returns the OtherSignificantResistanceLevels field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetOtherSignificantResistanceLevels() []string {
-	if o == nil || isNil(o.OtherSignificantResistanceLevels) {
+	if o == nil || IsNil(o.OtherSignificantResistanceLevels) {
 		var ret []string
 		return ret
 	}
@@ -519,15 +522,15 @@ func (o *IndicatorQueryResp) GetOtherSignificantResistanceLevels() []string {
 // GetOtherSignificantResistanceLevelsOk returns a tuple with the OtherSignificantResistanceLevels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetOtherSignificantResistanceLevelsOk() ([]string, bool) {
-	if o == nil || isNil(o.OtherSignificantResistanceLevels) {
-    return nil, false
+	if o == nil || IsNil(o.OtherSignificantResistanceLevels) {
+		return nil, false
 	}
 	return o.OtherSignificantResistanceLevels, true
 }
 
 // HasOtherSignificantResistanceLevels returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasOtherSignificantResistanceLevels() bool {
-	if o != nil && !isNil(o.OtherSignificantResistanceLevels) {
+	if o != nil && !IsNil(o.OtherSignificantResistanceLevels) {
 		return true
 	}
 
@@ -541,7 +544,7 @@ func (o *IndicatorQueryResp) SetOtherSignificantResistanceLevels(v []string) {
 
 // GetOtherSignificantSensitiveLevels returns the OtherSignificantSensitiveLevels field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetOtherSignificantSensitiveLevels() []string {
-	if o == nil || isNil(o.OtherSignificantSensitiveLevels) {
+	if o == nil || IsNil(o.OtherSignificantSensitiveLevels) {
 		var ret []string
 		return ret
 	}
@@ -551,15 +554,15 @@ func (o *IndicatorQueryResp) GetOtherSignificantSensitiveLevels() []string {
 // GetOtherSignificantSensitiveLevelsOk returns a tuple with the OtherSignificantSensitiveLevels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetOtherSignificantSensitiveLevelsOk() ([]string, bool) {
-	if o == nil || isNil(o.OtherSignificantSensitiveLevels) {
-    return nil, false
+	if o == nil || IsNil(o.OtherSignificantSensitiveLevels) {
+		return nil, false
 	}
 	return o.OtherSignificantSensitiveLevels, true
 }
 
 // HasOtherSignificantSensitiveLevels returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasOtherSignificantSensitiveLevels() bool {
-	if o != nil && !isNil(o.OtherSignificantSensitiveLevels) {
+	if o != nil && !IsNil(o.OtherSignificantSensitiveLevels) {
 		return true
 	}
 
@@ -573,7 +576,7 @@ func (o *IndicatorQueryResp) SetOtherSignificantSensitiveLevels(v []string) {
 
 // GetPrognosticImplications returns the PrognosticImplications field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetPrognosticImplications() []Implication {
-	if o == nil || isNil(o.PrognosticImplications) {
+	if o == nil || IsNil(o.PrognosticImplications) {
 		var ret []Implication
 		return ret
 	}
@@ -583,15 +586,15 @@ func (o *IndicatorQueryResp) GetPrognosticImplications() []Implication {
 // GetPrognosticImplicationsOk returns a tuple with the PrognosticImplications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetPrognosticImplicationsOk() ([]Implication, bool) {
-	if o == nil || isNil(o.PrognosticImplications) {
-    return nil, false
+	if o == nil || IsNil(o.PrognosticImplications) {
+		return nil, false
 	}
 	return o.PrognosticImplications, true
 }
 
 // HasPrognosticImplications returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasPrognosticImplications() bool {
-	if o != nil && !isNil(o.PrognosticImplications) {
+	if o != nil && !IsNil(o.PrognosticImplications) {
 		return true
 	}
 
@@ -605,7 +608,7 @@ func (o *IndicatorQueryResp) SetPrognosticImplications(v []Implication) {
 
 // GetPrognosticSummary returns the PrognosticSummary field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetPrognosticSummary() string {
-	if o == nil || isNil(o.PrognosticSummary) {
+	if o == nil || IsNil(o.PrognosticSummary) {
 		var ret string
 		return ret
 	}
@@ -615,15 +618,15 @@ func (o *IndicatorQueryResp) GetPrognosticSummary() string {
 // GetPrognosticSummaryOk returns a tuple with the PrognosticSummary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetPrognosticSummaryOk() (*string, bool) {
-	if o == nil || isNil(o.PrognosticSummary) {
-    return nil, false
+	if o == nil || IsNil(o.PrognosticSummary) {
+		return nil, false
 	}
 	return o.PrognosticSummary, true
 }
 
 // HasPrognosticSummary returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasPrognosticSummary() bool {
-	if o != nil && !isNil(o.PrognosticSummary) {
+	if o != nil && !IsNil(o.PrognosticSummary) {
 		return true
 	}
 
@@ -637,7 +640,7 @@ func (o *IndicatorQueryResp) SetPrognosticSummary(v string) {
 
 // GetQuery returns the Query field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetQuery() Query {
-	if o == nil || isNil(o.Query) {
+	if o == nil || IsNil(o.Query) {
 		var ret Query
 		return ret
 	}
@@ -647,15 +650,15 @@ func (o *IndicatorQueryResp) GetQuery() Query {
 // GetQueryOk returns a tuple with the Query field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetQueryOk() (*Query, bool) {
-	if o == nil || isNil(o.Query) {
-    return nil, false
+	if o == nil || IsNil(o.Query) {
+		return nil, false
 	}
 	return o.Query, true
 }
 
 // HasQuery returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasQuery() bool {
-	if o != nil && !isNil(o.Query) {
+	if o != nil && !IsNil(o.Query) {
 		return true
 	}
 
@@ -669,7 +672,7 @@ func (o *IndicatorQueryResp) SetQuery(v Query) {
 
 // GetTreatments returns the Treatments field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetTreatments() []IndicatorQueryTreatment {
-	if o == nil || isNil(o.Treatments) {
+	if o == nil || IsNil(o.Treatments) {
 		var ret []IndicatorQueryTreatment
 		return ret
 	}
@@ -679,15 +682,15 @@ func (o *IndicatorQueryResp) GetTreatments() []IndicatorQueryTreatment {
 // GetTreatmentsOk returns a tuple with the Treatments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetTreatmentsOk() ([]IndicatorQueryTreatment, bool) {
-	if o == nil || isNil(o.Treatments) {
-    return nil, false
+	if o == nil || IsNil(o.Treatments) {
+		return nil, false
 	}
 	return o.Treatments, true
 }
 
 // HasTreatments returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasTreatments() bool {
-	if o != nil && !isNil(o.Treatments) {
+	if o != nil && !IsNil(o.Treatments) {
 		return true
 	}
 
@@ -701,7 +704,7 @@ func (o *IndicatorQueryResp) SetTreatments(v []IndicatorQueryTreatment) {
 
 // GetTumorTypeSummary returns the TumorTypeSummary field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetTumorTypeSummary() string {
-	if o == nil || isNil(o.TumorTypeSummary) {
+	if o == nil || IsNil(o.TumorTypeSummary) {
 		var ret string
 		return ret
 	}
@@ -711,15 +714,15 @@ func (o *IndicatorQueryResp) GetTumorTypeSummary() string {
 // GetTumorTypeSummaryOk returns a tuple with the TumorTypeSummary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetTumorTypeSummaryOk() (*string, bool) {
-	if o == nil || isNil(o.TumorTypeSummary) {
-    return nil, false
+	if o == nil || IsNil(o.TumorTypeSummary) {
+		return nil, false
 	}
 	return o.TumorTypeSummary, true
 }
 
 // HasTumorTypeSummary returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasTumorTypeSummary() bool {
-	if o != nil && !isNil(o.TumorTypeSummary) {
+	if o != nil && !IsNil(o.TumorTypeSummary) {
 		return true
 	}
 
@@ -733,7 +736,7 @@ func (o *IndicatorQueryResp) SetTumorTypeSummary(v string) {
 
 // GetVariantExist returns the VariantExist field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetVariantExist() bool {
-	if o == nil || isNil(o.VariantExist) {
+	if o == nil || IsNil(o.VariantExist) {
 		var ret bool
 		return ret
 	}
@@ -743,15 +746,15 @@ func (o *IndicatorQueryResp) GetVariantExist() bool {
 // GetVariantExistOk returns a tuple with the VariantExist field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetVariantExistOk() (*bool, bool) {
-	if o == nil || isNil(o.VariantExist) {
-    return nil, false
+	if o == nil || IsNil(o.VariantExist) {
+		return nil, false
 	}
 	return o.VariantExist, true
 }
 
 // HasVariantExist returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasVariantExist() bool {
-	if o != nil && !isNil(o.VariantExist) {
+	if o != nil && !IsNil(o.VariantExist) {
 		return true
 	}
 
@@ -765,7 +768,7 @@ func (o *IndicatorQueryResp) SetVariantExist(v bool) {
 
 // GetVariantSummary returns the VariantSummary field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetVariantSummary() string {
-	if o == nil || isNil(o.VariantSummary) {
+	if o == nil || IsNil(o.VariantSummary) {
 		var ret string
 		return ret
 	}
@@ -775,15 +778,15 @@ func (o *IndicatorQueryResp) GetVariantSummary() string {
 // GetVariantSummaryOk returns a tuple with the VariantSummary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetVariantSummaryOk() (*string, bool) {
-	if o == nil || isNil(o.VariantSummary) {
-    return nil, false
+	if o == nil || IsNil(o.VariantSummary) {
+		return nil, false
 	}
 	return o.VariantSummary, true
 }
 
 // HasVariantSummary returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasVariantSummary() bool {
-	if o != nil && !isNil(o.VariantSummary) {
+	if o != nil && !IsNil(o.VariantSummary) {
 		return true
 	}
 
@@ -797,7 +800,7 @@ func (o *IndicatorQueryResp) SetVariantSummary(v string) {
 
 // GetVus returns the Vus field value if set, zero value otherwise.
 func (o *IndicatorQueryResp) GetVus() bool {
-	if o == nil || isNil(o.Vus) {
+	if o == nil || IsNil(o.Vus) {
 		var ret bool
 		return ret
 	}
@@ -807,15 +810,15 @@ func (o *IndicatorQueryResp) GetVus() bool {
 // GetVusOk returns a tuple with the Vus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryResp) GetVusOk() (*bool, bool) {
-	if o == nil || isNil(o.Vus) {
-    return nil, false
+	if o == nil || IsNil(o.Vus) {
+		return nil, false
 	}
 	return o.Vus, true
 }
 
 // HasVus returns a boolean if a field has been set.
 func (o *IndicatorQueryResp) HasVus() bool {
-	if o != nil && !isNil(o.Vus) {
+	if o != nil && !IsNil(o.Vus) {
 		return true
 	}
 
@@ -828,80 +831,88 @@ func (o *IndicatorQueryResp) SetVus(v bool) {
 }
 
 func (o IndicatorQueryResp) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.AlleleExist) {
-		toSerialize["alleleExist"] = o.AlleleExist
-	}
-	if !isNil(o.DataVersion) {
-		toSerialize["dataVersion"] = o.DataVersion
-	}
-	if !isNil(o.DiagnosticImplications) {
-		toSerialize["diagnosticImplications"] = o.DiagnosticImplications
-	}
-	if !isNil(o.DiagnosticSummary) {
-		toSerialize["diagnosticSummary"] = o.DiagnosticSummary
-	}
-	if !isNil(o.GeneExist) {
-		toSerialize["geneExist"] = o.GeneExist
-	}
-	if !isNil(o.GeneSummary) {
-		toSerialize["geneSummary"] = o.GeneSummary
-	}
-	if !isNil(o.HighestDiagnosticImplicationLevel) {
-		toSerialize["highestDiagnosticImplicationLevel"] = o.HighestDiagnosticImplicationLevel
-	}
-	if !isNil(o.HighestPrognosticImplicationLevel) {
-		toSerialize["highestPrognosticImplicationLevel"] = o.HighestPrognosticImplicationLevel
-	}
-	if !isNil(o.HighestResistanceLevel) {
-		toSerialize["highestResistanceLevel"] = o.HighestResistanceLevel
-	}
-	if !isNil(o.HighestSensitiveLevel) {
-		toSerialize["highestSensitiveLevel"] = o.HighestSensitiveLevel
-	}
-	if !isNil(o.Hotspot) {
-		toSerialize["hotspot"] = o.Hotspot
-	}
-	if !isNil(o.LastUpdate) {
-		toSerialize["lastUpdate"] = o.LastUpdate
-	}
-	if !isNil(o.MutationEffect) {
-		toSerialize["mutationEffect"] = o.MutationEffect
-	}
-	if !isNil(o.Oncogenic) {
-		toSerialize["oncogenic"] = o.Oncogenic
-	}
-	if !isNil(o.OtherSignificantResistanceLevels) {
-		toSerialize["otherSignificantResistanceLevels"] = o.OtherSignificantResistanceLevels
-	}
-	if !isNil(o.OtherSignificantSensitiveLevels) {
-		toSerialize["otherSignificantSensitiveLevels"] = o.OtherSignificantSensitiveLevels
-	}
-	if !isNil(o.PrognosticImplications) {
-		toSerialize["prognosticImplications"] = o.PrognosticImplications
-	}
-	if !isNil(o.PrognosticSummary) {
-		toSerialize["prognosticSummary"] = o.PrognosticSummary
-	}
-	if !isNil(o.Query) {
-		toSerialize["query"] = o.Query
-	}
-	if !isNil(o.Treatments) {
-		toSerialize["treatments"] = o.Treatments
-	}
-	if !isNil(o.TumorTypeSummary) {
-		toSerialize["tumorTypeSummary"] = o.TumorTypeSummary
-	}
-	if !isNil(o.VariantExist) {
-		toSerialize["variantExist"] = o.VariantExist
-	}
-	if !isNil(o.VariantSummary) {
-		toSerialize["variantSummary"] = o.VariantSummary
-	}
-	if !isNil(o.Vus) {
-		toSerialize["vus"] = o.Vus
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o IndicatorQueryResp) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AlleleExist) {
+		toSerialize["alleleExist"] = o.AlleleExist
+	}
+	if !IsNil(o.DataVersion) {
+		toSerialize["dataVersion"] = o.DataVersion
+	}
+	if !IsNil(o.DiagnosticImplications) {
+		toSerialize["diagnosticImplications"] = o.DiagnosticImplications
+	}
+	if !IsNil(o.DiagnosticSummary) {
+		toSerialize["diagnosticSummary"] = o.DiagnosticSummary
+	}
+	if !IsNil(o.GeneExist) {
+		toSerialize["geneExist"] = o.GeneExist
+	}
+	if !IsNil(o.GeneSummary) {
+		toSerialize["geneSummary"] = o.GeneSummary
+	}
+	if !IsNil(o.HighestDiagnosticImplicationLevel) {
+		toSerialize["highestDiagnosticImplicationLevel"] = o.HighestDiagnosticImplicationLevel
+	}
+	if !IsNil(o.HighestPrognosticImplicationLevel) {
+		toSerialize["highestPrognosticImplicationLevel"] = o.HighestPrognosticImplicationLevel
+	}
+	if !IsNil(o.HighestResistanceLevel) {
+		toSerialize["highestResistanceLevel"] = o.HighestResistanceLevel
+	}
+	if !IsNil(o.HighestSensitiveLevel) {
+		toSerialize["highestSensitiveLevel"] = o.HighestSensitiveLevel
+	}
+	if !IsNil(o.Hotspot) {
+		toSerialize["hotspot"] = o.Hotspot
+	}
+	if !IsNil(o.LastUpdate) {
+		toSerialize["lastUpdate"] = o.LastUpdate
+	}
+	if !IsNil(o.MutationEffect) {
+		toSerialize["mutationEffect"] = o.MutationEffect
+	}
+	if !IsNil(o.Oncogenic) {
+		toSerialize["oncogenic"] = o.Oncogenic
+	}
+	if !IsNil(o.OtherSignificantResistanceLevels) {
+		toSerialize["otherSignificantResistanceLevels"] = o.OtherSignificantResistanceLevels
+	}
+	if !IsNil(o.OtherSignificantSensitiveLevels) {
+		toSerialize["otherSignificantSensitiveLevels"] = o.OtherSignificantSensitiveLevels
+	}
+	if !IsNil(o.PrognosticImplications) {
+		toSerialize["prognosticImplications"] = o.PrognosticImplications
+	}
+	if !IsNil(o.PrognosticSummary) {
+		toSerialize["prognosticSummary"] = o.PrognosticSummary
+	}
+	if !IsNil(o.Query) {
+		toSerialize["query"] = o.Query
+	}
+	if !IsNil(o.Treatments) {
+		toSerialize["treatments"] = o.Treatments
+	}
+	if !IsNil(o.TumorTypeSummary) {
+		toSerialize["tumorTypeSummary"] = o.TumorTypeSummary
+	}
+	if !IsNil(o.VariantExist) {
+		toSerialize["variantExist"] = o.VariantExist
+	}
+	if !IsNil(o.VariantSummary) {
+		toSerialize["variantSummary"] = o.VariantSummary
+	}
+	if !IsNil(o.Vus) {
+		toSerialize["vus"] = o.Vus
+	}
+	return toSerialize, nil
 }
 
 type NullableIndicatorQueryResp struct {

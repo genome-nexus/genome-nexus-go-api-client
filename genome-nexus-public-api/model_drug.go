@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Drug type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Drug{}
+
 // Drug struct for Drug
 type Drug struct {
 	DrugName *string `json:"drugName,omitempty"`
@@ -41,7 +44,7 @@ func NewDrugWithDefaults() *Drug {
 
 // GetDrugName returns the DrugName field value if set, zero value otherwise.
 func (o *Drug) GetDrugName() string {
-	if o == nil || isNil(o.DrugName) {
+	if o == nil || IsNil(o.DrugName) {
 		var ret string
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *Drug) GetDrugName() string {
 // GetDrugNameOk returns a tuple with the DrugName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Drug) GetDrugNameOk() (*string, bool) {
-	if o == nil || isNil(o.DrugName) {
-    return nil, false
+	if o == nil || IsNil(o.DrugName) {
+		return nil, false
 	}
 	return o.DrugName, true
 }
 
 // HasDrugName returns a boolean if a field has been set.
 func (o *Drug) HasDrugName() bool {
-	if o != nil && !isNil(o.DrugName) {
+	if o != nil && !IsNil(o.DrugName) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *Drug) SetDrugName(v string) {
 
 // GetNcitCode returns the NcitCode field value if set, zero value otherwise.
 func (o *Drug) GetNcitCode() string {
-	if o == nil || isNil(o.NcitCode) {
+	if o == nil || IsNil(o.NcitCode) {
 		var ret string
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *Drug) GetNcitCode() string {
 // GetNcitCodeOk returns a tuple with the NcitCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Drug) GetNcitCodeOk() (*string, bool) {
-	if o == nil || isNil(o.NcitCode) {
-    return nil, false
+	if o == nil || IsNil(o.NcitCode) {
+		return nil, false
 	}
 	return o.NcitCode, true
 }
 
 // HasNcitCode returns a boolean if a field has been set.
 func (o *Drug) HasNcitCode() bool {
-	if o != nil && !isNil(o.NcitCode) {
+	if o != nil && !IsNil(o.NcitCode) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *Drug) SetNcitCode(v string) {
 
 // GetSynonyms returns the Synonyms field value if set, zero value otherwise.
 func (o *Drug) GetSynonyms() []string {
-	if o == nil || isNil(o.Synonyms) {
+	if o == nil || IsNil(o.Synonyms) {
 		var ret []string
 		return ret
 	}
@@ -115,15 +118,15 @@ func (o *Drug) GetSynonyms() []string {
 // GetSynonymsOk returns a tuple with the Synonyms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Drug) GetSynonymsOk() ([]string, bool) {
-	if o == nil || isNil(o.Synonyms) {
-    return nil, false
+	if o == nil || IsNil(o.Synonyms) {
+		return nil, false
 	}
 	return o.Synonyms, true
 }
 
 // HasSynonyms returns a boolean if a field has been set.
 func (o *Drug) HasSynonyms() bool {
-	if o != nil && !isNil(o.Synonyms) {
+	if o != nil && !IsNil(o.Synonyms) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *Drug) SetSynonyms(v []string) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *Drug) GetUuid() string {
-	if o == nil || isNil(o.Uuid) {
+	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
 	}
@@ -147,15 +150,15 @@ func (o *Drug) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Drug) GetUuidOk() (*string, bool) {
-	if o == nil || isNil(o.Uuid) {
-    return nil, false
+	if o == nil || IsNil(o.Uuid) {
+		return nil, false
 	}
 	return o.Uuid, true
 }
 
 // HasUuid returns a boolean if a field has been set.
 func (o *Drug) HasUuid() bool {
-	if o != nil && !isNil(o.Uuid) {
+	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *Drug) SetUuid(v string) {
 }
 
 func (o Drug) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.DrugName) {
-		toSerialize["drugName"] = o.DrugName
-	}
-	if !isNil(o.NcitCode) {
-		toSerialize["ncitCode"] = o.NcitCode
-	}
-	if !isNil(o.Synonyms) {
-		toSerialize["synonyms"] = o.Synonyms
-	}
-	if !isNil(o.Uuid) {
-		toSerialize["uuid"] = o.Uuid
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Drug) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DrugName) {
+		toSerialize["drugName"] = o.DrugName
+	}
+	if !IsNil(o.NcitCode) {
+		toSerialize["ncitCode"] = o.NcitCode
+	}
+	if !IsNil(o.Synonyms) {
+		toSerialize["synonyms"] = o.Synonyms
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
+	return toSerialize, nil
 }
 
 type NullableDrug struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Vcf type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Vcf{}
+
 // Vcf struct for Vcf
 type Vcf struct {
 	// alt
@@ -43,7 +46,7 @@ func NewVcfWithDefaults() *Vcf {
 
 // GetAlt returns the Alt field value if set, zero value otherwise.
 func (o *Vcf) GetAlt() string {
-	if o == nil || isNil(o.Alt) {
+	if o == nil || IsNil(o.Alt) {
 		var ret string
 		return ret
 	}
@@ -53,15 +56,15 @@ func (o *Vcf) GetAlt() string {
 // GetAltOk returns a tuple with the Alt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Vcf) GetAltOk() (*string, bool) {
-	if o == nil || isNil(o.Alt) {
-    return nil, false
+	if o == nil || IsNil(o.Alt) {
+		return nil, false
 	}
 	return o.Alt, true
 }
 
 // HasAlt returns a boolean if a field has been set.
 func (o *Vcf) HasAlt() bool {
-	if o != nil && !isNil(o.Alt) {
+	if o != nil && !IsNil(o.Alt) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *Vcf) SetAlt(v string) {
 
 // GetPosition returns the Position field value if set, zero value otherwise.
 func (o *Vcf) GetPosition() string {
-	if o == nil || isNil(o.Position) {
+	if o == nil || IsNil(o.Position) {
 		var ret string
 		return ret
 	}
@@ -85,15 +88,15 @@ func (o *Vcf) GetPosition() string {
 // GetPositionOk returns a tuple with the Position field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Vcf) GetPositionOk() (*string, bool) {
-	if o == nil || isNil(o.Position) {
-    return nil, false
+	if o == nil || IsNil(o.Position) {
+		return nil, false
 	}
 	return o.Position, true
 }
 
 // HasPosition returns a boolean if a field has been set.
 func (o *Vcf) HasPosition() bool {
-	if o != nil && !isNil(o.Position) {
+	if o != nil && !IsNil(o.Position) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *Vcf) SetPosition(v string) {
 
 // GetRef returns the Ref field value if set, zero value otherwise.
 func (o *Vcf) GetRef() string {
-	if o == nil || isNil(o.Ref) {
+	if o == nil || IsNil(o.Ref) {
 		var ret string
 		return ret
 	}
@@ -117,15 +120,15 @@ func (o *Vcf) GetRef() string {
 // GetRefOk returns a tuple with the Ref field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Vcf) GetRefOk() (*string, bool) {
-	if o == nil || isNil(o.Ref) {
-    return nil, false
+	if o == nil || IsNil(o.Ref) {
+		return nil, false
 	}
 	return o.Ref, true
 }
 
 // HasRef returns a boolean if a field has been set.
 func (o *Vcf) HasRef() bool {
-	if o != nil && !isNil(o.Ref) {
+	if o != nil && !IsNil(o.Ref) {
 		return true
 	}
 
@@ -138,17 +141,25 @@ func (o *Vcf) SetRef(v string) {
 }
 
 func (o Vcf) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Alt) {
-		toSerialize["alt"] = o.Alt
-	}
-	if !isNil(o.Position) {
-		toSerialize["position"] = o.Position
-	}
-	if !isNil(o.Ref) {
-		toSerialize["ref"] = o.Ref
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Vcf) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Alt) {
+		toSerialize["alt"] = o.Alt
+	}
+	if !IsNil(o.Position) {
+		toSerialize["position"] = o.Position
+	}
+	if !IsNil(o.Ref) {
+		toSerialize["ref"] = o.Ref
+	}
+	return toSerialize, nil
 }
 
 type NullableVcf struct {

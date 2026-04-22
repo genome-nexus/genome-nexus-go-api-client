@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MutationEffectResp type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MutationEffectResp{}
+
 // MutationEffectResp struct for MutationEffectResp
 type MutationEffectResp struct {
 	Citations *Citations `json:"citations,omitempty"`
@@ -40,7 +43,7 @@ func NewMutationEffectRespWithDefaults() *MutationEffectResp {
 
 // GetCitations returns the Citations field value if set, zero value otherwise.
 func (o *MutationEffectResp) GetCitations() Citations {
-	if o == nil || isNil(o.Citations) {
+	if o == nil || IsNil(o.Citations) {
 		var ret Citations
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *MutationEffectResp) GetCitations() Citations {
 // GetCitationsOk returns a tuple with the Citations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationEffectResp) GetCitationsOk() (*Citations, bool) {
-	if o == nil || isNil(o.Citations) {
-    return nil, false
+	if o == nil || IsNil(o.Citations) {
+		return nil, false
 	}
 	return o.Citations, true
 }
 
 // HasCitations returns a boolean if a field has been set.
 func (o *MutationEffectResp) HasCitations() bool {
-	if o != nil && !isNil(o.Citations) {
+	if o != nil && !IsNil(o.Citations) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *MutationEffectResp) SetCitations(v Citations) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *MutationEffectResp) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *MutationEffectResp) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationEffectResp) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *MutationEffectResp) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *MutationEffectResp) SetDescription(v string) {
 
 // GetKnownEffect returns the KnownEffect field value if set, zero value otherwise.
 func (o *MutationEffectResp) GetKnownEffect() string {
-	if o == nil || isNil(o.KnownEffect) {
+	if o == nil || IsNil(o.KnownEffect) {
 		var ret string
 		return ret
 	}
@@ -114,15 +117,15 @@ func (o *MutationEffectResp) GetKnownEffect() string {
 // GetKnownEffectOk returns a tuple with the KnownEffect field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationEffectResp) GetKnownEffectOk() (*string, bool) {
-	if o == nil || isNil(o.KnownEffect) {
-    return nil, false
+	if o == nil || IsNil(o.KnownEffect) {
+		return nil, false
 	}
 	return o.KnownEffect, true
 }
 
 // HasKnownEffect returns a boolean if a field has been set.
 func (o *MutationEffectResp) HasKnownEffect() bool {
-	if o != nil && !isNil(o.KnownEffect) {
+	if o != nil && !IsNil(o.KnownEffect) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *MutationEffectResp) SetKnownEffect(v string) {
 }
 
 func (o MutationEffectResp) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Citations) {
-		toSerialize["citations"] = o.Citations
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.KnownEffect) {
-		toSerialize["knownEffect"] = o.KnownEffect
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MutationEffectResp) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Citations) {
+		toSerialize["citations"] = o.Citations
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.KnownEffect) {
+		toSerialize["knownEffect"] = o.KnownEffect
+	}
+	return toSerialize, nil
 }
 
 type NullableMutationEffectResp struct {

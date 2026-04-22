@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IntegerRange type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IntegerRange{}
+
 // IntegerRange struct for IntegerRange
 type IntegerRange struct {
 	End *int32 `json:"end,omitempty"`
@@ -39,7 +42,7 @@ func NewIntegerRangeWithDefaults() *IntegerRange {
 
 // GetEnd returns the End field value if set, zero value otherwise.
 func (o *IntegerRange) GetEnd() int32 {
-	if o == nil || isNil(o.End) {
+	if o == nil || IsNil(o.End) {
 		var ret int32
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *IntegerRange) GetEnd() int32 {
 // GetEndOk returns a tuple with the End field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntegerRange) GetEndOk() (*int32, bool) {
-	if o == nil || isNil(o.End) {
-    return nil, false
+	if o == nil || IsNil(o.End) {
+		return nil, false
 	}
 	return o.End, true
 }
 
 // HasEnd returns a boolean if a field has been set.
 func (o *IntegerRange) HasEnd() bool {
-	if o != nil && !isNil(o.End) {
+	if o != nil && !IsNil(o.End) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *IntegerRange) SetEnd(v int32) {
 
 // GetStart returns the Start field value if set, zero value otherwise.
 func (o *IntegerRange) GetStart() int32 {
-	if o == nil || isNil(o.Start) {
+	if o == nil || IsNil(o.Start) {
 		var ret int32
 		return ret
 	}
@@ -81,15 +84,15 @@ func (o *IntegerRange) GetStart() int32 {
 // GetStartOk returns a tuple with the Start field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IntegerRange) GetStartOk() (*int32, bool) {
-	if o == nil || isNil(o.Start) {
-    return nil, false
+	if o == nil || IsNil(o.Start) {
+		return nil, false
 	}
 	return o.Start, true
 }
 
 // HasStart returns a boolean if a field has been set.
 func (o *IntegerRange) HasStart() bool {
-	if o != nil && !isNil(o.Start) {
+	if o != nil && !IsNil(o.Start) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *IntegerRange) SetStart(v int32) {
 }
 
 func (o IntegerRange) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.End) {
-		toSerialize["end"] = o.End
-	}
-	if !isNil(o.Start) {
-		toSerialize["start"] = o.Start
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o IntegerRange) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.End) {
+		toSerialize["end"] = o.End
+	}
+	if !IsNil(o.Start) {
+		toSerialize["start"] = o.Start
+	}
+	return toSerialize, nil
 }
 
 type NullableIntegerRange struct {

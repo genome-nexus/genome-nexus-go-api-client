@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IndicatorQueryTreatment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IndicatorQueryTreatment{}
+
 // IndicatorQueryTreatment struct for IndicatorQueryTreatment
 type IndicatorQueryTreatment struct {
 	Abstracts []ArticleAbstract `json:"abstracts,omitempty"`
@@ -46,7 +49,7 @@ func NewIndicatorQueryTreatmentWithDefaults() *IndicatorQueryTreatment {
 
 // GetAbstracts returns the Abstracts field value if set, zero value otherwise.
 func (o *IndicatorQueryTreatment) GetAbstracts() []ArticleAbstract {
-	if o == nil || isNil(o.Abstracts) {
+	if o == nil || IsNil(o.Abstracts) {
 		var ret []ArticleAbstract
 		return ret
 	}
@@ -56,15 +59,15 @@ func (o *IndicatorQueryTreatment) GetAbstracts() []ArticleAbstract {
 // GetAbstractsOk returns a tuple with the Abstracts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryTreatment) GetAbstractsOk() ([]ArticleAbstract, bool) {
-	if o == nil || isNil(o.Abstracts) {
-    return nil, false
+	if o == nil || IsNil(o.Abstracts) {
+		return nil, false
 	}
 	return o.Abstracts, true
 }
 
 // HasAbstracts returns a boolean if a field has been set.
 func (o *IndicatorQueryTreatment) HasAbstracts() bool {
-	if o != nil && !isNil(o.Abstracts) {
+	if o != nil && !IsNil(o.Abstracts) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *IndicatorQueryTreatment) SetAbstracts(v []ArticleAbstract) {
 
 // GetAlterations returns the Alterations field value if set, zero value otherwise.
 func (o *IndicatorQueryTreatment) GetAlterations() []string {
-	if o == nil || isNil(o.Alterations) {
+	if o == nil || IsNil(o.Alterations) {
 		var ret []string
 		return ret
 	}
@@ -88,15 +91,15 @@ func (o *IndicatorQueryTreatment) GetAlterations() []string {
 // GetAlterationsOk returns a tuple with the Alterations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryTreatment) GetAlterationsOk() ([]string, bool) {
-	if o == nil || isNil(o.Alterations) {
-    return nil, false
+	if o == nil || IsNil(o.Alterations) {
+		return nil, false
 	}
 	return o.Alterations, true
 }
 
 // HasAlterations returns a boolean if a field has been set.
 func (o *IndicatorQueryTreatment) HasAlterations() bool {
-	if o != nil && !isNil(o.Alterations) {
+	if o != nil && !IsNil(o.Alterations) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *IndicatorQueryTreatment) SetAlterations(v []string) {
 
 // GetApprovedIndications returns the ApprovedIndications field value if set, zero value otherwise.
 func (o *IndicatorQueryTreatment) GetApprovedIndications() []string {
-	if o == nil || isNil(o.ApprovedIndications) {
+	if o == nil || IsNil(o.ApprovedIndications) {
 		var ret []string
 		return ret
 	}
@@ -120,15 +123,15 @@ func (o *IndicatorQueryTreatment) GetApprovedIndications() []string {
 // GetApprovedIndicationsOk returns a tuple with the ApprovedIndications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryTreatment) GetApprovedIndicationsOk() ([]string, bool) {
-	if o == nil || isNil(o.ApprovedIndications) {
-    return nil, false
+	if o == nil || IsNil(o.ApprovedIndications) {
+		return nil, false
 	}
 	return o.ApprovedIndications, true
 }
 
 // HasApprovedIndications returns a boolean if a field has been set.
 func (o *IndicatorQueryTreatment) HasApprovedIndications() bool {
-	if o != nil && !isNil(o.ApprovedIndications) {
+	if o != nil && !IsNil(o.ApprovedIndications) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *IndicatorQueryTreatment) SetApprovedIndications(v []string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *IndicatorQueryTreatment) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -152,15 +155,15 @@ func (o *IndicatorQueryTreatment) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryTreatment) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *IndicatorQueryTreatment) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *IndicatorQueryTreatment) SetDescription(v string) {
 
 // GetDrugs returns the Drugs field value if set, zero value otherwise.
 func (o *IndicatorQueryTreatment) GetDrugs() []Drug {
-	if o == nil || isNil(o.Drugs) {
+	if o == nil || IsNil(o.Drugs) {
 		var ret []Drug
 		return ret
 	}
@@ -184,15 +187,15 @@ func (o *IndicatorQueryTreatment) GetDrugs() []Drug {
 // GetDrugsOk returns a tuple with the Drugs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryTreatment) GetDrugsOk() ([]Drug, bool) {
-	if o == nil || isNil(o.Drugs) {
-    return nil, false
+	if o == nil || IsNil(o.Drugs) {
+		return nil, false
 	}
 	return o.Drugs, true
 }
 
 // HasDrugs returns a boolean if a field has been set.
 func (o *IndicatorQueryTreatment) HasDrugs() bool {
-	if o != nil && !isNil(o.Drugs) {
+	if o != nil && !IsNil(o.Drugs) {
 		return true
 	}
 
@@ -206,7 +209,7 @@ func (o *IndicatorQueryTreatment) SetDrugs(v []Drug) {
 
 // GetFdaApproved returns the FdaApproved field value if set, zero value otherwise.
 func (o *IndicatorQueryTreatment) GetFdaApproved() bool {
-	if o == nil || isNil(o.FdaApproved) {
+	if o == nil || IsNil(o.FdaApproved) {
 		var ret bool
 		return ret
 	}
@@ -216,15 +219,15 @@ func (o *IndicatorQueryTreatment) GetFdaApproved() bool {
 // GetFdaApprovedOk returns a tuple with the FdaApproved field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryTreatment) GetFdaApprovedOk() (*bool, bool) {
-	if o == nil || isNil(o.FdaApproved) {
-    return nil, false
+	if o == nil || IsNil(o.FdaApproved) {
+		return nil, false
 	}
 	return o.FdaApproved, true
 }
 
 // HasFdaApproved returns a boolean if a field has been set.
 func (o *IndicatorQueryTreatment) HasFdaApproved() bool {
-	if o != nil && !isNil(o.FdaApproved) {
+	if o != nil && !IsNil(o.FdaApproved) {
 		return true
 	}
 
@@ -238,7 +241,7 @@ func (o *IndicatorQueryTreatment) SetFdaApproved(v bool) {
 
 // GetLevel returns the Level field value if set, zero value otherwise.
 func (o *IndicatorQueryTreatment) GetLevel() string {
-	if o == nil || isNil(o.Level) {
+	if o == nil || IsNil(o.Level) {
 		var ret string
 		return ret
 	}
@@ -248,15 +251,15 @@ func (o *IndicatorQueryTreatment) GetLevel() string {
 // GetLevelOk returns a tuple with the Level field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryTreatment) GetLevelOk() (*string, bool) {
-	if o == nil || isNil(o.Level) {
-    return nil, false
+	if o == nil || IsNil(o.Level) {
+		return nil, false
 	}
 	return o.Level, true
 }
 
 // HasLevel returns a boolean if a field has been set.
 func (o *IndicatorQueryTreatment) HasLevel() bool {
-	if o != nil && !isNil(o.Level) {
+	if o != nil && !IsNil(o.Level) {
 		return true
 	}
 
@@ -270,7 +273,7 @@ func (o *IndicatorQueryTreatment) SetLevel(v string) {
 
 // GetLevelAssociatedCancerType returns the LevelAssociatedCancerType field value if set, zero value otherwise.
 func (o *IndicatorQueryTreatment) GetLevelAssociatedCancerType() TumorType {
-	if o == nil || isNil(o.LevelAssociatedCancerType) {
+	if o == nil || IsNil(o.LevelAssociatedCancerType) {
 		var ret TumorType
 		return ret
 	}
@@ -280,15 +283,15 @@ func (o *IndicatorQueryTreatment) GetLevelAssociatedCancerType() TumorType {
 // GetLevelAssociatedCancerTypeOk returns a tuple with the LevelAssociatedCancerType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryTreatment) GetLevelAssociatedCancerTypeOk() (*TumorType, bool) {
-	if o == nil || isNil(o.LevelAssociatedCancerType) {
-    return nil, false
+	if o == nil || IsNil(o.LevelAssociatedCancerType) {
+		return nil, false
 	}
 	return o.LevelAssociatedCancerType, true
 }
 
 // HasLevelAssociatedCancerType returns a boolean if a field has been set.
 func (o *IndicatorQueryTreatment) HasLevelAssociatedCancerType() bool {
-	if o != nil && !isNil(o.LevelAssociatedCancerType) {
+	if o != nil && !IsNil(o.LevelAssociatedCancerType) {
 		return true
 	}
 
@@ -302,7 +305,7 @@ func (o *IndicatorQueryTreatment) SetLevelAssociatedCancerType(v TumorType) {
 
 // GetPmids returns the Pmids field value if set, zero value otherwise.
 func (o *IndicatorQueryTreatment) GetPmids() []string {
-	if o == nil || isNil(o.Pmids) {
+	if o == nil || IsNil(o.Pmids) {
 		var ret []string
 		return ret
 	}
@@ -312,15 +315,15 @@ func (o *IndicatorQueryTreatment) GetPmids() []string {
 // GetPmidsOk returns a tuple with the Pmids field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndicatorQueryTreatment) GetPmidsOk() ([]string, bool) {
-	if o == nil || isNil(o.Pmids) {
-    return nil, false
+	if o == nil || IsNil(o.Pmids) {
+		return nil, false
 	}
 	return o.Pmids, true
 }
 
 // HasPmids returns a boolean if a field has been set.
 func (o *IndicatorQueryTreatment) HasPmids() bool {
-	if o != nil && !isNil(o.Pmids) {
+	if o != nil && !IsNil(o.Pmids) {
 		return true
 	}
 
@@ -333,35 +336,43 @@ func (o *IndicatorQueryTreatment) SetPmids(v []string) {
 }
 
 func (o IndicatorQueryTreatment) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Abstracts) {
-		toSerialize["abstracts"] = o.Abstracts
-	}
-	if !isNil(o.Alterations) {
-		toSerialize["alterations"] = o.Alterations
-	}
-	if !isNil(o.ApprovedIndications) {
-		toSerialize["approvedIndications"] = o.ApprovedIndications
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.Drugs) {
-		toSerialize["drugs"] = o.Drugs
-	}
-	if !isNil(o.FdaApproved) {
-		toSerialize["fdaApproved"] = o.FdaApproved
-	}
-	if !isNil(o.Level) {
-		toSerialize["level"] = o.Level
-	}
-	if !isNil(o.LevelAssociatedCancerType) {
-		toSerialize["levelAssociatedCancerType"] = o.LevelAssociatedCancerType
-	}
-	if !isNil(o.Pmids) {
-		toSerialize["pmids"] = o.Pmids
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o IndicatorQueryTreatment) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Abstracts) {
+		toSerialize["abstracts"] = o.Abstracts
+	}
+	if !IsNil(o.Alterations) {
+		toSerialize["alterations"] = o.Alterations
+	}
+	if !IsNil(o.ApprovedIndications) {
+		toSerialize["approvedIndications"] = o.ApprovedIndications
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Drugs) {
+		toSerialize["drugs"] = o.Drugs
+	}
+	if !IsNil(o.FdaApproved) {
+		toSerialize["fdaApproved"] = o.FdaApproved
+	}
+	if !IsNil(o.Level) {
+		toSerialize["level"] = o.Level
+	}
+	if !IsNil(o.LevelAssociatedCancerType) {
+		toSerialize["levelAssociatedCancerType"] = o.LevelAssociatedCancerType
+	}
+	if !IsNil(o.Pmids) {
+		toSerialize["pmids"] = o.Pmids
+	}
+	return toSerialize, nil
 }
 
 type NullableIndicatorQueryTreatment struct {

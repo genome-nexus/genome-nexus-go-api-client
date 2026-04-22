@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MyVariantInfo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MyVariantInfo{}
+
 // MyVariantInfo struct for MyVariantInfo
 type MyVariantInfo struct {
 	ClinVar *ClinVar `json:"clinVar,omitempty"`
@@ -52,7 +55,7 @@ func NewMyVariantInfoWithDefaults() *MyVariantInfo {
 
 // GetClinVar returns the ClinVar field value if set, zero value otherwise.
 func (o *MyVariantInfo) GetClinVar() ClinVar {
-	if o == nil || isNil(o.ClinVar) {
+	if o == nil || IsNil(o.ClinVar) {
 		var ret ClinVar
 		return ret
 	}
@@ -62,15 +65,15 @@ func (o *MyVariantInfo) GetClinVar() ClinVar {
 // GetClinVarOk returns a tuple with the ClinVar field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MyVariantInfo) GetClinVarOk() (*ClinVar, bool) {
-	if o == nil || isNil(o.ClinVar) {
-    return nil, false
+	if o == nil || IsNil(o.ClinVar) {
+		return nil, false
 	}
 	return o.ClinVar, true
 }
 
 // HasClinVar returns a boolean if a field has been set.
 func (o *MyVariantInfo) HasClinVar() bool {
-	if o != nil && !isNil(o.ClinVar) {
+	if o != nil && !IsNil(o.ClinVar) {
 		return true
 	}
 
@@ -84,7 +87,7 @@ func (o *MyVariantInfo) SetClinVar(v ClinVar) {
 
 // GetCosmic returns the Cosmic field value if set, zero value otherwise.
 func (o *MyVariantInfo) GetCosmic() Cosmic {
-	if o == nil || isNil(o.Cosmic) {
+	if o == nil || IsNil(o.Cosmic) {
 		var ret Cosmic
 		return ret
 	}
@@ -94,15 +97,15 @@ func (o *MyVariantInfo) GetCosmic() Cosmic {
 // GetCosmicOk returns a tuple with the Cosmic field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MyVariantInfo) GetCosmicOk() (*Cosmic, bool) {
-	if o == nil || isNil(o.Cosmic) {
-    return nil, false
+	if o == nil || IsNil(o.Cosmic) {
+		return nil, false
 	}
 	return o.Cosmic, true
 }
 
 // HasCosmic returns a boolean if a field has been set.
 func (o *MyVariantInfo) HasCosmic() bool {
-	if o != nil && !isNil(o.Cosmic) {
+	if o != nil && !IsNil(o.Cosmic) {
 		return true
 	}
 
@@ -116,7 +119,7 @@ func (o *MyVariantInfo) SetCosmic(v Cosmic) {
 
 // GetDbsnp returns the Dbsnp field value if set, zero value otherwise.
 func (o *MyVariantInfo) GetDbsnp() Dbsnp {
-	if o == nil || isNil(o.Dbsnp) {
+	if o == nil || IsNil(o.Dbsnp) {
 		var ret Dbsnp
 		return ret
 	}
@@ -126,15 +129,15 @@ func (o *MyVariantInfo) GetDbsnp() Dbsnp {
 // GetDbsnpOk returns a tuple with the Dbsnp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MyVariantInfo) GetDbsnpOk() (*Dbsnp, bool) {
-	if o == nil || isNil(o.Dbsnp) {
-    return nil, false
+	if o == nil || IsNil(o.Dbsnp) {
+		return nil, false
 	}
 	return o.Dbsnp, true
 }
 
 // HasDbsnp returns a boolean if a field has been set.
 func (o *MyVariantInfo) HasDbsnp() bool {
-	if o != nil && !isNil(o.Dbsnp) {
+	if o != nil && !IsNil(o.Dbsnp) {
 		return true
 	}
 
@@ -148,7 +151,7 @@ func (o *MyVariantInfo) SetDbsnp(v Dbsnp) {
 
 // GetGnomadExome returns the GnomadExome field value if set, zero value otherwise.
 func (o *MyVariantInfo) GetGnomadExome() Gnomad {
-	if o == nil || isNil(o.GnomadExome) {
+	if o == nil || IsNil(o.GnomadExome) {
 		var ret Gnomad
 		return ret
 	}
@@ -158,15 +161,15 @@ func (o *MyVariantInfo) GetGnomadExome() Gnomad {
 // GetGnomadExomeOk returns a tuple with the GnomadExome field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MyVariantInfo) GetGnomadExomeOk() (*Gnomad, bool) {
-	if o == nil || isNil(o.GnomadExome) {
-    return nil, false
+	if o == nil || IsNil(o.GnomadExome) {
+		return nil, false
 	}
 	return o.GnomadExome, true
 }
 
 // HasGnomadExome returns a boolean if a field has been set.
 func (o *MyVariantInfo) HasGnomadExome() bool {
-	if o != nil && !isNil(o.GnomadExome) {
+	if o != nil && !IsNil(o.GnomadExome) {
 		return true
 	}
 
@@ -180,7 +183,7 @@ func (o *MyVariantInfo) SetGnomadExome(v Gnomad) {
 
 // GetGnomadGenome returns the GnomadGenome field value if set, zero value otherwise.
 func (o *MyVariantInfo) GetGnomadGenome() Gnomad {
-	if o == nil || isNil(o.GnomadGenome) {
+	if o == nil || IsNil(o.GnomadGenome) {
 		var ret Gnomad
 		return ret
 	}
@@ -190,15 +193,15 @@ func (o *MyVariantInfo) GetGnomadGenome() Gnomad {
 // GetGnomadGenomeOk returns a tuple with the GnomadGenome field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MyVariantInfo) GetGnomadGenomeOk() (*Gnomad, bool) {
-	if o == nil || isNil(o.GnomadGenome) {
-    return nil, false
+	if o == nil || IsNil(o.GnomadGenome) {
+		return nil, false
 	}
 	return o.GnomadGenome, true
 }
 
 // HasGnomadGenome returns a boolean if a field has been set.
 func (o *MyVariantInfo) HasGnomadGenome() bool {
-	if o != nil && !isNil(o.GnomadGenome) {
+	if o != nil && !IsNil(o.GnomadGenome) {
 		return true
 	}
 
@@ -212,7 +215,7 @@ func (o *MyVariantInfo) SetGnomadGenome(v Gnomad) {
 
 // GetHgvs returns the Hgvs field value if set, zero value otherwise.
 func (o *MyVariantInfo) GetHgvs() string {
-	if o == nil || isNil(o.Hgvs) {
+	if o == nil || IsNil(o.Hgvs) {
 		var ret string
 		return ret
 	}
@@ -222,15 +225,15 @@ func (o *MyVariantInfo) GetHgvs() string {
 // GetHgvsOk returns a tuple with the Hgvs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MyVariantInfo) GetHgvsOk() (*string, bool) {
-	if o == nil || isNil(o.Hgvs) {
-    return nil, false
+	if o == nil || IsNil(o.Hgvs) {
+		return nil, false
 	}
 	return o.Hgvs, true
 }
 
 // HasHgvs returns a boolean if a field has been set.
 func (o *MyVariantInfo) HasHgvs() bool {
-	if o != nil && !isNil(o.Hgvs) {
+	if o != nil && !IsNil(o.Hgvs) {
 		return true
 	}
 
@@ -244,7 +247,7 @@ func (o *MyVariantInfo) SetHgvs(v string) {
 
 // GetMutdb returns the Mutdb field value if set, zero value otherwise.
 func (o *MyVariantInfo) GetMutdb() Mutdb {
-	if o == nil || isNil(o.Mutdb) {
+	if o == nil || IsNil(o.Mutdb) {
 		var ret Mutdb
 		return ret
 	}
@@ -254,15 +257,15 @@ func (o *MyVariantInfo) GetMutdb() Mutdb {
 // GetMutdbOk returns a tuple with the Mutdb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MyVariantInfo) GetMutdbOk() (*Mutdb, bool) {
-	if o == nil || isNil(o.Mutdb) {
-    return nil, false
+	if o == nil || IsNil(o.Mutdb) {
+		return nil, false
 	}
 	return o.Mutdb, true
 }
 
 // HasMutdb returns a boolean if a field has been set.
 func (o *MyVariantInfo) HasMutdb() bool {
-	if o != nil && !isNil(o.Mutdb) {
+	if o != nil && !IsNil(o.Mutdb) {
 		return true
 	}
 
@@ -276,7 +279,7 @@ func (o *MyVariantInfo) SetMutdb(v Mutdb) {
 
 // GetQuery returns the Query field value if set, zero value otherwise.
 func (o *MyVariantInfo) GetQuery() string {
-	if o == nil || isNil(o.Query) {
+	if o == nil || IsNil(o.Query) {
 		var ret string
 		return ret
 	}
@@ -286,15 +289,15 @@ func (o *MyVariantInfo) GetQuery() string {
 // GetQueryOk returns a tuple with the Query field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MyVariantInfo) GetQueryOk() (*string, bool) {
-	if o == nil || isNil(o.Query) {
-    return nil, false
+	if o == nil || IsNil(o.Query) {
+		return nil, false
 	}
 	return o.Query, true
 }
 
 // HasQuery returns a boolean if a field has been set.
 func (o *MyVariantInfo) HasQuery() bool {
-	if o != nil && !isNil(o.Query) {
+	if o != nil && !IsNil(o.Query) {
 		return true
 	}
 
@@ -308,7 +311,7 @@ func (o *MyVariantInfo) SetQuery(v string) {
 
 // GetSnpeff returns the Snpeff field value if set, zero value otherwise.
 func (o *MyVariantInfo) GetSnpeff() Snpeff {
-	if o == nil || isNil(o.Snpeff) {
+	if o == nil || IsNil(o.Snpeff) {
 		var ret Snpeff
 		return ret
 	}
@@ -318,15 +321,15 @@ func (o *MyVariantInfo) GetSnpeff() Snpeff {
 // GetSnpeffOk returns a tuple with the Snpeff field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MyVariantInfo) GetSnpeffOk() (*Snpeff, bool) {
-	if o == nil || isNil(o.Snpeff) {
-    return nil, false
+	if o == nil || IsNil(o.Snpeff) {
+		return nil, false
 	}
 	return o.Snpeff, true
 }
 
 // HasSnpeff returns a boolean if a field has been set.
 func (o *MyVariantInfo) HasSnpeff() bool {
-	if o != nil && !isNil(o.Snpeff) {
+	if o != nil && !IsNil(o.Snpeff) {
 		return true
 	}
 
@@ -340,7 +343,7 @@ func (o *MyVariantInfo) SetSnpeff(v Snpeff) {
 
 // GetVariant returns the Variant field value if set, zero value otherwise.
 func (o *MyVariantInfo) GetVariant() string {
-	if o == nil || isNil(o.Variant) {
+	if o == nil || IsNil(o.Variant) {
 		var ret string
 		return ret
 	}
@@ -350,15 +353,15 @@ func (o *MyVariantInfo) GetVariant() string {
 // GetVariantOk returns a tuple with the Variant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MyVariantInfo) GetVariantOk() (*string, bool) {
-	if o == nil || isNil(o.Variant) {
-    return nil, false
+	if o == nil || IsNil(o.Variant) {
+		return nil, false
 	}
 	return o.Variant, true
 }
 
 // HasVariant returns a boolean if a field has been set.
 func (o *MyVariantInfo) HasVariant() bool {
-	if o != nil && !isNil(o.Variant) {
+	if o != nil && !IsNil(o.Variant) {
 		return true
 	}
 
@@ -372,7 +375,7 @@ func (o *MyVariantInfo) SetVariant(v string) {
 
 // GetVcf returns the Vcf field value if set, zero value otherwise.
 func (o *MyVariantInfo) GetVcf() Vcf {
-	if o == nil || isNil(o.Vcf) {
+	if o == nil || IsNil(o.Vcf) {
 		var ret Vcf
 		return ret
 	}
@@ -382,15 +385,15 @@ func (o *MyVariantInfo) GetVcf() Vcf {
 // GetVcfOk returns a tuple with the Vcf field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MyVariantInfo) GetVcfOk() (*Vcf, bool) {
-	if o == nil || isNil(o.Vcf) {
-    return nil, false
+	if o == nil || IsNil(o.Vcf) {
+		return nil, false
 	}
 	return o.Vcf, true
 }
 
 // HasVcf returns a boolean if a field has been set.
 func (o *MyVariantInfo) HasVcf() bool {
-	if o != nil && !isNil(o.Vcf) {
+	if o != nil && !IsNil(o.Vcf) {
 		return true
 	}
 
@@ -404,7 +407,7 @@ func (o *MyVariantInfo) SetVcf(v Vcf) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *MyVariantInfo) GetVersion() int32 {
-	if o == nil || isNil(o.Version) {
+	if o == nil || IsNil(o.Version) {
 		var ret int32
 		return ret
 	}
@@ -414,15 +417,15 @@ func (o *MyVariantInfo) GetVersion() int32 {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MyVariantInfo) GetVersionOk() (*int32, bool) {
-	if o == nil || isNil(o.Version) {
-    return nil, false
+	if o == nil || IsNil(o.Version) {
+		return nil, false
 	}
 	return o.Version, true
 }
 
 // HasVersion returns a boolean if a field has been set.
 func (o *MyVariantInfo) HasVersion() bool {
-	if o != nil && !isNil(o.Version) {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -435,44 +438,52 @@ func (o *MyVariantInfo) SetVersion(v int32) {
 }
 
 func (o MyVariantInfo) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.ClinVar) {
-		toSerialize["clinVar"] = o.ClinVar
-	}
-	if !isNil(o.Cosmic) {
-		toSerialize["cosmic"] = o.Cosmic
-	}
-	if !isNil(o.Dbsnp) {
-		toSerialize["dbsnp"] = o.Dbsnp
-	}
-	if !isNil(o.GnomadExome) {
-		toSerialize["gnomadExome"] = o.GnomadExome
-	}
-	if !isNil(o.GnomadGenome) {
-		toSerialize["gnomadGenome"] = o.GnomadGenome
-	}
-	if !isNil(o.Hgvs) {
-		toSerialize["hgvs"] = o.Hgvs
-	}
-	if !isNil(o.Mutdb) {
-		toSerialize["mutdb"] = o.Mutdb
-	}
-	if !isNil(o.Query) {
-		toSerialize["query"] = o.Query
-	}
-	if !isNil(o.Snpeff) {
-		toSerialize["snpeff"] = o.Snpeff
-	}
-	if !isNil(o.Variant) {
-		toSerialize["variant"] = o.Variant
-	}
-	if !isNil(o.Vcf) {
-		toSerialize["vcf"] = o.Vcf
-	}
-	if !isNil(o.Version) {
-		toSerialize["version"] = o.Version
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MyVariantInfo) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ClinVar) {
+		toSerialize["clinVar"] = o.ClinVar
+	}
+	if !IsNil(o.Cosmic) {
+		toSerialize["cosmic"] = o.Cosmic
+	}
+	if !IsNil(o.Dbsnp) {
+		toSerialize["dbsnp"] = o.Dbsnp
+	}
+	if !IsNil(o.GnomadExome) {
+		toSerialize["gnomadExome"] = o.GnomadExome
+	}
+	if !IsNil(o.GnomadGenome) {
+		toSerialize["gnomadGenome"] = o.GnomadGenome
+	}
+	if !IsNil(o.Hgvs) {
+		toSerialize["hgvs"] = o.Hgvs
+	}
+	if !IsNil(o.Mutdb) {
+		toSerialize["mutdb"] = o.Mutdb
+	}
+	if !IsNil(o.Query) {
+		toSerialize["query"] = o.Query
+	}
+	if !IsNil(o.Snpeff) {
+		toSerialize["snpeff"] = o.Snpeff
+	}
+	if !IsNil(o.Variant) {
+		toSerialize["variant"] = o.Variant
+	}
+	if !IsNil(o.Vcf) {
+		toSerialize["vcf"] = o.Vcf
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	return toSerialize, nil
 }
 
 type NullableMyVariantInfo struct {

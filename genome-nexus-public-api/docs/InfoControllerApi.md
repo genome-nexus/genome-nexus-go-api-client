@@ -1,10 +1,10 @@
-# \InfoControllerApi
+# \InfoControllerAPI
 
 All URIs are relative to *http://www.genomenexus.org*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**FetchVersionGET**](InfoControllerApi.md#FetchVersionGET) | **Get** /version | Retrieve Genome Nexus Version
+[**FetchVersionGET**](InfoControllerAPI.md#FetchVersionGET) | **Get** /version | Retrieve Genome Nexus Version
 
 
 
@@ -20,23 +20,23 @@ Retrieve Genome Nexus Version
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InfoControllerApi.FetchVersionGET(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InfoControllerApi.FetchVersionGET``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchVersionGET`: AggregateSourceInfo
-    fmt.Fprintf(os.Stdout, "Response from `InfoControllerApi.FetchVersionGET`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InfoControllerAPI.FetchVersionGET(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InfoControllerAPI.FetchVersionGET``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchVersionGET`: AggregateSourceInfo
+	fmt.Fprintf(os.Stdout, "Response from `InfoControllerAPI.FetchVersionGET`: %v\n", resp)
 }
 ```
 

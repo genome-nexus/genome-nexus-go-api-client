@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Gene type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Gene{}
+
 // Gene struct for Gene
 type Gene struct {
 	// geneid
@@ -41,7 +44,7 @@ func NewGeneWithDefaults() *Gene {
 
 // GetGeneId returns the GeneId field value if set, zero value otherwise.
 func (o *Gene) GetGeneId() string {
-	if o == nil || isNil(o.GeneId) {
+	if o == nil || IsNil(o.GeneId) {
 		var ret string
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *Gene) GetGeneId() string {
 // GetGeneIdOk returns a tuple with the GeneId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Gene) GetGeneIdOk() (*string, bool) {
-	if o == nil || isNil(o.GeneId) {
-    return nil, false
+	if o == nil || IsNil(o.GeneId) {
+		return nil, false
 	}
 	return o.GeneId, true
 }
 
 // HasGeneId returns a boolean if a field has been set.
 func (o *Gene) HasGeneId() bool {
-	if o != nil && !isNil(o.GeneId) {
+	if o != nil && !IsNil(o.GeneId) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *Gene) SetGeneId(v string) {
 
 // GetSymbol returns the Symbol field value if set, zero value otherwise.
 func (o *Gene) GetSymbol() string {
-	if o == nil || isNil(o.Symbol) {
+	if o == nil || IsNil(o.Symbol) {
 		var ret string
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *Gene) GetSymbol() string {
 // GetSymbolOk returns a tuple with the Symbol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Gene) GetSymbolOk() (*string, bool) {
-	if o == nil || isNil(o.Symbol) {
-    return nil, false
+	if o == nil || IsNil(o.Symbol) {
+		return nil, false
 	}
 	return o.Symbol, true
 }
 
 // HasSymbol returns a boolean if a field has been set.
 func (o *Gene) HasSymbol() bool {
-	if o != nil && !isNil(o.Symbol) {
+	if o != nil && !IsNil(o.Symbol) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *Gene) SetSymbol(v string) {
 }
 
 func (o Gene) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.GeneId) {
-		toSerialize["geneId"] = o.GeneId
-	}
-	if !isNil(o.Symbol) {
-		toSerialize["symbol"] = o.Symbol
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Gene) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.GeneId) {
+		toSerialize["geneId"] = o.GeneId
+	}
+	if !IsNil(o.Symbol) {
+		toSerialize["symbol"] = o.Symbol
+	}
+	return toSerialize, nil
 }
 
 type NullableGene struct {

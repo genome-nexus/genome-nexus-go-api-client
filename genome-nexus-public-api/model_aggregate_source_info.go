@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AggregateSourceInfo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AggregateSourceInfo{}
+
 // AggregateSourceInfo struct for AggregateSourceInfo
 type AggregateSourceInfo struct {
 	AnnotationSourcesInfo []SourceVersionInfo `json:"annotationSourcesInfo,omitempty"`
@@ -40,7 +43,7 @@ func NewAggregateSourceInfoWithDefaults() *AggregateSourceInfo {
 
 // GetAnnotationSourcesInfo returns the AnnotationSourcesInfo field value if set, zero value otherwise.
 func (o *AggregateSourceInfo) GetAnnotationSourcesInfo() []SourceVersionInfo {
-	if o == nil || isNil(o.AnnotationSourcesInfo) {
+	if o == nil || IsNil(o.AnnotationSourcesInfo) {
 		var ret []SourceVersionInfo
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *AggregateSourceInfo) GetAnnotationSourcesInfo() []SourceVersionInfo {
 // GetAnnotationSourcesInfoOk returns a tuple with the AnnotationSourcesInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AggregateSourceInfo) GetAnnotationSourcesInfoOk() ([]SourceVersionInfo, bool) {
-	if o == nil || isNil(o.AnnotationSourcesInfo) {
-    return nil, false
+	if o == nil || IsNil(o.AnnotationSourcesInfo) {
+		return nil, false
 	}
 	return o.AnnotationSourcesInfo, true
 }
 
 // HasAnnotationSourcesInfo returns a boolean if a field has been set.
 func (o *AggregateSourceInfo) HasAnnotationSourcesInfo() bool {
-	if o != nil && !isNil(o.AnnotationSourcesInfo) {
+	if o != nil && !IsNil(o.AnnotationSourcesInfo) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *AggregateSourceInfo) SetAnnotationSourcesInfo(v []SourceVersionInfo) {
 
 // GetGenomeNexus returns the GenomeNexus field value if set, zero value otherwise.
 func (o *AggregateSourceInfo) GetGenomeNexus() GenomeNexusInfo {
-	if o == nil || isNil(o.GenomeNexus) {
+	if o == nil || IsNil(o.GenomeNexus) {
 		var ret GenomeNexusInfo
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *AggregateSourceInfo) GetGenomeNexus() GenomeNexusInfo {
 // GetGenomeNexusOk returns a tuple with the GenomeNexus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AggregateSourceInfo) GetGenomeNexusOk() (*GenomeNexusInfo, bool) {
-	if o == nil || isNil(o.GenomeNexus) {
-    return nil, false
+	if o == nil || IsNil(o.GenomeNexus) {
+		return nil, false
 	}
 	return o.GenomeNexus, true
 }
 
 // HasGenomeNexus returns a boolean if a field has been set.
 func (o *AggregateSourceInfo) HasGenomeNexus() bool {
-	if o != nil && !isNil(o.GenomeNexus) {
+	if o != nil && !IsNil(o.GenomeNexus) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *AggregateSourceInfo) SetGenomeNexus(v GenomeNexusInfo) {
 
 // GetVep returns the Vep field value if set, zero value otherwise.
 func (o *AggregateSourceInfo) GetVep() VEPInfo {
-	if o == nil || isNil(o.Vep) {
+	if o == nil || IsNil(o.Vep) {
 		var ret VEPInfo
 		return ret
 	}
@@ -114,15 +117,15 @@ func (o *AggregateSourceInfo) GetVep() VEPInfo {
 // GetVepOk returns a tuple with the Vep field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AggregateSourceInfo) GetVepOk() (*VEPInfo, bool) {
-	if o == nil || isNil(o.Vep) {
-    return nil, false
+	if o == nil || IsNil(o.Vep) {
+		return nil, false
 	}
 	return o.Vep, true
 }
 
 // HasVep returns a boolean if a field has been set.
 func (o *AggregateSourceInfo) HasVep() bool {
-	if o != nil && !isNil(o.Vep) {
+	if o != nil && !IsNil(o.Vep) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *AggregateSourceInfo) SetVep(v VEPInfo) {
 }
 
 func (o AggregateSourceInfo) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.AnnotationSourcesInfo) {
-		toSerialize["annotationSourcesInfo"] = o.AnnotationSourcesInfo
-	}
-	if !isNil(o.GenomeNexus) {
-		toSerialize["genomeNexus"] = o.GenomeNexus
-	}
-	if !isNil(o.Vep) {
-		toSerialize["vep"] = o.Vep
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AggregateSourceInfo) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AnnotationSourcesInfo) {
+		toSerialize["annotationSourcesInfo"] = o.AnnotationSourcesInfo
+	}
+	if !IsNil(o.GenomeNexus) {
+		toSerialize["genomeNexus"] = o.GenomeNexus
+	}
+	if !IsNil(o.Vep) {
+		toSerialize["vep"] = o.Vep
+	}
+	return toSerialize, nil
 }
 
 type NullableAggregateSourceInfo struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Hotspot type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Hotspot{}
+
 // Hotspot struct for Hotspot
 type Hotspot struct {
 	// Hugo gene symbol
@@ -55,7 +58,7 @@ func NewHotspotWithDefaults() *Hotspot {
 
 // GetHugoSymbol returns the HugoSymbol field value if set, zero value otherwise.
 func (o *Hotspot) GetHugoSymbol() string {
-	if o == nil || isNil(o.HugoSymbol) {
+	if o == nil || IsNil(o.HugoSymbol) {
 		var ret string
 		return ret
 	}
@@ -65,15 +68,15 @@ func (o *Hotspot) GetHugoSymbol() string {
 // GetHugoSymbolOk returns a tuple with the HugoSymbol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Hotspot) GetHugoSymbolOk() (*string, bool) {
-	if o == nil || isNil(o.HugoSymbol) {
-    return nil, false
+	if o == nil || IsNil(o.HugoSymbol) {
+		return nil, false
 	}
 	return o.HugoSymbol, true
 }
 
 // HasHugoSymbol returns a boolean if a field has been set.
 func (o *Hotspot) HasHugoSymbol() bool {
-	if o != nil && !isNil(o.HugoSymbol) {
+	if o != nil && !IsNil(o.HugoSymbol) {
 		return true
 	}
 
@@ -87,7 +90,7 @@ func (o *Hotspot) SetHugoSymbol(v string) {
 
 // GetInframeCount returns the InframeCount field value if set, zero value otherwise.
 func (o *Hotspot) GetInframeCount() int32 {
-	if o == nil || isNil(o.InframeCount) {
+	if o == nil || IsNil(o.InframeCount) {
 		var ret int32
 		return ret
 	}
@@ -97,15 +100,15 @@ func (o *Hotspot) GetInframeCount() int32 {
 // GetInframeCountOk returns a tuple with the InframeCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Hotspot) GetInframeCountOk() (*int32, bool) {
-	if o == nil || isNil(o.InframeCount) {
-    return nil, false
+	if o == nil || IsNil(o.InframeCount) {
+		return nil, false
 	}
 	return o.InframeCount, true
 }
 
 // HasInframeCount returns a boolean if a field has been set.
 func (o *Hotspot) HasInframeCount() bool {
-	if o != nil && !isNil(o.InframeCount) {
+	if o != nil && !IsNil(o.InframeCount) {
 		return true
 	}
 
@@ -119,7 +122,7 @@ func (o *Hotspot) SetInframeCount(v int32) {
 
 // GetMissenseCount returns the MissenseCount field value if set, zero value otherwise.
 func (o *Hotspot) GetMissenseCount() int32 {
-	if o == nil || isNil(o.MissenseCount) {
+	if o == nil || IsNil(o.MissenseCount) {
 		var ret int32
 		return ret
 	}
@@ -129,15 +132,15 @@ func (o *Hotspot) GetMissenseCount() int32 {
 // GetMissenseCountOk returns a tuple with the MissenseCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Hotspot) GetMissenseCountOk() (*int32, bool) {
-	if o == nil || isNil(o.MissenseCount) {
-    return nil, false
+	if o == nil || IsNil(o.MissenseCount) {
+		return nil, false
 	}
 	return o.MissenseCount, true
 }
 
 // HasMissenseCount returns a boolean if a field has been set.
 func (o *Hotspot) HasMissenseCount() bool {
-	if o != nil && !isNil(o.MissenseCount) {
+	if o != nil && !IsNil(o.MissenseCount) {
 		return true
 	}
 
@@ -151,7 +154,7 @@ func (o *Hotspot) SetMissenseCount(v int32) {
 
 // GetResidue returns the Residue field value if set, zero value otherwise.
 func (o *Hotspot) GetResidue() string {
-	if o == nil || isNil(o.Residue) {
+	if o == nil || IsNil(o.Residue) {
 		var ret string
 		return ret
 	}
@@ -161,15 +164,15 @@ func (o *Hotspot) GetResidue() string {
 // GetResidueOk returns a tuple with the Residue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Hotspot) GetResidueOk() (*string, bool) {
-	if o == nil || isNil(o.Residue) {
-    return nil, false
+	if o == nil || IsNil(o.Residue) {
+		return nil, false
 	}
 	return o.Residue, true
 }
 
 // HasResidue returns a boolean if a field has been set.
 func (o *Hotspot) HasResidue() bool {
-	if o != nil && !isNil(o.Residue) {
+	if o != nil && !IsNil(o.Residue) {
 		return true
 	}
 
@@ -183,7 +186,7 @@ func (o *Hotspot) SetResidue(v string) {
 
 // GetSpliceCount returns the SpliceCount field value if set, zero value otherwise.
 func (o *Hotspot) GetSpliceCount() int32 {
-	if o == nil || isNil(o.SpliceCount) {
+	if o == nil || IsNil(o.SpliceCount) {
 		var ret int32
 		return ret
 	}
@@ -193,15 +196,15 @@ func (o *Hotspot) GetSpliceCount() int32 {
 // GetSpliceCountOk returns a tuple with the SpliceCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Hotspot) GetSpliceCountOk() (*int32, bool) {
-	if o == nil || isNil(o.SpliceCount) {
-    return nil, false
+	if o == nil || IsNil(o.SpliceCount) {
+		return nil, false
 	}
 	return o.SpliceCount, true
 }
 
 // HasSpliceCount returns a boolean if a field has been set.
 func (o *Hotspot) HasSpliceCount() bool {
-	if o != nil && !isNil(o.SpliceCount) {
+	if o != nil && !IsNil(o.SpliceCount) {
 		return true
 	}
 
@@ -215,7 +218,7 @@ func (o *Hotspot) SetSpliceCount(v int32) {
 
 // GetTranscriptId returns the TranscriptId field value if set, zero value otherwise.
 func (o *Hotspot) GetTranscriptId() string {
-	if o == nil || isNil(o.TranscriptId) {
+	if o == nil || IsNil(o.TranscriptId) {
 		var ret string
 		return ret
 	}
@@ -225,15 +228,15 @@ func (o *Hotspot) GetTranscriptId() string {
 // GetTranscriptIdOk returns a tuple with the TranscriptId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Hotspot) GetTranscriptIdOk() (*string, bool) {
-	if o == nil || isNil(o.TranscriptId) {
-    return nil, false
+	if o == nil || IsNil(o.TranscriptId) {
+		return nil, false
 	}
 	return o.TranscriptId, true
 }
 
 // HasTranscriptId returns a boolean if a field has been set.
 func (o *Hotspot) HasTranscriptId() bool {
-	if o != nil && !isNil(o.TranscriptId) {
+	if o != nil && !IsNil(o.TranscriptId) {
 		return true
 	}
 
@@ -247,7 +250,7 @@ func (o *Hotspot) SetTranscriptId(v string) {
 
 // GetTruncatingCount returns the TruncatingCount field value if set, zero value otherwise.
 func (o *Hotspot) GetTruncatingCount() int32 {
-	if o == nil || isNil(o.TruncatingCount) {
+	if o == nil || IsNil(o.TruncatingCount) {
 		var ret int32
 		return ret
 	}
@@ -257,15 +260,15 @@ func (o *Hotspot) GetTruncatingCount() int32 {
 // GetTruncatingCountOk returns a tuple with the TruncatingCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Hotspot) GetTruncatingCountOk() (*int32, bool) {
-	if o == nil || isNil(o.TruncatingCount) {
-    return nil, false
+	if o == nil || IsNil(o.TruncatingCount) {
+		return nil, false
 	}
 	return o.TruncatingCount, true
 }
 
 // HasTruncatingCount returns a boolean if a field has been set.
 func (o *Hotspot) HasTruncatingCount() bool {
-	if o != nil && !isNil(o.TruncatingCount) {
+	if o != nil && !IsNil(o.TruncatingCount) {
 		return true
 	}
 
@@ -279,7 +282,7 @@ func (o *Hotspot) SetTruncatingCount(v int32) {
 
 // GetTumorCount returns the TumorCount field value if set, zero value otherwise.
 func (o *Hotspot) GetTumorCount() int32 {
-	if o == nil || isNil(o.TumorCount) {
+	if o == nil || IsNil(o.TumorCount) {
 		var ret int32
 		return ret
 	}
@@ -289,15 +292,15 @@ func (o *Hotspot) GetTumorCount() int32 {
 // GetTumorCountOk returns a tuple with the TumorCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Hotspot) GetTumorCountOk() (*int32, bool) {
-	if o == nil || isNil(o.TumorCount) {
-    return nil, false
+	if o == nil || IsNil(o.TumorCount) {
+		return nil, false
 	}
 	return o.TumorCount, true
 }
 
 // HasTumorCount returns a boolean if a field has been set.
 func (o *Hotspot) HasTumorCount() bool {
-	if o != nil && !isNil(o.TumorCount) {
+	if o != nil && !IsNil(o.TumorCount) {
 		return true
 	}
 
@@ -311,7 +314,7 @@ func (o *Hotspot) SetTumorCount(v int32) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Hotspot) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -321,15 +324,15 @@ func (o *Hotspot) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Hotspot) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
-    return nil, false
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *Hotspot) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -342,35 +345,43 @@ func (o *Hotspot) SetType(v string) {
 }
 
 func (o Hotspot) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.HugoSymbol) {
-		toSerialize["hugoSymbol"] = o.HugoSymbol
-	}
-	if !isNil(o.InframeCount) {
-		toSerialize["inframeCount"] = o.InframeCount
-	}
-	if !isNil(o.MissenseCount) {
-		toSerialize["missenseCount"] = o.MissenseCount
-	}
-	if !isNil(o.Residue) {
-		toSerialize["residue"] = o.Residue
-	}
-	if !isNil(o.SpliceCount) {
-		toSerialize["spliceCount"] = o.SpliceCount
-	}
-	if !isNil(o.TranscriptId) {
-		toSerialize["transcriptId"] = o.TranscriptId
-	}
-	if !isNil(o.TruncatingCount) {
-		toSerialize["truncatingCount"] = o.TruncatingCount
-	}
-	if !isNil(o.TumorCount) {
-		toSerialize["tumorCount"] = o.TumorCount
-	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Hotspot) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.HugoSymbol) {
+		toSerialize["hugoSymbol"] = o.HugoSymbol
+	}
+	if !IsNil(o.InframeCount) {
+		toSerialize["inframeCount"] = o.InframeCount
+	}
+	if !IsNil(o.MissenseCount) {
+		toSerialize["missenseCount"] = o.MissenseCount
+	}
+	if !IsNil(o.Residue) {
+		toSerialize["residue"] = o.Residue
+	}
+	if !IsNil(o.SpliceCount) {
+		toSerialize["spliceCount"] = o.SpliceCount
+	}
+	if !IsNil(o.TranscriptId) {
+		toSerialize["transcriptId"] = o.TranscriptId
+	}
+	if !IsNil(o.TruncatingCount) {
+		toSerialize["truncatingCount"] = o.TruncatingCount
+	}
+	if !IsNil(o.TumorCount) {
+		toSerialize["tumorCount"] = o.TumorCount
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableHotspot struct {

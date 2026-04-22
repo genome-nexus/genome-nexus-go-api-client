@@ -45,7 +45,7 @@ func NewClinvarWithDefaults() *Clinvar {
 
 // GetAlternateAllele returns the AlternateAllele field value if set, zero value otherwise.
 func (o *Clinvar) GetAlternateAllele() string {
-	if o == nil || isNil(o.AlternateAllele) {
+	if o == nil || IsNil(o.AlternateAllele) {
 		var ret string
 		return ret
 	}
@@ -55,7 +55,7 @@ func (o *Clinvar) GetAlternateAllele() string {
 // GetAlternateAlleleOk returns a tuple with the AlternateAllele field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Clinvar) GetAlternateAlleleOk() (*string, bool) {
-	if o == nil || isNil(o.AlternateAllele) {
+	if o == nil || IsNil(o.AlternateAllele) {
     return nil, false
 	}
 	return o.AlternateAllele, true
@@ -63,7 +63,7 @@ func (o *Clinvar) GetAlternateAlleleOk() (*string, bool) {
 
 // HasAlternateAllele returns a boolean if a field has been set.
 func (o *Clinvar) HasAlternateAllele() bool {
-	if o != nil && !isNil(o.AlternateAllele) {
+	if o != nil && !IsNil(o.AlternateAllele) {
 		return true
 	}
 
@@ -77,7 +77,7 @@ func (o *Clinvar) SetAlternateAllele(v string) {
 
 // GetChromosome returns the Chromosome field value if set, zero value otherwise.
 func (o *Clinvar) GetChromosome() string {
-	if o == nil || isNil(o.Chromosome) {
+	if o == nil || IsNil(o.Chromosome) {
 		var ret string
 		return ret
 	}
@@ -87,7 +87,7 @@ func (o *Clinvar) GetChromosome() string {
 // GetChromosomeOk returns a tuple with the Chromosome field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Clinvar) GetChromosomeOk() (*string, bool) {
-	if o == nil || isNil(o.Chromosome) {
+	if o == nil || IsNil(o.Chromosome) {
     return nil, false
 	}
 	return o.Chromosome, true
@@ -95,7 +95,7 @@ func (o *Clinvar) GetChromosomeOk() (*string, bool) {
 
 // HasChromosome returns a boolean if a field has been set.
 func (o *Clinvar) HasChromosome() bool {
-	if o != nil && !isNil(o.Chromosome) {
+	if o != nil && !IsNil(o.Chromosome) {
 		return true
 	}
 
@@ -109,7 +109,7 @@ func (o *Clinvar) SetChromosome(v string) {
 
 // GetClinicalSignificance returns the ClinicalSignificance field value if set, zero value otherwise.
 func (o *Clinvar) GetClinicalSignificance() string {
-	if o == nil || isNil(o.ClinicalSignificance) {
+	if o == nil || IsNil(o.ClinicalSignificance) {
 		var ret string
 		return ret
 	}
@@ -119,7 +119,7 @@ func (o *Clinvar) GetClinicalSignificance() string {
 // GetClinicalSignificanceOk returns a tuple with the ClinicalSignificance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Clinvar) GetClinicalSignificanceOk() (*string, bool) {
-	if o == nil || isNil(o.ClinicalSignificance) {
+	if o == nil || IsNil(o.ClinicalSignificance) {
     return nil, false
 	}
 	return o.ClinicalSignificance, true
@@ -127,7 +127,7 @@ func (o *Clinvar) GetClinicalSignificanceOk() (*string, bool) {
 
 // HasClinicalSignificance returns a boolean if a field has been set.
 func (o *Clinvar) HasClinicalSignificance() bool {
-	if o != nil && !isNil(o.ClinicalSignificance) {
+	if o != nil && !IsNil(o.ClinicalSignificance) {
 		return true
 	}
 
@@ -141,7 +141,7 @@ func (o *Clinvar) SetClinicalSignificance(v string) {
 
 // GetClinvarId returns the ClinvarId field value if set, zero value otherwise.
 func (o *Clinvar) GetClinvarId() int32 {
-	if o == nil || isNil(o.ClinvarId) {
+	if o == nil || IsNil(o.ClinvarId) {
 		var ret int32
 		return ret
 	}
@@ -151,7 +151,7 @@ func (o *Clinvar) GetClinvarId() int32 {
 // GetClinvarIdOk returns a tuple with the ClinvarId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Clinvar) GetClinvarIdOk() (*int32, bool) {
-	if o == nil || isNil(o.ClinvarId) {
+	if o == nil || IsNil(o.ClinvarId) {
     return nil, false
 	}
 	return o.ClinvarId, true
@@ -159,7 +159,7 @@ func (o *Clinvar) GetClinvarIdOk() (*int32, bool) {
 
 // HasClinvarId returns a boolean if a field has been set.
 func (o *Clinvar) HasClinvarId() bool {
-	if o != nil && !isNil(o.ClinvarId) {
+	if o != nil && !IsNil(o.ClinvarId) {
 		return true
 	}
 
@@ -173,7 +173,7 @@ func (o *Clinvar) SetClinvarId(v int32) {
 
 // GetConflictingClinicalSignificance returns the ConflictingClinicalSignificance field value if set, zero value otherwise.
 func (o *Clinvar) GetConflictingClinicalSignificance() string {
-	if o == nil || isNil(o.ConflictingClinicalSignificance) {
+	if o == nil || IsNil(o.ConflictingClinicalSignificance) {
 		var ret string
 		return ret
 	}
@@ -183,7 +183,7 @@ func (o *Clinvar) GetConflictingClinicalSignificance() string {
 // GetConflictingClinicalSignificanceOk returns a tuple with the ConflictingClinicalSignificance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Clinvar) GetConflictingClinicalSignificanceOk() (*string, bool) {
-	if o == nil || isNil(o.ConflictingClinicalSignificance) {
+	if o == nil || IsNil(o.ConflictingClinicalSignificance) {
     return nil, false
 	}
 	return o.ConflictingClinicalSignificance, true
@@ -191,7 +191,7 @@ func (o *Clinvar) GetConflictingClinicalSignificanceOk() (*string, bool) {
 
 // HasConflictingClinicalSignificance returns a boolean if a field has been set.
 func (o *Clinvar) HasConflictingClinicalSignificance() bool {
-	if o != nil && !isNil(o.ConflictingClinicalSignificance) {
+	if o != nil && !IsNil(o.ConflictingClinicalSignificance) {
 		return true
 	}
 
@@ -205,7 +205,7 @@ func (o *Clinvar) SetConflictingClinicalSignificance(v string) {
 
 // GetEndPosition returns the EndPosition field value if set, zero value otherwise.
 func (o *Clinvar) GetEndPosition() int32 {
-	if o == nil || isNil(o.EndPosition) {
+	if o == nil || IsNil(o.EndPosition) {
 		var ret int32
 		return ret
 	}
@@ -215,7 +215,7 @@ func (o *Clinvar) GetEndPosition() int32 {
 // GetEndPositionOk returns a tuple with the EndPosition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Clinvar) GetEndPositionOk() (*int32, bool) {
-	if o == nil || isNil(o.EndPosition) {
+	if o == nil || IsNil(o.EndPosition) {
     return nil, false
 	}
 	return o.EndPosition, true
@@ -223,7 +223,7 @@ func (o *Clinvar) GetEndPositionOk() (*int32, bool) {
 
 // HasEndPosition returns a boolean if a field has been set.
 func (o *Clinvar) HasEndPosition() bool {
-	if o != nil && !isNil(o.EndPosition) {
+	if o != nil && !IsNil(o.EndPosition) {
 		return true
 	}
 
@@ -237,7 +237,7 @@ func (o *Clinvar) SetEndPosition(v int32) {
 
 // GetReferenceAllele returns the ReferenceAllele field value if set, zero value otherwise.
 func (o *Clinvar) GetReferenceAllele() string {
-	if o == nil || isNil(o.ReferenceAllele) {
+	if o == nil || IsNil(o.ReferenceAllele) {
 		var ret string
 		return ret
 	}
@@ -247,7 +247,7 @@ func (o *Clinvar) GetReferenceAllele() string {
 // GetReferenceAlleleOk returns a tuple with the ReferenceAllele field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Clinvar) GetReferenceAlleleOk() (*string, bool) {
-	if o == nil || isNil(o.ReferenceAllele) {
+	if o == nil || IsNil(o.ReferenceAllele) {
     return nil, false
 	}
 	return o.ReferenceAllele, true
@@ -255,7 +255,7 @@ func (o *Clinvar) GetReferenceAlleleOk() (*string, bool) {
 
 // HasReferenceAllele returns a boolean if a field has been set.
 func (o *Clinvar) HasReferenceAllele() bool {
-	if o != nil && !isNil(o.ReferenceAllele) {
+	if o != nil && !IsNil(o.ReferenceAllele) {
 		return true
 	}
 
@@ -269,7 +269,7 @@ func (o *Clinvar) SetReferenceAllele(v string) {
 
 // GetStartPosition returns the StartPosition field value if set, zero value otherwise.
 func (o *Clinvar) GetStartPosition() int32 {
-	if o == nil || isNil(o.StartPosition) {
+	if o == nil || IsNil(o.StartPosition) {
 		var ret int32
 		return ret
 	}
@@ -279,7 +279,7 @@ func (o *Clinvar) GetStartPosition() int32 {
 // GetStartPositionOk returns a tuple with the StartPosition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Clinvar) GetStartPositionOk() (*int32, bool) {
-	if o == nil || isNil(o.StartPosition) {
+	if o == nil || IsNil(o.StartPosition) {
     return nil, false
 	}
 	return o.StartPosition, true
@@ -287,7 +287,7 @@ func (o *Clinvar) GetStartPositionOk() (*int32, bool) {
 
 // HasStartPosition returns a boolean if a field has been set.
 func (o *Clinvar) HasStartPosition() bool {
-	if o != nil && !isNil(o.StartPosition) {
+	if o != nil && !IsNil(o.StartPosition) {
 		return true
 	}
 
@@ -301,28 +301,28 @@ func (o *Clinvar) SetStartPosition(v int32) {
 
 func (o Clinvar) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if !isNil(o.AlternateAllele) {
+	if !IsNil(o.AlternateAllele) {
 		toSerialize["alternateAllele"] = o.AlternateAllele
 	}
-	if !isNil(o.Chromosome) {
+	if !IsNil(o.Chromosome) {
 		toSerialize["chromosome"] = o.Chromosome
 	}
-	if !isNil(o.ClinicalSignificance) {
+	if !IsNil(o.ClinicalSignificance) {
 		toSerialize["clinicalSignificance"] = o.ClinicalSignificance
 	}
-	if !isNil(o.ClinvarId) {
+	if !IsNil(o.ClinvarId) {
 		toSerialize["clinvarId"] = o.ClinvarId
 	}
-	if !isNil(o.ConflictingClinicalSignificance) {
+	if !IsNil(o.ConflictingClinicalSignificance) {
 		toSerialize["conflictingClinicalSignificance"] = o.ConflictingClinicalSignificance
 	}
-	if !isNil(o.EndPosition) {
+	if !IsNil(o.EndPosition) {
 		toSerialize["endPosition"] = o.EndPosition
 	}
-	if !isNil(o.ReferenceAllele) {
+	if !IsNil(o.ReferenceAllele) {
 		toSerialize["referenceAllele"] = o.ReferenceAllele
 	}
-	if !isNil(o.StartPosition) {
+	if !IsNil(o.StartPosition) {
 		toSerialize["startPosition"] = o.StartPosition
 	}
 	return json.Marshal(toSerialize)

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MainType type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MainType{}
+
 // MainType OncoTree Cancer Type
 type MainType struct {
 	Id *int32 `json:"id,omitempty"`
@@ -40,7 +43,7 @@ func NewMainTypeWithDefaults() *MainType {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *MainType) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *MainType) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MainType) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *MainType) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *MainType) SetId(v int32) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *MainType) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *MainType) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MainType) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *MainType) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *MainType) SetName(v string) {
 
 // GetTumorForm returns the TumorForm field value if set, zero value otherwise.
 func (o *MainType) GetTumorForm() string {
-	if o == nil || isNil(o.TumorForm) {
+	if o == nil || IsNil(o.TumorForm) {
 		var ret string
 		return ret
 	}
@@ -114,15 +117,15 @@ func (o *MainType) GetTumorForm() string {
 // GetTumorFormOk returns a tuple with the TumorForm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MainType) GetTumorFormOk() (*string, bool) {
-	if o == nil || isNil(o.TumorForm) {
-    return nil, false
+	if o == nil || IsNil(o.TumorForm) {
+		return nil, false
 	}
 	return o.TumorForm, true
 }
 
 // HasTumorForm returns a boolean if a field has been set.
 func (o *MainType) HasTumorForm() bool {
-	if o != nil && !isNil(o.TumorForm) {
+	if o != nil && !IsNil(o.TumorForm) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *MainType) SetTumorForm(v string) {
 }
 
 func (o MainType) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.TumorForm) {
-		toSerialize["tumorForm"] = o.TumorForm
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MainType) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.TumorForm) {
+		toSerialize["tumorForm"] = o.TumorForm
+	}
+	return toSerialize, nil
 }
 
 type NullableMainType struct {

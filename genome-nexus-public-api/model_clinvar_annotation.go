@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClinvarAnnotation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClinvarAnnotation{}
+
 // ClinvarAnnotation struct for ClinvarAnnotation
 type ClinvarAnnotation struct {
 	Annotation *Clinvar `json:"annotation,omitempty"`
@@ -38,7 +41,7 @@ func NewClinvarAnnotationWithDefaults() *ClinvarAnnotation {
 
 // GetAnnotation returns the Annotation field value if set, zero value otherwise.
 func (o *ClinvarAnnotation) GetAnnotation() Clinvar {
-	if o == nil || isNil(o.Annotation) {
+	if o == nil || IsNil(o.Annotation) {
 		var ret Clinvar
 		return ret
 	}
@@ -48,15 +51,15 @@ func (o *ClinvarAnnotation) GetAnnotation() Clinvar {
 // GetAnnotationOk returns a tuple with the Annotation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClinvarAnnotation) GetAnnotationOk() (*Clinvar, bool) {
-	if o == nil || isNil(o.Annotation) {
-    return nil, false
+	if o == nil || IsNil(o.Annotation) {
+		return nil, false
 	}
 	return o.Annotation, true
 }
 
 // HasAnnotation returns a boolean if a field has been set.
 func (o *ClinvarAnnotation) HasAnnotation() bool {
-	if o != nil && !isNil(o.Annotation) {
+	if o != nil && !IsNil(o.Annotation) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *ClinvarAnnotation) SetAnnotation(v Clinvar) {
 }
 
 func (o ClinvarAnnotation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Annotation) {
-		toSerialize["annotation"] = o.Annotation
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClinvarAnnotation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Annotation) {
+		toSerialize["annotation"] = o.Annotation
+	}
+	return toSerialize, nil
 }
 
 type NullableClinvarAnnotation struct {

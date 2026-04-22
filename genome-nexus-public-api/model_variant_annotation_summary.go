@@ -12,7 +12,12 @@ package genome_nexus_public_api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the VariantAnnotationSummary type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VariantAnnotationSummary{}
 
 // VariantAnnotationSummary struct for VariantAnnotationSummary
 type VariantAnnotationSummary struct {
@@ -34,6 +39,8 @@ type VariantAnnotationSummary struct {
 	VariantType *string `json:"variantType,omitempty"`
 	Vues *Vues `json:"vues,omitempty"`
 }
+
+type _VariantAnnotationSummary VariantAnnotationSummary
 
 // NewVariantAnnotationSummary instantiates a new VariantAnnotationSummary object
 // This constructor will assign default values to properties that have it defined,
@@ -58,7 +65,7 @@ func NewVariantAnnotationSummaryWithDefaults() *VariantAnnotationSummary {
 
 // GetAssemblyName returns the AssemblyName field value if set, zero value otherwise.
 func (o *VariantAnnotationSummary) GetAssemblyName() string {
-	if o == nil || isNil(o.AssemblyName) {
+	if o == nil || IsNil(o.AssemblyName) {
 		var ret string
 		return ret
 	}
@@ -68,15 +75,15 @@ func (o *VariantAnnotationSummary) GetAssemblyName() string {
 // GetAssemblyNameOk returns a tuple with the AssemblyName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotationSummary) GetAssemblyNameOk() (*string, bool) {
-	if o == nil || isNil(o.AssemblyName) {
-    return nil, false
+	if o == nil || IsNil(o.AssemblyName) {
+		return nil, false
 	}
 	return o.AssemblyName, true
 }
 
 // HasAssemblyName returns a boolean if a field has been set.
 func (o *VariantAnnotationSummary) HasAssemblyName() bool {
-	if o != nil && !isNil(o.AssemblyName) {
+	if o != nil && !IsNil(o.AssemblyName) {
 		return true
 	}
 
@@ -90,7 +97,7 @@ func (o *VariantAnnotationSummary) SetAssemblyName(v string) {
 
 // GetCanonicalTranscriptId returns the CanonicalTranscriptId field value if set, zero value otherwise.
 func (o *VariantAnnotationSummary) GetCanonicalTranscriptId() string {
-	if o == nil || isNil(o.CanonicalTranscriptId) {
+	if o == nil || IsNil(o.CanonicalTranscriptId) {
 		var ret string
 		return ret
 	}
@@ -100,15 +107,15 @@ func (o *VariantAnnotationSummary) GetCanonicalTranscriptId() string {
 // GetCanonicalTranscriptIdOk returns a tuple with the CanonicalTranscriptId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotationSummary) GetCanonicalTranscriptIdOk() (*string, bool) {
-	if o == nil || isNil(o.CanonicalTranscriptId) {
-    return nil, false
+	if o == nil || IsNil(o.CanonicalTranscriptId) {
+		return nil, false
 	}
 	return o.CanonicalTranscriptId, true
 }
 
 // HasCanonicalTranscriptId returns a boolean if a field has been set.
 func (o *VariantAnnotationSummary) HasCanonicalTranscriptId() bool {
-	if o != nil && !isNil(o.CanonicalTranscriptId) {
+	if o != nil && !IsNil(o.CanonicalTranscriptId) {
 		return true
 	}
 
@@ -122,7 +129,7 @@ func (o *VariantAnnotationSummary) SetCanonicalTranscriptId(v string) {
 
 // GetGenomicLocation returns the GenomicLocation field value if set, zero value otherwise.
 func (o *VariantAnnotationSummary) GetGenomicLocation() GenomicLocation {
-	if o == nil || isNil(o.GenomicLocation) {
+	if o == nil || IsNil(o.GenomicLocation) {
 		var ret GenomicLocation
 		return ret
 	}
@@ -132,15 +139,15 @@ func (o *VariantAnnotationSummary) GetGenomicLocation() GenomicLocation {
 // GetGenomicLocationOk returns a tuple with the GenomicLocation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotationSummary) GetGenomicLocationOk() (*GenomicLocation, bool) {
-	if o == nil || isNil(o.GenomicLocation) {
-    return nil, false
+	if o == nil || IsNil(o.GenomicLocation) {
+		return nil, false
 	}
 	return o.GenomicLocation, true
 }
 
 // HasGenomicLocation returns a boolean if a field has been set.
 func (o *VariantAnnotationSummary) HasGenomicLocation() bool {
-	if o != nil && !isNil(o.GenomicLocation) {
+	if o != nil && !IsNil(o.GenomicLocation) {
 		return true
 	}
 
@@ -154,7 +161,7 @@ func (o *VariantAnnotationSummary) SetGenomicLocation(v GenomicLocation) {
 
 // GetStrandSign returns the StrandSign field value if set, zero value otherwise.
 func (o *VariantAnnotationSummary) GetStrandSign() string {
-	if o == nil || isNil(o.StrandSign) {
+	if o == nil || IsNil(o.StrandSign) {
 		var ret string
 		return ret
 	}
@@ -164,15 +171,15 @@ func (o *VariantAnnotationSummary) GetStrandSign() string {
 // GetStrandSignOk returns a tuple with the StrandSign field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotationSummary) GetStrandSignOk() (*string, bool) {
-	if o == nil || isNil(o.StrandSign) {
-    return nil, false
+	if o == nil || IsNil(o.StrandSign) {
+		return nil, false
 	}
 	return o.StrandSign, true
 }
 
 // HasStrandSign returns a boolean if a field has been set.
 func (o *VariantAnnotationSummary) HasStrandSign() bool {
-	if o != nil && !isNil(o.StrandSign) {
+	if o != nil && !IsNil(o.StrandSign) {
 		return true
 	}
 
@@ -198,7 +205,7 @@ func (o *VariantAnnotationSummary) GetTranscriptConsequenceSummaries() []Transcr
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotationSummary) GetTranscriptConsequenceSummariesOk() ([]TranscriptConsequenceSummary, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.TranscriptConsequenceSummaries, true
 }
@@ -222,7 +229,7 @@ func (o *VariantAnnotationSummary) GetTranscriptConsequenceSummary() TranscriptC
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotationSummary) GetTranscriptConsequenceSummaryOk() (*TranscriptConsequenceSummary, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.TranscriptConsequenceSummary, true
 }
@@ -246,7 +253,7 @@ func (o *VariantAnnotationSummary) GetTranscriptConsequences() []TranscriptConse
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotationSummary) GetTranscriptConsequencesOk() ([]TranscriptConsequenceSummary, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.TranscriptConsequences, true
 }
@@ -270,7 +277,7 @@ func (o *VariantAnnotationSummary) GetVariant() string {
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotationSummary) GetVariantOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Variant, true
 }
@@ -282,7 +289,7 @@ func (o *VariantAnnotationSummary) SetVariant(v string) {
 
 // GetVariantType returns the VariantType field value if set, zero value otherwise.
 func (o *VariantAnnotationSummary) GetVariantType() string {
-	if o == nil || isNil(o.VariantType) {
+	if o == nil || IsNil(o.VariantType) {
 		var ret string
 		return ret
 	}
@@ -292,15 +299,15 @@ func (o *VariantAnnotationSummary) GetVariantType() string {
 // GetVariantTypeOk returns a tuple with the VariantType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotationSummary) GetVariantTypeOk() (*string, bool) {
-	if o == nil || isNil(o.VariantType) {
-    return nil, false
+	if o == nil || IsNil(o.VariantType) {
+		return nil, false
 	}
 	return o.VariantType, true
 }
 
 // HasVariantType returns a boolean if a field has been set.
 func (o *VariantAnnotationSummary) HasVariantType() bool {
-	if o != nil && !isNil(o.VariantType) {
+	if o != nil && !IsNil(o.VariantType) {
 		return true
 	}
 
@@ -314,7 +321,7 @@ func (o *VariantAnnotationSummary) SetVariantType(v string) {
 
 // GetVues returns the Vues field value if set, zero value otherwise.
 func (o *VariantAnnotationSummary) GetVues() Vues {
-	if o == nil || isNil(o.Vues) {
+	if o == nil || IsNil(o.Vues) {
 		var ret Vues
 		return ret
 	}
@@ -324,15 +331,15 @@ func (o *VariantAnnotationSummary) GetVues() Vues {
 // GetVuesOk returns a tuple with the Vues field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotationSummary) GetVuesOk() (*Vues, bool) {
-	if o == nil || isNil(o.Vues) {
-    return nil, false
+	if o == nil || IsNil(o.Vues) {
+		return nil, false
 	}
 	return o.Vues, true
 }
 
 // HasVues returns a boolean if a field has been set.
 func (o *VariantAnnotationSummary) HasVues() bool {
-	if o != nil && !isNil(o.Vues) {
+	if o != nil && !IsNil(o.Vues) {
 		return true
 	}
 
@@ -345,38 +352,78 @@ func (o *VariantAnnotationSummary) SetVues(v Vues) {
 }
 
 func (o VariantAnnotationSummary) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.AssemblyName) {
-		toSerialize["assemblyName"] = o.AssemblyName
-	}
-	if !isNil(o.CanonicalTranscriptId) {
-		toSerialize["canonicalTranscriptId"] = o.CanonicalTranscriptId
-	}
-	if !isNil(o.GenomicLocation) {
-		toSerialize["genomicLocation"] = o.GenomicLocation
-	}
-	if !isNil(o.StrandSign) {
-		toSerialize["strandSign"] = o.StrandSign
-	}
-	if true {
-		toSerialize["transcriptConsequenceSummaries"] = o.TranscriptConsequenceSummaries
-	}
-	if true {
-		toSerialize["transcriptConsequenceSummary"] = o.TranscriptConsequenceSummary
-	}
-	if true {
-		toSerialize["transcriptConsequences"] = o.TranscriptConsequences
-	}
-	if true {
-		toSerialize["variant"] = o.Variant
-	}
-	if !isNil(o.VariantType) {
-		toSerialize["variantType"] = o.VariantType
-	}
-	if !isNil(o.Vues) {
-		toSerialize["vues"] = o.Vues
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VariantAnnotationSummary) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AssemblyName) {
+		toSerialize["assemblyName"] = o.AssemblyName
+	}
+	if !IsNil(o.CanonicalTranscriptId) {
+		toSerialize["canonicalTranscriptId"] = o.CanonicalTranscriptId
+	}
+	if !IsNil(o.GenomicLocation) {
+		toSerialize["genomicLocation"] = o.GenomicLocation
+	}
+	if !IsNil(o.StrandSign) {
+		toSerialize["strandSign"] = o.StrandSign
+	}
+	toSerialize["transcriptConsequenceSummaries"] = o.TranscriptConsequenceSummaries
+	toSerialize["transcriptConsequenceSummary"] = o.TranscriptConsequenceSummary
+	toSerialize["transcriptConsequences"] = o.TranscriptConsequences
+	toSerialize["variant"] = o.Variant
+	if !IsNil(o.VariantType) {
+		toSerialize["variantType"] = o.VariantType
+	}
+	if !IsNil(o.Vues) {
+		toSerialize["vues"] = o.Vues
+	}
+	return toSerialize, nil
+}
+
+func (o *VariantAnnotationSummary) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"transcriptConsequenceSummaries",
+		"transcriptConsequenceSummary",
+		"transcriptConsequences",
+		"variant",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varVariantAnnotationSummary := _VariantAnnotationSummary{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varVariantAnnotationSummary)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VariantAnnotationSummary(varVariantAnnotationSummary)
+
+	return err
 }
 
 type NullableVariantAnnotationSummary struct {

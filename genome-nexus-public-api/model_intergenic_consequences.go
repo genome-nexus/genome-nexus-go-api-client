@@ -12,7 +12,12 @@ package genome_nexus_public_api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the IntergenicConsequences type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IntergenicConsequences{}
 
 // IntergenicConsequences struct for IntergenicConsequences
 type IntergenicConsequences struct {
@@ -23,6 +28,8 @@ type IntergenicConsequences struct {
 	// consequence_terms
 	ConsequenceTerms []string `json:"consequenceTerms"`
 }
+
+type _IntergenicConsequences IntergenicConsequences
 
 // NewIntergenicConsequences instantiates a new IntergenicConsequences object
 // This constructor will assign default values to properties that have it defined,
@@ -58,7 +65,7 @@ func (o *IntergenicConsequences) GetImpact() string {
 // and a boolean to check if the value has been set.
 func (o *IntergenicConsequences) GetImpactOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Impact, true
 }
@@ -82,7 +89,7 @@ func (o *IntergenicConsequences) GetVariantAllele() string {
 // and a boolean to check if the value has been set.
 func (o *IntergenicConsequences) GetVariantAlleleOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.VariantAllele, true
 }
@@ -106,7 +113,7 @@ func (o *IntergenicConsequences) GetConsequenceTerms() []string {
 // and a boolean to check if the value has been set.
 func (o *IntergenicConsequences) GetConsequenceTermsOk() ([]string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return o.ConsequenceTerms, true
 }
@@ -117,17 +124,58 @@ func (o *IntergenicConsequences) SetConsequenceTerms(v []string) {
 }
 
 func (o IntergenicConsequences) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["impact"] = o.Impact
-	}
-	if true {
-		toSerialize["variantAllele"] = o.VariantAllele
-	}
-	if true {
-		toSerialize["consequenceTerms"] = o.ConsequenceTerms
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o IntergenicConsequences) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["impact"] = o.Impact
+	toSerialize["variantAllele"] = o.VariantAllele
+	toSerialize["consequenceTerms"] = o.ConsequenceTerms
+	return toSerialize, nil
+}
+
+func (o *IntergenicConsequences) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"impact",
+		"variantAllele",
+		"consequenceTerms",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varIntergenicConsequences := _IntergenicConsequences{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varIntergenicConsequences)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IntergenicConsequences(varIntergenicConsequences)
+
+	return err
 }
 
 type NullableIntergenicConsequences struct {

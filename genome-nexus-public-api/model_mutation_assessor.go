@@ -12,7 +12,12 @@ package genome_nexus_public_api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the MutationAssessor type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MutationAssessor{}
 
 // MutationAssessor struct for MutationAssessor
 type MutationAssessor struct {
@@ -65,6 +70,8 @@ type MutationAssessor struct {
 	VariantSpecificityScore *float64 `json:"variantSpecificityScore,omitempty"`
 }
 
+type _MutationAssessor MutationAssessor
+
 // NewMutationAssessor instantiates a new MutationAssessor object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
@@ -85,7 +92,7 @@ func NewMutationAssessorWithDefaults() *MutationAssessor {
 
 // GetCodonStartPosition returns the CodonStartPosition field value if set, zero value otherwise.
 func (o *MutationAssessor) GetCodonStartPosition() string {
-	if o == nil || isNil(o.CodonStartPosition) {
+	if o == nil || IsNil(o.CodonStartPosition) {
 		var ret string
 		return ret
 	}
@@ -95,15 +102,15 @@ func (o *MutationAssessor) GetCodonStartPosition() string {
 // GetCodonStartPositionOk returns a tuple with the CodonStartPosition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetCodonStartPositionOk() (*string, bool) {
-	if o == nil || isNil(o.CodonStartPosition) {
-    return nil, false
+	if o == nil || IsNil(o.CodonStartPosition) {
+		return nil, false
 	}
 	return o.CodonStartPosition, true
 }
 
 // HasCodonStartPosition returns a boolean if a field has been set.
 func (o *MutationAssessor) HasCodonStartPosition() bool {
-	if o != nil && !isNil(o.CodonStartPosition) {
+	if o != nil && !IsNil(o.CodonStartPosition) {
 		return true
 	}
 
@@ -117,7 +124,7 @@ func (o *MutationAssessor) SetCodonStartPosition(v string) {
 
 // GetCosmicCount returns the CosmicCount field value if set, zero value otherwise.
 func (o *MutationAssessor) GetCosmicCount() int32 {
-	if o == nil || isNil(o.CosmicCount) {
+	if o == nil || IsNil(o.CosmicCount) {
 		var ret int32
 		return ret
 	}
@@ -127,15 +134,15 @@ func (o *MutationAssessor) GetCosmicCount() int32 {
 // GetCosmicCountOk returns a tuple with the CosmicCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetCosmicCountOk() (*int32, bool) {
-	if o == nil || isNil(o.CosmicCount) {
-    return nil, false
+	if o == nil || IsNil(o.CosmicCount) {
+		return nil, false
 	}
 	return o.CosmicCount, true
 }
 
 // HasCosmicCount returns a boolean if a field has been set.
 func (o *MutationAssessor) HasCosmicCount() bool {
-	if o != nil && !isNil(o.CosmicCount) {
+	if o != nil && !IsNil(o.CosmicCount) {
 		return true
 	}
 
@@ -149,7 +156,7 @@ func (o *MutationAssessor) SetCosmicCount(v int32) {
 
 // GetFunctionalImpact returns the FunctionalImpact field value if set, zero value otherwise.
 func (o *MutationAssessor) GetFunctionalImpact() string {
-	if o == nil || isNil(o.FunctionalImpact) {
+	if o == nil || IsNil(o.FunctionalImpact) {
 		var ret string
 		return ret
 	}
@@ -159,15 +166,15 @@ func (o *MutationAssessor) GetFunctionalImpact() string {
 // GetFunctionalImpactOk returns a tuple with the FunctionalImpact field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetFunctionalImpactOk() (*string, bool) {
-	if o == nil || isNil(o.FunctionalImpact) {
-    return nil, false
+	if o == nil || IsNil(o.FunctionalImpact) {
+		return nil, false
 	}
 	return o.FunctionalImpact, true
 }
 
 // HasFunctionalImpact returns a boolean if a field has been set.
 func (o *MutationAssessor) HasFunctionalImpact() bool {
-	if o != nil && !isNil(o.FunctionalImpact) {
+	if o != nil && !IsNil(o.FunctionalImpact) {
 		return true
 	}
 
@@ -181,7 +188,7 @@ func (o *MutationAssessor) SetFunctionalImpact(v string) {
 
 // GetFunctionalImpactScore returns the FunctionalImpactScore field value if set, zero value otherwise.
 func (o *MutationAssessor) GetFunctionalImpactScore() float64 {
-	if o == nil || isNil(o.FunctionalImpactScore) {
+	if o == nil || IsNil(o.FunctionalImpactScore) {
 		var ret float64
 		return ret
 	}
@@ -191,15 +198,15 @@ func (o *MutationAssessor) GetFunctionalImpactScore() float64 {
 // GetFunctionalImpactScoreOk returns a tuple with the FunctionalImpactScore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetFunctionalImpactScoreOk() (*float64, bool) {
-	if o == nil || isNil(o.FunctionalImpactScore) {
-    return nil, false
+	if o == nil || IsNil(o.FunctionalImpactScore) {
+		return nil, false
 	}
 	return o.FunctionalImpactScore, true
 }
 
 // HasFunctionalImpactScore returns a boolean if a field has been set.
 func (o *MutationAssessor) HasFunctionalImpactScore() bool {
-	if o != nil && !isNil(o.FunctionalImpactScore) {
+	if o != nil && !IsNil(o.FunctionalImpactScore) {
 		return true
 	}
 
@@ -213,7 +220,7 @@ func (o *MutationAssessor) SetFunctionalImpactScore(v float64) {
 
 // GetHgvs returns the Hgvs field value if set, zero value otherwise.
 func (o *MutationAssessor) GetHgvs() string {
-	if o == nil || isNil(o.Hgvs) {
+	if o == nil || IsNil(o.Hgvs) {
 		var ret string
 		return ret
 	}
@@ -223,15 +230,15 @@ func (o *MutationAssessor) GetHgvs() string {
 // GetHgvsOk returns a tuple with the Hgvs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetHgvsOk() (*string, bool) {
-	if o == nil || isNil(o.Hgvs) {
-    return nil, false
+	if o == nil || IsNil(o.Hgvs) {
+		return nil, false
 	}
 	return o.Hgvs, true
 }
 
 // HasHgvs returns a boolean if a field has been set.
 func (o *MutationAssessor) HasHgvs() bool {
-	if o != nil && !isNil(o.Hgvs) {
+	if o != nil && !IsNil(o.Hgvs) {
 		return true
 	}
 
@@ -245,7 +252,7 @@ func (o *MutationAssessor) SetHgvs(v string) {
 
 // GetHugoSymbol returns the HugoSymbol field value if set, zero value otherwise.
 func (o *MutationAssessor) GetHugoSymbol() string {
-	if o == nil || isNil(o.HugoSymbol) {
+	if o == nil || IsNil(o.HugoSymbol) {
 		var ret string
 		return ret
 	}
@@ -255,15 +262,15 @@ func (o *MutationAssessor) GetHugoSymbol() string {
 // GetHugoSymbolOk returns a tuple with the HugoSymbol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetHugoSymbolOk() (*string, bool) {
-	if o == nil || isNil(o.HugoSymbol) {
-    return nil, false
+	if o == nil || IsNil(o.HugoSymbol) {
+		return nil, false
 	}
 	return o.HugoSymbol, true
 }
 
 // HasHugoSymbol returns a boolean if a field has been set.
 func (o *MutationAssessor) HasHugoSymbol() bool {
-	if o != nil && !isNil(o.HugoSymbol) {
+	if o != nil && !IsNil(o.HugoSymbol) {
 		return true
 	}
 
@@ -289,7 +296,7 @@ func (o *MutationAssessor) GetInput() string {
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetInputOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Input, true
 }
@@ -301,7 +308,7 @@ func (o *MutationAssessor) SetInput(v string) {
 
 // GetMappingIssue returns the MappingIssue field value if set, zero value otherwise.
 func (o *MutationAssessor) GetMappingIssue() string {
-	if o == nil || isNil(o.MappingIssue) {
+	if o == nil || IsNil(o.MappingIssue) {
 		var ret string
 		return ret
 	}
@@ -311,15 +318,15 @@ func (o *MutationAssessor) GetMappingIssue() string {
 // GetMappingIssueOk returns a tuple with the MappingIssue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetMappingIssueOk() (*string, bool) {
-	if o == nil || isNil(o.MappingIssue) {
-    return nil, false
+	if o == nil || IsNil(o.MappingIssue) {
+		return nil, false
 	}
 	return o.MappingIssue, true
 }
 
 // HasMappingIssue returns a boolean if a field has been set.
 func (o *MutationAssessor) HasMappingIssue() bool {
-	if o != nil && !isNil(o.MappingIssue) {
+	if o != nil && !IsNil(o.MappingIssue) {
 		return true
 	}
 
@@ -333,7 +340,7 @@ func (o *MutationAssessor) SetMappingIssue(v string) {
 
 // GetMsaGaps returns the MsaGaps field value if set, zero value otherwise.
 func (o *MutationAssessor) GetMsaGaps() float64 {
-	if o == nil || isNil(o.MsaGaps) {
+	if o == nil || IsNil(o.MsaGaps) {
 		var ret float64
 		return ret
 	}
@@ -343,15 +350,15 @@ func (o *MutationAssessor) GetMsaGaps() float64 {
 // GetMsaGapsOk returns a tuple with the MsaGaps field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetMsaGapsOk() (*float64, bool) {
-	if o == nil || isNil(o.MsaGaps) {
-    return nil, false
+	if o == nil || IsNil(o.MsaGaps) {
+		return nil, false
 	}
 	return o.MsaGaps, true
 }
 
 // HasMsaGaps returns a boolean if a field has been set.
 func (o *MutationAssessor) HasMsaGaps() bool {
-	if o != nil && !isNil(o.MsaGaps) {
+	if o != nil && !IsNil(o.MsaGaps) {
 		return true
 	}
 
@@ -365,7 +372,7 @@ func (o *MutationAssessor) SetMsaGaps(v float64) {
 
 // GetMsaHeight returns the MsaHeight field value if set, zero value otherwise.
 func (o *MutationAssessor) GetMsaHeight() int32 {
-	if o == nil || isNil(o.MsaHeight) {
+	if o == nil || IsNil(o.MsaHeight) {
 		var ret int32
 		return ret
 	}
@@ -375,15 +382,15 @@ func (o *MutationAssessor) GetMsaHeight() int32 {
 // GetMsaHeightOk returns a tuple with the MsaHeight field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetMsaHeightOk() (*int32, bool) {
-	if o == nil || isNil(o.MsaHeight) {
-    return nil, false
+	if o == nil || IsNil(o.MsaHeight) {
+		return nil, false
 	}
 	return o.MsaHeight, true
 }
 
 // HasMsaHeight returns a boolean if a field has been set.
 func (o *MutationAssessor) HasMsaHeight() bool {
-	if o != nil && !isNil(o.MsaHeight) {
+	if o != nil && !IsNil(o.MsaHeight) {
 		return true
 	}
 
@@ -397,7 +404,7 @@ func (o *MutationAssessor) SetMsaHeight(v int32) {
 
 // GetMsaLink returns the MsaLink field value if set, zero value otherwise.
 func (o *MutationAssessor) GetMsaLink() string {
-	if o == nil || isNil(o.MsaLink) {
+	if o == nil || IsNil(o.MsaLink) {
 		var ret string
 		return ret
 	}
@@ -407,15 +414,15 @@ func (o *MutationAssessor) GetMsaLink() string {
 // GetMsaLinkOk returns a tuple with the MsaLink field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetMsaLinkOk() (*string, bool) {
-	if o == nil || isNil(o.MsaLink) {
-    return nil, false
+	if o == nil || IsNil(o.MsaLink) {
+		return nil, false
 	}
 	return o.MsaLink, true
 }
 
 // HasMsaLink returns a boolean if a field has been set.
 func (o *MutationAssessor) HasMsaLink() bool {
-	if o != nil && !isNil(o.MsaLink) {
+	if o != nil && !IsNil(o.MsaLink) {
 		return true
 	}
 
@@ -429,7 +436,7 @@ func (o *MutationAssessor) SetMsaLink(v string) {
 
 // GetPdbLink returns the PdbLink field value if set, zero value otherwise.
 func (o *MutationAssessor) GetPdbLink() string {
-	if o == nil || isNil(o.PdbLink) {
+	if o == nil || IsNil(o.PdbLink) {
 		var ret string
 		return ret
 	}
@@ -439,15 +446,15 @@ func (o *MutationAssessor) GetPdbLink() string {
 // GetPdbLinkOk returns a tuple with the PdbLink field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetPdbLinkOk() (*string, bool) {
-	if o == nil || isNil(o.PdbLink) {
-    return nil, false
+	if o == nil || IsNil(o.PdbLink) {
+		return nil, false
 	}
 	return o.PdbLink, true
 }
 
 // HasPdbLink returns a boolean if a field has been set.
 func (o *MutationAssessor) HasPdbLink() bool {
-	if o != nil && !isNil(o.PdbLink) {
+	if o != nil && !IsNil(o.PdbLink) {
 		return true
 	}
 
@@ -461,7 +468,7 @@ func (o *MutationAssessor) SetPdbLink(v string) {
 
 // GetReferenceGenomeVariant returns the ReferenceGenomeVariant field value if set, zero value otherwise.
 func (o *MutationAssessor) GetReferenceGenomeVariant() string {
-	if o == nil || isNil(o.ReferenceGenomeVariant) {
+	if o == nil || IsNil(o.ReferenceGenomeVariant) {
 		var ret string
 		return ret
 	}
@@ -471,15 +478,15 @@ func (o *MutationAssessor) GetReferenceGenomeVariant() string {
 // GetReferenceGenomeVariantOk returns a tuple with the ReferenceGenomeVariant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetReferenceGenomeVariantOk() (*string, bool) {
-	if o == nil || isNil(o.ReferenceGenomeVariant) {
-    return nil, false
+	if o == nil || IsNil(o.ReferenceGenomeVariant) {
+		return nil, false
 	}
 	return o.ReferenceGenomeVariant, true
 }
 
 // HasReferenceGenomeVariant returns a boolean if a field has been set.
 func (o *MutationAssessor) HasReferenceGenomeVariant() bool {
-	if o != nil && !isNil(o.ReferenceGenomeVariant) {
+	if o != nil && !IsNil(o.ReferenceGenomeVariant) {
 		return true
 	}
 
@@ -493,7 +500,7 @@ func (o *MutationAssessor) SetReferenceGenomeVariant(v string) {
 
 // GetReferenceGenomeVariantType returns the ReferenceGenomeVariantType field value if set, zero value otherwise.
 func (o *MutationAssessor) GetReferenceGenomeVariantType() string {
-	if o == nil || isNil(o.ReferenceGenomeVariantType) {
+	if o == nil || IsNil(o.ReferenceGenomeVariantType) {
 		var ret string
 		return ret
 	}
@@ -503,15 +510,15 @@ func (o *MutationAssessor) GetReferenceGenomeVariantType() string {
 // GetReferenceGenomeVariantTypeOk returns a tuple with the ReferenceGenomeVariantType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetReferenceGenomeVariantTypeOk() (*string, bool) {
-	if o == nil || isNil(o.ReferenceGenomeVariantType) {
-    return nil, false
+	if o == nil || IsNil(o.ReferenceGenomeVariantType) {
+		return nil, false
 	}
 	return o.ReferenceGenomeVariantType, true
 }
 
 // HasReferenceGenomeVariantType returns a boolean if a field has been set.
 func (o *MutationAssessor) HasReferenceGenomeVariantType() bool {
-	if o != nil && !isNil(o.ReferenceGenomeVariantType) {
+	if o != nil && !IsNil(o.ReferenceGenomeVariantType) {
 		return true
 	}
 
@@ -525,7 +532,7 @@ func (o *MutationAssessor) SetReferenceGenomeVariantType(v string) {
 
 // GetRefseqId returns the RefseqId field value if set, zero value otherwise.
 func (o *MutationAssessor) GetRefseqId() string {
-	if o == nil || isNil(o.RefseqId) {
+	if o == nil || IsNil(o.RefseqId) {
 		var ret string
 		return ret
 	}
@@ -535,15 +542,15 @@ func (o *MutationAssessor) GetRefseqId() string {
 // GetRefseqIdOk returns a tuple with the RefseqId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetRefseqIdOk() (*string, bool) {
-	if o == nil || isNil(o.RefseqId) {
-    return nil, false
+	if o == nil || IsNil(o.RefseqId) {
+		return nil, false
 	}
 	return o.RefseqId, true
 }
 
 // HasRefseqId returns a boolean if a field has been set.
 func (o *MutationAssessor) HasRefseqId() bool {
-	if o != nil && !isNil(o.RefseqId) {
+	if o != nil && !IsNil(o.RefseqId) {
 		return true
 	}
 
@@ -557,7 +564,7 @@ func (o *MutationAssessor) SetRefseqId(v string) {
 
 // GetRefseqPosition returns the RefseqPosition field value if set, zero value otherwise.
 func (o *MutationAssessor) GetRefseqPosition() int32 {
-	if o == nil || isNil(o.RefseqPosition) {
+	if o == nil || IsNil(o.RefseqPosition) {
 		var ret int32
 		return ret
 	}
@@ -567,15 +574,15 @@ func (o *MutationAssessor) GetRefseqPosition() int32 {
 // GetRefseqPositionOk returns a tuple with the RefseqPosition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetRefseqPositionOk() (*int32, bool) {
-	if o == nil || isNil(o.RefseqPosition) {
-    return nil, false
+	if o == nil || IsNil(o.RefseqPosition) {
+		return nil, false
 	}
 	return o.RefseqPosition, true
 }
 
 // HasRefseqPosition returns a boolean if a field has been set.
 func (o *MutationAssessor) HasRefseqPosition() bool {
-	if o != nil && !isNil(o.RefseqPosition) {
+	if o != nil && !IsNil(o.RefseqPosition) {
 		return true
 	}
 
@@ -589,7 +596,7 @@ func (o *MutationAssessor) SetRefseqPosition(v int32) {
 
 // GetRefseqResidue returns the RefseqResidue field value if set, zero value otherwise.
 func (o *MutationAssessor) GetRefseqResidue() string {
-	if o == nil || isNil(o.RefseqResidue) {
+	if o == nil || IsNil(o.RefseqResidue) {
 		var ret string
 		return ret
 	}
@@ -599,15 +606,15 @@ func (o *MutationAssessor) GetRefseqResidue() string {
 // GetRefseqResidueOk returns a tuple with the RefseqResidue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetRefseqResidueOk() (*string, bool) {
-	if o == nil || isNil(o.RefseqResidue) {
-    return nil, false
+	if o == nil || IsNil(o.RefseqResidue) {
+		return nil, false
 	}
 	return o.RefseqResidue, true
 }
 
 // HasRefseqResidue returns a boolean if a field has been set.
 func (o *MutationAssessor) HasRefseqResidue() bool {
-	if o != nil && !isNil(o.RefseqResidue) {
+	if o != nil && !IsNil(o.RefseqResidue) {
 		return true
 	}
 
@@ -621,7 +628,7 @@ func (o *MutationAssessor) SetRefseqResidue(v string) {
 
 // GetSnpCount returns the SnpCount field value if set, zero value otherwise.
 func (o *MutationAssessor) GetSnpCount() int32 {
-	if o == nil || isNil(o.SnpCount) {
+	if o == nil || IsNil(o.SnpCount) {
 		var ret int32
 		return ret
 	}
@@ -631,15 +638,15 @@ func (o *MutationAssessor) GetSnpCount() int32 {
 // GetSnpCountOk returns a tuple with the SnpCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetSnpCountOk() (*int32, bool) {
-	if o == nil || isNil(o.SnpCount) {
-    return nil, false
+	if o == nil || IsNil(o.SnpCount) {
+		return nil, false
 	}
 	return o.SnpCount, true
 }
 
 // HasSnpCount returns a boolean if a field has been set.
 func (o *MutationAssessor) HasSnpCount() bool {
-	if o != nil && !isNil(o.SnpCount) {
+	if o != nil && !IsNil(o.SnpCount) {
 		return true
 	}
 
@@ -653,7 +660,7 @@ func (o *MutationAssessor) SetSnpCount(v int32) {
 
 // GetUniprotId returns the UniprotId field value if set, zero value otherwise.
 func (o *MutationAssessor) GetUniprotId() string {
-	if o == nil || isNil(o.UniprotId) {
+	if o == nil || IsNil(o.UniprotId) {
 		var ret string
 		return ret
 	}
@@ -663,15 +670,15 @@ func (o *MutationAssessor) GetUniprotId() string {
 // GetUniprotIdOk returns a tuple with the UniprotId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetUniprotIdOk() (*string, bool) {
-	if o == nil || isNil(o.UniprotId) {
-    return nil, false
+	if o == nil || IsNil(o.UniprotId) {
+		return nil, false
 	}
 	return o.UniprotId, true
 }
 
 // HasUniprotId returns a boolean if a field has been set.
 func (o *MutationAssessor) HasUniprotId() bool {
-	if o != nil && !isNil(o.UniprotId) {
+	if o != nil && !IsNil(o.UniprotId) {
 		return true
 	}
 
@@ -685,7 +692,7 @@ func (o *MutationAssessor) SetUniprotId(v string) {
 
 // GetUniprotPosition returns the UniprotPosition field value if set, zero value otherwise.
 func (o *MutationAssessor) GetUniprotPosition() int32 {
-	if o == nil || isNil(o.UniprotPosition) {
+	if o == nil || IsNil(o.UniprotPosition) {
 		var ret int32
 		return ret
 	}
@@ -695,15 +702,15 @@ func (o *MutationAssessor) GetUniprotPosition() int32 {
 // GetUniprotPositionOk returns a tuple with the UniprotPosition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetUniprotPositionOk() (*int32, bool) {
-	if o == nil || isNil(o.UniprotPosition) {
-    return nil, false
+	if o == nil || IsNil(o.UniprotPosition) {
+		return nil, false
 	}
 	return o.UniprotPosition, true
 }
 
 // HasUniprotPosition returns a boolean if a field has been set.
 func (o *MutationAssessor) HasUniprotPosition() bool {
-	if o != nil && !isNil(o.UniprotPosition) {
+	if o != nil && !IsNil(o.UniprotPosition) {
 		return true
 	}
 
@@ -717,7 +724,7 @@ func (o *MutationAssessor) SetUniprotPosition(v int32) {
 
 // GetUniprotResidue returns the UniprotResidue field value if set, zero value otherwise.
 func (o *MutationAssessor) GetUniprotResidue() string {
-	if o == nil || isNil(o.UniprotResidue) {
+	if o == nil || IsNil(o.UniprotResidue) {
 		var ret string
 		return ret
 	}
@@ -727,15 +734,15 @@ func (o *MutationAssessor) GetUniprotResidue() string {
 // GetUniprotResidueOk returns a tuple with the UniprotResidue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetUniprotResidueOk() (*string, bool) {
-	if o == nil || isNil(o.UniprotResidue) {
-    return nil, false
+	if o == nil || IsNil(o.UniprotResidue) {
+		return nil, false
 	}
 	return o.UniprotResidue, true
 }
 
 // HasUniprotResidue returns a boolean if a field has been set.
 func (o *MutationAssessor) HasUniprotResidue() bool {
-	if o != nil && !isNil(o.UniprotResidue) {
+	if o != nil && !IsNil(o.UniprotResidue) {
 		return true
 	}
 
@@ -749,7 +756,7 @@ func (o *MutationAssessor) SetUniprotResidue(v string) {
 
 // GetVariant returns the Variant field value if set, zero value otherwise.
 func (o *MutationAssessor) GetVariant() string {
-	if o == nil || isNil(o.Variant) {
+	if o == nil || IsNil(o.Variant) {
 		var ret string
 		return ret
 	}
@@ -759,15 +766,15 @@ func (o *MutationAssessor) GetVariant() string {
 // GetVariantOk returns a tuple with the Variant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetVariantOk() (*string, bool) {
-	if o == nil || isNil(o.Variant) {
-    return nil, false
+	if o == nil || IsNil(o.Variant) {
+		return nil, false
 	}
 	return o.Variant, true
 }
 
 // HasVariant returns a boolean if a field has been set.
 func (o *MutationAssessor) HasVariant() bool {
-	if o != nil && !isNil(o.Variant) {
+	if o != nil && !IsNil(o.Variant) {
 		return true
 	}
 
@@ -781,7 +788,7 @@ func (o *MutationAssessor) SetVariant(v string) {
 
 // GetVariantConservationScore returns the VariantConservationScore field value if set, zero value otherwise.
 func (o *MutationAssessor) GetVariantConservationScore() float64 {
-	if o == nil || isNil(o.VariantConservationScore) {
+	if o == nil || IsNil(o.VariantConservationScore) {
 		var ret float64
 		return ret
 	}
@@ -791,15 +798,15 @@ func (o *MutationAssessor) GetVariantConservationScore() float64 {
 // GetVariantConservationScoreOk returns a tuple with the VariantConservationScore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetVariantConservationScoreOk() (*float64, bool) {
-	if o == nil || isNil(o.VariantConservationScore) {
-    return nil, false
+	if o == nil || IsNil(o.VariantConservationScore) {
+		return nil, false
 	}
 	return o.VariantConservationScore, true
 }
 
 // HasVariantConservationScore returns a boolean if a field has been set.
 func (o *MutationAssessor) HasVariantConservationScore() bool {
-	if o != nil && !isNil(o.VariantConservationScore) {
+	if o != nil && !IsNil(o.VariantConservationScore) {
 		return true
 	}
 
@@ -813,7 +820,7 @@ func (o *MutationAssessor) SetVariantConservationScore(v float64) {
 
 // GetVariantSpecificityScore returns the VariantSpecificityScore field value if set, zero value otherwise.
 func (o *MutationAssessor) GetVariantSpecificityScore() float64 {
-	if o == nil || isNil(o.VariantSpecificityScore) {
+	if o == nil || IsNil(o.VariantSpecificityScore) {
 		var ret float64
 		return ret
 	}
@@ -823,15 +830,15 @@ func (o *MutationAssessor) GetVariantSpecificityScore() float64 {
 // GetVariantSpecificityScoreOk returns a tuple with the VariantSpecificityScore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MutationAssessor) GetVariantSpecificityScoreOk() (*float64, bool) {
-	if o == nil || isNil(o.VariantSpecificityScore) {
-    return nil, false
+	if o == nil || IsNil(o.VariantSpecificityScore) {
+		return nil, false
 	}
 	return o.VariantSpecificityScore, true
 }
 
 // HasVariantSpecificityScore returns a boolean if a field has been set.
 func (o *MutationAssessor) HasVariantSpecificityScore() bool {
-	if o != nil && !isNil(o.VariantSpecificityScore) {
+	if o != nil && !IsNil(o.VariantSpecificityScore) {
 		return true
 	}
 
@@ -844,80 +851,123 @@ func (o *MutationAssessor) SetVariantSpecificityScore(v float64) {
 }
 
 func (o MutationAssessor) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.CodonStartPosition) {
-		toSerialize["codonStartPosition"] = o.CodonStartPosition
-	}
-	if !isNil(o.CosmicCount) {
-		toSerialize["cosmicCount"] = o.CosmicCount
-	}
-	if !isNil(o.FunctionalImpact) {
-		toSerialize["functionalImpact"] = o.FunctionalImpact
-	}
-	if !isNil(o.FunctionalImpactScore) {
-		toSerialize["functionalImpactScore"] = o.FunctionalImpactScore
-	}
-	if !isNil(o.Hgvs) {
-		toSerialize["hgvs"] = o.Hgvs
-	}
-	if !isNil(o.HugoSymbol) {
-		toSerialize["hugoSymbol"] = o.HugoSymbol
-	}
-	if true {
-		toSerialize["input"] = o.Input
-	}
-	if !isNil(o.MappingIssue) {
-		toSerialize["mappingIssue"] = o.MappingIssue
-	}
-	if !isNil(o.MsaGaps) {
-		toSerialize["msaGaps"] = o.MsaGaps
-	}
-	if !isNil(o.MsaHeight) {
-		toSerialize["msaHeight"] = o.MsaHeight
-	}
-	if !isNil(o.MsaLink) {
-		toSerialize["msaLink"] = o.MsaLink
-	}
-	if !isNil(o.PdbLink) {
-		toSerialize["pdbLink"] = o.PdbLink
-	}
-	if !isNil(o.ReferenceGenomeVariant) {
-		toSerialize["referenceGenomeVariant"] = o.ReferenceGenomeVariant
-	}
-	if !isNil(o.ReferenceGenomeVariantType) {
-		toSerialize["referenceGenomeVariantType"] = o.ReferenceGenomeVariantType
-	}
-	if !isNil(o.RefseqId) {
-		toSerialize["refseqId"] = o.RefseqId
-	}
-	if !isNil(o.RefseqPosition) {
-		toSerialize["refseqPosition"] = o.RefseqPosition
-	}
-	if !isNil(o.RefseqResidue) {
-		toSerialize["refseqResidue"] = o.RefseqResidue
-	}
-	if !isNil(o.SnpCount) {
-		toSerialize["snpCount"] = o.SnpCount
-	}
-	if !isNil(o.UniprotId) {
-		toSerialize["uniprotId"] = o.UniprotId
-	}
-	if !isNil(o.UniprotPosition) {
-		toSerialize["uniprotPosition"] = o.UniprotPosition
-	}
-	if !isNil(o.UniprotResidue) {
-		toSerialize["uniprotResidue"] = o.UniprotResidue
-	}
-	if !isNil(o.Variant) {
-		toSerialize["variant"] = o.Variant
-	}
-	if !isNil(o.VariantConservationScore) {
-		toSerialize["variantConservationScore"] = o.VariantConservationScore
-	}
-	if !isNil(o.VariantSpecificityScore) {
-		toSerialize["variantSpecificityScore"] = o.VariantSpecificityScore
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MutationAssessor) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CodonStartPosition) {
+		toSerialize["codonStartPosition"] = o.CodonStartPosition
+	}
+	if !IsNil(o.CosmicCount) {
+		toSerialize["cosmicCount"] = o.CosmicCount
+	}
+	if !IsNil(o.FunctionalImpact) {
+		toSerialize["functionalImpact"] = o.FunctionalImpact
+	}
+	if !IsNil(o.FunctionalImpactScore) {
+		toSerialize["functionalImpactScore"] = o.FunctionalImpactScore
+	}
+	if !IsNil(o.Hgvs) {
+		toSerialize["hgvs"] = o.Hgvs
+	}
+	if !IsNil(o.HugoSymbol) {
+		toSerialize["hugoSymbol"] = o.HugoSymbol
+	}
+	toSerialize["input"] = o.Input
+	if !IsNil(o.MappingIssue) {
+		toSerialize["mappingIssue"] = o.MappingIssue
+	}
+	if !IsNil(o.MsaGaps) {
+		toSerialize["msaGaps"] = o.MsaGaps
+	}
+	if !IsNil(o.MsaHeight) {
+		toSerialize["msaHeight"] = o.MsaHeight
+	}
+	if !IsNil(o.MsaLink) {
+		toSerialize["msaLink"] = o.MsaLink
+	}
+	if !IsNil(o.PdbLink) {
+		toSerialize["pdbLink"] = o.PdbLink
+	}
+	if !IsNil(o.ReferenceGenomeVariant) {
+		toSerialize["referenceGenomeVariant"] = o.ReferenceGenomeVariant
+	}
+	if !IsNil(o.ReferenceGenomeVariantType) {
+		toSerialize["referenceGenomeVariantType"] = o.ReferenceGenomeVariantType
+	}
+	if !IsNil(o.RefseqId) {
+		toSerialize["refseqId"] = o.RefseqId
+	}
+	if !IsNil(o.RefseqPosition) {
+		toSerialize["refseqPosition"] = o.RefseqPosition
+	}
+	if !IsNil(o.RefseqResidue) {
+		toSerialize["refseqResidue"] = o.RefseqResidue
+	}
+	if !IsNil(o.SnpCount) {
+		toSerialize["snpCount"] = o.SnpCount
+	}
+	if !IsNil(o.UniprotId) {
+		toSerialize["uniprotId"] = o.UniprotId
+	}
+	if !IsNil(o.UniprotPosition) {
+		toSerialize["uniprotPosition"] = o.UniprotPosition
+	}
+	if !IsNil(o.UniprotResidue) {
+		toSerialize["uniprotResidue"] = o.UniprotResidue
+	}
+	if !IsNil(o.Variant) {
+		toSerialize["variant"] = o.Variant
+	}
+	if !IsNil(o.VariantConservationScore) {
+		toSerialize["variantConservationScore"] = o.VariantConservationScore
+	}
+	if !IsNil(o.VariantSpecificityScore) {
+		toSerialize["variantSpecificityScore"] = o.VariantSpecificityScore
+	}
+	return toSerialize, nil
+}
+
+func (o *MutationAssessor) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"input",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varMutationAssessor := _MutationAssessor{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varMutationAssessor)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MutationAssessor(varMutationAssessor)
+
+	return err
 }
 
 type NullableMutationAssessor struct {

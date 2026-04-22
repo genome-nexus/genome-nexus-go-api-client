@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Vues type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Vues{}
+
 // Vues struct for Vues
 type Vues struct {
 	Comment *string `json:"comment,omitempty"`
@@ -48,7 +51,7 @@ func NewVuesWithDefaults() *Vues {
 
 // GetComment returns the Comment field value if set, zero value otherwise.
 func (o *Vues) GetComment() string {
-	if o == nil || isNil(o.Comment) {
+	if o == nil || IsNil(o.Comment) {
 		var ret string
 		return ret
 	}
@@ -58,15 +61,15 @@ func (o *Vues) GetComment() string {
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Vues) GetCommentOk() (*string, bool) {
-	if o == nil || isNil(o.Comment) {
-    return nil, false
+	if o == nil || IsNil(o.Comment) {
+		return nil, false
 	}
 	return o.Comment, true
 }
 
 // HasComment returns a boolean if a field has been set.
 func (o *Vues) HasComment() bool {
-	if o != nil && !isNil(o.Comment) {
+	if o != nil && !IsNil(o.Comment) {
 		return true
 	}
 
@@ -80,7 +83,7 @@ func (o *Vues) SetComment(v string) {
 
 // GetDefaultEffect returns the DefaultEffect field value if set, zero value otherwise.
 func (o *Vues) GetDefaultEffect() string {
-	if o == nil || isNil(o.DefaultEffect) {
+	if o == nil || IsNil(o.DefaultEffect) {
 		var ret string
 		return ret
 	}
@@ -90,15 +93,15 @@ func (o *Vues) GetDefaultEffect() string {
 // GetDefaultEffectOk returns a tuple with the DefaultEffect field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Vues) GetDefaultEffectOk() (*string, bool) {
-	if o == nil || isNil(o.DefaultEffect) {
-    return nil, false
+	if o == nil || IsNil(o.DefaultEffect) {
+		return nil, false
 	}
 	return o.DefaultEffect, true
 }
 
 // HasDefaultEffect returns a boolean if a field has been set.
 func (o *Vues) HasDefaultEffect() bool {
-	if o != nil && !isNil(o.DefaultEffect) {
+	if o != nil && !IsNil(o.DefaultEffect) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *Vues) SetDefaultEffect(v string) {
 
 // GetGenomicLocation returns the GenomicLocation field value if set, zero value otherwise.
 func (o *Vues) GetGenomicLocation() string {
-	if o == nil || isNil(o.GenomicLocation) {
+	if o == nil || IsNil(o.GenomicLocation) {
 		var ret string
 		return ret
 	}
@@ -122,15 +125,15 @@ func (o *Vues) GetGenomicLocation() string {
 // GetGenomicLocationOk returns a tuple with the GenomicLocation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Vues) GetGenomicLocationOk() (*string, bool) {
-	if o == nil || isNil(o.GenomicLocation) {
-    return nil, false
+	if o == nil || IsNil(o.GenomicLocation) {
+		return nil, false
 	}
 	return o.GenomicLocation, true
 }
 
 // HasGenomicLocation returns a boolean if a field has been set.
 func (o *Vues) HasGenomicLocation() bool {
-	if o != nil && !isNil(o.GenomicLocation) {
+	if o != nil && !IsNil(o.GenomicLocation) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *Vues) SetGenomicLocation(v string) {
 
 // GetGenomicLocationDescription returns the GenomicLocationDescription field value if set, zero value otherwise.
 func (o *Vues) GetGenomicLocationDescription() string {
-	if o == nil || isNil(o.GenomicLocationDescription) {
+	if o == nil || IsNil(o.GenomicLocationDescription) {
 		var ret string
 		return ret
 	}
@@ -154,15 +157,15 @@ func (o *Vues) GetGenomicLocationDescription() string {
 // GetGenomicLocationDescriptionOk returns a tuple with the GenomicLocationDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Vues) GetGenomicLocationDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.GenomicLocationDescription) {
-    return nil, false
+	if o == nil || IsNil(o.GenomicLocationDescription) {
+		return nil, false
 	}
 	return o.GenomicLocationDescription, true
 }
 
 // HasGenomicLocationDescription returns a boolean if a field has been set.
 func (o *Vues) HasGenomicLocationDescription() bool {
-	if o != nil && !isNil(o.GenomicLocationDescription) {
+	if o != nil && !IsNil(o.GenomicLocationDescription) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *Vues) SetGenomicLocationDescription(v string) {
 
 // GetHugoGeneSymbol returns the HugoGeneSymbol field value if set, zero value otherwise.
 func (o *Vues) GetHugoGeneSymbol() string {
-	if o == nil || isNil(o.HugoGeneSymbol) {
+	if o == nil || IsNil(o.HugoGeneSymbol) {
 		var ret string
 		return ret
 	}
@@ -186,15 +189,15 @@ func (o *Vues) GetHugoGeneSymbol() string {
 // GetHugoGeneSymbolOk returns a tuple with the HugoGeneSymbol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Vues) GetHugoGeneSymbolOk() (*string, bool) {
-	if o == nil || isNil(o.HugoGeneSymbol) {
-    return nil, false
+	if o == nil || IsNil(o.HugoGeneSymbol) {
+		return nil, false
 	}
 	return o.HugoGeneSymbol, true
 }
 
 // HasHugoGeneSymbol returns a boolean if a field has been set.
 func (o *Vues) HasHugoGeneSymbol() bool {
-	if o != nil && !isNil(o.HugoGeneSymbol) {
+	if o != nil && !IsNil(o.HugoGeneSymbol) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *Vues) SetHugoGeneSymbol(v string) {
 
 // GetPubmedIds returns the PubmedIds field value if set, zero value otherwise.
 func (o *Vues) GetPubmedIds() []int32 {
-	if o == nil || isNil(o.PubmedIds) {
+	if o == nil || IsNil(o.PubmedIds) {
 		var ret []int32
 		return ret
 	}
@@ -218,15 +221,15 @@ func (o *Vues) GetPubmedIds() []int32 {
 // GetPubmedIdsOk returns a tuple with the PubmedIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Vues) GetPubmedIdsOk() ([]int32, bool) {
-	if o == nil || isNil(o.PubmedIds) {
-    return nil, false
+	if o == nil || IsNil(o.PubmedIds) {
+		return nil, false
 	}
 	return o.PubmedIds, true
 }
 
 // HasPubmedIds returns a boolean if a field has been set.
 func (o *Vues) HasPubmedIds() bool {
-	if o != nil && !isNil(o.PubmedIds) {
+	if o != nil && !IsNil(o.PubmedIds) {
 		return true
 	}
 
@@ -240,7 +243,7 @@ func (o *Vues) SetPubmedIds(v []int32) {
 
 // GetReferenceText returns the ReferenceText field value if set, zero value otherwise.
 func (o *Vues) GetReferenceText() string {
-	if o == nil || isNil(o.ReferenceText) {
+	if o == nil || IsNil(o.ReferenceText) {
 		var ret string
 		return ret
 	}
@@ -250,15 +253,15 @@ func (o *Vues) GetReferenceText() string {
 // GetReferenceTextOk returns a tuple with the ReferenceText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Vues) GetReferenceTextOk() (*string, bool) {
-	if o == nil || isNil(o.ReferenceText) {
-    return nil, false
+	if o == nil || IsNil(o.ReferenceText) {
+		return nil, false
 	}
 	return o.ReferenceText, true
 }
 
 // HasReferenceText returns a boolean if a field has been set.
 func (o *Vues) HasReferenceText() bool {
-	if o != nil && !isNil(o.ReferenceText) {
+	if o != nil && !IsNil(o.ReferenceText) {
 		return true
 	}
 
@@ -272,7 +275,7 @@ func (o *Vues) SetReferenceText(v string) {
 
 // GetRevisedProteinEffect returns the RevisedProteinEffect field value if set, zero value otherwise.
 func (o *Vues) GetRevisedProteinEffect() string {
-	if o == nil || isNil(o.RevisedProteinEffect) {
+	if o == nil || IsNil(o.RevisedProteinEffect) {
 		var ret string
 		return ret
 	}
@@ -282,15 +285,15 @@ func (o *Vues) GetRevisedProteinEffect() string {
 // GetRevisedProteinEffectOk returns a tuple with the RevisedProteinEffect field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Vues) GetRevisedProteinEffectOk() (*string, bool) {
-	if o == nil || isNil(o.RevisedProteinEffect) {
-    return nil, false
+	if o == nil || IsNil(o.RevisedProteinEffect) {
+		return nil, false
 	}
 	return o.RevisedProteinEffect, true
 }
 
 // HasRevisedProteinEffect returns a boolean if a field has been set.
 func (o *Vues) HasRevisedProteinEffect() bool {
-	if o != nil && !isNil(o.RevisedProteinEffect) {
+	if o != nil && !IsNil(o.RevisedProteinEffect) {
 		return true
 	}
 
@@ -304,7 +307,7 @@ func (o *Vues) SetRevisedProteinEffect(v string) {
 
 // GetTranscriptId returns the TranscriptId field value if set, zero value otherwise.
 func (o *Vues) GetTranscriptId() string {
-	if o == nil || isNil(o.TranscriptId) {
+	if o == nil || IsNil(o.TranscriptId) {
 		var ret string
 		return ret
 	}
@@ -314,15 +317,15 @@ func (o *Vues) GetTranscriptId() string {
 // GetTranscriptIdOk returns a tuple with the TranscriptId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Vues) GetTranscriptIdOk() (*string, bool) {
-	if o == nil || isNil(o.TranscriptId) {
-    return nil, false
+	if o == nil || IsNil(o.TranscriptId) {
+		return nil, false
 	}
 	return o.TranscriptId, true
 }
 
 // HasTranscriptId returns a boolean if a field has been set.
 func (o *Vues) HasTranscriptId() bool {
-	if o != nil && !isNil(o.TranscriptId) {
+	if o != nil && !IsNil(o.TranscriptId) {
 		return true
 	}
 
@@ -336,7 +339,7 @@ func (o *Vues) SetTranscriptId(v string) {
 
 // GetVariant returns the Variant field value if set, zero value otherwise.
 func (o *Vues) GetVariant() string {
-	if o == nil || isNil(o.Variant) {
+	if o == nil || IsNil(o.Variant) {
 		var ret string
 		return ret
 	}
@@ -346,15 +349,15 @@ func (o *Vues) GetVariant() string {
 // GetVariantOk returns a tuple with the Variant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Vues) GetVariantOk() (*string, bool) {
-	if o == nil || isNil(o.Variant) {
-    return nil, false
+	if o == nil || IsNil(o.Variant) {
+		return nil, false
 	}
 	return o.Variant, true
 }
 
 // HasVariant returns a boolean if a field has been set.
 func (o *Vues) HasVariant() bool {
-	if o != nil && !isNil(o.Variant) {
+	if o != nil && !IsNil(o.Variant) {
 		return true
 	}
 
@@ -368,7 +371,7 @@ func (o *Vues) SetVariant(v string) {
 
 // GetVariantClassification returns the VariantClassification field value if set, zero value otherwise.
 func (o *Vues) GetVariantClassification() string {
-	if o == nil || isNil(o.VariantClassification) {
+	if o == nil || IsNil(o.VariantClassification) {
 		var ret string
 		return ret
 	}
@@ -378,15 +381,15 @@ func (o *Vues) GetVariantClassification() string {
 // GetVariantClassificationOk returns a tuple with the VariantClassification field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Vues) GetVariantClassificationOk() (*string, bool) {
-	if o == nil || isNil(o.VariantClassification) {
-    return nil, false
+	if o == nil || IsNil(o.VariantClassification) {
+		return nil, false
 	}
 	return o.VariantClassification, true
 }
 
 // HasVariantClassification returns a boolean if a field has been set.
 func (o *Vues) HasVariantClassification() bool {
-	if o != nil && !isNil(o.VariantClassification) {
+	if o != nil && !IsNil(o.VariantClassification) {
 		return true
 	}
 
@@ -399,41 +402,49 @@ func (o *Vues) SetVariantClassification(v string) {
 }
 
 func (o Vues) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Comment) {
-		toSerialize["comment"] = o.Comment
-	}
-	if !isNil(o.DefaultEffect) {
-		toSerialize["defaultEffect"] = o.DefaultEffect
-	}
-	if !isNil(o.GenomicLocation) {
-		toSerialize["genomicLocation"] = o.GenomicLocation
-	}
-	if !isNil(o.GenomicLocationDescription) {
-		toSerialize["genomicLocationDescription"] = o.GenomicLocationDescription
-	}
-	if !isNil(o.HugoGeneSymbol) {
-		toSerialize["hugoGeneSymbol"] = o.HugoGeneSymbol
-	}
-	if !isNil(o.PubmedIds) {
-		toSerialize["pubmedIds"] = o.PubmedIds
-	}
-	if !isNil(o.ReferenceText) {
-		toSerialize["referenceText"] = o.ReferenceText
-	}
-	if !isNil(o.RevisedProteinEffect) {
-		toSerialize["revisedProteinEffect"] = o.RevisedProteinEffect
-	}
-	if !isNil(o.TranscriptId) {
-		toSerialize["transcriptId"] = o.TranscriptId
-	}
-	if !isNil(o.Variant) {
-		toSerialize["variant"] = o.Variant
-	}
-	if !isNil(o.VariantClassification) {
-		toSerialize["variantClassification"] = o.VariantClassification
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Vues) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Comment) {
+		toSerialize["comment"] = o.Comment
+	}
+	if !IsNil(o.DefaultEffect) {
+		toSerialize["defaultEffect"] = o.DefaultEffect
+	}
+	if !IsNil(o.GenomicLocation) {
+		toSerialize["genomicLocation"] = o.GenomicLocation
+	}
+	if !IsNil(o.GenomicLocationDescription) {
+		toSerialize["genomicLocationDescription"] = o.GenomicLocationDescription
+	}
+	if !IsNil(o.HugoGeneSymbol) {
+		toSerialize["hugoGeneSymbol"] = o.HugoGeneSymbol
+	}
+	if !IsNil(o.PubmedIds) {
+		toSerialize["pubmedIds"] = o.PubmedIds
+	}
+	if !IsNil(o.ReferenceText) {
+		toSerialize["referenceText"] = o.ReferenceText
+	}
+	if !IsNil(o.RevisedProteinEffect) {
+		toSerialize["revisedProteinEffect"] = o.RevisedProteinEffect
+	}
+	if !IsNil(o.TranscriptId) {
+		toSerialize["transcriptId"] = o.TranscriptId
+	}
+	if !IsNil(o.Variant) {
+		toSerialize["variant"] = o.Variant
+	}
+	if !IsNil(o.VariantClassification) {
+		toSerialize["variantClassification"] = o.VariantClassification
+	}
+	return toSerialize, nil
 }
 
 type NullableVues struct {

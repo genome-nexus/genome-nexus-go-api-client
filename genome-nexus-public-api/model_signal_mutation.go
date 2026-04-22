@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SignalMutation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SignalMutation{}
+
 // SignalMutation struct for SignalMutation
 type SignalMutation struct {
 	// Biallelic Counts by Tumor Type
@@ -67,7 +70,7 @@ func NewSignalMutationWithDefaults() *SignalMutation {
 
 // GetBiallelicCountsByTumorType returns the BiallelicCountsByTumorType field value if set, zero value otherwise.
 func (o *SignalMutation) GetBiallelicCountsByTumorType() []CountByTumorType {
-	if o == nil || isNil(o.BiallelicCountsByTumorType) {
+	if o == nil || IsNil(o.BiallelicCountsByTumorType) {
 		var ret []CountByTumorType
 		return ret
 	}
@@ -77,15 +80,15 @@ func (o *SignalMutation) GetBiallelicCountsByTumorType() []CountByTumorType {
 // GetBiallelicCountsByTumorTypeOk returns a tuple with the BiallelicCountsByTumorType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalMutation) GetBiallelicCountsByTumorTypeOk() ([]CountByTumorType, bool) {
-	if o == nil || isNil(o.BiallelicCountsByTumorType) {
-    return nil, false
+	if o == nil || IsNil(o.BiallelicCountsByTumorType) {
+		return nil, false
 	}
 	return o.BiallelicCountsByTumorType, true
 }
 
 // HasBiallelicCountsByTumorType returns a boolean if a field has been set.
 func (o *SignalMutation) HasBiallelicCountsByTumorType() bool {
-	if o != nil && !isNil(o.BiallelicCountsByTumorType) {
+	if o != nil && !IsNil(o.BiallelicCountsByTumorType) {
 		return true
 	}
 
@@ -99,7 +102,7 @@ func (o *SignalMutation) SetBiallelicCountsByTumorType(v []CountByTumorType) {
 
 // GetChromosome returns the Chromosome field value if set, zero value otherwise.
 func (o *SignalMutation) GetChromosome() string {
-	if o == nil || isNil(o.Chromosome) {
+	if o == nil || IsNil(o.Chromosome) {
 		var ret string
 		return ret
 	}
@@ -109,15 +112,15 @@ func (o *SignalMutation) GetChromosome() string {
 // GetChromosomeOk returns a tuple with the Chromosome field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalMutation) GetChromosomeOk() (*string, bool) {
-	if o == nil || isNil(o.Chromosome) {
-    return nil, false
+	if o == nil || IsNil(o.Chromosome) {
+		return nil, false
 	}
 	return o.Chromosome, true
 }
 
 // HasChromosome returns a boolean if a field has been set.
 func (o *SignalMutation) HasChromosome() bool {
-	if o != nil && !isNil(o.Chromosome) {
+	if o != nil && !IsNil(o.Chromosome) {
 		return true
 	}
 
@@ -131,7 +134,7 @@ func (o *SignalMutation) SetChromosome(v string) {
 
 // GetCountsByTumorType returns the CountsByTumorType field value if set, zero value otherwise.
 func (o *SignalMutation) GetCountsByTumorType() []CountByTumorType {
-	if o == nil || isNil(o.CountsByTumorType) {
+	if o == nil || IsNil(o.CountsByTumorType) {
 		var ret []CountByTumorType
 		return ret
 	}
@@ -141,15 +144,15 @@ func (o *SignalMutation) GetCountsByTumorType() []CountByTumorType {
 // GetCountsByTumorTypeOk returns a tuple with the CountsByTumorType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalMutation) GetCountsByTumorTypeOk() ([]CountByTumorType, bool) {
-	if o == nil || isNil(o.CountsByTumorType) {
-    return nil, false
+	if o == nil || IsNil(o.CountsByTumorType) {
+		return nil, false
 	}
 	return o.CountsByTumorType, true
 }
 
 // HasCountsByTumorType returns a boolean if a field has been set.
 func (o *SignalMutation) HasCountsByTumorType() bool {
-	if o != nil && !isNil(o.CountsByTumorType) {
+	if o != nil && !IsNil(o.CountsByTumorType) {
 		return true
 	}
 
@@ -163,7 +166,7 @@ func (o *SignalMutation) SetCountsByTumorType(v []CountByTumorType) {
 
 // GetEndPosition returns the EndPosition field value if set, zero value otherwise.
 func (o *SignalMutation) GetEndPosition() int64 {
-	if o == nil || isNil(o.EndPosition) {
+	if o == nil || IsNil(o.EndPosition) {
 		var ret int64
 		return ret
 	}
@@ -173,15 +176,15 @@ func (o *SignalMutation) GetEndPosition() int64 {
 // GetEndPositionOk returns a tuple with the EndPosition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalMutation) GetEndPositionOk() (*int64, bool) {
-	if o == nil || isNil(o.EndPosition) {
-    return nil, false
+	if o == nil || IsNil(o.EndPosition) {
+		return nil, false
 	}
 	return o.EndPosition, true
 }
 
 // HasEndPosition returns a boolean if a field has been set.
 func (o *SignalMutation) HasEndPosition() bool {
-	if o != nil && !isNil(o.EndPosition) {
+	if o != nil && !IsNil(o.EndPosition) {
 		return true
 	}
 
@@ -195,7 +198,7 @@ func (o *SignalMutation) SetEndPosition(v int64) {
 
 // GetGeneralPopulationStats returns the GeneralPopulationStats field value if set, zero value otherwise.
 func (o *SignalMutation) GetGeneralPopulationStats() GeneralPopulationStats {
-	if o == nil || isNil(o.GeneralPopulationStats) {
+	if o == nil || IsNil(o.GeneralPopulationStats) {
 		var ret GeneralPopulationStats
 		return ret
 	}
@@ -205,15 +208,15 @@ func (o *SignalMutation) GetGeneralPopulationStats() GeneralPopulationStats {
 // GetGeneralPopulationStatsOk returns a tuple with the GeneralPopulationStats field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalMutation) GetGeneralPopulationStatsOk() (*GeneralPopulationStats, bool) {
-	if o == nil || isNil(o.GeneralPopulationStats) {
-    return nil, false
+	if o == nil || IsNil(o.GeneralPopulationStats) {
+		return nil, false
 	}
 	return o.GeneralPopulationStats, true
 }
 
 // HasGeneralPopulationStats returns a boolean if a field has been set.
 func (o *SignalMutation) HasGeneralPopulationStats() bool {
-	if o != nil && !isNil(o.GeneralPopulationStats) {
+	if o != nil && !IsNil(o.GeneralPopulationStats) {
 		return true
 	}
 
@@ -227,7 +230,7 @@ func (o *SignalMutation) SetGeneralPopulationStats(v GeneralPopulationStats) {
 
 // GetHugoGeneSymbol returns the HugoGeneSymbol field value if set, zero value otherwise.
 func (o *SignalMutation) GetHugoGeneSymbol() string {
-	if o == nil || isNil(o.HugoGeneSymbol) {
+	if o == nil || IsNil(o.HugoGeneSymbol) {
 		var ret string
 		return ret
 	}
@@ -237,15 +240,15 @@ func (o *SignalMutation) GetHugoGeneSymbol() string {
 // GetHugoGeneSymbolOk returns a tuple with the HugoGeneSymbol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalMutation) GetHugoGeneSymbolOk() (*string, bool) {
-	if o == nil || isNil(o.HugoGeneSymbol) {
-    return nil, false
+	if o == nil || IsNil(o.HugoGeneSymbol) {
+		return nil, false
 	}
 	return o.HugoGeneSymbol, true
 }
 
 // HasHugoGeneSymbol returns a boolean if a field has been set.
 func (o *SignalMutation) HasHugoGeneSymbol() bool {
-	if o != nil && !isNil(o.HugoGeneSymbol) {
+	if o != nil && !IsNil(o.HugoGeneSymbol) {
 		return true
 	}
 
@@ -259,7 +262,7 @@ func (o *SignalMutation) SetHugoGeneSymbol(v string) {
 
 // GetMskExperReview returns the MskExperReview field value if set, zero value otherwise.
 func (o *SignalMutation) GetMskExperReview() bool {
-	if o == nil || isNil(o.MskExperReview) {
+	if o == nil || IsNil(o.MskExperReview) {
 		var ret bool
 		return ret
 	}
@@ -269,15 +272,15 @@ func (o *SignalMutation) GetMskExperReview() bool {
 // GetMskExperReviewOk returns a tuple with the MskExperReview field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalMutation) GetMskExperReviewOk() (*bool, bool) {
-	if o == nil || isNil(o.MskExperReview) {
-    return nil, false
+	if o == nil || IsNil(o.MskExperReview) {
+		return nil, false
 	}
 	return o.MskExperReview, true
 }
 
 // HasMskExperReview returns a boolean if a field has been set.
 func (o *SignalMutation) HasMskExperReview() bool {
-	if o != nil && !isNil(o.MskExperReview) {
+	if o != nil && !IsNil(o.MskExperReview) {
 		return true
 	}
 
@@ -291,7 +294,7 @@ func (o *SignalMutation) SetMskExperReview(v bool) {
 
 // GetMutationStatus returns the MutationStatus field value if set, zero value otherwise.
 func (o *SignalMutation) GetMutationStatus() string {
-	if o == nil || isNil(o.MutationStatus) {
+	if o == nil || IsNil(o.MutationStatus) {
 		var ret string
 		return ret
 	}
@@ -301,15 +304,15 @@ func (o *SignalMutation) GetMutationStatus() string {
 // GetMutationStatusOk returns a tuple with the MutationStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalMutation) GetMutationStatusOk() (*string, bool) {
-	if o == nil || isNil(o.MutationStatus) {
-    return nil, false
+	if o == nil || IsNil(o.MutationStatus) {
+		return nil, false
 	}
 	return o.MutationStatus, true
 }
 
 // HasMutationStatus returns a boolean if a field has been set.
 func (o *SignalMutation) HasMutationStatus() bool {
-	if o != nil && !isNil(o.MutationStatus) {
+	if o != nil && !IsNil(o.MutationStatus) {
 		return true
 	}
 
@@ -323,7 +326,7 @@ func (o *SignalMutation) SetMutationStatus(v string) {
 
 // GetOverallNumberOfGermlineHomozygous returns the OverallNumberOfGermlineHomozygous field value if set, zero value otherwise.
 func (o *SignalMutation) GetOverallNumberOfGermlineHomozygous() int32 {
-	if o == nil || isNil(o.OverallNumberOfGermlineHomozygous) {
+	if o == nil || IsNil(o.OverallNumberOfGermlineHomozygous) {
 		var ret int32
 		return ret
 	}
@@ -333,15 +336,15 @@ func (o *SignalMutation) GetOverallNumberOfGermlineHomozygous() int32 {
 // GetOverallNumberOfGermlineHomozygousOk returns a tuple with the OverallNumberOfGermlineHomozygous field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalMutation) GetOverallNumberOfGermlineHomozygousOk() (*int32, bool) {
-	if o == nil || isNil(o.OverallNumberOfGermlineHomozygous) {
-    return nil, false
+	if o == nil || IsNil(o.OverallNumberOfGermlineHomozygous) {
+		return nil, false
 	}
 	return o.OverallNumberOfGermlineHomozygous, true
 }
 
 // HasOverallNumberOfGermlineHomozygous returns a boolean if a field has been set.
 func (o *SignalMutation) HasOverallNumberOfGermlineHomozygous() bool {
-	if o != nil && !isNil(o.OverallNumberOfGermlineHomozygous) {
+	if o != nil && !IsNil(o.OverallNumberOfGermlineHomozygous) {
 		return true
 	}
 
@@ -355,7 +358,7 @@ func (o *SignalMutation) SetOverallNumberOfGermlineHomozygous(v int32) {
 
 // GetPathogenic returns the Pathogenic field value if set, zero value otherwise.
 func (o *SignalMutation) GetPathogenic() string {
-	if o == nil || isNil(o.Pathogenic) {
+	if o == nil || IsNil(o.Pathogenic) {
 		var ret string
 		return ret
 	}
@@ -365,15 +368,15 @@ func (o *SignalMutation) GetPathogenic() string {
 // GetPathogenicOk returns a tuple with the Pathogenic field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalMutation) GetPathogenicOk() (*string, bool) {
-	if o == nil || isNil(o.Pathogenic) {
-    return nil, false
+	if o == nil || IsNil(o.Pathogenic) {
+		return nil, false
 	}
 	return o.Pathogenic, true
 }
 
 // HasPathogenic returns a boolean if a field has been set.
 func (o *SignalMutation) HasPathogenic() bool {
-	if o != nil && !isNil(o.Pathogenic) {
+	if o != nil && !IsNil(o.Pathogenic) {
 		return true
 	}
 
@@ -387,7 +390,7 @@ func (o *SignalMutation) SetPathogenic(v string) {
 
 // GetPenetrance returns the Penetrance field value if set, zero value otherwise.
 func (o *SignalMutation) GetPenetrance() string {
-	if o == nil || isNil(o.Penetrance) {
+	if o == nil || IsNil(o.Penetrance) {
 		var ret string
 		return ret
 	}
@@ -397,15 +400,15 @@ func (o *SignalMutation) GetPenetrance() string {
 // GetPenetranceOk returns a tuple with the Penetrance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalMutation) GetPenetranceOk() (*string, bool) {
-	if o == nil || isNil(o.Penetrance) {
-    return nil, false
+	if o == nil || IsNil(o.Penetrance) {
+		return nil, false
 	}
 	return o.Penetrance, true
 }
 
 // HasPenetrance returns a boolean if a field has been set.
 func (o *SignalMutation) HasPenetrance() bool {
-	if o != nil && !isNil(o.Penetrance) {
+	if o != nil && !IsNil(o.Penetrance) {
 		return true
 	}
 
@@ -419,7 +422,7 @@ func (o *SignalMutation) SetPenetrance(v string) {
 
 // GetQcPassCountsByTumorType returns the QcPassCountsByTumorType field value if set, zero value otherwise.
 func (o *SignalMutation) GetQcPassCountsByTumorType() []CountByTumorType {
-	if o == nil || isNil(o.QcPassCountsByTumorType) {
+	if o == nil || IsNil(o.QcPassCountsByTumorType) {
 		var ret []CountByTumorType
 		return ret
 	}
@@ -429,15 +432,15 @@ func (o *SignalMutation) GetQcPassCountsByTumorType() []CountByTumorType {
 // GetQcPassCountsByTumorTypeOk returns a tuple with the QcPassCountsByTumorType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalMutation) GetQcPassCountsByTumorTypeOk() ([]CountByTumorType, bool) {
-	if o == nil || isNil(o.QcPassCountsByTumorType) {
-    return nil, false
+	if o == nil || IsNil(o.QcPassCountsByTumorType) {
+		return nil, false
 	}
 	return o.QcPassCountsByTumorType, true
 }
 
 // HasQcPassCountsByTumorType returns a boolean if a field has been set.
 func (o *SignalMutation) HasQcPassCountsByTumorType() bool {
-	if o != nil && !isNil(o.QcPassCountsByTumorType) {
+	if o != nil && !IsNil(o.QcPassCountsByTumorType) {
 		return true
 	}
 
@@ -451,7 +454,7 @@ func (o *SignalMutation) SetQcPassCountsByTumorType(v []CountByTumorType) {
 
 // GetReferenceAllele returns the ReferenceAllele field value if set, zero value otherwise.
 func (o *SignalMutation) GetReferenceAllele() string {
-	if o == nil || isNil(o.ReferenceAllele) {
+	if o == nil || IsNil(o.ReferenceAllele) {
 		var ret string
 		return ret
 	}
@@ -461,15 +464,15 @@ func (o *SignalMutation) GetReferenceAllele() string {
 // GetReferenceAlleleOk returns a tuple with the ReferenceAllele field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalMutation) GetReferenceAlleleOk() (*string, bool) {
-	if o == nil || isNil(o.ReferenceAllele) {
-    return nil, false
+	if o == nil || IsNil(o.ReferenceAllele) {
+		return nil, false
 	}
 	return o.ReferenceAllele, true
 }
 
 // HasReferenceAllele returns a boolean if a field has been set.
 func (o *SignalMutation) HasReferenceAllele() bool {
-	if o != nil && !isNil(o.ReferenceAllele) {
+	if o != nil && !IsNil(o.ReferenceAllele) {
 		return true
 	}
 
@@ -483,7 +486,7 @@ func (o *SignalMutation) SetReferenceAllele(v string) {
 
 // GetStartPosition returns the StartPosition field value if set, zero value otherwise.
 func (o *SignalMutation) GetStartPosition() int64 {
-	if o == nil || isNil(o.StartPosition) {
+	if o == nil || IsNil(o.StartPosition) {
 		var ret int64
 		return ret
 	}
@@ -493,15 +496,15 @@ func (o *SignalMutation) GetStartPosition() int64 {
 // GetStartPositionOk returns a tuple with the StartPosition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalMutation) GetStartPositionOk() (*int64, bool) {
-	if o == nil || isNil(o.StartPosition) {
-    return nil, false
+	if o == nil || IsNil(o.StartPosition) {
+		return nil, false
 	}
 	return o.StartPosition, true
 }
 
 // HasStartPosition returns a boolean if a field has been set.
 func (o *SignalMutation) HasStartPosition() bool {
-	if o != nil && !isNil(o.StartPosition) {
+	if o != nil && !IsNil(o.StartPosition) {
 		return true
 	}
 
@@ -515,7 +518,7 @@ func (o *SignalMutation) SetStartPosition(v int64) {
 
 // GetStatsByTumorType returns the StatsByTumorType field value if set, zero value otherwise.
 func (o *SignalMutation) GetStatsByTumorType() []StatsByTumorType {
-	if o == nil || isNil(o.StatsByTumorType) {
+	if o == nil || IsNil(o.StatsByTumorType) {
 		var ret []StatsByTumorType
 		return ret
 	}
@@ -525,15 +528,15 @@ func (o *SignalMutation) GetStatsByTumorType() []StatsByTumorType {
 // GetStatsByTumorTypeOk returns a tuple with the StatsByTumorType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalMutation) GetStatsByTumorTypeOk() ([]StatsByTumorType, bool) {
-	if o == nil || isNil(o.StatsByTumorType) {
-    return nil, false
+	if o == nil || IsNil(o.StatsByTumorType) {
+		return nil, false
 	}
 	return o.StatsByTumorType, true
 }
 
 // HasStatsByTumorType returns a boolean if a field has been set.
 func (o *SignalMutation) HasStatsByTumorType() bool {
-	if o != nil && !isNil(o.StatsByTumorType) {
+	if o != nil && !IsNil(o.StatsByTumorType) {
 		return true
 	}
 
@@ -547,7 +550,7 @@ func (o *SignalMutation) SetStatsByTumorType(v []StatsByTumorType) {
 
 // GetVariantAllele returns the VariantAllele field value if set, zero value otherwise.
 func (o *SignalMutation) GetVariantAllele() string {
-	if o == nil || isNil(o.VariantAllele) {
+	if o == nil || IsNil(o.VariantAllele) {
 		var ret string
 		return ret
 	}
@@ -557,15 +560,15 @@ func (o *SignalMutation) GetVariantAllele() string {
 // GetVariantAlleleOk returns a tuple with the VariantAllele field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SignalMutation) GetVariantAlleleOk() (*string, bool) {
-	if o == nil || isNil(o.VariantAllele) {
-    return nil, false
+	if o == nil || IsNil(o.VariantAllele) {
+		return nil, false
 	}
 	return o.VariantAllele, true
 }
 
 // HasVariantAllele returns a boolean if a field has been set.
 func (o *SignalMutation) HasVariantAllele() bool {
-	if o != nil && !isNil(o.VariantAllele) {
+	if o != nil && !IsNil(o.VariantAllele) {
 		return true
 	}
 
@@ -578,56 +581,64 @@ func (o *SignalMutation) SetVariantAllele(v string) {
 }
 
 func (o SignalMutation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.BiallelicCountsByTumorType) {
-		toSerialize["biallelicCountsByTumorType"] = o.BiallelicCountsByTumorType
-	}
-	if !isNil(o.Chromosome) {
-		toSerialize["chromosome"] = o.Chromosome
-	}
-	if !isNil(o.CountsByTumorType) {
-		toSerialize["countsByTumorType"] = o.CountsByTumorType
-	}
-	if !isNil(o.EndPosition) {
-		toSerialize["endPosition"] = o.EndPosition
-	}
-	if !isNil(o.GeneralPopulationStats) {
-		toSerialize["generalPopulationStats"] = o.GeneralPopulationStats
-	}
-	if !isNil(o.HugoGeneSymbol) {
-		toSerialize["hugoGeneSymbol"] = o.HugoGeneSymbol
-	}
-	if !isNil(o.MskExperReview) {
-		toSerialize["mskExperReview"] = o.MskExperReview
-	}
-	if !isNil(o.MutationStatus) {
-		toSerialize["mutationStatus"] = o.MutationStatus
-	}
-	if !isNil(o.OverallNumberOfGermlineHomozygous) {
-		toSerialize["overallNumberOfGermlineHomozygous"] = o.OverallNumberOfGermlineHomozygous
-	}
-	if !isNil(o.Pathogenic) {
-		toSerialize["pathogenic"] = o.Pathogenic
-	}
-	if !isNil(o.Penetrance) {
-		toSerialize["penetrance"] = o.Penetrance
-	}
-	if !isNil(o.QcPassCountsByTumorType) {
-		toSerialize["qcPassCountsByTumorType"] = o.QcPassCountsByTumorType
-	}
-	if !isNil(o.ReferenceAllele) {
-		toSerialize["referenceAllele"] = o.ReferenceAllele
-	}
-	if !isNil(o.StartPosition) {
-		toSerialize["startPosition"] = o.StartPosition
-	}
-	if !isNil(o.StatsByTumorType) {
-		toSerialize["statsByTumorType"] = o.StatsByTumorType
-	}
-	if !isNil(o.VariantAllele) {
-		toSerialize["variantAllele"] = o.VariantAllele
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SignalMutation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BiallelicCountsByTumorType) {
+		toSerialize["biallelicCountsByTumorType"] = o.BiallelicCountsByTumorType
+	}
+	if !IsNil(o.Chromosome) {
+		toSerialize["chromosome"] = o.Chromosome
+	}
+	if !IsNil(o.CountsByTumorType) {
+		toSerialize["countsByTumorType"] = o.CountsByTumorType
+	}
+	if !IsNil(o.EndPosition) {
+		toSerialize["endPosition"] = o.EndPosition
+	}
+	if !IsNil(o.GeneralPopulationStats) {
+		toSerialize["generalPopulationStats"] = o.GeneralPopulationStats
+	}
+	if !IsNil(o.HugoGeneSymbol) {
+		toSerialize["hugoGeneSymbol"] = o.HugoGeneSymbol
+	}
+	if !IsNil(o.MskExperReview) {
+		toSerialize["mskExperReview"] = o.MskExperReview
+	}
+	if !IsNil(o.MutationStatus) {
+		toSerialize["mutationStatus"] = o.MutationStatus
+	}
+	if !IsNil(o.OverallNumberOfGermlineHomozygous) {
+		toSerialize["overallNumberOfGermlineHomozygous"] = o.OverallNumberOfGermlineHomozygous
+	}
+	if !IsNil(o.Pathogenic) {
+		toSerialize["pathogenic"] = o.Pathogenic
+	}
+	if !IsNil(o.Penetrance) {
+		toSerialize["penetrance"] = o.Penetrance
+	}
+	if !IsNil(o.QcPassCountsByTumorType) {
+		toSerialize["qcPassCountsByTumorType"] = o.QcPassCountsByTumorType
+	}
+	if !IsNil(o.ReferenceAllele) {
+		toSerialize["referenceAllele"] = o.ReferenceAllele
+	}
+	if !IsNil(o.StartPosition) {
+		toSerialize["startPosition"] = o.StartPosition
+	}
+	if !IsNil(o.StatsByTumorType) {
+		toSerialize["statsByTumorType"] = o.StatsByTumorType
+	}
+	if !IsNil(o.VariantAllele) {
+		toSerialize["variantAllele"] = o.VariantAllele
+	}
+	return toSerialize, nil
 }
 
 type NullableSignalMutation struct {

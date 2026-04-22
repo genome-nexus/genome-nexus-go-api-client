@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PtmFilter type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PtmFilter{}
+
 // PtmFilter struct for PtmFilter
 type PtmFilter struct {
 	// List of Ensembl transcript IDs. For example [\"ENST00000361390\", \"ENST00000361453\", \"ENST00000361624\"]
@@ -39,7 +42,7 @@ func NewPtmFilterWithDefaults() *PtmFilter {
 
 // GetTranscriptIds returns the TranscriptIds field value if set, zero value otherwise.
 func (o *PtmFilter) GetTranscriptIds() []string {
-	if o == nil || isNil(o.TranscriptIds) {
+	if o == nil || IsNil(o.TranscriptIds) {
 		var ret []string
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *PtmFilter) GetTranscriptIds() []string {
 // GetTranscriptIdsOk returns a tuple with the TranscriptIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PtmFilter) GetTranscriptIdsOk() ([]string, bool) {
-	if o == nil || isNil(o.TranscriptIds) {
-    return nil, false
+	if o == nil || IsNil(o.TranscriptIds) {
+		return nil, false
 	}
 	return o.TranscriptIds, true
 }
 
 // HasTranscriptIds returns a boolean if a field has been set.
 func (o *PtmFilter) HasTranscriptIds() bool {
-	if o != nil && !isNil(o.TranscriptIds) {
+	if o != nil && !IsNil(o.TranscriptIds) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *PtmFilter) SetTranscriptIds(v []string) {
 }
 
 func (o PtmFilter) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.TranscriptIds) {
-		toSerialize["transcriptIds"] = o.TranscriptIds
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PtmFilter) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TranscriptIds) {
+		toSerialize["transcriptIds"] = o.TranscriptIds
+	}
+	return toSerialize, nil
 }
 
 type NullablePtmFilter struct {

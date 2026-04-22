@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Alleles type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Alleles{}
+
 // Alleles struct for Alleles
 type Alleles struct {
 	// allele
@@ -39,7 +42,7 @@ func NewAllelesWithDefaults() *Alleles {
 
 // GetAllele returns the Allele field value if set, zero value otherwise.
 func (o *Alleles) GetAllele() string {
-	if o == nil || isNil(o.Allele) {
+	if o == nil || IsNil(o.Allele) {
 		var ret string
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *Alleles) GetAllele() string {
 // GetAlleleOk returns a tuple with the Allele field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Alleles) GetAlleleOk() (*string, bool) {
-	if o == nil || isNil(o.Allele) {
-    return nil, false
+	if o == nil || IsNil(o.Allele) {
+		return nil, false
 	}
 	return o.Allele, true
 }
 
 // HasAllele returns a boolean if a field has been set.
 func (o *Alleles) HasAllele() bool {
-	if o != nil && !isNil(o.Allele) {
+	if o != nil && !IsNil(o.Allele) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *Alleles) SetAllele(v string) {
 }
 
 func (o Alleles) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Allele) {
-		toSerialize["allele"] = o.Allele
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Alleles) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Allele) {
+		toSerialize["allele"] = o.Allele
+	}
+	return toSerialize, nil
 }
 
 type NullableAlleles struct {

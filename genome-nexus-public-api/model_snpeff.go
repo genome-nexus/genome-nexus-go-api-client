@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Snpeff type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Snpeff{}
+
 // Snpeff struct for Snpeff
 type Snpeff struct {
 	// license
@@ -39,7 +42,7 @@ func NewSnpeffWithDefaults() *Snpeff {
 
 // GetLicense returns the License field value if set, zero value otherwise.
 func (o *Snpeff) GetLicense() string {
-	if o == nil || isNil(o.License) {
+	if o == nil || IsNil(o.License) {
 		var ret string
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *Snpeff) GetLicense() string {
 // GetLicenseOk returns a tuple with the License field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Snpeff) GetLicenseOk() (*string, bool) {
-	if o == nil || isNil(o.License) {
-    return nil, false
+	if o == nil || IsNil(o.License) {
+		return nil, false
 	}
 	return o.License, true
 }
 
 // HasLicense returns a boolean if a field has been set.
 func (o *Snpeff) HasLicense() bool {
-	if o != nil && !isNil(o.License) {
+	if o != nil && !IsNil(o.License) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *Snpeff) SetLicense(v string) {
 }
 
 func (o Snpeff) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.License) {
-		toSerialize["license"] = o.License
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Snpeff) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.License) {
+		toSerialize["license"] = o.License
+	}
+	return toSerialize, nil
 }
 
 type NullableSnpeff struct {

@@ -33,21 +33,28 @@ paths:
       operationId: fetchVariantAnnotationPOST
       parameters:
       - description: Isoform override source. For example uniprot
+        explode: true
         in: query
         name: isoformOverrideSource
+        required: false
         schema:
           type: string
+        style: form
       - description: "Map of tokens. For example {\"source1\":\"put-your-token1-here\"\
           ,\"source2\":\"put-your-token2-here\"}"
+        explode: true
         in: query
         name: token
+        required: false
         schema:
           type: string
+        style: form
       - description: "Comma separated list of fields to include (case-sensitive!).\
           \ For example: hotspots"
         explode: true
         in: query
         name: fields
+        required: false
         schema:
           items:
             type: string
@@ -82,21 +89,28 @@ paths:
       operationId: fetchVariantAnnotationByIdPOST
       parameters:
       - description: Isoform override source. For example uniprot
+        explode: true
         in: query
         name: isoformOverrideSource
+        required: false
         schema:
           type: string
+        style: form
       - description: "Map of tokens. For example {\"source1\":\"put-your-token1-here\"\
           ,\"source2\":\"put-your-token2-here\"}"
+        explode: true
         in: query
         name: token
+        required: false
         schema:
           type: string
+        style: form
       - description: "Comma separated list of fields to include (case-sensitive!).\
           \ For example: annotation_summary"
         explode: true
         in: query
         name: fields
+        required: false
         schema:
           items:
             type: string
@@ -129,27 +143,36 @@ paths:
       operationId: fetchVariantAnnotationByIdGET
       parameters:
       - description: dbSNP id. For example rs116035550.
+        explode: false
         in: path
         name: variantId
         required: true
         schema:
           type: string
+        style: simple
       - description: Isoform override source. For example uniprot
+        explode: true
         in: query
         name: isoformOverrideSource
+        required: false
         schema:
           type: string
+        style: form
       - description: "Map of tokens. For example {\"source1\":\"put-your-token1-here\"\
           ,\"source2\":\"put-your-token2-here\"}"
+        explode: true
         in: query
         name: token
+        required: false
         schema:
           type: string
+        style: form
       - description: "Comma separated list of fields to include (case-sensitive!).\
           \ For example: annotation_summary"
         explode: true
         in: query
         name: fields
+        required: false
         schema:
           items:
             type: string
@@ -170,21 +193,28 @@ paths:
       operationId: fetchVariantAnnotationByGenomicLocationPOST
       parameters:
       - description: Isoform override source. For example uniprot
+        explode: true
         in: query
         name: isoformOverrideSource
+        required: false
         schema:
           type: string
+        style: form
       - description: "Map of tokens. For example {\"source1\":\"put-your-token1-here\"\
           ,\"source2\":\"put-your-token2-here\"}"
+        explode: true
         in: query
         name: token
+        required: false
         schema:
           type: string
+        style: form
       - description: "Comma separated list of fields to include (case-sensitive!).\
           \ For example: hotspots"
         explode: true
         in: query
         name: fields
+        required: false
         schema:
           items:
             type: string
@@ -217,27 +247,36 @@ paths:
       operationId: fetchVariantAnnotationByGenomicLocationGET
       parameters:
       - description: "A genomic location. For example 7,140453136,140453136,A,T"
+        explode: false
         in: path
         name: genomicLocation
         required: true
         schema:
           type: string
+        style: simple
       - description: Isoform override source. For example uniprot
+        explode: true
         in: query
         name: isoformOverrideSource
+        required: false
         schema:
           type: string
+        style: form
       - description: "Map of tokens. For example {\"source1\":\"put-your-token1-here\"\
           ,\"source2\":\"put-your-token2-here\"}"
+        explode: true
         in: query
         name: token
+        required: false
         schema:
           type: string
+        style: form
       - description: "Comma separated list of fields to include (case-sensitive!).\
           \ For example: hotspots"
         explode: true
         in: query
         name: fields
+        required: false
         schema:
           items:
             type: string
@@ -258,27 +297,36 @@ paths:
       operationId: fetchVariantAnnotationGET
       parameters:
       - description: Variant. For example 17:g.41242962_41242963insGA
+        explode: false
         in: path
         name: variant
         required: true
         schema:
           type: string
+        style: simple
       - description: Isoform override source. For example uniprot
+        explode: true
         in: query
         name: isoformOverrideSource
+        required: false
         schema:
           type: string
+        style: form
       - description: "Map of tokens. For example {\"source1\":\"put-your-token1-here\"\
           ,\"source2\":\"put-your-token2-here\"}"
+        explode: true
         in: query
         name: token
+        required: false
         schema:
           type: string
+        style: form
       - description: "Comma separated list of fields to include (case-sensitive!).\
           \ For example: hotspots"
         explode: true
         in: query
         name: fields
+        required: false
         schema:
           items:
             type: string
@@ -325,11 +373,13 @@ paths:
       operationId: fetchCanonicalEnsemblGeneIdByEntrezGeneIdGET
       parameters:
       - description: An Entrez Gene Id. For example 23140
+        explode: false
         in: path
         name: entrezGeneId
         required: true
         schema:
           type: string
+        style: simple
       responses:
         "200":
           content:
@@ -371,11 +421,13 @@ paths:
       operationId: fetchCanonicalEnsemblGeneIdByHugoSymbolGET
       parameters:
       - description: A Hugo Symbol. For example TP53
+        explode: false
         in: path
         name: hugoSymbol
         required: true
         schema:
           type: string
+        style: simple
       responses:
         "200":
           content:
@@ -391,11 +443,14 @@ paths:
       operationId: fetchCanonicalEnsemblTranscriptsByHugoSymbolsPOST
       parameters:
       - description: Isoform override source. For example uniprot
+        explode: true
         in: query
         name: isoformOverrideSource
+        required: false
         schema:
           default: uniprot
           type: string
+        style: form
       requestBody:
         content:
           application/json:
@@ -424,17 +479,22 @@ paths:
       operationId: fetchCanonicalEnsemblTranscriptByHugoSymbolGET
       parameters:
       - description: A Hugo Symbol. For example TP53
+        explode: false
         in: path
         name: hugoSymbol
         required: true
         schema:
           type: string
+        style: simple
       - description: Isoform override source. For example uniprot
+        explode: true
         in: query
         name: isoformOverrideSource
+        required: false
         schema:
           default: uniprot
           type: string
+        style: form
       responses:
         "200":
           content:
@@ -450,20 +510,29 @@ paths:
       operationId: fetchEnsemblTranscriptsGET
       parameters:
       - description: An Ensembl gene ID. For example ENSG00000136999
+        explode: true
         in: query
         name: geneId
+        required: false
         schema:
           type: string
+        style: form
       - description: An Ensembl protein ID. For example ENSP00000439985
+        explode: true
         in: query
         name: proteinId
+        required: false
         schema:
           type: string
+        style: form
       - description: A Hugo Symbol For example ARF5
+        explode: true
         in: query
         name: hugoSymbol
+        required: false
         schema:
           type: string
+        style: form
       responses:
         "200":
           content:
@@ -510,11 +579,13 @@ paths:
       operationId: fetchEnsemblTranscriptByTranscriptIdGET
       parameters:
       - description: An Ensembl transcript ID. For example ENST00000361390
+        explode: false
         in: path
         name: transcriptId
         required: true
         schema:
           type: string
+        style: simple
       responses:
         "200":
           content:
@@ -530,11 +601,13 @@ paths:
       operationId: fetchGeneXrefsGET
       parameters:
       - description: Ensembl gene accession. For example ENSG00000169083
+        explode: true
         in: query
         name: accession
         required: true
         schema:
           type: string
+        style: form
       responses:
         "200":
           content:
@@ -578,11 +651,13 @@ paths:
       operationId: fetchPdbHeaderGET
       parameters:
       - description: "PDB id, for example 1a37"
+        explode: false
         in: path
         name: pdbId
         required: true
         schema:
           type: string
+        style: simple
       responses:
         "200":
           content:
@@ -624,11 +699,13 @@ paths:
       operationId: fetchPfamDomainsByAccessionGET
       parameters:
       - description: A PFAM domain accession ID. For example PF02827
+        explode: false
         in: path
         name: pfamAccession
         required: true
         schema:
           type: string
+        style: simple
       responses:
         "200":
           content:
@@ -644,10 +721,13 @@ paths:
       operationId: fetchPostTranslationalModificationsGET
       parameters:
       - description: Ensembl Transcript ID. For example ENST00000646891
+        explode: true
         in: query
         name: ensemblTranscriptId
+        required: false
         schema:
           type: string
+        style: form
       responses:
         "200":
           content:
@@ -4055,6 +4135,114 @@ components:
           type: string
         variant_allele:
           description: Variant allele
+          type: string
+        all_effects:
+          description: All effects (VEP)
+          type: string
+        biotype:
+          description: Biotype of the transcript
+          type: string
+        ccds:
+          description: CCDS transcript identifier
+          type: string
+        cdna_position:
+          description: cDNA position
+          type: string
+        cds_position:
+          description: CDS position
+          type: string
+        clin_sig:
+          description: ClinVar clinical significance
+          items:
+            type: string
+          type: array
+        distance:
+          description: Distance to transcript
+          format: int32
+          type: integer
+        domains:
+          description: Overlapping protein domains
+          items:
+            additionalProperties:
+              type: string
+            type: object
+          type: array
+        gene_pheno:
+          description: Indicates if gene is associated with a phenotype
+          format: int32
+          type: integer
+        hgvs_offset:
+          description: HGVS offset
+          format: int32
+          type: integer
+        high_inf_pos:
+          description: High information position in motif
+          type: string
+        impact:
+          description: VEP predicted impact
+          type: string
+        intron:
+          description: Intron number
+          type: string
+        minimised:
+          description: Allele minimisation flag
+          format: int32
+          type: integer
+        motif_name:
+          description: Overlapping regulatory motif name
+          type: string
+        motif_pos:
+          description: Position in motif
+          format: int32
+          type: integer
+        motif_score_change:
+          description: Motif score change
+          format: double
+          type: number
+        pheno:
+          description: Variant associated with a phenotype
+          items:
+            format: int32
+            type: integer
+          type: array
+        pick:
+          description: VEP pick flag (chosen transcript)
+          format: int32
+          type: integer
+        pubmed:
+          description: PubMed IDs for publications
+          items:
+            format: int32
+            type: integer
+          type: array
+        somatic:
+          description: Somatic status flags
+          items:
+            format: int32
+            type: integer
+          type: array
+        swissprot:
+          description: UniProtKB/Swiss-Prot accessions
+          items:
+            type: string
+          type: array
+        symbol_source:
+          description: Source of gene symbol
+          type: string
+        trembl:
+          description: UniProtKB/TrEMBL accessions
+          items:
+            type: string
+          type: array
+        tsl:
+          description: Transcript support level
+          format: int32
+          type: integer
+        uniparc:
+          description: UniParc identifier
+          type: string
+        variant_class:
+          description: Sequence Ontology variant class
           type: string
       required:
       - transcript_id

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClinVar type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClinVar{}
+
 // ClinVar struct for ClinVar
 type ClinVar struct {
 	// allele_id
@@ -54,7 +57,7 @@ func NewClinVarWithDefaults() *ClinVar {
 
 // GetAlleleId returns the AlleleId field value if set, zero value otherwise.
 func (o *ClinVar) GetAlleleId() int32 {
-	if o == nil || isNil(o.AlleleId) {
+	if o == nil || IsNil(o.AlleleId) {
 		var ret int32
 		return ret
 	}
@@ -64,15 +67,15 @@ func (o *ClinVar) GetAlleleId() int32 {
 // GetAlleleIdOk returns a tuple with the AlleleId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClinVar) GetAlleleIdOk() (*int32, bool) {
-	if o == nil || isNil(o.AlleleId) {
-    return nil, false
+	if o == nil || IsNil(o.AlleleId) {
+		return nil, false
 	}
 	return o.AlleleId, true
 }
 
 // HasAlleleId returns a boolean if a field has been set.
 func (o *ClinVar) HasAlleleId() bool {
-	if o != nil && !isNil(o.AlleleId) {
+	if o != nil && !IsNil(o.AlleleId) {
 		return true
 	}
 
@@ -86,7 +89,7 @@ func (o *ClinVar) SetAlleleId(v int32) {
 
 // GetAlt returns the Alt field value if set, zero value otherwise.
 func (o *ClinVar) GetAlt() string {
-	if o == nil || isNil(o.Alt) {
+	if o == nil || IsNil(o.Alt) {
 		var ret string
 		return ret
 	}
@@ -96,15 +99,15 @@ func (o *ClinVar) GetAlt() string {
 // GetAltOk returns a tuple with the Alt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClinVar) GetAltOk() (*string, bool) {
-	if o == nil || isNil(o.Alt) {
-    return nil, false
+	if o == nil || IsNil(o.Alt) {
+		return nil, false
 	}
 	return o.Alt, true
 }
 
 // HasAlt returns a boolean if a field has been set.
 func (o *ClinVar) HasAlt() bool {
-	if o != nil && !isNil(o.Alt) {
+	if o != nil && !IsNil(o.Alt) {
 		return true
 	}
 
@@ -118,7 +121,7 @@ func (o *ClinVar) SetAlt(v string) {
 
 // GetChrom returns the Chrom field value if set, zero value otherwise.
 func (o *ClinVar) GetChrom() string {
-	if o == nil || isNil(o.Chrom) {
+	if o == nil || IsNil(o.Chrom) {
 		var ret string
 		return ret
 	}
@@ -128,15 +131,15 @@ func (o *ClinVar) GetChrom() string {
 // GetChromOk returns a tuple with the Chrom field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClinVar) GetChromOk() (*string, bool) {
-	if o == nil || isNil(o.Chrom) {
-    return nil, false
+	if o == nil || IsNil(o.Chrom) {
+		return nil, false
 	}
 	return o.Chrom, true
 }
 
 // HasChrom returns a boolean if a field has been set.
 func (o *ClinVar) HasChrom() bool {
-	if o != nil && !isNil(o.Chrom) {
+	if o != nil && !IsNil(o.Chrom) {
 		return true
 	}
 
@@ -150,7 +153,7 @@ func (o *ClinVar) SetChrom(v string) {
 
 // GetCytogenic returns the Cytogenic field value if set, zero value otherwise.
 func (o *ClinVar) GetCytogenic() string {
-	if o == nil || isNil(o.Cytogenic) {
+	if o == nil || IsNil(o.Cytogenic) {
 		var ret string
 		return ret
 	}
@@ -160,15 +163,15 @@ func (o *ClinVar) GetCytogenic() string {
 // GetCytogenicOk returns a tuple with the Cytogenic field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClinVar) GetCytogenicOk() (*string, bool) {
-	if o == nil || isNil(o.Cytogenic) {
-    return nil, false
+	if o == nil || IsNil(o.Cytogenic) {
+		return nil, false
 	}
 	return o.Cytogenic, true
 }
 
 // HasCytogenic returns a boolean if a field has been set.
 func (o *ClinVar) HasCytogenic() bool {
-	if o != nil && !isNil(o.Cytogenic) {
+	if o != nil && !IsNil(o.Cytogenic) {
 		return true
 	}
 
@@ -182,7 +185,7 @@ func (o *ClinVar) SetCytogenic(v string) {
 
 // GetGene returns the Gene field value if set, zero value otherwise.
 func (o *ClinVar) GetGene() Gene {
-	if o == nil || isNil(o.Gene) {
+	if o == nil || IsNil(o.Gene) {
 		var ret Gene
 		return ret
 	}
@@ -192,15 +195,15 @@ func (o *ClinVar) GetGene() Gene {
 // GetGeneOk returns a tuple with the Gene field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClinVar) GetGeneOk() (*Gene, bool) {
-	if o == nil || isNil(o.Gene) {
-    return nil, false
+	if o == nil || IsNil(o.Gene) {
+		return nil, false
 	}
 	return o.Gene, true
 }
 
 // HasGene returns a boolean if a field has been set.
 func (o *ClinVar) HasGene() bool {
-	if o != nil && !isNil(o.Gene) {
+	if o != nil && !IsNil(o.Gene) {
 		return true
 	}
 
@@ -214,7 +217,7 @@ func (o *ClinVar) SetGene(v Gene) {
 
 // GetHg19 returns the Hg19 field value if set, zero value otherwise.
 func (o *ClinVar) GetHg19() Hg19 {
-	if o == nil || isNil(o.Hg19) {
+	if o == nil || IsNil(o.Hg19) {
 		var ret Hg19
 		return ret
 	}
@@ -224,15 +227,15 @@ func (o *ClinVar) GetHg19() Hg19 {
 // GetHg19Ok returns a tuple with the Hg19 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClinVar) GetHg19Ok() (*Hg19, bool) {
-	if o == nil || isNil(o.Hg19) {
-    return nil, false
+	if o == nil || IsNil(o.Hg19) {
+		return nil, false
 	}
 	return o.Hg19, true
 }
 
 // HasHg19 returns a boolean if a field has been set.
 func (o *ClinVar) HasHg19() bool {
-	if o != nil && !isNil(o.Hg19) {
+	if o != nil && !IsNil(o.Hg19) {
 		return true
 	}
 
@@ -246,7 +249,7 @@ func (o *ClinVar) SetHg19(v Hg19) {
 
 // GetHg38 returns the Hg38 field value if set, zero value otherwise.
 func (o *ClinVar) GetHg38() Hg38 {
-	if o == nil || isNil(o.Hg38) {
+	if o == nil || IsNil(o.Hg38) {
 		var ret Hg38
 		return ret
 	}
@@ -256,15 +259,15 @@ func (o *ClinVar) GetHg38() Hg38 {
 // GetHg38Ok returns a tuple with the Hg38 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClinVar) GetHg38Ok() (*Hg38, bool) {
-	if o == nil || isNil(o.Hg38) {
-    return nil, false
+	if o == nil || IsNil(o.Hg38) {
+		return nil, false
 	}
 	return o.Hg38, true
 }
 
 // HasHg38 returns a boolean if a field has been set.
 func (o *ClinVar) HasHg38() bool {
-	if o != nil && !isNil(o.Hg38) {
+	if o != nil && !IsNil(o.Hg38) {
 		return true
 	}
 
@@ -278,7 +281,7 @@ func (o *ClinVar) SetHg38(v Hg38) {
 
 // GetHgvs returns the Hgvs field value if set, zero value otherwise.
 func (o *ClinVar) GetHgvs() Hgvs {
-	if o == nil || isNil(o.Hgvs) {
+	if o == nil || IsNil(o.Hgvs) {
 		var ret Hgvs
 		return ret
 	}
@@ -288,15 +291,15 @@ func (o *ClinVar) GetHgvs() Hgvs {
 // GetHgvsOk returns a tuple with the Hgvs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClinVar) GetHgvsOk() (*Hgvs, bool) {
-	if o == nil || isNil(o.Hgvs) {
-    return nil, false
+	if o == nil || IsNil(o.Hgvs) {
+		return nil, false
 	}
 	return o.Hgvs, true
 }
 
 // HasHgvs returns a boolean if a field has been set.
 func (o *ClinVar) HasHgvs() bool {
-	if o != nil && !isNil(o.Hgvs) {
+	if o != nil && !IsNil(o.Hgvs) {
 		return true
 	}
 
@@ -310,7 +313,7 @@ func (o *ClinVar) SetHgvs(v Hgvs) {
 
 // GetLicense returns the License field value if set, zero value otherwise.
 func (o *ClinVar) GetLicense() string {
-	if o == nil || isNil(o.License) {
+	if o == nil || IsNil(o.License) {
 		var ret string
 		return ret
 	}
@@ -320,15 +323,15 @@ func (o *ClinVar) GetLicense() string {
 // GetLicenseOk returns a tuple with the License field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClinVar) GetLicenseOk() (*string, bool) {
-	if o == nil || isNil(o.License) {
-    return nil, false
+	if o == nil || IsNil(o.License) {
+		return nil, false
 	}
 	return o.License, true
 }
 
 // HasLicense returns a boolean if a field has been set.
 func (o *ClinVar) HasLicense() bool {
-	if o != nil && !isNil(o.License) {
+	if o != nil && !IsNil(o.License) {
 		return true
 	}
 
@@ -342,7 +345,7 @@ func (o *ClinVar) SetLicense(v string) {
 
 // GetRcv returns the Rcv field value if set, zero value otherwise.
 func (o *ClinVar) GetRcv() []Rcv {
-	if o == nil || isNil(o.Rcv) {
+	if o == nil || IsNil(o.Rcv) {
 		var ret []Rcv
 		return ret
 	}
@@ -352,15 +355,15 @@ func (o *ClinVar) GetRcv() []Rcv {
 // GetRcvOk returns a tuple with the Rcv field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClinVar) GetRcvOk() ([]Rcv, bool) {
-	if o == nil || isNil(o.Rcv) {
-    return nil, false
+	if o == nil || IsNil(o.Rcv) {
+		return nil, false
 	}
 	return o.Rcv, true
 }
 
 // HasRcv returns a boolean if a field has been set.
 func (o *ClinVar) HasRcv() bool {
-	if o != nil && !isNil(o.Rcv) {
+	if o != nil && !IsNil(o.Rcv) {
 		return true
 	}
 
@@ -374,7 +377,7 @@ func (o *ClinVar) SetRcv(v []Rcv) {
 
 // GetVariantId returns the VariantId field value if set, zero value otherwise.
 func (o *ClinVar) GetVariantId() int32 {
-	if o == nil || isNil(o.VariantId) {
+	if o == nil || IsNil(o.VariantId) {
 		var ret int32
 		return ret
 	}
@@ -384,15 +387,15 @@ func (o *ClinVar) GetVariantId() int32 {
 // GetVariantIdOk returns a tuple with the VariantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClinVar) GetVariantIdOk() (*int32, bool) {
-	if o == nil || isNil(o.VariantId) {
-    return nil, false
+	if o == nil || IsNil(o.VariantId) {
+		return nil, false
 	}
 	return o.VariantId, true
 }
 
 // HasVariantId returns a boolean if a field has been set.
 func (o *ClinVar) HasVariantId() bool {
-	if o != nil && !isNil(o.VariantId) {
+	if o != nil && !IsNil(o.VariantId) {
 		return true
 	}
 
@@ -405,41 +408,49 @@ func (o *ClinVar) SetVariantId(v int32) {
 }
 
 func (o ClinVar) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.AlleleId) {
-		toSerialize["alleleId"] = o.AlleleId
-	}
-	if !isNil(o.Alt) {
-		toSerialize["alt"] = o.Alt
-	}
-	if !isNil(o.Chrom) {
-		toSerialize["chrom"] = o.Chrom
-	}
-	if !isNil(o.Cytogenic) {
-		toSerialize["cytogenic"] = o.Cytogenic
-	}
-	if !isNil(o.Gene) {
-		toSerialize["gene"] = o.Gene
-	}
-	if !isNil(o.Hg19) {
-		toSerialize["hg19"] = o.Hg19
-	}
-	if !isNil(o.Hg38) {
-		toSerialize["hg38"] = o.Hg38
-	}
-	if !isNil(o.Hgvs) {
-		toSerialize["hgvs"] = o.Hgvs
-	}
-	if !isNil(o.License) {
-		toSerialize["license"] = o.License
-	}
-	if !isNil(o.Rcv) {
-		toSerialize["rcv"] = o.Rcv
-	}
-	if !isNil(o.VariantId) {
-		toSerialize["variantId"] = o.VariantId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClinVar) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AlleleId) {
+		toSerialize["alleleId"] = o.AlleleId
+	}
+	if !IsNil(o.Alt) {
+		toSerialize["alt"] = o.Alt
+	}
+	if !IsNil(o.Chrom) {
+		toSerialize["chrom"] = o.Chrom
+	}
+	if !IsNil(o.Cytogenic) {
+		toSerialize["cytogenic"] = o.Cytogenic
+	}
+	if !IsNil(o.Gene) {
+		toSerialize["gene"] = o.Gene
+	}
+	if !IsNil(o.Hg19) {
+		toSerialize["hg19"] = o.Hg19
+	}
+	if !IsNil(o.Hg38) {
+		toSerialize["hg38"] = o.Hg38
+	}
+	if !IsNil(o.Hgvs) {
+		toSerialize["hgvs"] = o.Hgvs
+	}
+	if !IsNil(o.License) {
+		toSerialize["license"] = o.License
+	}
+	if !IsNil(o.Rcv) {
+		toSerialize["rcv"] = o.Rcv
+	}
+	if !IsNil(o.VariantId) {
+		toSerialize["variantId"] = o.VariantId
+	}
+	return toSerialize, nil
 }
 
 type NullableClinVar struct {

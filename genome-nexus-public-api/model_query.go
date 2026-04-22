@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Query type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Query{}
+
 // Query struct for Query
 type Query struct {
 	Alteration *string `json:"alteration,omitempty"`
@@ -49,7 +52,7 @@ func NewQueryWithDefaults() *Query {
 
 // GetAlteration returns the Alteration field value if set, zero value otherwise.
 func (o *Query) GetAlteration() string {
-	if o == nil || isNil(o.Alteration) {
+	if o == nil || IsNil(o.Alteration) {
 		var ret string
 		return ret
 	}
@@ -59,15 +62,15 @@ func (o *Query) GetAlteration() string {
 // GetAlterationOk returns a tuple with the Alteration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Query) GetAlterationOk() (*string, bool) {
-	if o == nil || isNil(o.Alteration) {
-    return nil, false
+	if o == nil || IsNil(o.Alteration) {
+		return nil, false
 	}
 	return o.Alteration, true
 }
 
 // HasAlteration returns a boolean if a field has been set.
 func (o *Query) HasAlteration() bool {
-	if o != nil && !isNil(o.Alteration) {
+	if o != nil && !IsNil(o.Alteration) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *Query) SetAlteration(v string) {
 
 // GetAlterationType returns the AlterationType field value if set, zero value otherwise.
 func (o *Query) GetAlterationType() string {
-	if o == nil || isNil(o.AlterationType) {
+	if o == nil || IsNil(o.AlterationType) {
 		var ret string
 		return ret
 	}
@@ -91,15 +94,15 @@ func (o *Query) GetAlterationType() string {
 // GetAlterationTypeOk returns a tuple with the AlterationType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Query) GetAlterationTypeOk() (*string, bool) {
-	if o == nil || isNil(o.AlterationType) {
-    return nil, false
+	if o == nil || IsNil(o.AlterationType) {
+		return nil, false
 	}
 	return o.AlterationType, true
 }
 
 // HasAlterationType returns a boolean if a field has been set.
 func (o *Query) HasAlterationType() bool {
-	if o != nil && !isNil(o.AlterationType) {
+	if o != nil && !IsNil(o.AlterationType) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *Query) SetAlterationType(v string) {
 
 // GetConsequence returns the Consequence field value if set, zero value otherwise.
 func (o *Query) GetConsequence() string {
-	if o == nil || isNil(o.Consequence) {
+	if o == nil || IsNil(o.Consequence) {
 		var ret string
 		return ret
 	}
@@ -123,15 +126,15 @@ func (o *Query) GetConsequence() string {
 // GetConsequenceOk returns a tuple with the Consequence field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Query) GetConsequenceOk() (*string, bool) {
-	if o == nil || isNil(o.Consequence) {
-    return nil, false
+	if o == nil || IsNil(o.Consequence) {
+		return nil, false
 	}
 	return o.Consequence, true
 }
 
 // HasConsequence returns a boolean if a field has been set.
 func (o *Query) HasConsequence() bool {
-	if o != nil && !isNil(o.Consequence) {
+	if o != nil && !IsNil(o.Consequence) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *Query) SetConsequence(v string) {
 
 // GetEntrezGeneId returns the EntrezGeneId field value if set, zero value otherwise.
 func (o *Query) GetEntrezGeneId() int32 {
-	if o == nil || isNil(o.EntrezGeneId) {
+	if o == nil || IsNil(o.EntrezGeneId) {
 		var ret int32
 		return ret
 	}
@@ -155,15 +158,15 @@ func (o *Query) GetEntrezGeneId() int32 {
 // GetEntrezGeneIdOk returns a tuple with the EntrezGeneId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Query) GetEntrezGeneIdOk() (*int32, bool) {
-	if o == nil || isNil(o.EntrezGeneId) {
-    return nil, false
+	if o == nil || IsNil(o.EntrezGeneId) {
+		return nil, false
 	}
 	return o.EntrezGeneId, true
 }
 
 // HasEntrezGeneId returns a boolean if a field has been set.
 func (o *Query) HasEntrezGeneId() bool {
-	if o != nil && !isNil(o.EntrezGeneId) {
+	if o != nil && !IsNil(o.EntrezGeneId) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *Query) SetEntrezGeneId(v int32) {
 
 // GetHgvs returns the Hgvs field value if set, zero value otherwise.
 func (o *Query) GetHgvs() string {
-	if o == nil || isNil(o.Hgvs) {
+	if o == nil || IsNil(o.Hgvs) {
 		var ret string
 		return ret
 	}
@@ -187,15 +190,15 @@ func (o *Query) GetHgvs() string {
 // GetHgvsOk returns a tuple with the Hgvs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Query) GetHgvsOk() (*string, bool) {
-	if o == nil || isNil(o.Hgvs) {
-    return nil, false
+	if o == nil || IsNil(o.Hgvs) {
+		return nil, false
 	}
 	return o.Hgvs, true
 }
 
 // HasHgvs returns a boolean if a field has been set.
 func (o *Query) HasHgvs() bool {
-	if o != nil && !isNil(o.Hgvs) {
+	if o != nil && !IsNil(o.Hgvs) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *Query) SetHgvs(v string) {
 
 // GetHugoSymbol returns the HugoSymbol field value if set, zero value otherwise.
 func (o *Query) GetHugoSymbol() string {
-	if o == nil || isNil(o.HugoSymbol) {
+	if o == nil || IsNil(o.HugoSymbol) {
 		var ret string
 		return ret
 	}
@@ -219,15 +222,15 @@ func (o *Query) GetHugoSymbol() string {
 // GetHugoSymbolOk returns a tuple with the HugoSymbol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Query) GetHugoSymbolOk() (*string, bool) {
-	if o == nil || isNil(o.HugoSymbol) {
-    return nil, false
+	if o == nil || IsNil(o.HugoSymbol) {
+		return nil, false
 	}
 	return o.HugoSymbol, true
 }
 
 // HasHugoSymbol returns a boolean if a field has been set.
 func (o *Query) HasHugoSymbol() bool {
-	if o != nil && !isNil(o.HugoSymbol) {
+	if o != nil && !IsNil(o.HugoSymbol) {
 		return true
 	}
 
@@ -241,7 +244,7 @@ func (o *Query) SetHugoSymbol(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Query) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -251,15 +254,15 @@ func (o *Query) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Query) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *Query) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -273,7 +276,7 @@ func (o *Query) SetId(v string) {
 
 // GetProteinEnd returns the ProteinEnd field value if set, zero value otherwise.
 func (o *Query) GetProteinEnd() int32 {
-	if o == nil || isNil(o.ProteinEnd) {
+	if o == nil || IsNil(o.ProteinEnd) {
 		var ret int32
 		return ret
 	}
@@ -283,15 +286,15 @@ func (o *Query) GetProteinEnd() int32 {
 // GetProteinEndOk returns a tuple with the ProteinEnd field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Query) GetProteinEndOk() (*int32, bool) {
-	if o == nil || isNil(o.ProteinEnd) {
-    return nil, false
+	if o == nil || IsNil(o.ProteinEnd) {
+		return nil, false
 	}
 	return o.ProteinEnd, true
 }
 
 // HasProteinEnd returns a boolean if a field has been set.
 func (o *Query) HasProteinEnd() bool {
-	if o != nil && !isNil(o.ProteinEnd) {
+	if o != nil && !IsNil(o.ProteinEnd) {
 		return true
 	}
 
@@ -305,7 +308,7 @@ func (o *Query) SetProteinEnd(v int32) {
 
 // GetProteinStart returns the ProteinStart field value if set, zero value otherwise.
 func (o *Query) GetProteinStart() int32 {
-	if o == nil || isNil(o.ProteinStart) {
+	if o == nil || IsNil(o.ProteinStart) {
 		var ret int32
 		return ret
 	}
@@ -315,15 +318,15 @@ func (o *Query) GetProteinStart() int32 {
 // GetProteinStartOk returns a tuple with the ProteinStart field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Query) GetProteinStartOk() (*int32, bool) {
-	if o == nil || isNil(o.ProteinStart) {
-    return nil, false
+	if o == nil || IsNil(o.ProteinStart) {
+		return nil, false
 	}
 	return o.ProteinStart, true
 }
 
 // HasProteinStart returns a boolean if a field has been set.
 func (o *Query) HasProteinStart() bool {
-	if o != nil && !isNil(o.ProteinStart) {
+	if o != nil && !IsNil(o.ProteinStart) {
 		return true
 	}
 
@@ -337,7 +340,7 @@ func (o *Query) SetProteinStart(v int32) {
 
 // GetSvType returns the SvType field value if set, zero value otherwise.
 func (o *Query) GetSvType() string {
-	if o == nil || isNil(o.SvType) {
+	if o == nil || IsNil(o.SvType) {
 		var ret string
 		return ret
 	}
@@ -347,15 +350,15 @@ func (o *Query) GetSvType() string {
 // GetSvTypeOk returns a tuple with the SvType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Query) GetSvTypeOk() (*string, bool) {
-	if o == nil || isNil(o.SvType) {
-    return nil, false
+	if o == nil || IsNil(o.SvType) {
+		return nil, false
 	}
 	return o.SvType, true
 }
 
 // HasSvType returns a boolean if a field has been set.
 func (o *Query) HasSvType() bool {
-	if o != nil && !isNil(o.SvType) {
+	if o != nil && !IsNil(o.SvType) {
 		return true
 	}
 
@@ -369,7 +372,7 @@ func (o *Query) SetSvType(v string) {
 
 // GetTumorType returns the TumorType field value if set, zero value otherwise.
 func (o *Query) GetTumorType() string {
-	if o == nil || isNil(o.TumorType) {
+	if o == nil || IsNil(o.TumorType) {
 		var ret string
 		return ret
 	}
@@ -379,15 +382,15 @@ func (o *Query) GetTumorType() string {
 // GetTumorTypeOk returns a tuple with the TumorType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Query) GetTumorTypeOk() (*string, bool) {
-	if o == nil || isNil(o.TumorType) {
-    return nil, false
+	if o == nil || IsNil(o.TumorType) {
+		return nil, false
 	}
 	return o.TumorType, true
 }
 
 // HasTumorType returns a boolean if a field has been set.
 func (o *Query) HasTumorType() bool {
-	if o != nil && !isNil(o.TumorType) {
+	if o != nil && !IsNil(o.TumorType) {
 		return true
 	}
 
@@ -401,7 +404,7 @@ func (o *Query) SetTumorType(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *Query) GetType() string {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -411,15 +414,15 @@ func (o *Query) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Query) GetTypeOk() (*string, bool) {
-	if o == nil || isNil(o.Type) {
-    return nil, false
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
 	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *Query) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -432,44 +435,52 @@ func (o *Query) SetType(v string) {
 }
 
 func (o Query) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Alteration) {
-		toSerialize["alteration"] = o.Alteration
-	}
-	if !isNil(o.AlterationType) {
-		toSerialize["alterationType"] = o.AlterationType
-	}
-	if !isNil(o.Consequence) {
-		toSerialize["consequence"] = o.Consequence
-	}
-	if !isNil(o.EntrezGeneId) {
-		toSerialize["entrezGeneId"] = o.EntrezGeneId
-	}
-	if !isNil(o.Hgvs) {
-		toSerialize["hgvs"] = o.Hgvs
-	}
-	if !isNil(o.HugoSymbol) {
-		toSerialize["hugoSymbol"] = o.HugoSymbol
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.ProteinEnd) {
-		toSerialize["proteinEnd"] = o.ProteinEnd
-	}
-	if !isNil(o.ProteinStart) {
-		toSerialize["proteinStart"] = o.ProteinStart
-	}
-	if !isNil(o.SvType) {
-		toSerialize["svType"] = o.SvType
-	}
-	if !isNil(o.TumorType) {
-		toSerialize["tumorType"] = o.TumorType
-	}
-	if !isNil(o.Type) {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Query) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Alteration) {
+		toSerialize["alteration"] = o.Alteration
+	}
+	if !IsNil(o.AlterationType) {
+		toSerialize["alterationType"] = o.AlterationType
+	}
+	if !IsNil(o.Consequence) {
+		toSerialize["consequence"] = o.Consequence
+	}
+	if !IsNil(o.EntrezGeneId) {
+		toSerialize["entrezGeneId"] = o.EntrezGeneId
+	}
+	if !IsNil(o.Hgvs) {
+		toSerialize["hgvs"] = o.Hgvs
+	}
+	if !IsNil(o.HugoSymbol) {
+		toSerialize["hugoSymbol"] = o.HugoSymbol
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.ProteinEnd) {
+		toSerialize["proteinEnd"] = o.ProteinEnd
+	}
+	if !IsNil(o.ProteinStart) {
+		toSerialize["proteinStart"] = o.ProteinStart
+	}
+	if !IsNil(o.SvType) {
+		toSerialize["svType"] = o.SvType
+	}
+	if !IsNil(o.TumorType) {
+		toSerialize["tumorType"] = o.TumorType
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableQuery struct {

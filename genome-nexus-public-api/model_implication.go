@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Implication type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Implication{}
+
 // Implication struct for Implication
 type Implication struct {
 	Alterations []string `json:"alterations,omitempty"`
@@ -41,7 +44,7 @@ func NewImplicationWithDefaults() *Implication {
 
 // GetAlterations returns the Alterations field value if set, zero value otherwise.
 func (o *Implication) GetAlterations() []string {
-	if o == nil || isNil(o.Alterations) {
+	if o == nil || IsNil(o.Alterations) {
 		var ret []string
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *Implication) GetAlterations() []string {
 // GetAlterationsOk returns a tuple with the Alterations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Implication) GetAlterationsOk() ([]string, bool) {
-	if o == nil || isNil(o.Alterations) {
-    return nil, false
+	if o == nil || IsNil(o.Alterations) {
+		return nil, false
 	}
 	return o.Alterations, true
 }
 
 // HasAlterations returns a boolean if a field has been set.
 func (o *Implication) HasAlterations() bool {
-	if o != nil && !isNil(o.Alterations) {
+	if o != nil && !IsNil(o.Alterations) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *Implication) SetAlterations(v []string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Implication) GetDescription() string {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *Implication) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Implication) GetDescriptionOk() (*string, bool) {
-	if o == nil || isNil(o.Description) {
-    return nil, false
+	if o == nil || IsNil(o.Description) {
+		return nil, false
 	}
 	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Implication) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *Implication) SetDescription(v string) {
 
 // GetLevelOfEvidence returns the LevelOfEvidence field value if set, zero value otherwise.
 func (o *Implication) GetLevelOfEvidence() string {
-	if o == nil || isNil(o.LevelOfEvidence) {
+	if o == nil || IsNil(o.LevelOfEvidence) {
 		var ret string
 		return ret
 	}
@@ -115,15 +118,15 @@ func (o *Implication) GetLevelOfEvidence() string {
 // GetLevelOfEvidenceOk returns a tuple with the LevelOfEvidence field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Implication) GetLevelOfEvidenceOk() (*string, bool) {
-	if o == nil || isNil(o.LevelOfEvidence) {
-    return nil, false
+	if o == nil || IsNil(o.LevelOfEvidence) {
+		return nil, false
 	}
 	return o.LevelOfEvidence, true
 }
 
 // HasLevelOfEvidence returns a boolean if a field has been set.
 func (o *Implication) HasLevelOfEvidence() bool {
-	if o != nil && !isNil(o.LevelOfEvidence) {
+	if o != nil && !IsNil(o.LevelOfEvidence) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *Implication) SetLevelOfEvidence(v string) {
 
 // GetTumorType returns the TumorType field value if set, zero value otherwise.
 func (o *Implication) GetTumorType() TumorType {
-	if o == nil || isNil(o.TumorType) {
+	if o == nil || IsNil(o.TumorType) {
 		var ret TumorType
 		return ret
 	}
@@ -147,15 +150,15 @@ func (o *Implication) GetTumorType() TumorType {
 // GetTumorTypeOk returns a tuple with the TumorType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Implication) GetTumorTypeOk() (*TumorType, bool) {
-	if o == nil || isNil(o.TumorType) {
-    return nil, false
+	if o == nil || IsNil(o.TumorType) {
+		return nil, false
 	}
 	return o.TumorType, true
 }
 
 // HasTumorType returns a boolean if a field has been set.
 func (o *Implication) HasTumorType() bool {
-	if o != nil && !isNil(o.TumorType) {
+	if o != nil && !IsNil(o.TumorType) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *Implication) SetTumorType(v TumorType) {
 }
 
 func (o Implication) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Alterations) {
-		toSerialize["alterations"] = o.Alterations
-	}
-	if !isNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !isNil(o.LevelOfEvidence) {
-		toSerialize["levelOfEvidence"] = o.LevelOfEvidence
-	}
-	if !isNil(o.TumorType) {
-		toSerialize["tumorType"] = o.TumorType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Implication) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Alterations) {
+		toSerialize["alterations"] = o.Alterations
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.LevelOfEvidence) {
+		toSerialize["levelOfEvidence"] = o.LevelOfEvidence
+	}
+	if !IsNil(o.TumorType) {
+		toSerialize["tumorType"] = o.TumorType
+	}
+	return toSerialize, nil
 }
 
 type NullableImplication struct {

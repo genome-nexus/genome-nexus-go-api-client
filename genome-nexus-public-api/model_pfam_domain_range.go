@@ -12,7 +12,12 @@ package genome_nexus_public_api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the PfamDomainRange type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PfamDomainRange{}
 
 // PfamDomainRange struct for PfamDomainRange
 type PfamDomainRange struct {
@@ -23,6 +28,8 @@ type PfamDomainRange struct {
 	// Pfam domain end amino acid
 	PfamDomainEnd int32 `json:"pfamDomainEnd"`
 }
+
+type _PfamDomainRange PfamDomainRange
 
 // NewPfamDomainRange instantiates a new PfamDomainRange object
 // This constructor will assign default values to properties that have it defined,
@@ -58,7 +65,7 @@ func (o *PfamDomainRange) GetPfamDomainId() string {
 // and a boolean to check if the value has been set.
 func (o *PfamDomainRange) GetPfamDomainIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.PfamDomainId, true
 }
@@ -82,7 +89,7 @@ func (o *PfamDomainRange) GetPfamDomainStart() int32 {
 // and a boolean to check if the value has been set.
 func (o *PfamDomainRange) GetPfamDomainStartOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.PfamDomainStart, true
 }
@@ -106,7 +113,7 @@ func (o *PfamDomainRange) GetPfamDomainEnd() int32 {
 // and a boolean to check if the value has been set.
 func (o *PfamDomainRange) GetPfamDomainEndOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.PfamDomainEnd, true
 }
@@ -117,17 +124,58 @@ func (o *PfamDomainRange) SetPfamDomainEnd(v int32) {
 }
 
 func (o PfamDomainRange) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["pfamDomainId"] = o.PfamDomainId
-	}
-	if true {
-		toSerialize["pfamDomainStart"] = o.PfamDomainStart
-	}
-	if true {
-		toSerialize["pfamDomainEnd"] = o.PfamDomainEnd
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PfamDomainRange) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["pfamDomainId"] = o.PfamDomainId
+	toSerialize["pfamDomainStart"] = o.PfamDomainStart
+	toSerialize["pfamDomainEnd"] = o.PfamDomainEnd
+	return toSerialize, nil
+}
+
+func (o *PfamDomainRange) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pfamDomainId",
+		"pfamDomainStart",
+		"pfamDomainEnd",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPfamDomainRange := _PfamDomainRange{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPfamDomainRange)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PfamDomainRange(varPfamDomainRange)
+
+	return err
 }
 
 type NullablePfamDomainRange struct {

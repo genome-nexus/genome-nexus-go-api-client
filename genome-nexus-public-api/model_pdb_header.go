@@ -12,7 +12,12 @@ package genome_nexus_public_api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the PdbHeader type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PdbHeader{}
 
 // PdbHeader struct for PdbHeader
 type PdbHeader struct {
@@ -23,6 +28,8 @@ type PdbHeader struct {
 	// PDB description
 	Title string `json:"title"`
 }
+
+type _PdbHeader PdbHeader
 
 // NewPdbHeader instantiates a new PdbHeader object
 // This constructor will assign default values to properties that have it defined,
@@ -45,7 +52,7 @@ func NewPdbHeaderWithDefaults() *PdbHeader {
 
 // GetCompound returns the Compound field value if set, zero value otherwise.
 func (o *PdbHeader) GetCompound() map[string]interface{} {
-	if o == nil || isNil(o.Compound) {
+	if o == nil || IsNil(o.Compound) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -55,15 +62,15 @@ func (o *PdbHeader) GetCompound() map[string]interface{} {
 // GetCompoundOk returns a tuple with the Compound field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PdbHeader) GetCompoundOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Compound) {
-    return map[string]interface{}{}, false
+	if o == nil || IsNil(o.Compound) {
+		return map[string]interface{}{}, false
 	}
 	return o.Compound, true
 }
 
 // HasCompound returns a boolean if a field has been set.
 func (o *PdbHeader) HasCompound() bool {
-	if o != nil && !isNil(o.Compound) {
+	if o != nil && !IsNil(o.Compound) {
 		return true
 	}
 
@@ -89,7 +96,7 @@ func (o *PdbHeader) GetPdbId() string {
 // and a boolean to check if the value has been set.
 func (o *PdbHeader) GetPdbIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.PdbId, true
 }
@@ -101,7 +108,7 @@ func (o *PdbHeader) SetPdbId(v string) {
 
 // GetSource returns the Source field value if set, zero value otherwise.
 func (o *PdbHeader) GetSource() map[string]interface{} {
-	if o == nil || isNil(o.Source) {
+	if o == nil || IsNil(o.Source) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -111,15 +118,15 @@ func (o *PdbHeader) GetSource() map[string]interface{} {
 // GetSourceOk returns a tuple with the Source field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PdbHeader) GetSourceOk() (map[string]interface{}, bool) {
-	if o == nil || isNil(o.Source) {
-    return map[string]interface{}{}, false
+	if o == nil || IsNil(o.Source) {
+		return map[string]interface{}{}, false
 	}
 	return o.Source, true
 }
 
 // HasSource returns a boolean if a field has been set.
 func (o *PdbHeader) HasSource() bool {
-	if o != nil && !isNil(o.Source) {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -145,7 +152,7 @@ func (o *PdbHeader) GetTitle() string {
 // and a boolean to check if the value has been set.
 func (o *PdbHeader) GetTitleOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Title, true
 }
@@ -156,20 +163,62 @@ func (o *PdbHeader) SetTitle(v string) {
 }
 
 func (o PdbHeader) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Compound) {
-		toSerialize["compound"] = o.Compound
-	}
-	if true {
-		toSerialize["pdbId"] = o.PdbId
-	}
-	if !isNil(o.Source) {
-		toSerialize["source"] = o.Source
-	}
-	if true {
-		toSerialize["title"] = o.Title
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PdbHeader) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Compound) {
+		toSerialize["compound"] = o.Compound
+	}
+	toSerialize["pdbId"] = o.PdbId
+	if !IsNil(o.Source) {
+		toSerialize["source"] = o.Source
+	}
+	toSerialize["title"] = o.Title
+	return toSerialize, nil
+}
+
+func (o *PdbHeader) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pdbId",
+		"title",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPdbHeader := _PdbHeader{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPdbHeader)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PdbHeader(varPdbHeader)
+
+	return err
 }
 
 type NullablePdbHeader struct {

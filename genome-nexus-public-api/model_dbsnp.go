@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Dbsnp type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Dbsnp{}
+
 // Dbsnp struct for Dbsnp
 type Dbsnp struct {
 	// class
@@ -64,7 +67,7 @@ func NewDbsnpWithDefaults() *Dbsnp {
 
 // GetClass returns the Class field value if set, zero value otherwise.
 func (o *Dbsnp) GetClass() string {
-	if o == nil || isNil(o.Class) {
+	if o == nil || IsNil(o.Class) {
 		var ret string
 		return ret
 	}
@@ -74,15 +77,15 @@ func (o *Dbsnp) GetClass() string {
 // GetClassOk returns a tuple with the Class field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Dbsnp) GetClassOk() (*string, bool) {
-	if o == nil || isNil(o.Class) {
-    return nil, false
+	if o == nil || IsNil(o.Class) {
+		return nil, false
 	}
 	return o.Class, true
 }
 
 // HasClass returns a boolean if a field has been set.
 func (o *Dbsnp) HasClass() bool {
-	if o != nil && !isNil(o.Class) {
+	if o != nil && !IsNil(o.Class) {
 		return true
 	}
 
@@ -96,7 +99,7 @@ func (o *Dbsnp) SetClass(v string) {
 
 // GetAlleleOrigin returns the AlleleOrigin field value if set, zero value otherwise.
 func (o *Dbsnp) GetAlleleOrigin() string {
-	if o == nil || isNil(o.AlleleOrigin) {
+	if o == nil || IsNil(o.AlleleOrigin) {
 		var ret string
 		return ret
 	}
@@ -106,15 +109,15 @@ func (o *Dbsnp) GetAlleleOrigin() string {
 // GetAlleleOriginOk returns a tuple with the AlleleOrigin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Dbsnp) GetAlleleOriginOk() (*string, bool) {
-	if o == nil || isNil(o.AlleleOrigin) {
-    return nil, false
+	if o == nil || IsNil(o.AlleleOrigin) {
+		return nil, false
 	}
 	return o.AlleleOrigin, true
 }
 
 // HasAlleleOrigin returns a boolean if a field has been set.
 func (o *Dbsnp) HasAlleleOrigin() bool {
-	if o != nil && !isNil(o.AlleleOrigin) {
+	if o != nil && !IsNil(o.AlleleOrigin) {
 		return true
 	}
 
@@ -128,7 +131,7 @@ func (o *Dbsnp) SetAlleleOrigin(v string) {
 
 // GetAlleles returns the Alleles field value if set, zero value otherwise.
 func (o *Dbsnp) GetAlleles() []Alleles {
-	if o == nil || isNil(o.Alleles) {
+	if o == nil || IsNil(o.Alleles) {
 		var ret []Alleles
 		return ret
 	}
@@ -138,15 +141,15 @@ func (o *Dbsnp) GetAlleles() []Alleles {
 // GetAllelesOk returns a tuple with the Alleles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Dbsnp) GetAllelesOk() ([]Alleles, bool) {
-	if o == nil || isNil(o.Alleles) {
-    return nil, false
+	if o == nil || IsNil(o.Alleles) {
+		return nil, false
 	}
 	return o.Alleles, true
 }
 
 // HasAlleles returns a boolean if a field has been set.
 func (o *Dbsnp) HasAlleles() bool {
-	if o != nil && !isNil(o.Alleles) {
+	if o != nil && !IsNil(o.Alleles) {
 		return true
 	}
 
@@ -160,7 +163,7 @@ func (o *Dbsnp) SetAlleles(v []Alleles) {
 
 // GetAlt returns the Alt field value if set, zero value otherwise.
 func (o *Dbsnp) GetAlt() string {
-	if o == nil || isNil(o.Alt) {
+	if o == nil || IsNil(o.Alt) {
 		var ret string
 		return ret
 	}
@@ -170,15 +173,15 @@ func (o *Dbsnp) GetAlt() string {
 // GetAltOk returns a tuple with the Alt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Dbsnp) GetAltOk() (*string, bool) {
-	if o == nil || isNil(o.Alt) {
-    return nil, false
+	if o == nil || IsNil(o.Alt) {
+		return nil, false
 	}
 	return o.Alt, true
 }
 
 // HasAlt returns a boolean if a field has been set.
 func (o *Dbsnp) HasAlt() bool {
-	if o != nil && !isNil(o.Alt) {
+	if o != nil && !IsNil(o.Alt) {
 		return true
 	}
 
@@ -192,7 +195,7 @@ func (o *Dbsnp) SetAlt(v string) {
 
 // GetChrom returns the Chrom field value if set, zero value otherwise.
 func (o *Dbsnp) GetChrom() string {
-	if o == nil || isNil(o.Chrom) {
+	if o == nil || IsNil(o.Chrom) {
 		var ret string
 		return ret
 	}
@@ -202,15 +205,15 @@ func (o *Dbsnp) GetChrom() string {
 // GetChromOk returns a tuple with the Chrom field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Dbsnp) GetChromOk() (*string, bool) {
-	if o == nil || isNil(o.Chrom) {
-    return nil, false
+	if o == nil || IsNil(o.Chrom) {
+		return nil, false
 	}
 	return o.Chrom, true
 }
 
 // HasChrom returns a boolean if a field has been set.
 func (o *Dbsnp) HasChrom() bool {
-	if o != nil && !isNil(o.Chrom) {
+	if o != nil && !IsNil(o.Chrom) {
 		return true
 	}
 
@@ -224,7 +227,7 @@ func (o *Dbsnp) SetChrom(v string) {
 
 // GetDbsnpBuild returns the DbsnpBuild field value if set, zero value otherwise.
 func (o *Dbsnp) GetDbsnpBuild() int32 {
-	if o == nil || isNil(o.DbsnpBuild) {
+	if o == nil || IsNil(o.DbsnpBuild) {
 		var ret int32
 		return ret
 	}
@@ -234,15 +237,15 @@ func (o *Dbsnp) GetDbsnpBuild() int32 {
 // GetDbsnpBuildOk returns a tuple with the DbsnpBuild field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Dbsnp) GetDbsnpBuildOk() (*int32, bool) {
-	if o == nil || isNil(o.DbsnpBuild) {
-    return nil, false
+	if o == nil || IsNil(o.DbsnpBuild) {
+		return nil, false
 	}
 	return o.DbsnpBuild, true
 }
 
 // HasDbsnpBuild returns a boolean if a field has been set.
 func (o *Dbsnp) HasDbsnpBuild() bool {
-	if o != nil && !isNil(o.DbsnpBuild) {
+	if o != nil && !IsNil(o.DbsnpBuild) {
 		return true
 	}
 
@@ -256,7 +259,7 @@ func (o *Dbsnp) SetDbsnpBuild(v int32) {
 
 // GetFlags returns the Flags field value if set, zero value otherwise.
 func (o *Dbsnp) GetFlags() []string {
-	if o == nil || isNil(o.Flags) {
+	if o == nil || IsNil(o.Flags) {
 		var ret []string
 		return ret
 	}
@@ -266,15 +269,15 @@ func (o *Dbsnp) GetFlags() []string {
 // GetFlagsOk returns a tuple with the Flags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Dbsnp) GetFlagsOk() ([]string, bool) {
-	if o == nil || isNil(o.Flags) {
-    return nil, false
+	if o == nil || IsNil(o.Flags) {
+		return nil, false
 	}
 	return o.Flags, true
 }
 
 // HasFlags returns a boolean if a field has been set.
 func (o *Dbsnp) HasFlags() bool {
-	if o != nil && !isNil(o.Flags) {
+	if o != nil && !IsNil(o.Flags) {
 		return true
 	}
 
@@ -288,7 +291,7 @@ func (o *Dbsnp) SetFlags(v []string) {
 
 // GetHg19 returns the Hg19 field value if set, zero value otherwise.
 func (o *Dbsnp) GetHg19() Hg19 {
-	if o == nil || isNil(o.Hg19) {
+	if o == nil || IsNil(o.Hg19) {
 		var ret Hg19
 		return ret
 	}
@@ -298,15 +301,15 @@ func (o *Dbsnp) GetHg19() Hg19 {
 // GetHg19Ok returns a tuple with the Hg19 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Dbsnp) GetHg19Ok() (*Hg19, bool) {
-	if o == nil || isNil(o.Hg19) {
-    return nil, false
+	if o == nil || IsNil(o.Hg19) {
+		return nil, false
 	}
 	return o.Hg19, true
 }
 
 // HasHg19 returns a boolean if a field has been set.
 func (o *Dbsnp) HasHg19() bool {
-	if o != nil && !isNil(o.Hg19) {
+	if o != nil && !IsNil(o.Hg19) {
 		return true
 	}
 
@@ -320,7 +323,7 @@ func (o *Dbsnp) SetHg19(v Hg19) {
 
 // GetLicense returns the License field value if set, zero value otherwise.
 func (o *Dbsnp) GetLicense() string {
-	if o == nil || isNil(o.License) {
+	if o == nil || IsNil(o.License) {
 		var ret string
 		return ret
 	}
@@ -330,15 +333,15 @@ func (o *Dbsnp) GetLicense() string {
 // GetLicenseOk returns a tuple with the License field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Dbsnp) GetLicenseOk() (*string, bool) {
-	if o == nil || isNil(o.License) {
-    return nil, false
+	if o == nil || IsNil(o.License) {
+		return nil, false
 	}
 	return o.License, true
 }
 
 // HasLicense returns a boolean if a field has been set.
 func (o *Dbsnp) HasLicense() bool {
-	if o != nil && !isNil(o.License) {
+	if o != nil && !IsNil(o.License) {
 		return true
 	}
 
@@ -352,7 +355,7 @@ func (o *Dbsnp) SetLicense(v string) {
 
 // GetRef returns the Ref field value if set, zero value otherwise.
 func (o *Dbsnp) GetRef() string {
-	if o == nil || isNil(o.Ref) {
+	if o == nil || IsNil(o.Ref) {
 		var ret string
 		return ret
 	}
@@ -362,15 +365,15 @@ func (o *Dbsnp) GetRef() string {
 // GetRefOk returns a tuple with the Ref field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Dbsnp) GetRefOk() (*string, bool) {
-	if o == nil || isNil(o.Ref) {
-    return nil, false
+	if o == nil || IsNil(o.Ref) {
+		return nil, false
 	}
 	return o.Ref, true
 }
 
 // HasRef returns a boolean if a field has been set.
 func (o *Dbsnp) HasRef() bool {
-	if o != nil && !isNil(o.Ref) {
+	if o != nil && !IsNil(o.Ref) {
 		return true
 	}
 
@@ -384,7 +387,7 @@ func (o *Dbsnp) SetRef(v string) {
 
 // GetRsid returns the Rsid field value if set, zero value otherwise.
 func (o *Dbsnp) GetRsid() string {
-	if o == nil || isNil(o.Rsid) {
+	if o == nil || IsNil(o.Rsid) {
 		var ret string
 		return ret
 	}
@@ -394,15 +397,15 @@ func (o *Dbsnp) GetRsid() string {
 // GetRsidOk returns a tuple with the Rsid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Dbsnp) GetRsidOk() (*string, bool) {
-	if o == nil || isNil(o.Rsid) {
-    return nil, false
+	if o == nil || IsNil(o.Rsid) {
+		return nil, false
 	}
 	return o.Rsid, true
 }
 
 // HasRsid returns a boolean if a field has been set.
 func (o *Dbsnp) HasRsid() bool {
-	if o != nil && !isNil(o.Rsid) {
+	if o != nil && !IsNil(o.Rsid) {
 		return true
 	}
 
@@ -416,7 +419,7 @@ func (o *Dbsnp) SetRsid(v string) {
 
 // GetValidated returns the Validated field value if set, zero value otherwise.
 func (o *Dbsnp) GetValidated() bool {
-	if o == nil || isNil(o.Validated) {
+	if o == nil || IsNil(o.Validated) {
 		var ret bool
 		return ret
 	}
@@ -426,15 +429,15 @@ func (o *Dbsnp) GetValidated() bool {
 // GetValidatedOk returns a tuple with the Validated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Dbsnp) GetValidatedOk() (*bool, bool) {
-	if o == nil || isNil(o.Validated) {
-    return nil, false
+	if o == nil || IsNil(o.Validated) {
+		return nil, false
 	}
 	return o.Validated, true
 }
 
 // HasValidated returns a boolean if a field has been set.
 func (o *Dbsnp) HasValidated() bool {
-	if o != nil && !isNil(o.Validated) {
+	if o != nil && !IsNil(o.Validated) {
 		return true
 	}
 
@@ -448,7 +451,7 @@ func (o *Dbsnp) SetValidated(v bool) {
 
 // GetVarSubtype returns the VarSubtype field value if set, zero value otherwise.
 func (o *Dbsnp) GetVarSubtype() string {
-	if o == nil || isNil(o.VarSubtype) {
+	if o == nil || IsNil(o.VarSubtype) {
 		var ret string
 		return ret
 	}
@@ -458,15 +461,15 @@ func (o *Dbsnp) GetVarSubtype() string {
 // GetVarSubtypeOk returns a tuple with the VarSubtype field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Dbsnp) GetVarSubtypeOk() (*string, bool) {
-	if o == nil || isNil(o.VarSubtype) {
-    return nil, false
+	if o == nil || IsNil(o.VarSubtype) {
+		return nil, false
 	}
 	return o.VarSubtype, true
 }
 
 // HasVarSubtype returns a boolean if a field has been set.
 func (o *Dbsnp) HasVarSubtype() bool {
-	if o != nil && !isNil(o.VarSubtype) {
+	if o != nil && !IsNil(o.VarSubtype) {
 		return true
 	}
 
@@ -480,7 +483,7 @@ func (o *Dbsnp) SetVarSubtype(v string) {
 
 // GetVartype returns the Vartype field value if set, zero value otherwise.
 func (o *Dbsnp) GetVartype() string {
-	if o == nil || isNil(o.Vartype) {
+	if o == nil || IsNil(o.Vartype) {
 		var ret string
 		return ret
 	}
@@ -490,15 +493,15 @@ func (o *Dbsnp) GetVartype() string {
 // GetVartypeOk returns a tuple with the Vartype field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Dbsnp) GetVartypeOk() (*string, bool) {
-	if o == nil || isNil(o.Vartype) {
-    return nil, false
+	if o == nil || IsNil(o.Vartype) {
+		return nil, false
 	}
 	return o.Vartype, true
 }
 
 // HasVartype returns a boolean if a field has been set.
 func (o *Dbsnp) HasVartype() bool {
-	if o != nil && !isNil(o.Vartype) {
+	if o != nil && !IsNil(o.Vartype) {
 		return true
 	}
 
@@ -511,50 +514,58 @@ func (o *Dbsnp) SetVartype(v string) {
 }
 
 func (o Dbsnp) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Class) {
-		toSerialize["_class"] = o.Class
-	}
-	if !isNil(o.AlleleOrigin) {
-		toSerialize["alleleOrigin"] = o.AlleleOrigin
-	}
-	if !isNil(o.Alleles) {
-		toSerialize["alleles"] = o.Alleles
-	}
-	if !isNil(o.Alt) {
-		toSerialize["alt"] = o.Alt
-	}
-	if !isNil(o.Chrom) {
-		toSerialize["chrom"] = o.Chrom
-	}
-	if !isNil(o.DbsnpBuild) {
-		toSerialize["dbsnpBuild"] = o.DbsnpBuild
-	}
-	if !isNil(o.Flags) {
-		toSerialize["flags"] = o.Flags
-	}
-	if !isNil(o.Hg19) {
-		toSerialize["hg19"] = o.Hg19
-	}
-	if !isNil(o.License) {
-		toSerialize["license"] = o.License
-	}
-	if !isNil(o.Ref) {
-		toSerialize["ref"] = o.Ref
-	}
-	if !isNil(o.Rsid) {
-		toSerialize["rsid"] = o.Rsid
-	}
-	if !isNil(o.Validated) {
-		toSerialize["validated"] = o.Validated
-	}
-	if !isNil(o.VarSubtype) {
-		toSerialize["varSubtype"] = o.VarSubtype
-	}
-	if !isNil(o.Vartype) {
-		toSerialize["vartype"] = o.Vartype
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Dbsnp) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Class) {
+		toSerialize["_class"] = o.Class
+	}
+	if !IsNil(o.AlleleOrigin) {
+		toSerialize["alleleOrigin"] = o.AlleleOrigin
+	}
+	if !IsNil(o.Alleles) {
+		toSerialize["alleles"] = o.Alleles
+	}
+	if !IsNil(o.Alt) {
+		toSerialize["alt"] = o.Alt
+	}
+	if !IsNil(o.Chrom) {
+		toSerialize["chrom"] = o.Chrom
+	}
+	if !IsNil(o.DbsnpBuild) {
+		toSerialize["dbsnpBuild"] = o.DbsnpBuild
+	}
+	if !IsNil(o.Flags) {
+		toSerialize["flags"] = o.Flags
+	}
+	if !IsNil(o.Hg19) {
+		toSerialize["hg19"] = o.Hg19
+	}
+	if !IsNil(o.License) {
+		toSerialize["license"] = o.License
+	}
+	if !IsNil(o.Ref) {
+		toSerialize["ref"] = o.Ref
+	}
+	if !IsNil(o.Rsid) {
+		toSerialize["rsid"] = o.Rsid
+	}
+	if !IsNil(o.Validated) {
+		toSerialize["validated"] = o.Validated
+	}
+	if !IsNil(o.VarSubtype) {
+		toSerialize["varSubtype"] = o.VarSubtype
+	}
+	if !IsNil(o.Vartype) {
+		toSerialize["vartype"] = o.Vartype
+	}
+	return toSerialize, nil
 }
 
 type NullableDbsnp struct {

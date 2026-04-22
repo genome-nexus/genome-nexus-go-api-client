@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TumorType type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TumorType{}
+
 // TumorType OncoTree Detailed Cancer Type
 type TumorType struct {
 	Children *map[string]TumorType `json:"children,omitempty"`
@@ -47,7 +50,7 @@ func NewTumorTypeWithDefaults() *TumorType {
 
 // GetChildren returns the Children field value if set, zero value otherwise.
 func (o *TumorType) GetChildren() map[string]TumorType {
-	if o == nil || isNil(o.Children) {
+	if o == nil || IsNil(o.Children) {
 		var ret map[string]TumorType
 		return ret
 	}
@@ -57,15 +60,15 @@ func (o *TumorType) GetChildren() map[string]TumorType {
 // GetChildrenOk returns a tuple with the Children field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TumorType) GetChildrenOk() (*map[string]TumorType, bool) {
-	if o == nil || isNil(o.Children) {
-    return nil, false
+	if o == nil || IsNil(o.Children) {
+		return nil, false
 	}
 	return o.Children, true
 }
 
 // HasChildren returns a boolean if a field has been set.
 func (o *TumorType) HasChildren() bool {
-	if o != nil && !isNil(o.Children) {
+	if o != nil && !IsNil(o.Children) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *TumorType) SetChildren(v map[string]TumorType) {
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *TumorType) GetCode() string {
-	if o == nil || isNil(o.Code) {
+	if o == nil || IsNil(o.Code) {
 		var ret string
 		return ret
 	}
@@ -89,15 +92,15 @@ func (o *TumorType) GetCode() string {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TumorType) GetCodeOk() (*string, bool) {
-	if o == nil || isNil(o.Code) {
-    return nil, false
+	if o == nil || IsNil(o.Code) {
+		return nil, false
 	}
 	return o.Code, true
 }
 
 // HasCode returns a boolean if a field has been set.
 func (o *TumorType) HasCode() bool {
-	if o != nil && !isNil(o.Code) {
+	if o != nil && !IsNil(o.Code) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *TumorType) SetCode(v string) {
 
 // GetColor returns the Color field value if set, zero value otherwise.
 func (o *TumorType) GetColor() string {
-	if o == nil || isNil(o.Color) {
+	if o == nil || IsNil(o.Color) {
 		var ret string
 		return ret
 	}
@@ -121,15 +124,15 @@ func (o *TumorType) GetColor() string {
 // GetColorOk returns a tuple with the Color field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TumorType) GetColorOk() (*string, bool) {
-	if o == nil || isNil(o.Color) {
-    return nil, false
+	if o == nil || IsNil(o.Color) {
+		return nil, false
 	}
 	return o.Color, true
 }
 
 // HasColor returns a boolean if a field has been set.
 func (o *TumorType) HasColor() bool {
-	if o != nil && !isNil(o.Color) {
+	if o != nil && !IsNil(o.Color) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *TumorType) SetColor(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *TumorType) GetId() int32 {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -153,15 +156,15 @@ func (o *TumorType) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TumorType) GetIdOk() (*int32, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *TumorType) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -175,7 +178,7 @@ func (o *TumorType) SetId(v int32) {
 
 // GetLevel returns the Level field value if set, zero value otherwise.
 func (o *TumorType) GetLevel() int32 {
-	if o == nil || isNil(o.Level) {
+	if o == nil || IsNil(o.Level) {
 		var ret int32
 		return ret
 	}
@@ -185,15 +188,15 @@ func (o *TumorType) GetLevel() int32 {
 // GetLevelOk returns a tuple with the Level field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TumorType) GetLevelOk() (*int32, bool) {
-	if o == nil || isNil(o.Level) {
-    return nil, false
+	if o == nil || IsNil(o.Level) {
+		return nil, false
 	}
 	return o.Level, true
 }
 
 // HasLevel returns a boolean if a field has been set.
 func (o *TumorType) HasLevel() bool {
-	if o != nil && !isNil(o.Level) {
+	if o != nil && !IsNil(o.Level) {
 		return true
 	}
 
@@ -207,7 +210,7 @@ func (o *TumorType) SetLevel(v int32) {
 
 // GetMainType returns the MainType field value if set, zero value otherwise.
 func (o *TumorType) GetMainType() MainType {
-	if o == nil || isNil(o.MainType) {
+	if o == nil || IsNil(o.MainType) {
 		var ret MainType
 		return ret
 	}
@@ -217,15 +220,15 @@ func (o *TumorType) GetMainType() MainType {
 // GetMainTypeOk returns a tuple with the MainType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TumorType) GetMainTypeOk() (*MainType, bool) {
-	if o == nil || isNil(o.MainType) {
-    return nil, false
+	if o == nil || IsNil(o.MainType) {
+		return nil, false
 	}
 	return o.MainType, true
 }
 
 // HasMainType returns a boolean if a field has been set.
 func (o *TumorType) HasMainType() bool {
-	if o != nil && !isNil(o.MainType) {
+	if o != nil && !IsNil(o.MainType) {
 		return true
 	}
 
@@ -239,7 +242,7 @@ func (o *TumorType) SetMainType(v MainType) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *TumorType) GetName() string {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -249,15 +252,15 @@ func (o *TumorType) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TumorType) GetNameOk() (*string, bool) {
-	if o == nil || isNil(o.Name) {
-    return nil, false
+	if o == nil || IsNil(o.Name) {
+		return nil, false
 	}
 	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *TumorType) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -271,7 +274,7 @@ func (o *TumorType) SetName(v string) {
 
 // GetParent returns the Parent field value if set, zero value otherwise.
 func (o *TumorType) GetParent() string {
-	if o == nil || isNil(o.Parent) {
+	if o == nil || IsNil(o.Parent) {
 		var ret string
 		return ret
 	}
@@ -281,15 +284,15 @@ func (o *TumorType) GetParent() string {
 // GetParentOk returns a tuple with the Parent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TumorType) GetParentOk() (*string, bool) {
-	if o == nil || isNil(o.Parent) {
-    return nil, false
+	if o == nil || IsNil(o.Parent) {
+		return nil, false
 	}
 	return o.Parent, true
 }
 
 // HasParent returns a boolean if a field has been set.
 func (o *TumorType) HasParent() bool {
-	if o != nil && !isNil(o.Parent) {
+	if o != nil && !IsNil(o.Parent) {
 		return true
 	}
 
@@ -303,7 +306,7 @@ func (o *TumorType) SetParent(v string) {
 
 // GetTissue returns the Tissue field value if set, zero value otherwise.
 func (o *TumorType) GetTissue() string {
-	if o == nil || isNil(o.Tissue) {
+	if o == nil || IsNil(o.Tissue) {
 		var ret string
 		return ret
 	}
@@ -313,15 +316,15 @@ func (o *TumorType) GetTissue() string {
 // GetTissueOk returns a tuple with the Tissue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TumorType) GetTissueOk() (*string, bool) {
-	if o == nil || isNil(o.Tissue) {
-    return nil, false
+	if o == nil || IsNil(o.Tissue) {
+		return nil, false
 	}
 	return o.Tissue, true
 }
 
 // HasTissue returns a boolean if a field has been set.
 func (o *TumorType) HasTissue() bool {
-	if o != nil && !isNil(o.Tissue) {
+	if o != nil && !IsNil(o.Tissue) {
 		return true
 	}
 
@@ -335,7 +338,7 @@ func (o *TumorType) SetTissue(v string) {
 
 // GetTumorForm returns the TumorForm field value if set, zero value otherwise.
 func (o *TumorType) GetTumorForm() string {
-	if o == nil || isNil(o.TumorForm) {
+	if o == nil || IsNil(o.TumorForm) {
 		var ret string
 		return ret
 	}
@@ -345,15 +348,15 @@ func (o *TumorType) GetTumorForm() string {
 // GetTumorFormOk returns a tuple with the TumorForm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TumorType) GetTumorFormOk() (*string, bool) {
-	if o == nil || isNil(o.TumorForm) {
-    return nil, false
+	if o == nil || IsNil(o.TumorForm) {
+		return nil, false
 	}
 	return o.TumorForm, true
 }
 
 // HasTumorForm returns a boolean if a field has been set.
 func (o *TumorType) HasTumorForm() bool {
-	if o != nil && !isNil(o.TumorForm) {
+	if o != nil && !IsNil(o.TumorForm) {
 		return true
 	}
 
@@ -366,38 +369,46 @@ func (o *TumorType) SetTumorForm(v string) {
 }
 
 func (o TumorType) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Children) {
-		toSerialize["children"] = o.Children
-	}
-	if !isNil(o.Code) {
-		toSerialize["code"] = o.Code
-	}
-	if !isNil(o.Color) {
-		toSerialize["color"] = o.Color
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Level) {
-		toSerialize["level"] = o.Level
-	}
-	if !isNil(o.MainType) {
-		toSerialize["mainType"] = o.MainType
-	}
-	if !isNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !isNil(o.Parent) {
-		toSerialize["parent"] = o.Parent
-	}
-	if !isNil(o.Tissue) {
-		toSerialize["tissue"] = o.Tissue
-	}
-	if !isNil(o.TumorForm) {
-		toSerialize["tumorForm"] = o.TumorForm
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TumorType) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Children) {
+		toSerialize["children"] = o.Children
+	}
+	if !IsNil(o.Code) {
+		toSerialize["code"] = o.Code
+	}
+	if !IsNil(o.Color) {
+		toSerialize["color"] = o.Color
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Level) {
+		toSerialize["level"] = o.Level
+	}
+	if !IsNil(o.MainType) {
+		toSerialize["mainType"] = o.MainType
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Parent) {
+		toSerialize["parent"] = o.Parent
+	}
+	if !IsNil(o.Tissue) {
+		toSerialize["tissue"] = o.Tissue
+	}
+	if !IsNil(o.TumorForm) {
+		toSerialize["tumorForm"] = o.TumorForm
+	}
+	return toSerialize, nil
 }
 
 type NullableTumorType struct {

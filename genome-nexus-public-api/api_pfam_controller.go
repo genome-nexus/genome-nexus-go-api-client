@@ -13,19 +13,19 @@ package genome_nexus_public_api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-// PfamControllerApiService PfamControllerApi service
-type PfamControllerApiService service
+// PfamControllerAPIService PfamControllerAPI service
+type PfamControllerAPIService service
 
 type ApiFetchPfamDomainsByAccessionGETRequest struct {
 	ctx context.Context
-	ApiService *PfamControllerApiService
+	ApiService *PfamControllerAPIService
 	pfamAccession string
 }
 
@@ -40,7 +40,7 @@ FetchPfamDomainsByAccessionGET Retrieves a PFAM domain by a PFAM domain ID
  @param pfamAccession A PFAM domain accession ID. For example PF02827
  @return ApiFetchPfamDomainsByAccessionGETRequest
 */
-func (a *PfamControllerApiService) FetchPfamDomainsByAccessionGET(ctx context.Context, pfamAccession string) ApiFetchPfamDomainsByAccessionGETRequest {
+func (a *PfamControllerAPIService) FetchPfamDomainsByAccessionGET(ctx context.Context, pfamAccession string) ApiFetchPfamDomainsByAccessionGETRequest {
 	return ApiFetchPfamDomainsByAccessionGETRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -50,7 +50,7 @@ func (a *PfamControllerApiService) FetchPfamDomainsByAccessionGET(ctx context.Co
 
 // Execute executes the request
 //  @return PfamDomain
-func (a *PfamControllerApiService) FetchPfamDomainsByAccessionGETExecute(r ApiFetchPfamDomainsByAccessionGETRequest) (*PfamDomain, *http.Response, error) {
+func (a *PfamControllerAPIService) FetchPfamDomainsByAccessionGETExecute(r ApiFetchPfamDomainsByAccessionGETRequest) (*PfamDomain, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -58,13 +58,13 @@ func (a *PfamControllerApiService) FetchPfamDomainsByAccessionGETExecute(r ApiFe
 		localVarReturnValue  *PfamDomain
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PfamControllerApiService.FetchPfamDomainsByAccessionGET")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PfamControllerAPIService.FetchPfamDomainsByAccessionGET")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/pfam/domain/{pfamAccession}"
-	localVarPath = strings.Replace(localVarPath, "{"+"pfamAccession"+"}", url.PathEscape(parameterToString(r.pfamAccession, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"pfamAccession"+"}", url.PathEscape(parameterValueToString(r.pfamAccession, "pfamAccession")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -97,9 +97,9 @@ func (a *PfamControllerApiService) FetchPfamDomainsByAccessionGETExecute(r ApiFe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -126,7 +126,7 @@ func (a *PfamControllerApiService) FetchPfamDomainsByAccessionGETExecute(r ApiFe
 
 type ApiFetchPfamDomainsByPfamAccessionPOSTRequest struct {
 	ctx context.Context
-	ApiService *PfamControllerApiService
+	ApiService *PfamControllerAPIService
 	pfamAccessions *[]string
 }
 
@@ -146,7 +146,7 @@ FetchPfamDomainsByPfamAccessionPOST Retrieves PFAM domains by PFAM domain access
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFetchPfamDomainsByPfamAccessionPOSTRequest
 */
-func (a *PfamControllerApiService) FetchPfamDomainsByPfamAccessionPOST(ctx context.Context) ApiFetchPfamDomainsByPfamAccessionPOSTRequest {
+func (a *PfamControllerAPIService) FetchPfamDomainsByPfamAccessionPOST(ctx context.Context) ApiFetchPfamDomainsByPfamAccessionPOSTRequest {
 	return ApiFetchPfamDomainsByPfamAccessionPOSTRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -155,7 +155,7 @@ func (a *PfamControllerApiService) FetchPfamDomainsByPfamAccessionPOST(ctx conte
 
 // Execute executes the request
 //  @return []PfamDomain
-func (a *PfamControllerApiService) FetchPfamDomainsByPfamAccessionPOSTExecute(r ApiFetchPfamDomainsByPfamAccessionPOSTRequest) ([]PfamDomain, *http.Response, error) {
+func (a *PfamControllerAPIService) FetchPfamDomainsByPfamAccessionPOSTExecute(r ApiFetchPfamDomainsByPfamAccessionPOSTRequest) ([]PfamDomain, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -163,7 +163,7 @@ func (a *PfamControllerApiService) FetchPfamDomainsByPfamAccessionPOSTExecute(r 
 		localVarReturnValue  []PfamDomain
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PfamControllerApiService.FetchPfamDomainsByPfamAccessionPOST")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PfamControllerAPIService.FetchPfamDomainsByPfamAccessionPOST")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -206,9 +206,9 @@ func (a *PfamControllerApiService) FetchPfamDomainsByPfamAccessionPOSTExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

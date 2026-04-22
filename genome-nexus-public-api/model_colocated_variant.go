@@ -12,7 +12,12 @@ package genome_nexus_public_api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the ColocatedVariant type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ColocatedVariant{}
 
 // ColocatedVariant struct for ColocatedVariant
 type ColocatedVariant struct {
@@ -30,6 +35,8 @@ type ColocatedVariant struct {
 	// GnomAD East Asian MAF
 	GnomadEasMaf string `json:"gnomad_eas_maf"`
 }
+
+type _ColocatedVariant ColocatedVariant
 
 // NewColocatedVariant instantiates a new ColocatedVariant object
 // This constructor will assign default values to properties that have it defined,
@@ -56,7 +63,7 @@ func NewColocatedVariantWithDefaults() *ColocatedVariant {
 
 // GetDbSnpId returns the DbSnpId field value if set, zero value otherwise.
 func (o *ColocatedVariant) GetDbSnpId() string {
-	if o == nil || isNil(o.DbSnpId) {
+	if o == nil || IsNil(o.DbSnpId) {
 		var ret string
 		return ret
 	}
@@ -66,15 +73,15 @@ func (o *ColocatedVariant) GetDbSnpId() string {
 // GetDbSnpIdOk returns a tuple with the DbSnpId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ColocatedVariant) GetDbSnpIdOk() (*string, bool) {
-	if o == nil || isNil(o.DbSnpId) {
-    return nil, false
+	if o == nil || IsNil(o.DbSnpId) {
+		return nil, false
 	}
 	return o.DbSnpId, true
 }
 
 // HasDbSnpId returns a boolean if a field has been set.
 func (o *ColocatedVariant) HasDbSnpId() bool {
-	if o != nil && !isNil(o.DbSnpId) {
+	if o != nil && !IsNil(o.DbSnpId) {
 		return true
 	}
 
@@ -100,7 +107,7 @@ func (o *ColocatedVariant) GetGnomadNfeAllele() string {
 // and a boolean to check if the value has been set.
 func (o *ColocatedVariant) GetGnomadNfeAlleleOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.GnomadNfeAllele, true
 }
@@ -124,7 +131,7 @@ func (o *ColocatedVariant) GetGnomadNfeMaf() string {
 // and a boolean to check if the value has been set.
 func (o *ColocatedVariant) GetGnomadNfeMafOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.GnomadNfeMaf, true
 }
@@ -148,7 +155,7 @@ func (o *ColocatedVariant) GetGnomadAfrAllele() string {
 // and a boolean to check if the value has been set.
 func (o *ColocatedVariant) GetGnomadAfrAlleleOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.GnomadAfrAllele, true
 }
@@ -172,7 +179,7 @@ func (o *ColocatedVariant) GetGnomadAfrMaf() string {
 // and a boolean to check if the value has been set.
 func (o *ColocatedVariant) GetGnomadAfrMafOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.GnomadAfrMaf, true
 }
@@ -196,7 +203,7 @@ func (o *ColocatedVariant) GetGnomadEasAllele() string {
 // and a boolean to check if the value has been set.
 func (o *ColocatedVariant) GetGnomadEasAlleleOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.GnomadEasAllele, true
 }
@@ -220,7 +227,7 @@ func (o *ColocatedVariant) GetGnomadEasMaf() string {
 // and a boolean to check if the value has been set.
 func (o *ColocatedVariant) GetGnomadEasMafOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.GnomadEasMaf, true
 }
@@ -231,29 +238,67 @@ func (o *ColocatedVariant) SetGnomadEasMaf(v string) {
 }
 
 func (o ColocatedVariant) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.DbSnpId) {
-		toSerialize["dbSnpId"] = o.DbSnpId
-	}
-	if true {
-		toSerialize["gnomad_nfe_allele"] = o.GnomadNfeAllele
-	}
-	if true {
-		toSerialize["gnomad_nfe_maf"] = o.GnomadNfeMaf
-	}
-	if true {
-		toSerialize["gnomad_afr_allele"] = o.GnomadAfrAllele
-	}
-	if true {
-		toSerialize["gnomad_afr_maf"] = o.GnomadAfrMaf
-	}
-	if true {
-		toSerialize["gnomad_eas_allele"] = o.GnomadEasAllele
-	}
-	if true {
-		toSerialize["gnomad_eas_maf"] = o.GnomadEasMaf
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ColocatedVariant) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DbSnpId) {
+		toSerialize["dbSnpId"] = o.DbSnpId
+	}
+	toSerialize["gnomad_nfe_allele"] = o.GnomadNfeAllele
+	toSerialize["gnomad_nfe_maf"] = o.GnomadNfeMaf
+	toSerialize["gnomad_afr_allele"] = o.GnomadAfrAllele
+	toSerialize["gnomad_afr_maf"] = o.GnomadAfrMaf
+	toSerialize["gnomad_eas_allele"] = o.GnomadEasAllele
+	toSerialize["gnomad_eas_maf"] = o.GnomadEasMaf
+	return toSerialize, nil
+}
+
+func (o *ColocatedVariant) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"gnomad_nfe_allele",
+		"gnomad_nfe_maf",
+		"gnomad_afr_allele",
+		"gnomad_afr_maf",
+		"gnomad_eas_allele",
+		"gnomad_eas_maf",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varColocatedVariant := _ColocatedVariant{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varColocatedVariant)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ColocatedVariant(varColocatedVariant)
+
+	return err
 }
 
 type NullableColocatedVariant struct {

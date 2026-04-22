@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GenomeNexusInfo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GenomeNexusInfo{}
+
 // GenomeNexusInfo struct for GenomeNexusInfo
 type GenomeNexusInfo struct {
 	Database *Version `json:"database,omitempty"`
@@ -39,7 +42,7 @@ func NewGenomeNexusInfoWithDefaults() *GenomeNexusInfo {
 
 // GetDatabase returns the Database field value if set, zero value otherwise.
 func (o *GenomeNexusInfo) GetDatabase() Version {
-	if o == nil || isNil(o.Database) {
+	if o == nil || IsNil(o.Database) {
 		var ret Version
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *GenomeNexusInfo) GetDatabase() Version {
 // GetDatabaseOk returns a tuple with the Database field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GenomeNexusInfo) GetDatabaseOk() (*Version, bool) {
-	if o == nil || isNil(o.Database) {
-    return nil, false
+	if o == nil || IsNil(o.Database) {
+		return nil, false
 	}
 	return o.Database, true
 }
 
 // HasDatabase returns a boolean if a field has been set.
 func (o *GenomeNexusInfo) HasDatabase() bool {
-	if o != nil && !isNil(o.Database) {
+	if o != nil && !IsNil(o.Database) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *GenomeNexusInfo) SetDatabase(v Version) {
 
 // GetServer returns the Server field value if set, zero value otherwise.
 func (o *GenomeNexusInfo) GetServer() Version {
-	if o == nil || isNil(o.Server) {
+	if o == nil || IsNil(o.Server) {
 		var ret Version
 		return ret
 	}
@@ -81,15 +84,15 @@ func (o *GenomeNexusInfo) GetServer() Version {
 // GetServerOk returns a tuple with the Server field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GenomeNexusInfo) GetServerOk() (*Version, bool) {
-	if o == nil || isNil(o.Server) {
-    return nil, false
+	if o == nil || IsNil(o.Server) {
+		return nil, false
 	}
 	return o.Server, true
 }
 
 // HasServer returns a boolean if a field has been set.
 func (o *GenomeNexusInfo) HasServer() bool {
-	if o != nil && !isNil(o.Server) {
+	if o != nil && !IsNil(o.Server) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *GenomeNexusInfo) SetServer(v Version) {
 }
 
 func (o GenomeNexusInfo) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Database) {
-		toSerialize["database"] = o.Database
-	}
-	if !isNil(o.Server) {
-		toSerialize["server"] = o.Server
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GenomeNexusInfo) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Database) {
+		toSerialize["database"] = o.Database
+	}
+	if !IsNil(o.Server) {
+		toSerialize["server"] = o.Server
+	}
+	return toSerialize, nil
 }
 
 type NullableGenomeNexusInfo struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the StatsByTumorType type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &StatsByTumorType{}
+
 // StatsByTumorType struct for StatsByTumorType
 type StatsByTumorType struct {
 	// Median Age at Dx
@@ -56,7 +59,7 @@ func NewStatsByTumorTypeWithDefaults() *StatsByTumorType {
 
 // GetAgeAtDx returns the AgeAtDx field value if set, zero value otherwise.
 func (o *StatsByTumorType) GetAgeAtDx() int32 {
-	if o == nil || isNil(o.AgeAtDx) {
+	if o == nil || IsNil(o.AgeAtDx) {
 		var ret int32
 		return ret
 	}
@@ -66,15 +69,15 @@ func (o *StatsByTumorType) GetAgeAtDx() int32 {
 // GetAgeAtDxOk returns a tuple with the AgeAtDx field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StatsByTumorType) GetAgeAtDxOk() (*int32, bool) {
-	if o == nil || isNil(o.AgeAtDx) {
-    return nil, false
+	if o == nil || IsNil(o.AgeAtDx) {
+		return nil, false
 	}
 	return o.AgeAtDx, true
 }
 
 // HasAgeAtDx returns a boolean if a field has been set.
 func (o *StatsByTumorType) HasAgeAtDx() bool {
-	if o != nil && !isNil(o.AgeAtDx) {
+	if o != nil && !IsNil(o.AgeAtDx) {
 		return true
 	}
 
@@ -88,7 +91,7 @@ func (o *StatsByTumorType) SetAgeAtDx(v int32) {
 
 // GetFBiallelic returns the FBiallelic field value if set, zero value otherwise.
 func (o *StatsByTumorType) GetFBiallelic() float64 {
-	if o == nil || isNil(o.FBiallelic) {
+	if o == nil || IsNil(o.FBiallelic) {
 		var ret float64
 		return ret
 	}
@@ -98,15 +101,15 @@ func (o *StatsByTumorType) GetFBiallelic() float64 {
 // GetFBiallelicOk returns a tuple with the FBiallelic field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StatsByTumorType) GetFBiallelicOk() (*float64, bool) {
-	if o == nil || isNil(o.FBiallelic) {
-    return nil, false
+	if o == nil || IsNil(o.FBiallelic) {
+		return nil, false
 	}
 	return o.FBiallelic, true
 }
 
 // HasFBiallelic returns a boolean if a field has been set.
 func (o *StatsByTumorType) HasFBiallelic() bool {
-	if o != nil && !isNil(o.FBiallelic) {
+	if o != nil && !IsNil(o.FBiallelic) {
 		return true
 	}
 
@@ -120,7 +123,7 @@ func (o *StatsByTumorType) SetFBiallelic(v float64) {
 
 // GetFCancerTypeCount returns the FCancerTypeCount field value if set, zero value otherwise.
 func (o *StatsByTumorType) GetFCancerTypeCount() float64 {
-	if o == nil || isNil(o.FCancerTypeCount) {
+	if o == nil || IsNil(o.FCancerTypeCount) {
 		var ret float64
 		return ret
 	}
@@ -130,15 +133,15 @@ func (o *StatsByTumorType) GetFCancerTypeCount() float64 {
 // GetFCancerTypeCountOk returns a tuple with the FCancerTypeCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StatsByTumorType) GetFCancerTypeCountOk() (*float64, bool) {
-	if o == nil || isNil(o.FCancerTypeCount) {
-    return nil, false
+	if o == nil || IsNil(o.FCancerTypeCount) {
+		return nil, false
 	}
 	return o.FCancerTypeCount, true
 }
 
 // HasFCancerTypeCount returns a boolean if a field has been set.
 func (o *StatsByTumorType) HasFCancerTypeCount() bool {
-	if o != nil && !isNil(o.FCancerTypeCount) {
+	if o != nil && !IsNil(o.FCancerTypeCount) {
 		return true
 	}
 
@@ -152,7 +155,7 @@ func (o *StatsByTumorType) SetFCancerTypeCount(v float64) {
 
 // GetHrdScore returns the HrdScore field value if set, zero value otherwise.
 func (o *StatsByTumorType) GetHrdScore() HrdScore {
-	if o == nil || isNil(o.HrdScore) {
+	if o == nil || IsNil(o.HrdScore) {
 		var ret HrdScore
 		return ret
 	}
@@ -162,15 +165,15 @@ func (o *StatsByTumorType) GetHrdScore() HrdScore {
 // GetHrdScoreOk returns a tuple with the HrdScore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StatsByTumorType) GetHrdScoreOk() (*HrdScore, bool) {
-	if o == nil || isNil(o.HrdScore) {
-    return nil, false
+	if o == nil || IsNil(o.HrdScore) {
+		return nil, false
 	}
 	return o.HrdScore, true
 }
 
 // HasHrdScore returns a boolean if a field has been set.
 func (o *StatsByTumorType) HasHrdScore() bool {
-	if o != nil && !isNil(o.HrdScore) {
+	if o != nil && !IsNil(o.HrdScore) {
 		return true
 	}
 
@@ -184,7 +187,7 @@ func (o *StatsByTumorType) SetHrdScore(v HrdScore) {
 
 // GetMsiScore returns the MsiScore field value if set, zero value otherwise.
 func (o *StatsByTumorType) GetMsiScore() float64 {
-	if o == nil || isNil(o.MsiScore) {
+	if o == nil || IsNil(o.MsiScore) {
 		var ret float64
 		return ret
 	}
@@ -194,15 +197,15 @@ func (o *StatsByTumorType) GetMsiScore() float64 {
 // GetMsiScoreOk returns a tuple with the MsiScore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StatsByTumorType) GetMsiScoreOk() (*float64, bool) {
-	if o == nil || isNil(o.MsiScore) {
-    return nil, false
+	if o == nil || IsNil(o.MsiScore) {
+		return nil, false
 	}
 	return o.MsiScore, true
 }
 
 // HasMsiScore returns a boolean if a field has been set.
 func (o *StatsByTumorType) HasMsiScore() bool {
-	if o != nil && !isNil(o.MsiScore) {
+	if o != nil && !IsNil(o.MsiScore) {
 		return true
 	}
 
@@ -216,7 +219,7 @@ func (o *StatsByTumorType) SetMsiScore(v float64) {
 
 // GetNCancerTypeCount returns the NCancerTypeCount field value if set, zero value otherwise.
 func (o *StatsByTumorType) GetNCancerTypeCount() int32 {
-	if o == nil || isNil(o.NCancerTypeCount) {
+	if o == nil || IsNil(o.NCancerTypeCount) {
 		var ret int32
 		return ret
 	}
@@ -226,15 +229,15 @@ func (o *StatsByTumorType) GetNCancerTypeCount() int32 {
 // GetNCancerTypeCountOk returns a tuple with the NCancerTypeCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StatsByTumorType) GetNCancerTypeCountOk() (*int32, bool) {
-	if o == nil || isNil(o.NCancerTypeCount) {
-    return nil, false
+	if o == nil || IsNil(o.NCancerTypeCount) {
+		return nil, false
 	}
 	return o.NCancerTypeCount, true
 }
 
 // HasNCancerTypeCount returns a boolean if a field has been set.
 func (o *StatsByTumorType) HasNCancerTypeCount() bool {
-	if o != nil && !isNil(o.NCancerTypeCount) {
+	if o != nil && !IsNil(o.NCancerTypeCount) {
 		return true
 	}
 
@@ -248,7 +251,7 @@ func (o *StatsByTumorType) SetNCancerTypeCount(v int32) {
 
 // GetNumberOfGermlineHomozygous returns the NumberOfGermlineHomozygous field value if set, zero value otherwise.
 func (o *StatsByTumorType) GetNumberOfGermlineHomozygous() int32 {
-	if o == nil || isNil(o.NumberOfGermlineHomozygous) {
+	if o == nil || IsNil(o.NumberOfGermlineHomozygous) {
 		var ret int32
 		return ret
 	}
@@ -258,15 +261,15 @@ func (o *StatsByTumorType) GetNumberOfGermlineHomozygous() int32 {
 // GetNumberOfGermlineHomozygousOk returns a tuple with the NumberOfGermlineHomozygous field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StatsByTumorType) GetNumberOfGermlineHomozygousOk() (*int32, bool) {
-	if o == nil || isNil(o.NumberOfGermlineHomozygous) {
-    return nil, false
+	if o == nil || IsNil(o.NumberOfGermlineHomozygous) {
+		return nil, false
 	}
 	return o.NumberOfGermlineHomozygous, true
 }
 
 // HasNumberOfGermlineHomozygous returns a boolean if a field has been set.
 func (o *StatsByTumorType) HasNumberOfGermlineHomozygous() bool {
-	if o != nil && !isNil(o.NumberOfGermlineHomozygous) {
+	if o != nil && !IsNil(o.NumberOfGermlineHomozygous) {
 		return true
 	}
 
@@ -280,7 +283,7 @@ func (o *StatsByTumorType) SetNumberOfGermlineHomozygous(v int32) {
 
 // GetNumberWithSig returns the NumberWithSig field value if set, zero value otherwise.
 func (o *StatsByTumorType) GetNumberWithSig() int32 {
-	if o == nil || isNil(o.NumberWithSig) {
+	if o == nil || IsNil(o.NumberWithSig) {
 		var ret int32
 		return ret
 	}
@@ -290,15 +293,15 @@ func (o *StatsByTumorType) GetNumberWithSig() int32 {
 // GetNumberWithSigOk returns a tuple with the NumberWithSig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StatsByTumorType) GetNumberWithSigOk() (*int32, bool) {
-	if o == nil || isNil(o.NumberWithSig) {
-    return nil, false
+	if o == nil || IsNil(o.NumberWithSig) {
+		return nil, false
 	}
 	return o.NumberWithSig, true
 }
 
 // HasNumberWithSig returns a boolean if a field has been set.
 func (o *StatsByTumorType) HasNumberWithSig() bool {
-	if o != nil && !isNil(o.NumberWithSig) {
+	if o != nil && !IsNil(o.NumberWithSig) {
 		return true
 	}
 
@@ -312,7 +315,7 @@ func (o *StatsByTumorType) SetNumberWithSig(v int32) {
 
 // GetTmb returns the Tmb field value if set, zero value otherwise.
 func (o *StatsByTumorType) GetTmb() float64 {
-	if o == nil || isNil(o.Tmb) {
+	if o == nil || IsNil(o.Tmb) {
 		var ret float64
 		return ret
 	}
@@ -322,15 +325,15 @@ func (o *StatsByTumorType) GetTmb() float64 {
 // GetTmbOk returns a tuple with the Tmb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StatsByTumorType) GetTmbOk() (*float64, bool) {
-	if o == nil || isNil(o.Tmb) {
-    return nil, false
+	if o == nil || IsNil(o.Tmb) {
+		return nil, false
 	}
 	return o.Tmb, true
 }
 
 // HasTmb returns a boolean if a field has been set.
 func (o *StatsByTumorType) HasTmb() bool {
-	if o != nil && !isNil(o.Tmb) {
+	if o != nil && !IsNil(o.Tmb) {
 		return true
 	}
 
@@ -344,7 +347,7 @@ func (o *StatsByTumorType) SetTmb(v float64) {
 
 // GetTumorType returns the TumorType field value if set, zero value otherwise.
 func (o *StatsByTumorType) GetTumorType() string {
-	if o == nil || isNil(o.TumorType) {
+	if o == nil || IsNil(o.TumorType) {
 		var ret string
 		return ret
 	}
@@ -354,15 +357,15 @@ func (o *StatsByTumorType) GetTumorType() string {
 // GetTumorTypeOk returns a tuple with the TumorType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StatsByTumorType) GetTumorTypeOk() (*string, bool) {
-	if o == nil || isNil(o.TumorType) {
-    return nil, false
+	if o == nil || IsNil(o.TumorType) {
+		return nil, false
 	}
 	return o.TumorType, true
 }
 
 // HasTumorType returns a boolean if a field has been set.
 func (o *StatsByTumorType) HasTumorType() bool {
-	if o != nil && !isNil(o.TumorType) {
+	if o != nil && !IsNil(o.TumorType) {
 		return true
 	}
 
@@ -375,38 +378,46 @@ func (o *StatsByTumorType) SetTumorType(v string) {
 }
 
 func (o StatsByTumorType) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.AgeAtDx) {
-		toSerialize["ageAtDx"] = o.AgeAtDx
-	}
-	if !isNil(o.FBiallelic) {
-		toSerialize["fBiallelic"] = o.FBiallelic
-	}
-	if !isNil(o.FCancerTypeCount) {
-		toSerialize["fCancerTypeCount"] = o.FCancerTypeCount
-	}
-	if !isNil(o.HrdScore) {
-		toSerialize["hrdScore"] = o.HrdScore
-	}
-	if !isNil(o.MsiScore) {
-		toSerialize["msiScore"] = o.MsiScore
-	}
-	if !isNil(o.NCancerTypeCount) {
-		toSerialize["nCancerTypeCount"] = o.NCancerTypeCount
-	}
-	if !isNil(o.NumberOfGermlineHomozygous) {
-		toSerialize["numberOfGermlineHomozygous"] = o.NumberOfGermlineHomozygous
-	}
-	if !isNil(o.NumberWithSig) {
-		toSerialize["numberWithSig"] = o.NumberWithSig
-	}
-	if !isNil(o.Tmb) {
-		toSerialize["tmb"] = o.Tmb
-	}
-	if !isNil(o.TumorType) {
-		toSerialize["tumorType"] = o.TumorType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o StatsByTumorType) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AgeAtDx) {
+		toSerialize["ageAtDx"] = o.AgeAtDx
+	}
+	if !IsNil(o.FBiallelic) {
+		toSerialize["fBiallelic"] = o.FBiallelic
+	}
+	if !IsNil(o.FCancerTypeCount) {
+		toSerialize["fCancerTypeCount"] = o.FCancerTypeCount
+	}
+	if !IsNil(o.HrdScore) {
+		toSerialize["hrdScore"] = o.HrdScore
+	}
+	if !IsNil(o.MsiScore) {
+		toSerialize["msiScore"] = o.MsiScore
+	}
+	if !IsNil(o.NCancerTypeCount) {
+		toSerialize["nCancerTypeCount"] = o.NCancerTypeCount
+	}
+	if !IsNil(o.NumberOfGermlineHomozygous) {
+		toSerialize["numberOfGermlineHomozygous"] = o.NumberOfGermlineHomozygous
+	}
+	if !IsNil(o.NumberWithSig) {
+		toSerialize["numberWithSig"] = o.NumberWithSig
+	}
+	if !IsNil(o.Tmb) {
+		toSerialize["tmb"] = o.Tmb
+	}
+	if !IsNil(o.TumorType) {
+		toSerialize["tumorType"] = o.TumorType
+	}
+	return toSerialize, nil
 }
 
 type NullableStatsByTumorType struct {

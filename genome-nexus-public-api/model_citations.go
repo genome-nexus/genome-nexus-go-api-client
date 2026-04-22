@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Citations type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Citations{}
+
 // Citations struct for Citations
 type Citations struct {
 	Abstracts []ArticleAbstract `json:"abstracts,omitempty"`
@@ -39,7 +42,7 @@ func NewCitationsWithDefaults() *Citations {
 
 // GetAbstracts returns the Abstracts field value if set, zero value otherwise.
 func (o *Citations) GetAbstracts() []ArticleAbstract {
-	if o == nil || isNil(o.Abstracts) {
+	if o == nil || IsNil(o.Abstracts) {
 		var ret []ArticleAbstract
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *Citations) GetAbstracts() []ArticleAbstract {
 // GetAbstractsOk returns a tuple with the Abstracts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Citations) GetAbstractsOk() ([]ArticleAbstract, bool) {
-	if o == nil || isNil(o.Abstracts) {
-    return nil, false
+	if o == nil || IsNil(o.Abstracts) {
+		return nil, false
 	}
 	return o.Abstracts, true
 }
 
 // HasAbstracts returns a boolean if a field has been set.
 func (o *Citations) HasAbstracts() bool {
-	if o != nil && !isNil(o.Abstracts) {
+	if o != nil && !IsNil(o.Abstracts) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *Citations) SetAbstracts(v []ArticleAbstract) {
 
 // GetPmids returns the Pmids field value if set, zero value otherwise.
 func (o *Citations) GetPmids() []string {
-	if o == nil || isNil(o.Pmids) {
+	if o == nil || IsNil(o.Pmids) {
 		var ret []string
 		return ret
 	}
@@ -81,15 +84,15 @@ func (o *Citations) GetPmids() []string {
 // GetPmidsOk returns a tuple with the Pmids field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Citations) GetPmidsOk() ([]string, bool) {
-	if o == nil || isNil(o.Pmids) {
-    return nil, false
+	if o == nil || IsNil(o.Pmids) {
+		return nil, false
 	}
 	return o.Pmids, true
 }
 
 // HasPmids returns a boolean if a field has been set.
 func (o *Citations) HasPmids() bool {
-	if o != nil && !isNil(o.Pmids) {
+	if o != nil && !IsNil(o.Pmids) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *Citations) SetPmids(v []string) {
 }
 
 func (o Citations) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Abstracts) {
-		toSerialize["abstracts"] = o.Abstracts
-	}
-	if !isNil(o.Pmids) {
-		toSerialize["pmids"] = o.Pmids
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Citations) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Abstracts) {
+		toSerialize["abstracts"] = o.Abstracts
+	}
+	if !IsNil(o.Pmids) {
+		toSerialize["pmids"] = o.Pmids
+	}
+	return toSerialize, nil
 }
 
 type NullableCitations struct {

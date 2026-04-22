@@ -12,7 +12,12 @@ package genome_nexus_public_api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the AlleleNumber type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AlleleNumber{}
 
 // AlleleNumber struct for AlleleNumber
 type AlleleNumber struct {
@@ -26,6 +31,8 @@ type AlleleNumber struct {
 	AnOth int32 `json:"an_oth"`
 	AnSas int32 `json:"an_sas"`
 }
+
+type _AlleleNumber AlleleNumber
 
 // NewAlleleNumber instantiates a new AlleleNumber object
 // This constructor will assign default values to properties that have it defined,
@@ -67,7 +74,7 @@ func (o *AlleleNumber) GetAn() int32 {
 // and a boolean to check if the value has been set.
 func (o *AlleleNumber) GetAnOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.An, true
 }
@@ -91,7 +98,7 @@ func (o *AlleleNumber) GetAnAfr() int32 {
 // and a boolean to check if the value has been set.
 func (o *AlleleNumber) GetAnAfrOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AnAfr, true
 }
@@ -115,7 +122,7 @@ func (o *AlleleNumber) GetAnAmr() int32 {
 // and a boolean to check if the value has been set.
 func (o *AlleleNumber) GetAnAmrOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AnAmr, true
 }
@@ -139,7 +146,7 @@ func (o *AlleleNumber) GetAnAsj() int32 {
 // and a boolean to check if the value has been set.
 func (o *AlleleNumber) GetAnAsjOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AnAsj, true
 }
@@ -163,7 +170,7 @@ func (o *AlleleNumber) GetAnEas() int32 {
 // and a boolean to check if the value has been set.
 func (o *AlleleNumber) GetAnEasOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AnEas, true
 }
@@ -187,7 +194,7 @@ func (o *AlleleNumber) GetAnFin() int32 {
 // and a boolean to check if the value has been set.
 func (o *AlleleNumber) GetAnFinOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AnFin, true
 }
@@ -211,7 +218,7 @@ func (o *AlleleNumber) GetAnNfe() int32 {
 // and a boolean to check if the value has been set.
 func (o *AlleleNumber) GetAnNfeOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AnNfe, true
 }
@@ -235,7 +242,7 @@ func (o *AlleleNumber) GetAnOth() int32 {
 // and a boolean to check if the value has been set.
 func (o *AlleleNumber) GetAnOthOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AnOth, true
 }
@@ -259,7 +266,7 @@ func (o *AlleleNumber) GetAnSas() int32 {
 // and a boolean to check if the value has been set.
 func (o *AlleleNumber) GetAnSasOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AnSas, true
 }
@@ -270,35 +277,70 @@ func (o *AlleleNumber) SetAnSas(v int32) {
 }
 
 func (o AlleleNumber) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["an"] = o.An
-	}
-	if true {
-		toSerialize["an_afr"] = o.AnAfr
-	}
-	if true {
-		toSerialize["an_amr"] = o.AnAmr
-	}
-	if true {
-		toSerialize["an_asj"] = o.AnAsj
-	}
-	if true {
-		toSerialize["an_eas"] = o.AnEas
-	}
-	if true {
-		toSerialize["an_fin"] = o.AnFin
-	}
-	if true {
-		toSerialize["an_nfe"] = o.AnNfe
-	}
-	if true {
-		toSerialize["an_oth"] = o.AnOth
-	}
-	if true {
-		toSerialize["an_sas"] = o.AnSas
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AlleleNumber) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["an"] = o.An
+	toSerialize["an_afr"] = o.AnAfr
+	toSerialize["an_amr"] = o.AnAmr
+	toSerialize["an_asj"] = o.AnAsj
+	toSerialize["an_eas"] = o.AnEas
+	toSerialize["an_fin"] = o.AnFin
+	toSerialize["an_nfe"] = o.AnNfe
+	toSerialize["an_oth"] = o.AnOth
+	toSerialize["an_sas"] = o.AnSas
+	return toSerialize, nil
+}
+
+func (o *AlleleNumber) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"an",
+		"an_afr",
+		"an_amr",
+		"an_asj",
+		"an_eas",
+		"an_fin",
+		"an_nfe",
+		"an_oth",
+		"an_sas",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAlleleNumber := _AlleleNumber{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAlleleNumber)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AlleleNumber(varAlleleNumber)
+
+	return err
 }
 
 type NullableAlleleNumber struct {

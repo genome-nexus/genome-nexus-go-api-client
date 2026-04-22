@@ -13,7 +13,7 @@ package genome_nexus_public_api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,12 +21,12 @@ import (
 )
 
 
-// AnnotationControllerApiService AnnotationControllerApi service
-type AnnotationControllerApiService service
+// AnnotationControllerAPIService AnnotationControllerAPI service
+type AnnotationControllerAPIService service
 
 type ApiFetchVariantAnnotationByGenomicLocationGETRequest struct {
 	ctx context.Context
-	ApiService *AnnotationControllerApiService
+	ApiService *AnnotationControllerAPIService
 	genomicLocation string
 	isoformOverrideSource *string
 	token *string
@@ -62,7 +62,7 @@ FetchVariantAnnotationByGenomicLocationGET Retrieves VEP annotation for the prov
  @param genomicLocation A genomic location. For example 7,140453136,140453136,A,T
  @return ApiFetchVariantAnnotationByGenomicLocationGETRequest
 */
-func (a *AnnotationControllerApiService) FetchVariantAnnotationByGenomicLocationGET(ctx context.Context, genomicLocation string) ApiFetchVariantAnnotationByGenomicLocationGETRequest {
+func (a *AnnotationControllerAPIService) FetchVariantAnnotationByGenomicLocationGET(ctx context.Context, genomicLocation string) ApiFetchVariantAnnotationByGenomicLocationGETRequest {
 	return ApiFetchVariantAnnotationByGenomicLocationGETRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -72,7 +72,7 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationByGenomicLocation
 
 // Execute executes the request
 //  @return VariantAnnotation
-func (a *AnnotationControllerApiService) FetchVariantAnnotationByGenomicLocationGETExecute(r ApiFetchVariantAnnotationByGenomicLocationGETRequest) (*VariantAnnotation, *http.Response, error) {
+func (a *AnnotationControllerAPIService) FetchVariantAnnotationByGenomicLocationGETExecute(r ApiFetchVariantAnnotationByGenomicLocationGETRequest) (*VariantAnnotation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -80,33 +80,33 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationByGenomicLocation
 		localVarReturnValue  *VariantAnnotation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AnnotationControllerApiService.FetchVariantAnnotationByGenomicLocationGET")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AnnotationControllerAPIService.FetchVariantAnnotationByGenomicLocationGET")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/annotation/genomic/{genomicLocation}"
-	localVarPath = strings.Replace(localVarPath, "{"+"genomicLocation"+"}", url.PathEscape(parameterToString(r.genomicLocation, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"genomicLocation"+"}", url.PathEscape(parameterValueToString(r.genomicLocation, "genomicLocation")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.isoformOverrideSource != nil {
-		localVarQueryParams.Add("isoformOverrideSource", parameterToString(*r.isoformOverrideSource, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "isoformOverrideSource", r.isoformOverrideSource, "form", "")
 	}
 	if r.token != nil {
-		localVarQueryParams.Add("token", parameterToString(*r.token, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "token", r.token, "form", "")
 	}
 	if r.fields != nil {
 		t := *r.fields
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("fields", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "fields", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("fields", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "fields", t, "form", "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -136,9 +136,9 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationByGenomicLocation
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -165,7 +165,7 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationByGenomicLocation
 
 type ApiFetchVariantAnnotationByGenomicLocationPOSTRequest struct {
 	ctx context.Context
-	ApiService *AnnotationControllerApiService
+	ApiService *AnnotationControllerAPIService
 	genomicLocations *[]GenomicLocation
 	isoformOverrideSource *string
 	token *string
@@ -206,7 +206,7 @@ FetchVariantAnnotationByGenomicLocationPOST Retrieves VEP annotation for the pro
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFetchVariantAnnotationByGenomicLocationPOSTRequest
 */
-func (a *AnnotationControllerApiService) FetchVariantAnnotationByGenomicLocationPOST(ctx context.Context) ApiFetchVariantAnnotationByGenomicLocationPOSTRequest {
+func (a *AnnotationControllerAPIService) FetchVariantAnnotationByGenomicLocationPOST(ctx context.Context) ApiFetchVariantAnnotationByGenomicLocationPOSTRequest {
 	return ApiFetchVariantAnnotationByGenomicLocationPOSTRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -215,7 +215,7 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationByGenomicLocation
 
 // Execute executes the request
 //  @return []VariantAnnotation
-func (a *AnnotationControllerApiService) FetchVariantAnnotationByGenomicLocationPOSTExecute(r ApiFetchVariantAnnotationByGenomicLocationPOSTRequest) ([]VariantAnnotation, *http.Response, error) {
+func (a *AnnotationControllerAPIService) FetchVariantAnnotationByGenomicLocationPOSTExecute(r ApiFetchVariantAnnotationByGenomicLocationPOSTRequest) ([]VariantAnnotation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -223,7 +223,7 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationByGenomicLocation
 		localVarReturnValue  []VariantAnnotation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AnnotationControllerApiService.FetchVariantAnnotationByGenomicLocationPOST")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AnnotationControllerAPIService.FetchVariantAnnotationByGenomicLocationPOST")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -238,20 +238,20 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationByGenomicLocation
 	}
 
 	if r.isoformOverrideSource != nil {
-		localVarQueryParams.Add("isoformOverrideSource", parameterToString(*r.isoformOverrideSource, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "isoformOverrideSource", r.isoformOverrideSource, "form", "")
 	}
 	if r.token != nil {
-		localVarQueryParams.Add("token", parameterToString(*r.token, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "token", r.token, "form", "")
 	}
 	if r.fields != nil {
 		t := *r.fields
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("fields", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "fields", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("fields", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "fields", t, "form", "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -283,9 +283,9 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationByGenomicLocation
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -312,7 +312,7 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationByGenomicLocation
 
 type ApiFetchVariantAnnotationByIdGETRequest struct {
 	ctx context.Context
-	ApiService *AnnotationControllerApiService
+	ApiService *AnnotationControllerAPIService
 	variantId string
 	isoformOverrideSource *string
 	token *string
@@ -348,7 +348,7 @@ FetchVariantAnnotationByIdGET Retrieves VEP annotation for the give dbSNP id
  @param variantId dbSNP id. For example rs116035550.
  @return ApiFetchVariantAnnotationByIdGETRequest
 */
-func (a *AnnotationControllerApiService) FetchVariantAnnotationByIdGET(ctx context.Context, variantId string) ApiFetchVariantAnnotationByIdGETRequest {
+func (a *AnnotationControllerAPIService) FetchVariantAnnotationByIdGET(ctx context.Context, variantId string) ApiFetchVariantAnnotationByIdGETRequest {
 	return ApiFetchVariantAnnotationByIdGETRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -358,7 +358,7 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationByIdGET(ctx conte
 
 // Execute executes the request
 //  @return VariantAnnotation
-func (a *AnnotationControllerApiService) FetchVariantAnnotationByIdGETExecute(r ApiFetchVariantAnnotationByIdGETRequest) (*VariantAnnotation, *http.Response, error) {
+func (a *AnnotationControllerAPIService) FetchVariantAnnotationByIdGETExecute(r ApiFetchVariantAnnotationByIdGETRequest) (*VariantAnnotation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -366,33 +366,33 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationByIdGETExecute(r 
 		localVarReturnValue  *VariantAnnotation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AnnotationControllerApiService.FetchVariantAnnotationByIdGET")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AnnotationControllerAPIService.FetchVariantAnnotationByIdGET")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/annotation/dbsnp/{variantId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"variantId"+"}", url.PathEscape(parameterToString(r.variantId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"variantId"+"}", url.PathEscape(parameterValueToString(r.variantId, "variantId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.isoformOverrideSource != nil {
-		localVarQueryParams.Add("isoformOverrideSource", parameterToString(*r.isoformOverrideSource, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "isoformOverrideSource", r.isoformOverrideSource, "form", "")
 	}
 	if r.token != nil {
-		localVarQueryParams.Add("token", parameterToString(*r.token, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "token", r.token, "form", "")
 	}
 	if r.fields != nil {
 		t := *r.fields
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("fields", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "fields", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("fields", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "fields", t, "form", "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -422,9 +422,9 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationByIdGETExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -451,7 +451,7 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationByIdGETExecute(r 
 
 type ApiFetchVariantAnnotationByIdPOSTRequest struct {
 	ctx context.Context
-	ApiService *AnnotationControllerApiService
+	ApiService *AnnotationControllerAPIService
 	variantIds *[]string
 	isoformOverrideSource *string
 	token *string
@@ -492,7 +492,7 @@ FetchVariantAnnotationByIdPOST Retrieves VEP annotation for the provided list of
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFetchVariantAnnotationByIdPOSTRequest
 */
-func (a *AnnotationControllerApiService) FetchVariantAnnotationByIdPOST(ctx context.Context) ApiFetchVariantAnnotationByIdPOSTRequest {
+func (a *AnnotationControllerAPIService) FetchVariantAnnotationByIdPOST(ctx context.Context) ApiFetchVariantAnnotationByIdPOSTRequest {
 	return ApiFetchVariantAnnotationByIdPOSTRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -501,7 +501,7 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationByIdPOST(ctx cont
 
 // Execute executes the request
 //  @return []VariantAnnotation
-func (a *AnnotationControllerApiService) FetchVariantAnnotationByIdPOSTExecute(r ApiFetchVariantAnnotationByIdPOSTRequest) ([]VariantAnnotation, *http.Response, error) {
+func (a *AnnotationControllerAPIService) FetchVariantAnnotationByIdPOSTExecute(r ApiFetchVariantAnnotationByIdPOSTRequest) ([]VariantAnnotation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -509,7 +509,7 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationByIdPOSTExecute(r
 		localVarReturnValue  []VariantAnnotation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AnnotationControllerApiService.FetchVariantAnnotationByIdPOST")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AnnotationControllerAPIService.FetchVariantAnnotationByIdPOST")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -524,20 +524,20 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationByIdPOSTExecute(r
 	}
 
 	if r.isoformOverrideSource != nil {
-		localVarQueryParams.Add("isoformOverrideSource", parameterToString(*r.isoformOverrideSource, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "isoformOverrideSource", r.isoformOverrideSource, "form", "")
 	}
 	if r.token != nil {
-		localVarQueryParams.Add("token", parameterToString(*r.token, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "token", r.token, "form", "")
 	}
 	if r.fields != nil {
 		t := *r.fields
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("fields", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "fields", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("fields", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "fields", t, "form", "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -569,9 +569,9 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationByIdPOSTExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -598,7 +598,7 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationByIdPOSTExecute(r
 
 type ApiFetchVariantAnnotationGETRequest struct {
 	ctx context.Context
-	ApiService *AnnotationControllerApiService
+	ApiService *AnnotationControllerAPIService
 	variant string
 	isoformOverrideSource *string
 	token *string
@@ -634,7 +634,7 @@ FetchVariantAnnotationGET Retrieves VEP annotation for the provided variant
  @param variant Variant. For example 17:g.41242962_41242963insGA
  @return ApiFetchVariantAnnotationGETRequest
 */
-func (a *AnnotationControllerApiService) FetchVariantAnnotationGET(ctx context.Context, variant string) ApiFetchVariantAnnotationGETRequest {
+func (a *AnnotationControllerAPIService) FetchVariantAnnotationGET(ctx context.Context, variant string) ApiFetchVariantAnnotationGETRequest {
 	return ApiFetchVariantAnnotationGETRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -644,7 +644,7 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationGET(ctx context.C
 
 // Execute executes the request
 //  @return VariantAnnotation
-func (a *AnnotationControllerApiService) FetchVariantAnnotationGETExecute(r ApiFetchVariantAnnotationGETRequest) (*VariantAnnotation, *http.Response, error) {
+func (a *AnnotationControllerAPIService) FetchVariantAnnotationGETExecute(r ApiFetchVariantAnnotationGETRequest) (*VariantAnnotation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -652,33 +652,33 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationGETExecute(r ApiF
 		localVarReturnValue  *VariantAnnotation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AnnotationControllerApiService.FetchVariantAnnotationGET")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AnnotationControllerAPIService.FetchVariantAnnotationGET")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/annotation/{variant}"
-	localVarPath = strings.Replace(localVarPath, "{"+"variant"+"}", url.PathEscape(parameterToString(r.variant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"variant"+"}", url.PathEscape(parameterValueToString(r.variant, "variant")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.isoformOverrideSource != nil {
-		localVarQueryParams.Add("isoformOverrideSource", parameterToString(*r.isoformOverrideSource, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "isoformOverrideSource", r.isoformOverrideSource, "form", "")
 	}
 	if r.token != nil {
-		localVarQueryParams.Add("token", parameterToString(*r.token, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "token", r.token, "form", "")
 	}
 	if r.fields != nil {
 		t := *r.fields
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("fields", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "fields", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("fields", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "fields", t, "form", "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -708,9 +708,9 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationGETExecute(r ApiF
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -737,7 +737,7 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationGETExecute(r ApiF
 
 type ApiFetchVariantAnnotationPOSTRequest struct {
 	ctx context.Context
-	ApiService *AnnotationControllerApiService
+	ApiService *AnnotationControllerAPIService
 	variants *[]string
 	isoformOverrideSource *string
 	token *string
@@ -778,7 +778,7 @@ FetchVariantAnnotationPOST Retrieves VEP annotation for the provided list of var
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFetchVariantAnnotationPOSTRequest
 */
-func (a *AnnotationControllerApiService) FetchVariantAnnotationPOST(ctx context.Context) ApiFetchVariantAnnotationPOSTRequest {
+func (a *AnnotationControllerAPIService) FetchVariantAnnotationPOST(ctx context.Context) ApiFetchVariantAnnotationPOSTRequest {
 	return ApiFetchVariantAnnotationPOSTRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -787,7 +787,7 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationPOST(ctx context.
 
 // Execute executes the request
 //  @return []VariantAnnotation
-func (a *AnnotationControllerApiService) FetchVariantAnnotationPOSTExecute(r ApiFetchVariantAnnotationPOSTRequest) ([]VariantAnnotation, *http.Response, error) {
+func (a *AnnotationControllerAPIService) FetchVariantAnnotationPOSTExecute(r ApiFetchVariantAnnotationPOSTRequest) ([]VariantAnnotation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -795,7 +795,7 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationPOSTExecute(r Api
 		localVarReturnValue  []VariantAnnotation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AnnotationControllerApiService.FetchVariantAnnotationPOST")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AnnotationControllerAPIService.FetchVariantAnnotationPOST")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -810,20 +810,20 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationPOSTExecute(r Api
 	}
 
 	if r.isoformOverrideSource != nil {
-		localVarQueryParams.Add("isoformOverrideSource", parameterToString(*r.isoformOverrideSource, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "isoformOverrideSource", r.isoformOverrideSource, "form", "")
 	}
 	if r.token != nil {
-		localVarQueryParams.Add("token", parameterToString(*r.token, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "token", r.token, "form", "")
 	}
 	if r.fields != nil {
 		t := *r.fields
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("fields", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "fields", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			localVarQueryParams.Add("fields", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "fields", t, "form", "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -855,9 +855,9 @@ func (a *AnnotationControllerApiService) FetchVariantAnnotationPOSTExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

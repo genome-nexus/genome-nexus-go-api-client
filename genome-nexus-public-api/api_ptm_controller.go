@@ -13,18 +13,18 @@ package genome_nexus_public_api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-// PtmControllerApiService PtmControllerApi service
-type PtmControllerApiService service
+// PtmControllerAPIService PtmControllerAPI service
+type PtmControllerAPIService service
 
 type ApiFetchPostTranslationalModificationsByPtmFilterPOSTRequest struct {
 	ctx context.Context
-	ApiService *PtmControllerApiService
+	ApiService *PtmControllerAPIService
 	ptmFilter *PtmFilter
 }
 
@@ -44,7 +44,7 @@ FetchPostTranslationalModificationsByPtmFilterPOST Retrieves PTM entries by Ense
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFetchPostTranslationalModificationsByPtmFilterPOSTRequest
 */
-func (a *PtmControllerApiService) FetchPostTranslationalModificationsByPtmFilterPOST(ctx context.Context) ApiFetchPostTranslationalModificationsByPtmFilterPOSTRequest {
+func (a *PtmControllerAPIService) FetchPostTranslationalModificationsByPtmFilterPOST(ctx context.Context) ApiFetchPostTranslationalModificationsByPtmFilterPOSTRequest {
 	return ApiFetchPostTranslationalModificationsByPtmFilterPOSTRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -53,7 +53,7 @@ func (a *PtmControllerApiService) FetchPostTranslationalModificationsByPtmFilter
 
 // Execute executes the request
 //  @return []PostTranslationalModification
-func (a *PtmControllerApiService) FetchPostTranslationalModificationsByPtmFilterPOSTExecute(r ApiFetchPostTranslationalModificationsByPtmFilterPOSTRequest) ([]PostTranslationalModification, *http.Response, error) {
+func (a *PtmControllerAPIService) FetchPostTranslationalModificationsByPtmFilterPOSTExecute(r ApiFetchPostTranslationalModificationsByPtmFilterPOSTRequest) ([]PostTranslationalModification, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -61,7 +61,7 @@ func (a *PtmControllerApiService) FetchPostTranslationalModificationsByPtmFilter
 		localVarReturnValue  []PostTranslationalModification
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PtmControllerApiService.FetchPostTranslationalModificationsByPtmFilterPOST")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PtmControllerAPIService.FetchPostTranslationalModificationsByPtmFilterPOST")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -104,9 +104,9 @@ func (a *PtmControllerApiService) FetchPostTranslationalModificationsByPtmFilter
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -133,7 +133,7 @@ func (a *PtmControllerApiService) FetchPostTranslationalModificationsByPtmFilter
 
 type ApiFetchPostTranslationalModificationsGETRequest struct {
 	ctx context.Context
-	ApiService *PtmControllerApiService
+	ApiService *PtmControllerAPIService
 	ensemblTranscriptId *string
 }
 
@@ -153,7 +153,7 @@ FetchPostTranslationalModificationsGET Retrieves PTM entries by Ensembl Transcri
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFetchPostTranslationalModificationsGETRequest
 */
-func (a *PtmControllerApiService) FetchPostTranslationalModificationsGET(ctx context.Context) ApiFetchPostTranslationalModificationsGETRequest {
+func (a *PtmControllerAPIService) FetchPostTranslationalModificationsGET(ctx context.Context) ApiFetchPostTranslationalModificationsGETRequest {
 	return ApiFetchPostTranslationalModificationsGETRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -162,7 +162,7 @@ func (a *PtmControllerApiService) FetchPostTranslationalModificationsGET(ctx con
 
 // Execute executes the request
 //  @return []PostTranslationalModification
-func (a *PtmControllerApiService) FetchPostTranslationalModificationsGETExecute(r ApiFetchPostTranslationalModificationsGETRequest) ([]PostTranslationalModification, *http.Response, error) {
+func (a *PtmControllerAPIService) FetchPostTranslationalModificationsGETExecute(r ApiFetchPostTranslationalModificationsGETRequest) ([]PostTranslationalModification, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -170,7 +170,7 @@ func (a *PtmControllerApiService) FetchPostTranslationalModificationsGETExecute(
 		localVarReturnValue  []PostTranslationalModification
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PtmControllerApiService.FetchPostTranslationalModificationsGET")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PtmControllerAPIService.FetchPostTranslationalModificationsGET")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -182,7 +182,7 @@ func (a *PtmControllerApiService) FetchPostTranslationalModificationsGETExecute(
 	localVarFormParams := url.Values{}
 
 	if r.ensemblTranscriptId != nil {
-		localVarQueryParams.Add("ensemblTranscriptId", parameterToString(*r.ensemblTranscriptId, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ensemblTranscriptId", r.ensemblTranscriptId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -211,9 +211,9 @@ func (a *PtmControllerApiService) FetchPostTranslationalModificationsGETExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

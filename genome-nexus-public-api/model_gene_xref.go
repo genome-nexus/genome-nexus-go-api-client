@@ -12,7 +12,12 @@ package genome_nexus_public_api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the GeneXref type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GeneXref{}
 
 // GeneXref struct for GeneXref
 type GeneXref struct {
@@ -36,6 +41,8 @@ type GeneXref struct {
 	// Version
 	Version string `json:"version"`
 }
+
+type _GeneXref GeneXref
 
 // NewGeneXref instantiates a new GeneXref object
 // This constructor will assign default values to properties that have it defined,
@@ -74,7 +81,7 @@ func (o *GeneXref) GetDbDisplayName() string {
 // and a boolean to check if the value has been set.
 func (o *GeneXref) GetDbDisplayNameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.DbDisplayName, true
 }
@@ -98,7 +105,7 @@ func (o *GeneXref) GetDbname() string {
 // and a boolean to check if the value has been set.
 func (o *GeneXref) GetDbnameOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Dbname, true
 }
@@ -122,7 +129,7 @@ func (o *GeneXref) GetDescription() string {
 // and a boolean to check if the value has been set.
 func (o *GeneXref) GetDescriptionOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Description, true
 }
@@ -146,7 +153,7 @@ func (o *GeneXref) GetDisplayId() string {
 // and a boolean to check if the value has been set.
 func (o *GeneXref) GetDisplayIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.DisplayId, true
 }
@@ -158,7 +165,7 @@ func (o *GeneXref) SetDisplayId(v string) {
 
 // GetEnsemblGeneId returns the EnsemblGeneId field value if set, zero value otherwise.
 func (o *GeneXref) GetEnsemblGeneId() string {
-	if o == nil || isNil(o.EnsemblGeneId) {
+	if o == nil || IsNil(o.EnsemblGeneId) {
 		var ret string
 		return ret
 	}
@@ -168,15 +175,15 @@ func (o *GeneXref) GetEnsemblGeneId() string {
 // GetEnsemblGeneIdOk returns a tuple with the EnsemblGeneId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GeneXref) GetEnsemblGeneIdOk() (*string, bool) {
-	if o == nil || isNil(o.EnsemblGeneId) {
-    return nil, false
+	if o == nil || IsNil(o.EnsemblGeneId) {
+		return nil, false
 	}
 	return o.EnsemblGeneId, true
 }
 
 // HasEnsemblGeneId returns a boolean if a field has been set.
 func (o *GeneXref) HasEnsemblGeneId() bool {
-	if o != nil && !isNil(o.EnsemblGeneId) {
+	if o != nil && !IsNil(o.EnsemblGeneId) {
 		return true
 	}
 
@@ -190,7 +197,7 @@ func (o *GeneXref) SetEnsemblGeneId(v string) {
 
 // GetInfoText returns the InfoText field value if set, zero value otherwise.
 func (o *GeneXref) GetInfoText() string {
-	if o == nil || isNil(o.InfoText) {
+	if o == nil || IsNil(o.InfoText) {
 		var ret string
 		return ret
 	}
@@ -200,15 +207,15 @@ func (o *GeneXref) GetInfoText() string {
 // GetInfoTextOk returns a tuple with the InfoText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GeneXref) GetInfoTextOk() (*string, bool) {
-	if o == nil || isNil(o.InfoText) {
-    return nil, false
+	if o == nil || IsNil(o.InfoText) {
+		return nil, false
 	}
 	return o.InfoText, true
 }
 
 // HasInfoText returns a boolean if a field has been set.
 func (o *GeneXref) HasInfoText() bool {
-	if o != nil && !isNil(o.InfoText) {
+	if o != nil && !IsNil(o.InfoText) {
 		return true
 	}
 
@@ -222,7 +229,7 @@ func (o *GeneXref) SetInfoText(v string) {
 
 // GetInfoTypes returns the InfoTypes field value if set, zero value otherwise.
 func (o *GeneXref) GetInfoTypes() string {
-	if o == nil || isNil(o.InfoTypes) {
+	if o == nil || IsNil(o.InfoTypes) {
 		var ret string
 		return ret
 	}
@@ -232,15 +239,15 @@ func (o *GeneXref) GetInfoTypes() string {
 // GetInfoTypesOk returns a tuple with the InfoTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GeneXref) GetInfoTypesOk() (*string, bool) {
-	if o == nil || isNil(o.InfoTypes) {
-    return nil, false
+	if o == nil || IsNil(o.InfoTypes) {
+		return nil, false
 	}
 	return o.InfoTypes, true
 }
 
 // HasInfoTypes returns a boolean if a field has been set.
 func (o *GeneXref) HasInfoTypes() bool {
-	if o != nil && !isNil(o.InfoTypes) {
+	if o != nil && !IsNil(o.InfoTypes) {
 		return true
 	}
 
@@ -266,7 +273,7 @@ func (o *GeneXref) GetPrimaryId() string {
 // and a boolean to check if the value has been set.
 func (o *GeneXref) GetPrimaryIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.PrimaryId, true
 }
@@ -278,7 +285,7 @@ func (o *GeneXref) SetPrimaryId(v string) {
 
 // GetSynonyms returns the Synonyms field value if set, zero value otherwise.
 func (o *GeneXref) GetSynonyms() []string {
-	if o == nil || isNil(o.Synonyms) {
+	if o == nil || IsNil(o.Synonyms) {
 		var ret []string
 		return ret
 	}
@@ -288,15 +295,15 @@ func (o *GeneXref) GetSynonyms() []string {
 // GetSynonymsOk returns a tuple with the Synonyms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GeneXref) GetSynonymsOk() ([]string, bool) {
-	if o == nil || isNil(o.Synonyms) {
-    return nil, false
+	if o == nil || IsNil(o.Synonyms) {
+		return nil, false
 	}
 	return o.Synonyms, true
 }
 
 // HasSynonyms returns a boolean if a field has been set.
 func (o *GeneXref) HasSynonyms() bool {
-	if o != nil && !isNil(o.Synonyms) {
+	if o != nil && !IsNil(o.Synonyms) {
 		return true
 	}
 
@@ -322,7 +329,7 @@ func (o *GeneXref) GetVersion() string {
 // and a boolean to check if the value has been set.
 func (o *GeneXref) GetVersionOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Version, true
 }
@@ -333,38 +340,76 @@ func (o *GeneXref) SetVersion(v string) {
 }
 
 func (o GeneXref) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["db_display_name"] = o.DbDisplayName
-	}
-	if true {
-		toSerialize["dbname"] = o.Dbname
-	}
-	if true {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["display_id"] = o.DisplayId
-	}
-	if !isNil(o.EnsemblGeneId) {
-		toSerialize["ensemblGeneId"] = o.EnsemblGeneId
-	}
-	if !isNil(o.InfoText) {
-		toSerialize["info_text"] = o.InfoText
-	}
-	if !isNil(o.InfoTypes) {
-		toSerialize["info_types"] = o.InfoTypes
-	}
-	if true {
-		toSerialize["primary_id"] = o.PrimaryId
-	}
-	if !isNil(o.Synonyms) {
-		toSerialize["synonyms"] = o.Synonyms
-	}
-	if true {
-		toSerialize["version"] = o.Version
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GeneXref) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["db_display_name"] = o.DbDisplayName
+	toSerialize["dbname"] = o.Dbname
+	toSerialize["description"] = o.Description
+	toSerialize["display_id"] = o.DisplayId
+	if !IsNil(o.EnsemblGeneId) {
+		toSerialize["ensemblGeneId"] = o.EnsemblGeneId
+	}
+	if !IsNil(o.InfoText) {
+		toSerialize["info_text"] = o.InfoText
+	}
+	if !IsNil(o.InfoTypes) {
+		toSerialize["info_types"] = o.InfoTypes
+	}
+	toSerialize["primary_id"] = o.PrimaryId
+	if !IsNil(o.Synonyms) {
+		toSerialize["synonyms"] = o.Synonyms
+	}
+	toSerialize["version"] = o.Version
+	return toSerialize, nil
+}
+
+func (o *GeneXref) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"db_display_name",
+		"dbname",
+		"description",
+		"display_id",
+		"primary_id",
+		"version",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varGeneXref := _GeneXref{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varGeneXref)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GeneXref(varGeneXref)
+
+	return err
 }
 
 type NullableGeneXref struct {

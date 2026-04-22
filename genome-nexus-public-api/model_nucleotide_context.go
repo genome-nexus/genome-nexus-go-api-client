@@ -12,7 +12,12 @@ package genome_nexus_public_api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the NucleotideContext type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NucleotideContext{}
 
 // NucleotideContext struct for NucleotideContext
 type NucleotideContext struct {
@@ -23,6 +28,8 @@ type NucleotideContext struct {
 	// Nucleotide context sequence
 	Seq string `json:"seq"`
 }
+
+type _NucleotideContext NucleotideContext
 
 // NewNucleotideContext instantiates a new NucleotideContext object
 // This constructor will assign default values to properties that have it defined,
@@ -44,7 +51,7 @@ func NewNucleotideContextWithDefaults() *NucleotideContext {
 
 // GetHgvs returns the Hgvs field value if set, zero value otherwise.
 func (o *NucleotideContext) GetHgvs() string {
-	if o == nil || isNil(o.Hgvs) {
+	if o == nil || IsNil(o.Hgvs) {
 		var ret string
 		return ret
 	}
@@ -54,15 +61,15 @@ func (o *NucleotideContext) GetHgvs() string {
 // GetHgvsOk returns a tuple with the Hgvs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NucleotideContext) GetHgvsOk() (*string, bool) {
-	if o == nil || isNil(o.Hgvs) {
-    return nil, false
+	if o == nil || IsNil(o.Hgvs) {
+		return nil, false
 	}
 	return o.Hgvs, true
 }
 
 // HasHgvs returns a boolean if a field has been set.
 func (o *NucleotideContext) HasHgvs() bool {
-	if o != nil && !isNil(o.Hgvs) {
+	if o != nil && !IsNil(o.Hgvs) {
 		return true
 	}
 
@@ -76,7 +83,7 @@ func (o *NucleotideContext) SetHgvs(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *NucleotideContext) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -86,15 +93,15 @@ func (o *NucleotideContext) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NucleotideContext) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *NucleotideContext) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -108,7 +115,7 @@ func (o *NucleotideContext) SetId(v string) {
 
 // GetMolecule returns the Molecule field value if set, zero value otherwise.
 func (o *NucleotideContext) GetMolecule() string {
-	if o == nil || isNil(o.Molecule) {
+	if o == nil || IsNil(o.Molecule) {
 		var ret string
 		return ret
 	}
@@ -118,15 +125,15 @@ func (o *NucleotideContext) GetMolecule() string {
 // GetMoleculeOk returns a tuple with the Molecule field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NucleotideContext) GetMoleculeOk() (*string, bool) {
-	if o == nil || isNil(o.Molecule) {
-    return nil, false
+	if o == nil || IsNil(o.Molecule) {
+		return nil, false
 	}
 	return o.Molecule, true
 }
 
 // HasMolecule returns a boolean if a field has been set.
 func (o *NucleotideContext) HasMolecule() bool {
-	if o != nil && !isNil(o.Molecule) {
+	if o != nil && !IsNil(o.Molecule) {
 		return true
 	}
 
@@ -140,7 +147,7 @@ func (o *NucleotideContext) SetMolecule(v string) {
 
 // GetQuery returns the Query field value if set, zero value otherwise.
 func (o *NucleotideContext) GetQuery() string {
-	if o == nil || isNil(o.Query) {
+	if o == nil || IsNil(o.Query) {
 		var ret string
 		return ret
 	}
@@ -150,15 +157,15 @@ func (o *NucleotideContext) GetQuery() string {
 // GetQueryOk returns a tuple with the Query field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NucleotideContext) GetQueryOk() (*string, bool) {
-	if o == nil || isNil(o.Query) {
-    return nil, false
+	if o == nil || IsNil(o.Query) {
+		return nil, false
 	}
 	return o.Query, true
 }
 
 // HasQuery returns a boolean if a field has been set.
 func (o *NucleotideContext) HasQuery() bool {
-	if o != nil && !isNil(o.Query) {
+	if o != nil && !IsNil(o.Query) {
 		return true
 	}
 
@@ -184,7 +191,7 @@ func (o *NucleotideContext) GetSeq() string {
 // and a boolean to check if the value has been set.
 func (o *NucleotideContext) GetSeqOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Seq, true
 }
@@ -195,23 +202,66 @@ func (o *NucleotideContext) SetSeq(v string) {
 }
 
 func (o NucleotideContext) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Hgvs) {
-		toSerialize["hgvs"] = o.Hgvs
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Molecule) {
-		toSerialize["molecule"] = o.Molecule
-	}
-	if !isNil(o.Query) {
-		toSerialize["query"] = o.Query
-	}
-	if true {
-		toSerialize["seq"] = o.Seq
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o NucleotideContext) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Hgvs) {
+		toSerialize["hgvs"] = o.Hgvs
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Molecule) {
+		toSerialize["molecule"] = o.Molecule
+	}
+	if !IsNil(o.Query) {
+		toSerialize["query"] = o.Query
+	}
+	toSerialize["seq"] = o.Seq
+	return toSerialize, nil
+}
+
+func (o *NucleotideContext) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"seq",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varNucleotideContext := _NucleotideContext{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varNucleotideContext)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NucleotideContext(varNucleotideContext)
+
+	return err
 }
 
 type NullableNucleotideContext struct {

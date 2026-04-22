@@ -1,15 +1,15 @@
-# \AnnotationControllerApi
+# \AnnotationControllerAPI
 
 All URIs are relative to *http://www.genomenexus.org*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**FetchVariantAnnotationByGenomicLocationGET**](AnnotationControllerApi.md#FetchVariantAnnotationByGenomicLocationGET) | **Get** /annotation/genomic/{genomicLocation} | Retrieves VEP annotation for the provided genomic location
-[**FetchVariantAnnotationByGenomicLocationPOST**](AnnotationControllerApi.md#FetchVariantAnnotationByGenomicLocationPOST) | **Post** /annotation/genomic | Retrieves VEP annotation for the provided list of genomic locations
-[**FetchVariantAnnotationByIdGET**](AnnotationControllerApi.md#FetchVariantAnnotationByIdGET) | **Get** /annotation/dbsnp/{variantId} | Retrieves VEP annotation for the give dbSNP id
-[**FetchVariantAnnotationByIdPOST**](AnnotationControllerApi.md#FetchVariantAnnotationByIdPOST) | **Post** /annotation/dbsnp/ | Retrieves VEP annotation for the provided list of dbSNP ids
-[**FetchVariantAnnotationGET**](AnnotationControllerApi.md#FetchVariantAnnotationGET) | **Get** /annotation/{variant} | Retrieves VEP annotation for the provided variant
-[**FetchVariantAnnotationPOST**](AnnotationControllerApi.md#FetchVariantAnnotationPOST) | **Post** /annotation | Retrieves VEP annotation for the provided list of variants
+[**FetchVariantAnnotationByGenomicLocationGET**](AnnotationControllerAPI.md#FetchVariantAnnotationByGenomicLocationGET) | **Get** /annotation/genomic/{genomicLocation} | Retrieves VEP annotation for the provided genomic location
+[**FetchVariantAnnotationByGenomicLocationPOST**](AnnotationControllerAPI.md#FetchVariantAnnotationByGenomicLocationPOST) | **Post** /annotation/genomic | Retrieves VEP annotation for the provided list of genomic locations
+[**FetchVariantAnnotationByIdGET**](AnnotationControllerAPI.md#FetchVariantAnnotationByIdGET) | **Get** /annotation/dbsnp/{variantId} | Retrieves VEP annotation for the give dbSNP id
+[**FetchVariantAnnotationByIdPOST**](AnnotationControllerAPI.md#FetchVariantAnnotationByIdPOST) | **Post** /annotation/dbsnp/ | Retrieves VEP annotation for the provided list of dbSNP ids
+[**FetchVariantAnnotationGET**](AnnotationControllerAPI.md#FetchVariantAnnotationGET) | **Get** /annotation/{variant} | Retrieves VEP annotation for the provided variant
+[**FetchVariantAnnotationPOST**](AnnotationControllerAPI.md#FetchVariantAnnotationPOST) | **Post** /annotation | Retrieves VEP annotation for the provided list of variants
 
 
 
@@ -25,27 +25,27 @@ Retrieves VEP annotation for the provided genomic location
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    genomicLocation := "genomicLocation_example" // string | A genomic location. For example 7,140453136,140453136,A,T
-    isoformOverrideSource := "isoformOverrideSource_example" // string | Isoform override source. For example uniprot (optional)
-    token := "token_example" // string | Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"} (optional)
-    fields := []string{"Inner_example"} // []string | Comma separated list of fields to include (case-sensitive!). For example: hotspots (optional)
+	genomicLocation := "genomicLocation_example" // string | A genomic location. For example 7,140453136,140453136,A,T
+	isoformOverrideSource := "isoformOverrideSource_example" // string | Isoform override source. For example uniprot (optional)
+	token := "token_example" // string | Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"} (optional)
+	fields := []string{"Inner_example"} // []string | Comma separated list of fields to include (case-sensitive!). For example: hotspots (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AnnotationControllerApi.FetchVariantAnnotationByGenomicLocationGET(context.Background(), genomicLocation).IsoformOverrideSource(isoformOverrideSource).Token(token).Fields(fields).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AnnotationControllerApi.FetchVariantAnnotationByGenomicLocationGET``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchVariantAnnotationByGenomicLocationGET`: VariantAnnotation
-    fmt.Fprintf(os.Stdout, "Response from `AnnotationControllerApi.FetchVariantAnnotationByGenomicLocationGET`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AnnotationControllerAPI.FetchVariantAnnotationByGenomicLocationGET(context.Background(), genomicLocation).IsoformOverrideSource(isoformOverrideSource).Token(token).Fields(fields).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AnnotationControllerAPI.FetchVariantAnnotationByGenomicLocationGET``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchVariantAnnotationByGenomicLocationGET`: VariantAnnotation
+	fmt.Fprintf(os.Stdout, "Response from `AnnotationControllerAPI.FetchVariantAnnotationByGenomicLocationGET`: %v\n", resp)
 }
 ```
 
@@ -99,27 +99,27 @@ Retrieves VEP annotation for the provided list of genomic locations
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    genomicLocations := []openapiclient.GenomicLocation{*openapiclient.NewGenomicLocation("Chromosome_example", int32(123), int32(123), "ReferenceAllele_example", "VariantAllele_example")} // []GenomicLocation | List of Genomic Locations
-    isoformOverrideSource := "isoformOverrideSource_example" // string | Isoform override source. For example uniprot (optional)
-    token := "token_example" // string | Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"} (optional)
-    fields := []string{"Inner_example"} // []string | Comma separated list of fields to include (case-sensitive!). For example: hotspots (optional)
+	genomicLocations := []openapiclient.GenomicLocation{*openapiclient.NewGenomicLocation("Chromosome_example", int32(123), int32(123), "ReferenceAllele_example", "VariantAllele_example")} // []GenomicLocation | List of Genomic Locations
+	isoformOverrideSource := "isoformOverrideSource_example" // string | Isoform override source. For example uniprot (optional)
+	token := "token_example" // string | Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"} (optional)
+	fields := []string{"Inner_example"} // []string | Comma separated list of fields to include (case-sensitive!). For example: hotspots (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AnnotationControllerApi.FetchVariantAnnotationByGenomicLocationPOST(context.Background()).GenomicLocations(genomicLocations).IsoformOverrideSource(isoformOverrideSource).Token(token).Fields(fields).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AnnotationControllerApi.FetchVariantAnnotationByGenomicLocationPOST``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchVariantAnnotationByGenomicLocationPOST`: []VariantAnnotation
-    fmt.Fprintf(os.Stdout, "Response from `AnnotationControllerApi.FetchVariantAnnotationByGenomicLocationPOST`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AnnotationControllerAPI.FetchVariantAnnotationByGenomicLocationPOST(context.Background()).GenomicLocations(genomicLocations).IsoformOverrideSource(isoformOverrideSource).Token(token).Fields(fields).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AnnotationControllerAPI.FetchVariantAnnotationByGenomicLocationPOST``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchVariantAnnotationByGenomicLocationPOST`: []VariantAnnotation
+	fmt.Fprintf(os.Stdout, "Response from `AnnotationControllerAPI.FetchVariantAnnotationByGenomicLocationPOST`: %v\n", resp)
 }
 ```
 
@@ -169,27 +169,27 @@ Retrieves VEP annotation for the give dbSNP id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    variantId := "variantId_example" // string | dbSNP id. For example rs116035550.
-    isoformOverrideSource := "isoformOverrideSource_example" // string | Isoform override source. For example uniprot (optional)
-    token := "token_example" // string | Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"} (optional)
-    fields := []string{"Inner_example"} // []string | Comma separated list of fields to include (case-sensitive!). For example: annotation_summary (optional)
+	variantId := "variantId_example" // string | dbSNP id. For example rs116035550.
+	isoformOverrideSource := "isoformOverrideSource_example" // string | Isoform override source. For example uniprot (optional)
+	token := "token_example" // string | Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"} (optional)
+	fields := []string{"Inner_example"} // []string | Comma separated list of fields to include (case-sensitive!). For example: annotation_summary (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AnnotationControllerApi.FetchVariantAnnotationByIdGET(context.Background(), variantId).IsoformOverrideSource(isoformOverrideSource).Token(token).Fields(fields).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AnnotationControllerApi.FetchVariantAnnotationByIdGET``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchVariantAnnotationByIdGET`: VariantAnnotation
-    fmt.Fprintf(os.Stdout, "Response from `AnnotationControllerApi.FetchVariantAnnotationByIdGET`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AnnotationControllerAPI.FetchVariantAnnotationByIdGET(context.Background(), variantId).IsoformOverrideSource(isoformOverrideSource).Token(token).Fields(fields).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AnnotationControllerAPI.FetchVariantAnnotationByIdGET``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchVariantAnnotationByIdGET`: VariantAnnotation
+	fmt.Fprintf(os.Stdout, "Response from `AnnotationControllerAPI.FetchVariantAnnotationByIdGET`: %v\n", resp)
 }
 ```
 
@@ -243,27 +243,27 @@ Retrieves VEP annotation for the provided list of dbSNP ids
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    variantIds := []string{"Property_example"} // []string | List of variant IDs. For example [\"rs116035550\"]
-    isoformOverrideSource := "isoformOverrideSource_example" // string | Isoform override source. For example uniprot (optional)
-    token := "token_example" // string | Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"} (optional)
-    fields := []string{"Inner_example"} // []string | Comma separated list of fields to include (case-sensitive!). For example: annotation_summary (optional)
+	variantIds := []string{"Property_example"} // []string | List of variant IDs. For example [\"rs116035550\"]
+	isoformOverrideSource := "isoformOverrideSource_example" // string | Isoform override source. For example uniprot (optional)
+	token := "token_example" // string | Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"} (optional)
+	fields := []string{"Inner_example"} // []string | Comma separated list of fields to include (case-sensitive!). For example: annotation_summary (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AnnotationControllerApi.FetchVariantAnnotationByIdPOST(context.Background()).VariantIds(variantIds).IsoformOverrideSource(isoformOverrideSource).Token(token).Fields(fields).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AnnotationControllerApi.FetchVariantAnnotationByIdPOST``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchVariantAnnotationByIdPOST`: []VariantAnnotation
-    fmt.Fprintf(os.Stdout, "Response from `AnnotationControllerApi.FetchVariantAnnotationByIdPOST`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AnnotationControllerAPI.FetchVariantAnnotationByIdPOST(context.Background()).VariantIds(variantIds).IsoformOverrideSource(isoformOverrideSource).Token(token).Fields(fields).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AnnotationControllerAPI.FetchVariantAnnotationByIdPOST``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchVariantAnnotationByIdPOST`: []VariantAnnotation
+	fmt.Fprintf(os.Stdout, "Response from `AnnotationControllerAPI.FetchVariantAnnotationByIdPOST`: %v\n", resp)
 }
 ```
 
@@ -313,27 +313,27 @@ Retrieves VEP annotation for the provided variant
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    variant := "variant_example" // string | Variant. For example 17:g.41242962_41242963insGA
-    isoformOverrideSource := "isoformOverrideSource_example" // string | Isoform override source. For example uniprot (optional)
-    token := "token_example" // string | Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"} (optional)
-    fields := []string{"Inner_example"} // []string | Comma separated list of fields to include (case-sensitive!). For example: hotspots (optional)
+	variant := "variant_example" // string | Variant. For example 17:g.41242962_41242963insGA
+	isoformOverrideSource := "isoformOverrideSource_example" // string | Isoform override source. For example uniprot (optional)
+	token := "token_example" // string | Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"} (optional)
+	fields := []string{"Inner_example"} // []string | Comma separated list of fields to include (case-sensitive!). For example: hotspots (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AnnotationControllerApi.FetchVariantAnnotationGET(context.Background(), variant).IsoformOverrideSource(isoformOverrideSource).Token(token).Fields(fields).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AnnotationControllerApi.FetchVariantAnnotationGET``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchVariantAnnotationGET`: VariantAnnotation
-    fmt.Fprintf(os.Stdout, "Response from `AnnotationControllerApi.FetchVariantAnnotationGET`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AnnotationControllerAPI.FetchVariantAnnotationGET(context.Background(), variant).IsoformOverrideSource(isoformOverrideSource).Token(token).Fields(fields).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AnnotationControllerAPI.FetchVariantAnnotationGET``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchVariantAnnotationGET`: VariantAnnotation
+	fmt.Fprintf(os.Stdout, "Response from `AnnotationControllerAPI.FetchVariantAnnotationGET`: %v\n", resp)
 }
 ```
 
@@ -387,27 +387,27 @@ Retrieves VEP annotation for the provided list of variants
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-    variants := []string{"Property_example"} // []string | List of variants. For example [\"X:g.66937331T>A\",\"17:g.41242962_41242963insGA\"] (GRCh37) or [\"1:g.182712A>C\", \"2:g.265023C>T\", \"3:g.319781del\", \"19:g.110753dup\", \"1:g.1385015_1387562del\"] (GRCh38)
-    isoformOverrideSource := "isoformOverrideSource_example" // string | Isoform override source. For example uniprot (optional)
-    token := "token_example" // string | Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"} (optional)
-    fields := []string{"Inner_example"} // []string | Comma separated list of fields to include (case-sensitive!). For example: hotspots (optional)
+	variants := []string{"Property_example"} // []string | List of variants. For example [\"X:g.66937331T>A\",\"17:g.41242962_41242963insGA\"] (GRCh37) or [\"1:g.182712A>C\", \"2:g.265023C>T\", \"3:g.319781del\", \"19:g.110753dup\", \"1:g.1385015_1387562del\"] (GRCh38)
+	isoformOverrideSource := "isoformOverrideSource_example" // string | Isoform override source. For example uniprot (optional)
+	token := "token_example" // string | Map of tokens. For example {\"source1\":\"put-your-token1-here\",\"source2\":\"put-your-token2-here\"} (optional)
+	fields := []string{"Inner_example"} // []string | Comma separated list of fields to include (case-sensitive!). For example: hotspots (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AnnotationControllerApi.FetchVariantAnnotationPOST(context.Background()).Variants(variants).IsoformOverrideSource(isoformOverrideSource).Token(token).Fields(fields).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AnnotationControllerApi.FetchVariantAnnotationPOST``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `FetchVariantAnnotationPOST`: []VariantAnnotation
-    fmt.Fprintf(os.Stdout, "Response from `AnnotationControllerApi.FetchVariantAnnotationPOST`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AnnotationControllerAPI.FetchVariantAnnotationPOST(context.Background()).Variants(variants).IsoformOverrideSource(isoformOverrideSource).Token(token).Fields(fields).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AnnotationControllerAPI.FetchVariantAnnotationPOST``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FetchVariantAnnotationPOST`: []VariantAnnotation
+	fmt.Fprintf(os.Stdout, "Response from `AnnotationControllerAPI.FetchVariantAnnotationPOST`: %v\n", resp)
 }
 ```
 

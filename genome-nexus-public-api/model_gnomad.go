@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Gnomad type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Gnomad{}
+
 // Gnomad struct for Gnomad
 type Gnomad struct {
 	AlleleCount *AlleleCount `json:"alleleCount,omitempty"`
@@ -41,7 +44,7 @@ func NewGnomadWithDefaults() *Gnomad {
 
 // GetAlleleCount returns the AlleleCount field value if set, zero value otherwise.
 func (o *Gnomad) GetAlleleCount() AlleleCount {
-	if o == nil || isNil(o.AlleleCount) {
+	if o == nil || IsNil(o.AlleleCount) {
 		var ret AlleleCount
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *Gnomad) GetAlleleCount() AlleleCount {
 // GetAlleleCountOk returns a tuple with the AlleleCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Gnomad) GetAlleleCountOk() (*AlleleCount, bool) {
-	if o == nil || isNil(o.AlleleCount) {
-    return nil, false
+	if o == nil || IsNil(o.AlleleCount) {
+		return nil, false
 	}
 	return o.AlleleCount, true
 }
 
 // HasAlleleCount returns a boolean if a field has been set.
 func (o *Gnomad) HasAlleleCount() bool {
-	if o != nil && !isNil(o.AlleleCount) {
+	if o != nil && !IsNil(o.AlleleCount) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *Gnomad) SetAlleleCount(v AlleleCount) {
 
 // GetAlleleFrequency returns the AlleleFrequency field value if set, zero value otherwise.
 func (o *Gnomad) GetAlleleFrequency() AlleleFrequency {
-	if o == nil || isNil(o.AlleleFrequency) {
+	if o == nil || IsNil(o.AlleleFrequency) {
 		var ret AlleleFrequency
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *Gnomad) GetAlleleFrequency() AlleleFrequency {
 // GetAlleleFrequencyOk returns a tuple with the AlleleFrequency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Gnomad) GetAlleleFrequencyOk() (*AlleleFrequency, bool) {
-	if o == nil || isNil(o.AlleleFrequency) {
-    return nil, false
+	if o == nil || IsNil(o.AlleleFrequency) {
+		return nil, false
 	}
 	return o.AlleleFrequency, true
 }
 
 // HasAlleleFrequency returns a boolean if a field has been set.
 func (o *Gnomad) HasAlleleFrequency() bool {
-	if o != nil && !isNil(o.AlleleFrequency) {
+	if o != nil && !IsNil(o.AlleleFrequency) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *Gnomad) SetAlleleFrequency(v AlleleFrequency) {
 
 // GetAlleleNumber returns the AlleleNumber field value if set, zero value otherwise.
 func (o *Gnomad) GetAlleleNumber() AlleleNumber {
-	if o == nil || isNil(o.AlleleNumber) {
+	if o == nil || IsNil(o.AlleleNumber) {
 		var ret AlleleNumber
 		return ret
 	}
@@ -115,15 +118,15 @@ func (o *Gnomad) GetAlleleNumber() AlleleNumber {
 // GetAlleleNumberOk returns a tuple with the AlleleNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Gnomad) GetAlleleNumberOk() (*AlleleNumber, bool) {
-	if o == nil || isNil(o.AlleleNumber) {
-    return nil, false
+	if o == nil || IsNil(o.AlleleNumber) {
+		return nil, false
 	}
 	return o.AlleleNumber, true
 }
 
 // HasAlleleNumber returns a boolean if a field has been set.
 func (o *Gnomad) HasAlleleNumber() bool {
-	if o != nil && !isNil(o.AlleleNumber) {
+	if o != nil && !IsNil(o.AlleleNumber) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *Gnomad) SetAlleleNumber(v AlleleNumber) {
 
 // GetHomozygotes returns the Homozygotes field value if set, zero value otherwise.
 func (o *Gnomad) GetHomozygotes() Homozygotes {
-	if o == nil || isNil(o.Homozygotes) {
+	if o == nil || IsNil(o.Homozygotes) {
 		var ret Homozygotes
 		return ret
 	}
@@ -147,15 +150,15 @@ func (o *Gnomad) GetHomozygotes() Homozygotes {
 // GetHomozygotesOk returns a tuple with the Homozygotes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Gnomad) GetHomozygotesOk() (*Homozygotes, bool) {
-	if o == nil || isNil(o.Homozygotes) {
-    return nil, false
+	if o == nil || IsNil(o.Homozygotes) {
+		return nil, false
 	}
 	return o.Homozygotes, true
 }
 
 // HasHomozygotes returns a boolean if a field has been set.
 func (o *Gnomad) HasHomozygotes() bool {
-	if o != nil && !isNil(o.Homozygotes) {
+	if o != nil && !IsNil(o.Homozygotes) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *Gnomad) SetHomozygotes(v Homozygotes) {
 }
 
 func (o Gnomad) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.AlleleCount) {
-		toSerialize["alleleCount"] = o.AlleleCount
-	}
-	if !isNil(o.AlleleFrequency) {
-		toSerialize["alleleFrequency"] = o.AlleleFrequency
-	}
-	if !isNil(o.AlleleNumber) {
-		toSerialize["alleleNumber"] = o.AlleleNumber
-	}
-	if !isNil(o.Homozygotes) {
-		toSerialize["homozygotes"] = o.Homozygotes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Gnomad) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AlleleCount) {
+		toSerialize["alleleCount"] = o.AlleleCount
+	}
+	if !IsNil(o.AlleleFrequency) {
+		toSerialize["alleleFrequency"] = o.AlleleFrequency
+	}
+	if !IsNil(o.AlleleNumber) {
+		toSerialize["alleleNumber"] = o.AlleleNumber
+	}
+	if !IsNil(o.Homozygotes) {
+		toSerialize["homozygotes"] = o.Homozygotes
+	}
+	return toSerialize, nil
 }
 
 type NullableGnomad struct {

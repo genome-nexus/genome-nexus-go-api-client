@@ -12,7 +12,12 @@ package genome_nexus_public_api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the AlleleCount type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AlleleCount{}
 
 // AlleleCount struct for AlleleCount
 type AlleleCount struct {
@@ -26,6 +31,8 @@ type AlleleCount struct {
 	AcOth int32 `json:"ac_oth"`
 	AcSas int32 `json:"ac_sas"`
 }
+
+type _AlleleCount AlleleCount
 
 // NewAlleleCount instantiates a new AlleleCount object
 // This constructor will assign default values to properties that have it defined,
@@ -67,7 +74,7 @@ func (o *AlleleCount) GetAc() int32 {
 // and a boolean to check if the value has been set.
 func (o *AlleleCount) GetAcOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Ac, true
 }
@@ -91,7 +98,7 @@ func (o *AlleleCount) GetAcAfr() int32 {
 // and a boolean to check if the value has been set.
 func (o *AlleleCount) GetAcAfrOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AcAfr, true
 }
@@ -115,7 +122,7 @@ func (o *AlleleCount) GetAcAmr() int32 {
 // and a boolean to check if the value has been set.
 func (o *AlleleCount) GetAcAmrOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AcAmr, true
 }
@@ -139,7 +146,7 @@ func (o *AlleleCount) GetAcAsj() int32 {
 // and a boolean to check if the value has been set.
 func (o *AlleleCount) GetAcAsjOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AcAsj, true
 }
@@ -163,7 +170,7 @@ func (o *AlleleCount) GetAcEas() int32 {
 // and a boolean to check if the value has been set.
 func (o *AlleleCount) GetAcEasOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AcEas, true
 }
@@ -187,7 +194,7 @@ func (o *AlleleCount) GetAcFin() int32 {
 // and a boolean to check if the value has been set.
 func (o *AlleleCount) GetAcFinOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AcFin, true
 }
@@ -211,7 +218,7 @@ func (o *AlleleCount) GetAcNfe() int32 {
 // and a boolean to check if the value has been set.
 func (o *AlleleCount) GetAcNfeOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AcNfe, true
 }
@@ -235,7 +242,7 @@ func (o *AlleleCount) GetAcOth() int32 {
 // and a boolean to check if the value has been set.
 func (o *AlleleCount) GetAcOthOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AcOth, true
 }
@@ -259,7 +266,7 @@ func (o *AlleleCount) GetAcSas() int32 {
 // and a boolean to check if the value has been set.
 func (o *AlleleCount) GetAcSasOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AcSas, true
 }
@@ -270,35 +277,70 @@ func (o *AlleleCount) SetAcSas(v int32) {
 }
 
 func (o AlleleCount) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["ac"] = o.Ac
-	}
-	if true {
-		toSerialize["ac_afr"] = o.AcAfr
-	}
-	if true {
-		toSerialize["ac_amr"] = o.AcAmr
-	}
-	if true {
-		toSerialize["ac_asj"] = o.AcAsj
-	}
-	if true {
-		toSerialize["ac_eas"] = o.AcEas
-	}
-	if true {
-		toSerialize["ac_fin"] = o.AcFin
-	}
-	if true {
-		toSerialize["ac_nfe"] = o.AcNfe
-	}
-	if true {
-		toSerialize["ac_oth"] = o.AcOth
-	}
-	if true {
-		toSerialize["ac_sas"] = o.AcSas
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AlleleCount) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["ac"] = o.Ac
+	toSerialize["ac_afr"] = o.AcAfr
+	toSerialize["ac_amr"] = o.AcAmr
+	toSerialize["ac_asj"] = o.AcAsj
+	toSerialize["ac_eas"] = o.AcEas
+	toSerialize["ac_fin"] = o.AcFin
+	toSerialize["ac_nfe"] = o.AcNfe
+	toSerialize["ac_oth"] = o.AcOth
+	toSerialize["ac_sas"] = o.AcSas
+	return toSerialize, nil
+}
+
+func (o *AlleleCount) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"ac",
+		"ac_afr",
+		"ac_amr",
+		"ac_asj",
+		"ac_eas",
+		"ac_fin",
+		"ac_nfe",
+		"ac_oth",
+		"ac_sas",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAlleleCount := _AlleleCount{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAlleleCount)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AlleleCount(varAlleleCount)
+
+	return err
 }
 
 type NullableAlleleCount struct {

@@ -12,7 +12,12 @@ package genome_nexus_public_api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the EnsemblGene type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnsemblGene{}
 
 // EnsemblGene struct for EnsemblGene
 type EnsemblGene struct {
@@ -27,6 +32,8 @@ type EnsemblGene struct {
 	// Entrez Gene Id
 	EntrezGeneId *string `json:"entrezGeneId,omitempty"`
 }
+
+type _EnsemblGene EnsemblGene
 
 // NewEnsemblGene instantiates a new EnsemblGene object
 // This constructor will assign default values to properties that have it defined,
@@ -61,7 +68,7 @@ func (o *EnsemblGene) GetGeneId() string {
 // and a boolean to check if the value has been set.
 func (o *EnsemblGene) GetGeneIdOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.GeneId, true
 }
@@ -85,7 +92,7 @@ func (o *EnsemblGene) GetHugoSymbol() string {
 // and a boolean to check if the value has been set.
 func (o *EnsemblGene) GetHugoSymbolOk() (*string, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.HugoSymbol, true
 }
@@ -97,7 +104,7 @@ func (o *EnsemblGene) SetHugoSymbol(v string) {
 
 // GetSynonyms returns the Synonyms field value if set, zero value otherwise.
 func (o *EnsemblGene) GetSynonyms() []string {
-	if o == nil || isNil(o.Synonyms) {
+	if o == nil || IsNil(o.Synonyms) {
 		var ret []string
 		return ret
 	}
@@ -107,15 +114,15 @@ func (o *EnsemblGene) GetSynonyms() []string {
 // GetSynonymsOk returns a tuple with the Synonyms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnsemblGene) GetSynonymsOk() ([]string, bool) {
-	if o == nil || isNil(o.Synonyms) {
-    return nil, false
+	if o == nil || IsNil(o.Synonyms) {
+		return nil, false
 	}
 	return o.Synonyms, true
 }
 
 // HasSynonyms returns a boolean if a field has been set.
 func (o *EnsemblGene) HasSynonyms() bool {
-	if o != nil && !isNil(o.Synonyms) {
+	if o != nil && !IsNil(o.Synonyms) {
 		return true
 	}
 
@@ -129,7 +136,7 @@ func (o *EnsemblGene) SetSynonyms(v []string) {
 
 // GetPreviousSymbols returns the PreviousSymbols field value if set, zero value otherwise.
 func (o *EnsemblGene) GetPreviousSymbols() []string {
-	if o == nil || isNil(o.PreviousSymbols) {
+	if o == nil || IsNil(o.PreviousSymbols) {
 		var ret []string
 		return ret
 	}
@@ -139,15 +146,15 @@ func (o *EnsemblGene) GetPreviousSymbols() []string {
 // GetPreviousSymbolsOk returns a tuple with the PreviousSymbols field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnsemblGene) GetPreviousSymbolsOk() ([]string, bool) {
-	if o == nil || isNil(o.PreviousSymbols) {
-    return nil, false
+	if o == nil || IsNil(o.PreviousSymbols) {
+		return nil, false
 	}
 	return o.PreviousSymbols, true
 }
 
 // HasPreviousSymbols returns a boolean if a field has been set.
 func (o *EnsemblGene) HasPreviousSymbols() bool {
-	if o != nil && !isNil(o.PreviousSymbols) {
+	if o != nil && !IsNil(o.PreviousSymbols) {
 		return true
 	}
 
@@ -161,7 +168,7 @@ func (o *EnsemblGene) SetPreviousSymbols(v []string) {
 
 // GetEntrezGeneId returns the EntrezGeneId field value if set, zero value otherwise.
 func (o *EnsemblGene) GetEntrezGeneId() string {
-	if o == nil || isNil(o.EntrezGeneId) {
+	if o == nil || IsNil(o.EntrezGeneId) {
 		var ret string
 		return ret
 	}
@@ -171,15 +178,15 @@ func (o *EnsemblGene) GetEntrezGeneId() string {
 // GetEntrezGeneIdOk returns a tuple with the EntrezGeneId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnsemblGene) GetEntrezGeneIdOk() (*string, bool) {
-	if o == nil || isNil(o.EntrezGeneId) {
-    return nil, false
+	if o == nil || IsNil(o.EntrezGeneId) {
+		return nil, false
 	}
 	return o.EntrezGeneId, true
 }
 
 // HasEntrezGeneId returns a boolean if a field has been set.
 func (o *EnsemblGene) HasEntrezGeneId() bool {
-	if o != nil && !isNil(o.EntrezGeneId) {
+	if o != nil && !IsNil(o.EntrezGeneId) {
 		return true
 	}
 
@@ -192,23 +199,65 @@ func (o *EnsemblGene) SetEntrezGeneId(v string) {
 }
 
 func (o EnsemblGene) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["geneId"] = o.GeneId
-	}
-	if true {
-		toSerialize["hugoSymbol"] = o.HugoSymbol
-	}
-	if !isNil(o.Synonyms) {
-		toSerialize["synonyms"] = o.Synonyms
-	}
-	if !isNil(o.PreviousSymbols) {
-		toSerialize["previousSymbols"] = o.PreviousSymbols
-	}
-	if !isNil(o.EntrezGeneId) {
-		toSerialize["entrezGeneId"] = o.EntrezGeneId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnsemblGene) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["geneId"] = o.GeneId
+	toSerialize["hugoSymbol"] = o.HugoSymbol
+	if !IsNil(o.Synonyms) {
+		toSerialize["synonyms"] = o.Synonyms
+	}
+	if !IsNil(o.PreviousSymbols) {
+		toSerialize["previousSymbols"] = o.PreviousSymbols
+	}
+	if !IsNil(o.EntrezGeneId) {
+		toSerialize["entrezGeneId"] = o.EntrezGeneId
+	}
+	return toSerialize, nil
+}
+
+func (o *EnsemblGene) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"geneId",
+		"hugoSymbol",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEnsemblGene := _EnsemblGene{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEnsemblGene)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnsemblGene(varEnsemblGene)
+
+	return err
 }
 
 type NullableEnsemblGene struct {

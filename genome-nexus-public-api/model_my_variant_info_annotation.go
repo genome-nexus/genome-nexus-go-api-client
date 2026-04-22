@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MyVariantInfoAnnotation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MyVariantInfoAnnotation{}
+
 // MyVariantInfoAnnotation struct for MyVariantInfoAnnotation
 type MyVariantInfoAnnotation struct {
 	Annotation *MyVariantInfo `json:"annotation,omitempty"`
@@ -39,7 +42,7 @@ func NewMyVariantInfoAnnotationWithDefaults() *MyVariantInfoAnnotation {
 
 // GetAnnotation returns the Annotation field value if set, zero value otherwise.
 func (o *MyVariantInfoAnnotation) GetAnnotation() MyVariantInfo {
-	if o == nil || isNil(o.Annotation) {
+	if o == nil || IsNil(o.Annotation) {
 		var ret MyVariantInfo
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *MyVariantInfoAnnotation) GetAnnotation() MyVariantInfo {
 // GetAnnotationOk returns a tuple with the Annotation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MyVariantInfoAnnotation) GetAnnotationOk() (*MyVariantInfo, bool) {
-	if o == nil || isNil(o.Annotation) {
-    return nil, false
+	if o == nil || IsNil(o.Annotation) {
+		return nil, false
 	}
 	return o.Annotation, true
 }
 
 // HasAnnotation returns a boolean if a field has been set.
 func (o *MyVariantInfoAnnotation) HasAnnotation() bool {
-	if o != nil && !isNil(o.Annotation) {
+	if o != nil && !IsNil(o.Annotation) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *MyVariantInfoAnnotation) SetAnnotation(v MyVariantInfo) {
 
 // GetLicense returns the License field value if set, zero value otherwise.
 func (o *MyVariantInfoAnnotation) GetLicense() string {
-	if o == nil || isNil(o.License) {
+	if o == nil || IsNil(o.License) {
 		var ret string
 		return ret
 	}
@@ -81,15 +84,15 @@ func (o *MyVariantInfoAnnotation) GetLicense() string {
 // GetLicenseOk returns a tuple with the License field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MyVariantInfoAnnotation) GetLicenseOk() (*string, bool) {
-	if o == nil || isNil(o.License) {
-    return nil, false
+	if o == nil || IsNil(o.License) {
+		return nil, false
 	}
 	return o.License, true
 }
 
 // HasLicense returns a boolean if a field has been set.
 func (o *MyVariantInfoAnnotation) HasLicense() bool {
-	if o != nil && !isNil(o.License) {
+	if o != nil && !IsNil(o.License) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *MyVariantInfoAnnotation) SetLicense(v string) {
 }
 
 func (o MyVariantInfoAnnotation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Annotation) {
-		toSerialize["annotation"] = o.Annotation
-	}
-	if !isNil(o.License) {
-		toSerialize["license"] = o.License
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MyVariantInfoAnnotation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Annotation) {
+		toSerialize["annotation"] = o.Annotation
+	}
+	if !IsNil(o.License) {
+		toSerialize["license"] = o.License
+	}
+	return toSerialize, nil
 }
 
 type NullableMyVariantInfoAnnotation struct {

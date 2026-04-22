@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Cosmic type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Cosmic{}
+
 // Cosmic struct for Cosmic
 type Cosmic struct {
 	// alt
@@ -54,7 +57,7 @@ func NewCosmicWithDefaults() *Cosmic {
 
 // GetAlt returns the Alt field value if set, zero value otherwise.
 func (o *Cosmic) GetAlt() string {
-	if o == nil || isNil(o.Alt) {
+	if o == nil || IsNil(o.Alt) {
 		var ret string
 		return ret
 	}
@@ -64,15 +67,15 @@ func (o *Cosmic) GetAlt() string {
 // GetAltOk returns a tuple with the Alt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cosmic) GetAltOk() (*string, bool) {
-	if o == nil || isNil(o.Alt) {
-    return nil, false
+	if o == nil || IsNil(o.Alt) {
+		return nil, false
 	}
 	return o.Alt, true
 }
 
 // HasAlt returns a boolean if a field has been set.
 func (o *Cosmic) HasAlt() bool {
-	if o != nil && !isNil(o.Alt) {
+	if o != nil && !IsNil(o.Alt) {
 		return true
 	}
 
@@ -86,7 +89,7 @@ func (o *Cosmic) SetAlt(v string) {
 
 // GetChrom returns the Chrom field value if set, zero value otherwise.
 func (o *Cosmic) GetChrom() string {
-	if o == nil || isNil(o.Chrom) {
+	if o == nil || IsNil(o.Chrom) {
 		var ret string
 		return ret
 	}
@@ -96,15 +99,15 @@ func (o *Cosmic) GetChrom() string {
 // GetChromOk returns a tuple with the Chrom field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cosmic) GetChromOk() (*string, bool) {
-	if o == nil || isNil(o.Chrom) {
-    return nil, false
+	if o == nil || IsNil(o.Chrom) {
+		return nil, false
 	}
 	return o.Chrom, true
 }
 
 // HasChrom returns a boolean if a field has been set.
 func (o *Cosmic) HasChrom() bool {
-	if o != nil && !isNil(o.Chrom) {
+	if o != nil && !IsNil(o.Chrom) {
 		return true
 	}
 
@@ -118,7 +121,7 @@ func (o *Cosmic) SetChrom(v string) {
 
 // GetCosmicId returns the CosmicId field value if set, zero value otherwise.
 func (o *Cosmic) GetCosmicId() string {
-	if o == nil || isNil(o.CosmicId) {
+	if o == nil || IsNil(o.CosmicId) {
 		var ret string
 		return ret
 	}
@@ -128,15 +131,15 @@ func (o *Cosmic) GetCosmicId() string {
 // GetCosmicIdOk returns a tuple with the CosmicId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cosmic) GetCosmicIdOk() (*string, bool) {
-	if o == nil || isNil(o.CosmicId) {
-    return nil, false
+	if o == nil || IsNil(o.CosmicId) {
+		return nil, false
 	}
 	return o.CosmicId, true
 }
 
 // HasCosmicId returns a boolean if a field has been set.
 func (o *Cosmic) HasCosmicId() bool {
-	if o != nil && !isNil(o.CosmicId) {
+	if o != nil && !IsNil(o.CosmicId) {
 		return true
 	}
 
@@ -150,7 +153,7 @@ func (o *Cosmic) SetCosmicId(v string) {
 
 // GetHg19 returns the Hg19 field value if set, zero value otherwise.
 func (o *Cosmic) GetHg19() Hg19 {
-	if o == nil || isNil(o.Hg19) {
+	if o == nil || IsNil(o.Hg19) {
 		var ret Hg19
 		return ret
 	}
@@ -160,15 +163,15 @@ func (o *Cosmic) GetHg19() Hg19 {
 // GetHg19Ok returns a tuple with the Hg19 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cosmic) GetHg19Ok() (*Hg19, bool) {
-	if o == nil || isNil(o.Hg19) {
-    return nil, false
+	if o == nil || IsNil(o.Hg19) {
+		return nil, false
 	}
 	return o.Hg19, true
 }
 
 // HasHg19 returns a boolean if a field has been set.
 func (o *Cosmic) HasHg19() bool {
-	if o != nil && !isNil(o.Hg19) {
+	if o != nil && !IsNil(o.Hg19) {
 		return true
 	}
 
@@ -182,7 +185,7 @@ func (o *Cosmic) SetHg19(v Hg19) {
 
 // GetLicense returns the License field value if set, zero value otherwise.
 func (o *Cosmic) GetLicense() string {
-	if o == nil || isNil(o.License) {
+	if o == nil || IsNil(o.License) {
 		var ret string
 		return ret
 	}
@@ -192,15 +195,15 @@ func (o *Cosmic) GetLicense() string {
 // GetLicenseOk returns a tuple with the License field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cosmic) GetLicenseOk() (*string, bool) {
-	if o == nil || isNil(o.License) {
-    return nil, false
+	if o == nil || IsNil(o.License) {
+		return nil, false
 	}
 	return o.License, true
 }
 
 // HasLicense returns a boolean if a field has been set.
 func (o *Cosmic) HasLicense() bool {
-	if o != nil && !isNil(o.License) {
+	if o != nil && !IsNil(o.License) {
 		return true
 	}
 
@@ -214,7 +217,7 @@ func (o *Cosmic) SetLicense(v string) {
 
 // GetMutFreq returns the MutFreq field value if set, zero value otherwise.
 func (o *Cosmic) GetMutFreq() float64 {
-	if o == nil || isNil(o.MutFreq) {
+	if o == nil || IsNil(o.MutFreq) {
 		var ret float64
 		return ret
 	}
@@ -224,15 +227,15 @@ func (o *Cosmic) GetMutFreq() float64 {
 // GetMutFreqOk returns a tuple with the MutFreq field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cosmic) GetMutFreqOk() (*float64, bool) {
-	if o == nil || isNil(o.MutFreq) {
-    return nil, false
+	if o == nil || IsNil(o.MutFreq) {
+		return nil, false
 	}
 	return o.MutFreq, true
 }
 
 // HasMutFreq returns a boolean if a field has been set.
 func (o *Cosmic) HasMutFreq() bool {
-	if o != nil && !isNil(o.MutFreq) {
+	if o != nil && !IsNil(o.MutFreq) {
 		return true
 	}
 
@@ -246,7 +249,7 @@ func (o *Cosmic) SetMutFreq(v float64) {
 
 // GetMutNt returns the MutNt field value if set, zero value otherwise.
 func (o *Cosmic) GetMutNt() string {
-	if o == nil || isNil(o.MutNt) {
+	if o == nil || IsNil(o.MutNt) {
 		var ret string
 		return ret
 	}
@@ -256,15 +259,15 @@ func (o *Cosmic) GetMutNt() string {
 // GetMutNtOk returns a tuple with the MutNt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cosmic) GetMutNtOk() (*string, bool) {
-	if o == nil || isNil(o.MutNt) {
-    return nil, false
+	if o == nil || IsNil(o.MutNt) {
+		return nil, false
 	}
 	return o.MutNt, true
 }
 
 // HasMutNt returns a boolean if a field has been set.
 func (o *Cosmic) HasMutNt() bool {
-	if o != nil && !isNil(o.MutNt) {
+	if o != nil && !IsNil(o.MutNt) {
 		return true
 	}
 
@@ -278,7 +281,7 @@ func (o *Cosmic) SetMutNt(v string) {
 
 // GetRef returns the Ref field value if set, zero value otherwise.
 func (o *Cosmic) GetRef() string {
-	if o == nil || isNil(o.Ref) {
+	if o == nil || IsNil(o.Ref) {
 		var ret string
 		return ret
 	}
@@ -288,15 +291,15 @@ func (o *Cosmic) GetRef() string {
 // GetRefOk returns a tuple with the Ref field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cosmic) GetRefOk() (*string, bool) {
-	if o == nil || isNil(o.Ref) {
-    return nil, false
+	if o == nil || IsNil(o.Ref) {
+		return nil, false
 	}
 	return o.Ref, true
 }
 
 // HasRef returns a boolean if a field has been set.
 func (o *Cosmic) HasRef() bool {
-	if o != nil && !isNil(o.Ref) {
+	if o != nil && !IsNil(o.Ref) {
 		return true
 	}
 
@@ -310,7 +313,7 @@ func (o *Cosmic) SetRef(v string) {
 
 // GetTumorSite returns the TumorSite field value if set, zero value otherwise.
 func (o *Cosmic) GetTumorSite() string {
-	if o == nil || isNil(o.TumorSite) {
+	if o == nil || IsNil(o.TumorSite) {
 		var ret string
 		return ret
 	}
@@ -320,15 +323,15 @@ func (o *Cosmic) GetTumorSite() string {
 // GetTumorSiteOk returns a tuple with the TumorSite field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Cosmic) GetTumorSiteOk() (*string, bool) {
-	if o == nil || isNil(o.TumorSite) {
-    return nil, false
+	if o == nil || IsNil(o.TumorSite) {
+		return nil, false
 	}
 	return o.TumorSite, true
 }
 
 // HasTumorSite returns a boolean if a field has been set.
 func (o *Cosmic) HasTumorSite() bool {
-	if o != nil && !isNil(o.TumorSite) {
+	if o != nil && !IsNil(o.TumorSite) {
 		return true
 	}
 
@@ -341,35 +344,43 @@ func (o *Cosmic) SetTumorSite(v string) {
 }
 
 func (o Cosmic) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Alt) {
-		toSerialize["alt"] = o.Alt
-	}
-	if !isNil(o.Chrom) {
-		toSerialize["chrom"] = o.Chrom
-	}
-	if !isNil(o.CosmicId) {
-		toSerialize["cosmicId"] = o.CosmicId
-	}
-	if !isNil(o.Hg19) {
-		toSerialize["hg19"] = o.Hg19
-	}
-	if !isNil(o.License) {
-		toSerialize["license"] = o.License
-	}
-	if !isNil(o.MutFreq) {
-		toSerialize["mutFreq"] = o.MutFreq
-	}
-	if !isNil(o.MutNt) {
-		toSerialize["mutNt"] = o.MutNt
-	}
-	if !isNil(o.Ref) {
-		toSerialize["ref"] = o.Ref
-	}
-	if !isNil(o.TumorSite) {
-		toSerialize["tumorSite"] = o.TumorSite
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Cosmic) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Alt) {
+		toSerialize["alt"] = o.Alt
+	}
+	if !IsNil(o.Chrom) {
+		toSerialize["chrom"] = o.Chrom
+	}
+	if !IsNil(o.CosmicId) {
+		toSerialize["cosmicId"] = o.CosmicId
+	}
+	if !IsNil(o.Hg19) {
+		toSerialize["hg19"] = o.Hg19
+	}
+	if !IsNil(o.License) {
+		toSerialize["license"] = o.License
+	}
+	if !IsNil(o.MutFreq) {
+		toSerialize["mutFreq"] = o.MutFreq
+	}
+	if !IsNil(o.MutNt) {
+		toSerialize["mutNt"] = o.MutNt
+	}
+	if !IsNil(o.Ref) {
+		toSerialize["ref"] = o.Ref
+	}
+	if !IsNil(o.TumorSite) {
+		toSerialize["tumorSite"] = o.TumorSite
+	}
+	return toSerialize, nil
 }
 
 type NullableCosmic struct {

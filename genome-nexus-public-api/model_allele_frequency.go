@@ -12,7 +12,12 @@ package genome_nexus_public_api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
+
+// checks if the AlleleFrequency type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AlleleFrequency{}
 
 // AlleleFrequency struct for AlleleFrequency
 type AlleleFrequency struct {
@@ -26,6 +31,8 @@ type AlleleFrequency struct {
 	AfOth float64 `json:"af_oth"`
 	AfSas float64 `json:"af_sas"`
 }
+
+type _AlleleFrequency AlleleFrequency
 
 // NewAlleleFrequency instantiates a new AlleleFrequency object
 // This constructor will assign default values to properties that have it defined,
@@ -67,7 +74,7 @@ func (o *AlleleFrequency) GetAf() float64 {
 // and a boolean to check if the value has been set.
 func (o *AlleleFrequency) GetAfOk() (*float64, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.Af, true
 }
@@ -91,7 +98,7 @@ func (o *AlleleFrequency) GetAfAfr() float64 {
 // and a boolean to check if the value has been set.
 func (o *AlleleFrequency) GetAfAfrOk() (*float64, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AfAfr, true
 }
@@ -115,7 +122,7 @@ func (o *AlleleFrequency) GetAfAmr() float64 {
 // and a boolean to check if the value has been set.
 func (o *AlleleFrequency) GetAfAmrOk() (*float64, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AfAmr, true
 }
@@ -139,7 +146,7 @@ func (o *AlleleFrequency) GetAfAsj() float64 {
 // and a boolean to check if the value has been set.
 func (o *AlleleFrequency) GetAfAsjOk() (*float64, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AfAsj, true
 }
@@ -163,7 +170,7 @@ func (o *AlleleFrequency) GetAfEas() float64 {
 // and a boolean to check if the value has been set.
 func (o *AlleleFrequency) GetAfEasOk() (*float64, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AfEas, true
 }
@@ -187,7 +194,7 @@ func (o *AlleleFrequency) GetAfFin() float64 {
 // and a boolean to check if the value has been set.
 func (o *AlleleFrequency) GetAfFinOk() (*float64, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AfFin, true
 }
@@ -211,7 +218,7 @@ func (o *AlleleFrequency) GetAfNfe() float64 {
 // and a boolean to check if the value has been set.
 func (o *AlleleFrequency) GetAfNfeOk() (*float64, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AfNfe, true
 }
@@ -235,7 +242,7 @@ func (o *AlleleFrequency) GetAfOth() float64 {
 // and a boolean to check if the value has been set.
 func (o *AlleleFrequency) GetAfOthOk() (*float64, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AfOth, true
 }
@@ -259,7 +266,7 @@ func (o *AlleleFrequency) GetAfSas() float64 {
 // and a boolean to check if the value has been set.
 func (o *AlleleFrequency) GetAfSasOk() (*float64, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.AfSas, true
 }
@@ -270,35 +277,70 @@ func (o *AlleleFrequency) SetAfSas(v float64) {
 }
 
 func (o AlleleFrequency) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["af"] = o.Af
-	}
-	if true {
-		toSerialize["af_afr"] = o.AfAfr
-	}
-	if true {
-		toSerialize["af_amr"] = o.AfAmr
-	}
-	if true {
-		toSerialize["af_asj"] = o.AfAsj
-	}
-	if true {
-		toSerialize["af_eas"] = o.AfEas
-	}
-	if true {
-		toSerialize["af_fin"] = o.AfFin
-	}
-	if true {
-		toSerialize["af_nfe"] = o.AfNfe
-	}
-	if true {
-		toSerialize["af_oth"] = o.AfOth
-	}
-	if true {
-		toSerialize["af_sas"] = o.AfSas
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AlleleFrequency) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["af"] = o.Af
+	toSerialize["af_afr"] = o.AfAfr
+	toSerialize["af_amr"] = o.AfAmr
+	toSerialize["af_asj"] = o.AfAsj
+	toSerialize["af_eas"] = o.AfEas
+	toSerialize["af_fin"] = o.AfFin
+	toSerialize["af_nfe"] = o.AfNfe
+	toSerialize["af_oth"] = o.AfOth
+	toSerialize["af_sas"] = o.AfSas
+	return toSerialize, nil
+}
+
+func (o *AlleleFrequency) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"af",
+		"af_afr",
+		"af_amr",
+		"af_asj",
+		"af_eas",
+		"af_fin",
+		"af_nfe",
+		"af_oth",
+		"af_sas",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAlleleFrequency := _AlleleFrequency{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAlleleFrequency)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AlleleFrequency(varAlleleFrequency)
+
+	return err
 }
 
 type NullableAlleleFrequency struct {

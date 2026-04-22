@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Rcv type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Rcv{}
+
 // Rcv struct for Rcv
 type Rcv struct {
 	// accession
@@ -45,7 +48,7 @@ func NewRcvWithDefaults() *Rcv {
 
 // GetAccession returns the Accession field value if set, zero value otherwise.
 func (o *Rcv) GetAccession() string {
-	if o == nil || isNil(o.Accession) {
+	if o == nil || IsNil(o.Accession) {
 		var ret string
 		return ret
 	}
@@ -55,15 +58,15 @@ func (o *Rcv) GetAccession() string {
 // GetAccessionOk returns a tuple with the Accession field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Rcv) GetAccessionOk() (*string, bool) {
-	if o == nil || isNil(o.Accession) {
-    return nil, false
+	if o == nil || IsNil(o.Accession) {
+		return nil, false
 	}
 	return o.Accession, true
 }
 
 // HasAccession returns a boolean if a field has been set.
 func (o *Rcv) HasAccession() bool {
-	if o != nil && !isNil(o.Accession) {
+	if o != nil && !IsNil(o.Accession) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *Rcv) SetAccession(v string) {
 
 // GetClinicalSignificance returns the ClinicalSignificance field value if set, zero value otherwise.
 func (o *Rcv) GetClinicalSignificance() string {
-	if o == nil || isNil(o.ClinicalSignificance) {
+	if o == nil || IsNil(o.ClinicalSignificance) {
 		var ret string
 		return ret
 	}
@@ -87,15 +90,15 @@ func (o *Rcv) GetClinicalSignificance() string {
 // GetClinicalSignificanceOk returns a tuple with the ClinicalSignificance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Rcv) GetClinicalSignificanceOk() (*string, bool) {
-	if o == nil || isNil(o.ClinicalSignificance) {
-    return nil, false
+	if o == nil || IsNil(o.ClinicalSignificance) {
+		return nil, false
 	}
 	return o.ClinicalSignificance, true
 }
 
 // HasClinicalSignificance returns a boolean if a field has been set.
 func (o *Rcv) HasClinicalSignificance() bool {
-	if o != nil && !isNil(o.ClinicalSignificance) {
+	if o != nil && !IsNil(o.ClinicalSignificance) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *Rcv) SetClinicalSignificance(v string) {
 
 // GetOrigin returns the Origin field value if set, zero value otherwise.
 func (o *Rcv) GetOrigin() string {
-	if o == nil || isNil(o.Origin) {
+	if o == nil || IsNil(o.Origin) {
 		var ret string
 		return ret
 	}
@@ -119,15 +122,15 @@ func (o *Rcv) GetOrigin() string {
 // GetOriginOk returns a tuple with the Origin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Rcv) GetOriginOk() (*string, bool) {
-	if o == nil || isNil(o.Origin) {
-    return nil, false
+	if o == nil || IsNil(o.Origin) {
+		return nil, false
 	}
 	return o.Origin, true
 }
 
 // HasOrigin returns a boolean if a field has been set.
 func (o *Rcv) HasOrigin() bool {
-	if o != nil && !isNil(o.Origin) {
+	if o != nil && !IsNil(o.Origin) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *Rcv) SetOrigin(v string) {
 
 // GetPreferredName returns the PreferredName field value if set, zero value otherwise.
 func (o *Rcv) GetPreferredName() string {
-	if o == nil || isNil(o.PreferredName) {
+	if o == nil || IsNil(o.PreferredName) {
 		var ret string
 		return ret
 	}
@@ -151,15 +154,15 @@ func (o *Rcv) GetPreferredName() string {
 // GetPreferredNameOk returns a tuple with the PreferredName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Rcv) GetPreferredNameOk() (*string, bool) {
-	if o == nil || isNil(o.PreferredName) {
-    return nil, false
+	if o == nil || IsNil(o.PreferredName) {
+		return nil, false
 	}
 	return o.PreferredName, true
 }
 
 // HasPreferredName returns a boolean if a field has been set.
 func (o *Rcv) HasPreferredName() bool {
-	if o != nil && !isNil(o.PreferredName) {
+	if o != nil && !IsNil(o.PreferredName) {
 		return true
 	}
 
@@ -172,20 +175,28 @@ func (o *Rcv) SetPreferredName(v string) {
 }
 
 func (o Rcv) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Accession) {
-		toSerialize["accession"] = o.Accession
-	}
-	if !isNil(o.ClinicalSignificance) {
-		toSerialize["clinicalSignificance"] = o.ClinicalSignificance
-	}
-	if !isNil(o.Origin) {
-		toSerialize["origin"] = o.Origin
-	}
-	if !isNil(o.PreferredName) {
-		toSerialize["preferredName"] = o.PreferredName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Rcv) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Accession) {
+		toSerialize["accession"] = o.Accession
+	}
+	if !IsNil(o.ClinicalSignificance) {
+		toSerialize["clinicalSignificance"] = o.ClinicalSignificance
+	}
+	if !IsNil(o.Origin) {
+		toSerialize["origin"] = o.Origin
+	}
+	if !IsNil(o.PreferredName) {
+		toSerialize["preferredName"] = o.PreferredName
+	}
+	return toSerialize, nil
 }
 
 type NullableRcv struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Hg19 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Hg19{}
+
 // Hg19 struct for Hg19
 type Hg19 struct {
 	// end
@@ -41,7 +44,7 @@ func NewHg19WithDefaults() *Hg19 {
 
 // GetEnd returns the End field value if set, zero value otherwise.
 func (o *Hg19) GetEnd() int32 {
-	if o == nil || isNil(o.End) {
+	if o == nil || IsNil(o.End) {
 		var ret int32
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *Hg19) GetEnd() int32 {
 // GetEndOk returns a tuple with the End field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Hg19) GetEndOk() (*int32, bool) {
-	if o == nil || isNil(o.End) {
-    return nil, false
+	if o == nil || IsNil(o.End) {
+		return nil, false
 	}
 	return o.End, true
 }
 
 // HasEnd returns a boolean if a field has been set.
 func (o *Hg19) HasEnd() bool {
-	if o != nil && !isNil(o.End) {
+	if o != nil && !IsNil(o.End) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *Hg19) SetEnd(v int32) {
 
 // GetStart returns the Start field value if set, zero value otherwise.
 func (o *Hg19) GetStart() int32 {
-	if o == nil || isNil(o.Start) {
+	if o == nil || IsNil(o.Start) {
 		var ret int32
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *Hg19) GetStart() int32 {
 // GetStartOk returns a tuple with the Start field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Hg19) GetStartOk() (*int32, bool) {
-	if o == nil || isNil(o.Start) {
-    return nil, false
+	if o == nil || IsNil(o.Start) {
+		return nil, false
 	}
 	return o.Start, true
 }
 
 // HasStart returns a boolean if a field has been set.
 func (o *Hg19) HasStart() bool {
-	if o != nil && !isNil(o.Start) {
+	if o != nil && !IsNil(o.Start) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *Hg19) SetStart(v int32) {
 }
 
 func (o Hg19) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.End) {
-		toSerialize["end"] = o.End
-	}
-	if !isNil(o.Start) {
-		toSerialize["start"] = o.Start
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Hg19) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.End) {
+		toSerialize["end"] = o.End
+	}
+	if !IsNil(o.Start) {
+		toSerialize["start"] = o.Start
+	}
+	return toSerialize, nil
 }
 
 type NullableHg19 struct {

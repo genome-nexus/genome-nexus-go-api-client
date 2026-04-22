@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the HrdScore type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &HrdScore{}
+
 // HrdScore struct for HrdScore
 type HrdScore struct {
 	// Median HRD Fraction LOH
@@ -43,7 +46,7 @@ func NewHrdScoreWithDefaults() *HrdScore {
 
 // GetFractionLoh returns the FractionLoh field value if set, zero value otherwise.
 func (o *HrdScore) GetFractionLoh() float64 {
-	if o == nil || isNil(o.FractionLoh) {
+	if o == nil || IsNil(o.FractionLoh) {
 		var ret float64
 		return ret
 	}
@@ -53,15 +56,15 @@ func (o *HrdScore) GetFractionLoh() float64 {
 // GetFractionLohOk returns a tuple with the FractionLoh field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *HrdScore) GetFractionLohOk() (*float64, bool) {
-	if o == nil || isNil(o.FractionLoh) {
-    return nil, false
+	if o == nil || IsNil(o.FractionLoh) {
+		return nil, false
 	}
 	return o.FractionLoh, true
 }
 
 // HasFractionLoh returns a boolean if a field has been set.
 func (o *HrdScore) HasFractionLoh() bool {
-	if o != nil && !isNil(o.FractionLoh) {
+	if o != nil && !IsNil(o.FractionLoh) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *HrdScore) SetFractionLoh(v float64) {
 
 // GetLst returns the Lst field value if set, zero value otherwise.
 func (o *HrdScore) GetLst() float64 {
-	if o == nil || isNil(o.Lst) {
+	if o == nil || IsNil(o.Lst) {
 		var ret float64
 		return ret
 	}
@@ -85,15 +88,15 @@ func (o *HrdScore) GetLst() float64 {
 // GetLstOk returns a tuple with the Lst field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *HrdScore) GetLstOk() (*float64, bool) {
-	if o == nil || isNil(o.Lst) {
-    return nil, false
+	if o == nil || IsNil(o.Lst) {
+		return nil, false
 	}
 	return o.Lst, true
 }
 
 // HasLst returns a boolean if a field has been set.
 func (o *HrdScore) HasLst() bool {
-	if o != nil && !isNil(o.Lst) {
+	if o != nil && !IsNil(o.Lst) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *HrdScore) SetLst(v float64) {
 
 // GetNtelomericAi returns the NtelomericAi field value if set, zero value otherwise.
 func (o *HrdScore) GetNtelomericAi() float64 {
-	if o == nil || isNil(o.NtelomericAi) {
+	if o == nil || IsNil(o.NtelomericAi) {
 		var ret float64
 		return ret
 	}
@@ -117,15 +120,15 @@ func (o *HrdScore) GetNtelomericAi() float64 {
 // GetNtelomericAiOk returns a tuple with the NtelomericAi field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *HrdScore) GetNtelomericAiOk() (*float64, bool) {
-	if o == nil || isNil(o.NtelomericAi) {
-    return nil, false
+	if o == nil || IsNil(o.NtelomericAi) {
+		return nil, false
 	}
 	return o.NtelomericAi, true
 }
 
 // HasNtelomericAi returns a boolean if a field has been set.
 func (o *HrdScore) HasNtelomericAi() bool {
-	if o != nil && !isNil(o.NtelomericAi) {
+	if o != nil && !IsNil(o.NtelomericAi) {
 		return true
 	}
 
@@ -138,17 +141,25 @@ func (o *HrdScore) SetNtelomericAi(v float64) {
 }
 
 func (o HrdScore) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.FractionLoh) {
-		toSerialize["fractionLoh"] = o.FractionLoh
-	}
-	if !isNil(o.Lst) {
-		toSerialize["lst"] = o.Lst
-	}
-	if !isNil(o.NtelomericAi) {
-		toSerialize["ntelomericAi"] = o.NtelomericAi
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o HrdScore) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.FractionLoh) {
+		toSerialize["fractionLoh"] = o.FractionLoh
+	}
+	if !IsNil(o.Lst) {
+		toSerialize["lst"] = o.Lst
+	}
+	if !IsNil(o.NtelomericAi) {
+		toSerialize["ntelomericAi"] = o.NtelomericAi
+	}
+	return toSerialize, nil
 }
 
 type NullableHrdScore struct {

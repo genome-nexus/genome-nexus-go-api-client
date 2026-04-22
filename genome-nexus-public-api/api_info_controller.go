@@ -13,18 +13,18 @@ package genome_nexus_public_api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-// InfoControllerApiService InfoControllerApi service
-type InfoControllerApiService service
+// InfoControllerAPIService InfoControllerAPI service
+type InfoControllerAPIService service
 
 type ApiFetchVersionGETRequest struct {
 	ctx context.Context
-	ApiService *InfoControllerApiService
+	ApiService *InfoControllerAPIService
 }
 
 func (r ApiFetchVersionGETRequest) Execute() (*AggregateSourceInfo, *http.Response, error) {
@@ -37,7 +37,7 @@ FetchVersionGET Retrieve Genome Nexus Version
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFetchVersionGETRequest
 */
-func (a *InfoControllerApiService) FetchVersionGET(ctx context.Context) ApiFetchVersionGETRequest {
+func (a *InfoControllerAPIService) FetchVersionGET(ctx context.Context) ApiFetchVersionGETRequest {
 	return ApiFetchVersionGETRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -46,7 +46,7 @@ func (a *InfoControllerApiService) FetchVersionGET(ctx context.Context) ApiFetch
 
 // Execute executes the request
 //  @return AggregateSourceInfo
-func (a *InfoControllerApiService) FetchVersionGETExecute(r ApiFetchVersionGETRequest) (*AggregateSourceInfo, *http.Response, error) {
+func (a *InfoControllerAPIService) FetchVersionGETExecute(r ApiFetchVersionGETRequest) (*AggregateSourceInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -54,7 +54,7 @@ func (a *InfoControllerApiService) FetchVersionGETExecute(r ApiFetchVersionGETRe
 		localVarReturnValue  *AggregateSourceInfo
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InfoControllerApiService.FetchVersionGET")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InfoControllerAPIService.FetchVersionGET")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -92,9 +92,9 @@ func (a *InfoControllerApiService) FetchVersionGETExecute(r ApiFetchVersionGETRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
