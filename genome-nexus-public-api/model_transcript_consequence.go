@@ -1882,7 +1882,6 @@ func (o *TranscriptConsequence) UnmarshalJSON(data []byte) (err error) {
 	varTranscriptConsequence := _TranscriptConsequence{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varTranscriptConsequence)
 
 	if err != nil {

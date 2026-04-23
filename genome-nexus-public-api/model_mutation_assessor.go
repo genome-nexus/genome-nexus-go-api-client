@@ -958,7 +958,6 @@ func (o *MutationAssessor) UnmarshalJSON(data []byte) (err error) {
 	varMutationAssessor := _MutationAssessor{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varMutationAssessor)
 
 	if err != nil {

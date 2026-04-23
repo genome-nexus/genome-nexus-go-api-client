@@ -253,7 +253,6 @@ func (o *Exon) UnmarshalJSON(data []byte) (err error) {
 	varExon := _Exon{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varExon)
 
 	if err != nil {

@@ -248,7 +248,6 @@ func (o *EnsemblGene) UnmarshalJSON(data []byte) (err error) {
 	varEnsemblGene := _EnsemblGene{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varEnsemblGene)
 
 	if err != nil {

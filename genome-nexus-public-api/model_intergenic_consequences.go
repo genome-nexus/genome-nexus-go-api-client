@@ -166,7 +166,6 @@ func (o *IntergenicConsequences) UnmarshalJSON(data []byte) (err error) {
 	varIntergenicConsequences := _IntergenicConsequences{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varIntergenicConsequences)
 
 	if err != nil {

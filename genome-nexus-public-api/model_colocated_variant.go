@@ -13,7 +13,6 @@ package genome_nexus_public_api
 import (
 	"encoding/json"
 	"bytes"
-	"fmt"
 )
 
 // checks if the ColocatedVariant type satisfies the MappedNullable interface at compile time
@@ -23,42 +22,29 @@ var _ MappedNullable = &ColocatedVariant{}
 type ColocatedVariant struct {
 	DbSnpId *string `json:"dbSnpId,omitempty"`
 	// GnomAD Non-Finnish European Allele
-	GnomadNfeAllele string `json:"gnomad_nfe_allele"`
+	GnomadNfeAllele *string `json:"gnomad_nfe_allele,omitempty"`
 	// GnomAD Non-Finnish European MAF
-	GnomadNfeMaf string `json:"gnomad_nfe_maf"`
+	GnomadNfeMaf *string `json:"gnomad_nfe_maf,omitempty"`
 	// GnomAD African/African American Allele
-	GnomadAfrAllele string `json:"gnomad_afr_allele"`
+	GnomadAfrAllele *string `json:"gnomad_afr_allele,omitempty"`
 	// GnomAD African/African American MAF
-	GnomadAfrMaf string `json:"gnomad_afr_maf"`
+	GnomadAfrMaf *string `json:"gnomad_afr_maf,omitempty"`
 	// GnomAD East Asian Allele
-	GnomadEasAllele string `json:"gnomad_eas_allele"`
+	GnomadEasAllele *string `json:"gnomad_eas_allele,omitempty"`
 	// GnomAD East Asian MAF
-	GnomadEasMaf string `json:"gnomad_eas_maf"`
+	GnomadEasMaf *string `json:"gnomad_eas_maf,omitempty"`
 }
 
 type _ColocatedVariant ColocatedVariant
 
 // NewColocatedVariant instantiates a new ColocatedVariant object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewColocatedVariant(gnomadNfeAllele string, gnomadNfeMaf string, gnomadAfrAllele string, gnomadAfrMaf string, gnomadEasAllele string, gnomadEasMaf string) *ColocatedVariant {
-	this := ColocatedVariant{}
-	this.GnomadNfeAllele = gnomadNfeAllele
-	this.GnomadNfeMaf = gnomadNfeMaf
-	this.GnomadAfrAllele = gnomadAfrAllele
-	this.GnomadAfrMaf = gnomadAfrMaf
-	this.GnomadEasAllele = gnomadEasAllele
-	this.GnomadEasMaf = gnomadEasMaf
-	return &this
+func NewColocatedVariant() *ColocatedVariant {
+	return &ColocatedVariant{}
 }
 
-// NewColocatedVariantWithDefaults instantiates a new ColocatedVariant object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
+// NewColocatedVariantWithDefaults instantiates a new ColocatedVariant object with defaults
 func NewColocatedVariantWithDefaults() *ColocatedVariant {
-	this := ColocatedVariant{}
-	return &this
+	return &ColocatedVariant{}
 }
 
 // GetDbSnpId returns the DbSnpId field value if set, zero value otherwise.
@@ -81,11 +67,7 @@ func (o *ColocatedVariant) GetDbSnpIdOk() (*string, bool) {
 
 // HasDbSnpId returns a boolean if a field has been set.
 func (o *ColocatedVariant) HasDbSnpId() bool {
-	if o != nil && !IsNil(o.DbSnpId) {
-		return true
-	}
-
-	return false
+	return o != nil && !IsNil(o.DbSnpId)
 }
 
 // SetDbSnpId gets a reference to the given string and assigns it to the DbSnpId field.
@@ -93,152 +75,176 @@ func (o *ColocatedVariant) SetDbSnpId(v string) {
 	o.DbSnpId = &v
 }
 
-// GetGnomadNfeAllele returns the GnomadNfeAllele field value
+// GetGnomadNfeAllele returns the GnomadNfeAllele field value if set, zero value otherwise.
 func (o *ColocatedVariant) GetGnomadNfeAllele() string {
-	if o == nil {
+	if o == nil || IsNil(o.GnomadNfeAllele) {
 		var ret string
 		return ret
 	}
-
-	return o.GnomadNfeAllele
+	return *o.GnomadNfeAllele
 }
 
-// GetGnomadNfeAlleleOk returns a tuple with the GnomadNfeAllele field value
+// GetGnomadNfeAlleleOk returns a tuple with the GnomadNfeAllele field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ColocatedVariant) GetGnomadNfeAlleleOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.GnomadNfeAllele) {
 		return nil, false
 	}
-	return &o.GnomadNfeAllele, true
+	return o.GnomadNfeAllele, true
 }
 
-// SetGnomadNfeAllele sets field value
+// HasGnomadNfeAllele returns a boolean if a field has been set.
+func (o *ColocatedVariant) HasGnomadNfeAllele() bool {
+	return o != nil && !IsNil(o.GnomadNfeAllele)
+}
+
+// SetGnomadNfeAllele gets a reference to the given string and assigns it to the GnomadNfeAllele field.
 func (o *ColocatedVariant) SetGnomadNfeAllele(v string) {
-	o.GnomadNfeAllele = v
+	o.GnomadNfeAllele = &v
 }
 
-// GetGnomadNfeMaf returns the GnomadNfeMaf field value
+// GetGnomadNfeMaf returns the GnomadNfeMaf field value if set, zero value otherwise.
 func (o *ColocatedVariant) GetGnomadNfeMaf() string {
-	if o == nil {
+	if o == nil || IsNil(o.GnomadNfeMaf) {
 		var ret string
 		return ret
 	}
-
-	return o.GnomadNfeMaf
+	return *o.GnomadNfeMaf
 }
 
-// GetGnomadNfeMafOk returns a tuple with the GnomadNfeMaf field value
+// GetGnomadNfeMafOk returns a tuple with the GnomadNfeMaf field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ColocatedVariant) GetGnomadNfeMafOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.GnomadNfeMaf) {
 		return nil, false
 	}
-	return &o.GnomadNfeMaf, true
+	return o.GnomadNfeMaf, true
 }
 
-// SetGnomadNfeMaf sets field value
+// HasGnomadNfeMaf returns a boolean if a field has been set.
+func (o *ColocatedVariant) HasGnomadNfeMaf() bool {
+	return o != nil && !IsNil(o.GnomadNfeMaf)
+}
+
+// SetGnomadNfeMaf gets a reference to the given string and assigns it to the GnomadNfeMaf field.
 func (o *ColocatedVariant) SetGnomadNfeMaf(v string) {
-	o.GnomadNfeMaf = v
+	o.GnomadNfeMaf = &v
 }
 
-// GetGnomadAfrAllele returns the GnomadAfrAllele field value
+// GetGnomadAfrAllele returns the GnomadAfrAllele field value if set, zero value otherwise.
 func (o *ColocatedVariant) GetGnomadAfrAllele() string {
-	if o == nil {
+	if o == nil || IsNil(o.GnomadAfrAllele) {
 		var ret string
 		return ret
 	}
-
-	return o.GnomadAfrAllele
+	return *o.GnomadAfrAllele
 }
 
-// GetGnomadAfrAlleleOk returns a tuple with the GnomadAfrAllele field value
+// GetGnomadAfrAlleleOk returns a tuple with the GnomadAfrAllele field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ColocatedVariant) GetGnomadAfrAlleleOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.GnomadAfrAllele) {
 		return nil, false
 	}
-	return &o.GnomadAfrAllele, true
+	return o.GnomadAfrAllele, true
 }
 
-// SetGnomadAfrAllele sets field value
+// HasGnomadAfrAllele returns a boolean if a field has been set.
+func (o *ColocatedVariant) HasGnomadAfrAllele() bool {
+	return o != nil && !IsNil(o.GnomadAfrAllele)
+}
+
+// SetGnomadAfrAllele gets a reference to the given string and assigns it to the GnomadAfrAllele field.
 func (o *ColocatedVariant) SetGnomadAfrAllele(v string) {
-	o.GnomadAfrAllele = v
+	o.GnomadAfrAllele = &v
 }
 
-// GetGnomadAfrMaf returns the GnomadAfrMaf field value
+// GetGnomadAfrMaf returns the GnomadAfrMaf field value if set, zero value otherwise.
 func (o *ColocatedVariant) GetGnomadAfrMaf() string {
-	if o == nil {
+	if o == nil || IsNil(o.GnomadAfrMaf) {
 		var ret string
 		return ret
 	}
-
-	return o.GnomadAfrMaf
+	return *o.GnomadAfrMaf
 }
 
-// GetGnomadAfrMafOk returns a tuple with the GnomadAfrMaf field value
+// GetGnomadAfrMafOk returns a tuple with the GnomadAfrMaf field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ColocatedVariant) GetGnomadAfrMafOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.GnomadAfrMaf) {
 		return nil, false
 	}
-	return &o.GnomadAfrMaf, true
+	return o.GnomadAfrMaf, true
 }
 
-// SetGnomadAfrMaf sets field value
+// HasGnomadAfrMaf returns a boolean if a field has been set.
+func (o *ColocatedVariant) HasGnomadAfrMaf() bool {
+	return o != nil && !IsNil(o.GnomadAfrMaf)
+}
+
+// SetGnomadAfrMaf gets a reference to the given string and assigns it to the GnomadAfrMaf field.
 func (o *ColocatedVariant) SetGnomadAfrMaf(v string) {
-	o.GnomadAfrMaf = v
+	o.GnomadAfrMaf = &v
 }
 
-// GetGnomadEasAllele returns the GnomadEasAllele field value
+// GetGnomadEasAllele returns the GnomadEasAllele field value if set, zero value otherwise.
 func (o *ColocatedVariant) GetGnomadEasAllele() string {
-	if o == nil {
+	if o == nil || IsNil(o.GnomadEasAllele) {
 		var ret string
 		return ret
 	}
-
-	return o.GnomadEasAllele
+	return *o.GnomadEasAllele
 }
 
-// GetGnomadEasAlleleOk returns a tuple with the GnomadEasAllele field value
+// GetGnomadEasAlleleOk returns a tuple with the GnomadEasAllele field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ColocatedVariant) GetGnomadEasAlleleOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.GnomadEasAllele) {
 		return nil, false
 	}
-	return &o.GnomadEasAllele, true
+	return o.GnomadEasAllele, true
 }
 
-// SetGnomadEasAllele sets field value
+// HasGnomadEasAllele returns a boolean if a field has been set.
+func (o *ColocatedVariant) HasGnomadEasAllele() bool {
+	return o != nil && !IsNil(o.GnomadEasAllele)
+}
+
+// SetGnomadEasAllele gets a reference to the given string and assigns it to the GnomadEasAllele field.
 func (o *ColocatedVariant) SetGnomadEasAllele(v string) {
-	o.GnomadEasAllele = v
+	o.GnomadEasAllele = &v
 }
 
-// GetGnomadEasMaf returns the GnomadEasMaf field value
+// GetGnomadEasMaf returns the GnomadEasMaf field value if set, zero value otherwise.
 func (o *ColocatedVariant) GetGnomadEasMaf() string {
-	if o == nil {
+	if o == nil || IsNil(o.GnomadEasMaf) {
 		var ret string
 		return ret
 	}
-
-	return o.GnomadEasMaf
+	return *o.GnomadEasMaf
 }
 
-// GetGnomadEasMafOk returns a tuple with the GnomadEasMaf field value
+// GetGnomadEasMafOk returns a tuple with the GnomadEasMaf field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ColocatedVariant) GetGnomadEasMafOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.GnomadEasMaf) {
 		return nil, false
 	}
-	return &o.GnomadEasMaf, true
+	return o.GnomadEasMaf, true
 }
 
-// SetGnomadEasMaf sets field value
+// HasGnomadEasMaf returns a boolean if a field has been set.
+func (o *ColocatedVariant) HasGnomadEasMaf() bool {
+	return o != nil && !IsNil(o.GnomadEasMaf)
+}
+
+// SetGnomadEasMaf gets a reference to the given string and assigns it to the GnomadEasMaf field.
 func (o *ColocatedVariant) SetGnomadEasMaf(v string) {
-	o.GnomadEasMaf = v
+	o.GnomadEasMaf = &v
 }
 
 func (o ColocatedVariant) MarshalJSON() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -250,46 +256,31 @@ func (o ColocatedVariant) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DbSnpId) {
 		toSerialize["dbSnpId"] = o.DbSnpId
 	}
-	toSerialize["gnomad_nfe_allele"] = o.GnomadNfeAllele
-	toSerialize["gnomad_nfe_maf"] = o.GnomadNfeMaf
-	toSerialize["gnomad_afr_allele"] = o.GnomadAfrAllele
-	toSerialize["gnomad_afr_maf"] = o.GnomadAfrMaf
-	toSerialize["gnomad_eas_allele"] = o.GnomadEasAllele
-	toSerialize["gnomad_eas_maf"] = o.GnomadEasMaf
+	if !IsNil(o.GnomadNfeAllele) {
+		toSerialize["gnomad_nfe_allele"] = o.GnomadNfeAllele
+	}
+	if !IsNil(o.GnomadNfeMaf) {
+		toSerialize["gnomad_nfe_maf"] = o.GnomadNfeMaf
+	}
+	if !IsNil(o.GnomadAfrAllele) {
+		toSerialize["gnomad_afr_allele"] = o.GnomadAfrAllele
+	}
+	if !IsNil(o.GnomadAfrMaf) {
+		toSerialize["gnomad_afr_maf"] = o.GnomadAfrMaf
+	}
+	if !IsNil(o.GnomadEasAllele) {
+		toSerialize["gnomad_eas_allele"] = o.GnomadEasAllele
+	}
+	if !IsNil(o.GnomadEasMaf) {
+		toSerialize["gnomad_eas_maf"] = o.GnomadEasMaf
+	}
 	return toSerialize, nil
 }
 
 func (o *ColocatedVariant) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"gnomad_nfe_allele",
-		"gnomad_nfe_maf",
-		"gnomad_afr_allele",
-		"gnomad_afr_maf",
-		"gnomad_eas_allele",
-		"gnomad_eas_maf",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varColocatedVariant := _ColocatedVariant{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varColocatedVariant)
 
 	if err != nil {
@@ -336,5 +327,3 @@ func (v *NullableColocatedVariant) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
