@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **TranscriptId** | **string** | Transcript id | 
 **UniprotId** | Pointer to **string** | Uniprot ID | [optional] 
 **VariantClassification** | Pointer to **string** | Variant classification | [optional] 
+**AlphaMissense** | Pointer to [**TranscriptConsequenceSummaryAlphaMissense**](TranscriptConsequenceSummaryAlphaMissense.md) |  | [optional] 
 
 ## Methods
 
@@ -564,6 +565,31 @@ SetVariantClassification sets VariantClassification field to given value.
 `func (o *TranscriptConsequenceSummary) HasVariantClassification() bool`
 
 HasVariantClassification returns a boolean if a field has been set.
+
+### GetAlphaMissense
+
+`func (o *TranscriptConsequenceSummary) GetAlphaMissense() TranscriptConsequenceSummaryAlphaMissense`
+
+GetAlphaMissense returns the AlphaMissense field if non-nil, zero value otherwise.
+
+### GetAlphaMissenseOk
+
+`func (o *TranscriptConsequenceSummary) GetAlphaMissenseOk() (*TranscriptConsequenceSummaryAlphaMissense, bool)`
+
+GetAlphaMissenseOk returns a tuple with the AlphaMissense field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlphaMissense
+
+`func (o *TranscriptConsequenceSummary) SetAlphaMissense(v TranscriptConsequenceSummaryAlphaMissense)`
+
+SetAlphaMissense sets AlphaMissense field to given value.
+
+### HasAlphaMissense
+
+`func (o *TranscriptConsequenceSummary) HasAlphaMissense() bool`
+
+HasAlphaMissense returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

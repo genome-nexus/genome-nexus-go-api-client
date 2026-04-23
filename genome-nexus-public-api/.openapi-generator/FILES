@@ -78,7 +78,9 @@ docs/Snpeff.md
 docs/SourceVersionInfo.md
 docs/StatsByTumorType.md
 docs/TranscriptConsequence.md
+docs/TranscriptConsequenceAlphaMissense.md
 docs/TranscriptConsequenceSummary.md
+docs/TranscriptConsequenceSummaryAlphaMissense.md
 docs/TumorType.md
 docs/UntranslatedRegion.md
 docs/VEPInfo.md
@@ -152,7 +154,9 @@ model_snpeff.go
 model_source_version_info.go
 model_stats_by_tumor_type.go
 model_transcript_consequence.go
+model_transcript_consequence_alpha_missense.go
 model_transcript_consequence_summary.go
+model_transcript_consequence_summary_alpha_missense.go
 model_tumor_type.go
 model_untranslated_region.go
 model_variant_annotation.go

@@ -60,6 +60,7 @@ type TranscriptConsequenceSummary struct {
 	UniprotId *string `json:"uniprotId,omitempty"`
 	// Variant classification
 	VariantClassification *string `json:"variantClassification,omitempty"`
+	AlphaMissense *TranscriptConsequenceSummaryAlphaMissense `json:"alphaMissense,omitempty"`
 }
 
 type _TranscriptConsequenceSummary TranscriptConsequenceSummary
@@ -746,6 +747,38 @@ func (o *TranscriptConsequenceSummary) SetVariantClassification(v string) {
 	o.VariantClassification = &v
 }
 
+// GetAlphaMissense returns the AlphaMissense field value if set, zero value otherwise.
+func (o *TranscriptConsequenceSummary) GetAlphaMissense() TranscriptConsequenceSummaryAlphaMissense {
+	if o == nil || IsNil(o.AlphaMissense) {
+		var ret TranscriptConsequenceSummaryAlphaMissense
+		return ret
+	}
+	return *o.AlphaMissense
+}
+
+// GetAlphaMissenseOk returns a tuple with the AlphaMissense field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequenceSummary) GetAlphaMissenseOk() (*TranscriptConsequenceSummaryAlphaMissense, bool) {
+	if o == nil || IsNil(o.AlphaMissense) {
+		return nil, false
+	}
+	return o.AlphaMissense, true
+}
+
+// HasAlphaMissense returns a boolean if a field has been set.
+func (o *TranscriptConsequenceSummary) HasAlphaMissense() bool {
+	if o != nil && !IsNil(o.AlphaMissense) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlphaMissense gets a reference to the given TranscriptConsequenceSummaryAlphaMissense and assigns it to the AlphaMissense field.
+func (o *TranscriptConsequenceSummary) SetAlphaMissense(v TranscriptConsequenceSummaryAlphaMissense) {
+	o.AlphaMissense = &v
+}
+
 func (o TranscriptConsequenceSummary) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -816,6 +849,9 @@ func (o TranscriptConsequenceSummary) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.VariantClassification) {
 		toSerialize["variantClassification"] = o.VariantClassification
+	}
+	if !IsNil(o.AlphaMissense) {
+		toSerialize["alphaMissense"] = o.AlphaMissense
 	}
 	return toSerialize, nil
 }

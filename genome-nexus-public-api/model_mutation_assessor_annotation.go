@@ -21,6 +21,20 @@ var _ MappedNullable = &MutationAssessorAnnotation{}
 type MutationAssessorAnnotation struct {
 	Annotation *MutationAssessor `json:"annotation,omitempty"`
 	License *string `json:"license,omitempty"`
+	// Functional impact prediction
+	FunctionalImpactPrediction *string `json:"functionalImpactPrediction,omitempty"`
+	// Functional impact score
+	FunctionalImpactScore *float64 `json:"functionalImpactScore,omitempty"`
+	// HGVSp short notation
+	HgvspShort *string `json:"hgvspShort,omitempty"`
+	// MAV score
+	Mav *int32 `json:"mav,omitempty"`
+	// MSA identifier
+	Msa *string `json:"msa,omitempty"`
+	// SV score
+	Sv *int32 `json:"sv,omitempty"`
+	// UniProt identifier
+	UniprotId *string `json:"uniprotId,omitempty"`
 }
 
 // NewMutationAssessorAnnotation instantiates a new MutationAssessorAnnotation object
@@ -104,6 +118,230 @@ func (o *MutationAssessorAnnotation) SetLicense(v string) {
 	o.License = &v
 }
 
+// GetFunctionalImpactPrediction returns the FunctionalImpactPrediction field value if set, zero value otherwise.
+func (o *MutationAssessorAnnotation) GetFunctionalImpactPrediction() string {
+	if o == nil || IsNil(o.FunctionalImpactPrediction) {
+		var ret string
+		return ret
+	}
+	return *o.FunctionalImpactPrediction
+}
+
+// GetFunctionalImpactPredictionOk returns a tuple with the FunctionalImpactPrediction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MutationAssessorAnnotation) GetFunctionalImpactPredictionOk() (*string, bool) {
+	if o == nil || IsNil(o.FunctionalImpactPrediction) {
+		return nil, false
+	}
+	return o.FunctionalImpactPrediction, true
+}
+
+// HasFunctionalImpactPrediction returns a boolean if a field has been set.
+func (o *MutationAssessorAnnotation) HasFunctionalImpactPrediction() bool {
+	if o != nil && !IsNil(o.FunctionalImpactPrediction) {
+		return true
+	}
+
+	return false
+}
+
+// SetFunctionalImpactPrediction gets a reference to the given string and assigns it to the FunctionalImpactPrediction field.
+func (o *MutationAssessorAnnotation) SetFunctionalImpactPrediction(v string) {
+	o.FunctionalImpactPrediction = &v
+}
+
+// GetFunctionalImpactScore returns the FunctionalImpactScore field value if set, zero value otherwise.
+func (o *MutationAssessorAnnotation) GetFunctionalImpactScore() float64 {
+	if o == nil || IsNil(o.FunctionalImpactScore) {
+		var ret float64
+		return ret
+	}
+	return *o.FunctionalImpactScore
+}
+
+// GetFunctionalImpactScoreOk returns a tuple with the FunctionalImpactScore field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MutationAssessorAnnotation) GetFunctionalImpactScoreOk() (*float64, bool) {
+	if o == nil || IsNil(o.FunctionalImpactScore) {
+		return nil, false
+	}
+	return o.FunctionalImpactScore, true
+}
+
+// HasFunctionalImpactScore returns a boolean if a field has been set.
+func (o *MutationAssessorAnnotation) HasFunctionalImpactScore() bool {
+	if o != nil && !IsNil(o.FunctionalImpactScore) {
+		return true
+	}
+
+	return false
+}
+
+// SetFunctionalImpactScore gets a reference to the given float64 and assigns it to the FunctionalImpactScore field.
+func (o *MutationAssessorAnnotation) SetFunctionalImpactScore(v float64) {
+	o.FunctionalImpactScore = &v
+}
+
+// GetHgvspShort returns the HgvspShort field value if set, zero value otherwise.
+func (o *MutationAssessorAnnotation) GetHgvspShort() string {
+	if o == nil || IsNil(o.HgvspShort) {
+		var ret string
+		return ret
+	}
+	return *o.HgvspShort
+}
+
+// GetHgvspShortOk returns a tuple with the HgvspShort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MutationAssessorAnnotation) GetHgvspShortOk() (*string, bool) {
+	if o == nil || IsNil(o.HgvspShort) {
+		return nil, false
+	}
+	return o.HgvspShort, true
+}
+
+// HasHgvspShort returns a boolean if a field has been set.
+func (o *MutationAssessorAnnotation) HasHgvspShort() bool {
+	if o != nil && !IsNil(o.HgvspShort) {
+		return true
+	}
+
+	return false
+}
+
+// SetHgvspShort gets a reference to the given string and assigns it to the HgvspShort field.
+func (o *MutationAssessorAnnotation) SetHgvspShort(v string) {
+	o.HgvspShort = &v
+}
+
+// GetMav returns the Mav field value if set, zero value otherwise.
+func (o *MutationAssessorAnnotation) GetMav() int32 {
+	if o == nil || IsNil(o.Mav) {
+		var ret int32
+		return ret
+	}
+	return *o.Mav
+}
+
+// GetMavOk returns a tuple with the Mav field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MutationAssessorAnnotation) GetMavOk() (*int32, bool) {
+	if o == nil || IsNil(o.Mav) {
+		return nil, false
+	}
+	return o.Mav, true
+}
+
+// HasMav returns a boolean if a field has been set.
+func (o *MutationAssessorAnnotation) HasMav() bool {
+	if o != nil && !IsNil(o.Mav) {
+		return true
+	}
+
+	return false
+}
+
+// SetMav gets a reference to the given int32 and assigns it to the Mav field.
+func (o *MutationAssessorAnnotation) SetMav(v int32) {
+	o.Mav = &v
+}
+
+// GetMsa returns the Msa field value if set, zero value otherwise.
+func (o *MutationAssessorAnnotation) GetMsa() string {
+	if o == nil || IsNil(o.Msa) {
+		var ret string
+		return ret
+	}
+	return *o.Msa
+}
+
+// GetMsaOk returns a tuple with the Msa field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MutationAssessorAnnotation) GetMsaOk() (*string, bool) {
+	if o == nil || IsNil(o.Msa) {
+		return nil, false
+	}
+	return o.Msa, true
+}
+
+// HasMsa returns a boolean if a field has been set.
+func (o *MutationAssessorAnnotation) HasMsa() bool {
+	if o != nil && !IsNil(o.Msa) {
+		return true
+	}
+
+	return false
+}
+
+// SetMsa gets a reference to the given string and assigns it to the Msa field.
+func (o *MutationAssessorAnnotation) SetMsa(v string) {
+	o.Msa = &v
+}
+
+// GetSv returns the Sv field value if set, zero value otherwise.
+func (o *MutationAssessorAnnotation) GetSv() int32 {
+	if o == nil || IsNil(o.Sv) {
+		var ret int32
+		return ret
+	}
+	return *o.Sv
+}
+
+// GetSvOk returns a tuple with the Sv field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MutationAssessorAnnotation) GetSvOk() (*int32, bool) {
+	if o == nil || IsNil(o.Sv) {
+		return nil, false
+	}
+	return o.Sv, true
+}
+
+// HasSv returns a boolean if a field has been set.
+func (o *MutationAssessorAnnotation) HasSv() bool {
+	if o != nil && !IsNil(o.Sv) {
+		return true
+	}
+
+	return false
+}
+
+// SetSv gets a reference to the given int32 and assigns it to the Sv field.
+func (o *MutationAssessorAnnotation) SetSv(v int32) {
+	o.Sv = &v
+}
+
+// GetUniprotId returns the UniprotId field value if set, zero value otherwise.
+func (o *MutationAssessorAnnotation) GetUniprotId() string {
+	if o == nil || IsNil(o.UniprotId) {
+		var ret string
+		return ret
+	}
+	return *o.UniprotId
+}
+
+// GetUniprotIdOk returns a tuple with the UniprotId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MutationAssessorAnnotation) GetUniprotIdOk() (*string, bool) {
+	if o == nil || IsNil(o.UniprotId) {
+		return nil, false
+	}
+	return o.UniprotId, true
+}
+
+// HasUniprotId returns a boolean if a field has been set.
+func (o *MutationAssessorAnnotation) HasUniprotId() bool {
+	if o != nil && !IsNil(o.UniprotId) {
+		return true
+	}
+
+	return false
+}
+
+// SetUniprotId gets a reference to the given string and assigns it to the UniprotId field.
+func (o *MutationAssessorAnnotation) SetUniprotId(v string) {
+	o.UniprotId = &v
+}
+
 func (o MutationAssessorAnnotation) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -119,6 +357,27 @@ func (o MutationAssessorAnnotation) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.License) {
 		toSerialize["license"] = o.License
+	}
+	if !IsNil(o.FunctionalImpactPrediction) {
+		toSerialize["functionalImpactPrediction"] = o.FunctionalImpactPrediction
+	}
+	if !IsNil(o.FunctionalImpactScore) {
+		toSerialize["functionalImpactScore"] = o.FunctionalImpactScore
+	}
+	if !IsNil(o.HgvspShort) {
+		toSerialize["hgvspShort"] = o.HgvspShort
+	}
+	if !IsNil(o.Mav) {
+		toSerialize["mav"] = o.Mav
+	}
+	if !IsNil(o.Msa) {
+		toSerialize["msa"] = o.Msa
+	}
+	if !IsNil(o.Sv) {
+		toSerialize["sv"] = o.Sv
+	}
+	if !IsNil(o.UniprotId) {
+		toSerialize["uniprotId"] = o.UniprotId
 	}
 	return toSerialize, nil
 }

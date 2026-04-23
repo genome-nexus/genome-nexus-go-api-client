@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Hgvsg** | Pointer to **string** |  | [optional] 
 **Hotspots** | Pointer to [**HotspotAnnotation**](HotspotAnnotation.md) |  | [optional] 
 **Id** | **string** | Variant id | 
-**IntergenicConsequences** | [**[]IntergenicConsequences**](IntergenicConsequences.md) | intergenicConsequences | 
+**IntergenicConsequences** | Pointer to [**[]IntergenicConsequences**](IntergenicConsequences.md) | intergenicConsequences | [optional] 
 **MostSevereConsequence** | Pointer to **string** | Most severe consequence | [optional] 
 **MutationAssessor** | Pointer to [**MutationAssessorAnnotation**](MutationAssessorAnnotation.md) |  | [optional] 
 **MyVariantInfo** | Pointer to [**MyVariantInfoAnnotation**](MyVariantInfoAnnotation.md) |  | [optional] 
@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 
 ### NewVariantAnnotation
 
-`func NewVariantAnnotation(id string, intergenicConsequences []IntergenicConsequences, originalVariantQuery string, variant string, ) *VariantAnnotation`
+`func NewVariantAnnotation(id string, originalVariantQuery string, variant string, ) *VariantAnnotation`
 
 NewVariantAnnotation instantiates a new VariantAnnotation object
 This constructor will assign default values to properties that have it defined,
@@ -313,6 +313,11 @@ and a boolean to check if the value has been set.
 
 SetIntergenicConsequences sets IntergenicConsequences field to given value.
 
+### HasIntergenicConsequences
+
+`func (o *VariantAnnotation) HasIntergenicConsequences() bool`
+
+HasIntergenicConsequences returns a boolean if a field has been set.
 
 ### GetMostSevereConsequence
 
