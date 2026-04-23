@@ -5,18 +5,18 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DbSnpId** | Pointer to **string** |  | [optional] 
-**GnomadNfeAllele** | **string** | GnomAD Non-Finnish European Allele | 
-**GnomadNfeMaf** | **string** | GnomAD Non-Finnish European MAF | 
-**GnomadAfrAllele** | **string** | GnomAD African/African American Allele | 
-**GnomadAfrMaf** | **string** | GnomAD African/African American MAF | 
-**GnomadEasAllele** | **string** | GnomAD East Asian Allele | 
-**GnomadEasMaf** | **string** | GnomAD East Asian MAF | 
+**GnomadNfeAllele** | Pointer to **string** | GnomAD Non-Finnish European Allele | [optional] 
+**GnomadNfeMaf** | Pointer to **string** | GnomAD Non-Finnish European MAF | [optional] 
+**GnomadAfrAllele** | Pointer to **string** | GnomAD African/African American Allele | [optional] 
+**GnomadAfrMaf** | Pointer to **string** | GnomAD African/African American MAF | [optional] 
+**GnomadEasAllele** | Pointer to **string** | GnomAD East Asian Allele | [optional] 
+**GnomadEasMaf** | Pointer to **string** | GnomAD East Asian MAF | [optional] 
 
 ## Methods
 
 ### NewColocatedVariant
 
-`func NewColocatedVariant(gnomadNfeAllele string, gnomadNfeMaf string, gnomadAfrAllele string, gnomadAfrMaf string, gnomadEasAllele string, gnomadEasMaf string, ) *ColocatedVariant`
+`func NewColocatedVariant() *ColocatedVariant`
 
 NewColocatedVariant instantiates a new ColocatedVariant object
 This constructor will assign default values to properties that have it defined,
@@ -75,6 +75,11 @@ and a boolean to check if the value has been set.
 
 SetGnomadNfeAllele sets GnomadNfeAllele field to given value.
 
+### HasGnomadNfeAllele
+
+`func (o *ColocatedVariant) HasGnomadNfeAllele() bool`
+
+HasGnomadNfeAllele returns a boolean if a field has been set.
 
 ### GetGnomadNfeMaf
 
@@ -95,6 +100,11 @@ and a boolean to check if the value has been set.
 
 SetGnomadNfeMaf sets GnomadNfeMaf field to given value.
 
+### HasGnomadNfeMaf
+
+`func (o *ColocatedVariant) HasGnomadNfeMaf() bool`
+
+HasGnomadNfeMaf returns a boolean if a field has been set.
 
 ### GetGnomadAfrAllele
 
@@ -115,6 +125,11 @@ and a boolean to check if the value has been set.
 
 SetGnomadAfrAllele sets GnomadAfrAllele field to given value.
 
+### HasGnomadAfrAllele
+
+`func (o *ColocatedVariant) HasGnomadAfrAllele() bool`
+
+HasGnomadAfrAllele returns a boolean if a field has been set.
 
 ### GetGnomadAfrMaf
 
@@ -135,6 +150,11 @@ and a boolean to check if the value has been set.
 
 SetGnomadAfrMaf sets GnomadAfrMaf field to given value.
 
+### HasGnomadAfrMaf
+
+`func (o *ColocatedVariant) HasGnomadAfrMaf() bool`
+
+HasGnomadAfrMaf returns a boolean if a field has been set.
 
 ### GetGnomadEasAllele
 
@@ -155,6 +175,11 @@ and a boolean to check if the value has been set.
 
 SetGnomadEasAllele sets GnomadEasAllele field to given value.
 
+### HasGnomadEasAllele
+
+`func (o *ColocatedVariant) HasGnomadEasAllele() bool`
+
+HasGnomadEasAllele returns a boolean if a field has been set.
 
 ### GetGnomadEasMaf
 
@@ -175,6 +200,11 @@ and a boolean to check if the value has been set.
 
 SetGnomadEasMaf sets GnomadEasMaf field to given value.
 
+### HasGnomadEasMaf
+
+`func (o *ColocatedVariant) HasGnomadEasMaf() bool`
+
+HasGnomadEasMaf returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
