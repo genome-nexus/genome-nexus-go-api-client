@@ -171,6 +171,7 @@ Class | Method | HTTP request | Description
  - [SourceVersionInfo](docs/SourceVersionInfo.md)
  - [StatsByTumorType](docs/StatsByTumorType.md)
  - [TranscriptConsequence](docs/TranscriptConsequence.md)
+ - [TranscriptConsequenceAlphaMissense](docs/TranscriptConsequenceAlphaMissense.md)
  - [TranscriptConsequenceSummary](docs/TranscriptConsequenceSummary.md)
  - [TumorType](docs/TumorType.md)
  - [UntranslatedRegion](docs/UntranslatedRegion.md)

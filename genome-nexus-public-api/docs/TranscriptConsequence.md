@@ -53,6 +53,7 @@ Name | Type | Description | Notes
 **Tsl** | Pointer to **int32** | Transcript support level | [optional] 
 **Uniparc** | Pointer to **string** | UniParc identifier | [optional] 
 **VariantClass** | Pointer to **string** | Sequence Ontology variant class | [optional] 
+**AlphaMissense** | Pointer to [**TranscriptConsequenceAlphaMissense**](TranscriptConsequenceAlphaMissense.md) |  | [optional] 
 
 ## Methods
 
@@ -1292,6 +1293,31 @@ SetVariantClass sets VariantClass field to given value.
 `func (o *TranscriptConsequence) HasVariantClass() bool`
 
 HasVariantClass returns a boolean if a field has been set.
+
+### GetAlphaMissense
+
+`func (o *TranscriptConsequence) GetAlphaMissense() TranscriptConsequenceAlphaMissense`
+
+GetAlphaMissense returns the AlphaMissense field if non-nil, zero value otherwise.
+
+### GetAlphaMissenseOk
+
+`func (o *TranscriptConsequence) GetAlphaMissenseOk() (*TranscriptConsequenceAlphaMissense, bool)`
+
+GetAlphaMissenseOk returns a tuple with the AlphaMissense field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlphaMissense
+
+`func (o *TranscriptConsequence) SetAlphaMissense(v TranscriptConsequenceAlphaMissense)`
+
+SetAlphaMissense sets AlphaMissense field to given value.
+
+### HasAlphaMissense
+
+`func (o *TranscriptConsequence) HasAlphaMissense() bool`
+
+HasAlphaMissense returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

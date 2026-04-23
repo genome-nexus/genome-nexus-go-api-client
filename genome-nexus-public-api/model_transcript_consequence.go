@@ -117,6 +117,7 @@ type TranscriptConsequence struct {
 	Uniparc *string `json:"uniparc,omitempty"`
 	// Sequence Ontology variant class
 	VariantClass *string `json:"variant_class,omitempty"`
+	AlphaMissense *TranscriptConsequenceAlphaMissense `json:"alphaMissense,omitempty"`
 }
 
 type _TranscriptConsequence TranscriptConsequence
@@ -1699,6 +1700,38 @@ func (o *TranscriptConsequence) SetVariantClass(v string) {
 	o.VariantClass = &v
 }
 
+// GetAlphaMissense returns the AlphaMissense field value if set, zero value otherwise.
+func (o *TranscriptConsequence) GetAlphaMissense() TranscriptConsequenceAlphaMissense {
+	if o == nil || IsNil(o.AlphaMissense) {
+		var ret TranscriptConsequenceAlphaMissense
+		return ret
+	}
+	return *o.AlphaMissense
+}
+
+// GetAlphaMissenseOk returns a tuple with the AlphaMissense field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TranscriptConsequence) GetAlphaMissenseOk() (*TranscriptConsequenceAlphaMissense, bool) {
+	if o == nil || IsNil(o.AlphaMissense) {
+		return nil, false
+	}
+	return o.AlphaMissense, true
+}
+
+// HasAlphaMissense returns a boolean if a field has been set.
+func (o *TranscriptConsequence) HasAlphaMissense() bool {
+	if o != nil && !IsNil(o.AlphaMissense) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlphaMissense gets a reference to the given TranscriptConsequenceAlphaMissense and assigns it to the AlphaMissense field.
+func (o *TranscriptConsequence) SetAlphaMissense(v TranscriptConsequenceAlphaMissense) {
+	o.AlphaMissense = &v
+}
+
 func (o TranscriptConsequence) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1853,6 +1886,9 @@ func (o TranscriptConsequence) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.VariantClass) {
 		toSerialize["variant_class"] = o.VariantClass
+	}
+	if !IsNil(o.AlphaMissense) {
+		toSerialize["alphaMissense"] = o.AlphaMissense
 	}
 	return toSerialize, nil
 }

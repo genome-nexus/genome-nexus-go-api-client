@@ -1152,13 +1152,6 @@ components:
         gnomad_eas_maf:
           description: GnomAD East Asian MAF
           type: string
-      required:
-      - gnomad_afr_allele
-      - gnomad_afr_maf
-      - gnomad_eas_allele
-      - gnomad_eas_maf
-      - gnomad_nfe_allele
-      - gnomad_nfe_maf
       type: object
     Cosmic:
       example:
@@ -4244,6 +4237,8 @@ components:
         variant_class:
           description: Sequence Ontology variant class
           type: string
+        alphaMissense:
+          $ref: '#/components/schemas/TranscriptConsequence_alphaMissense'
       required:
       - transcript_id
       type: object
@@ -5424,7 +5419,6 @@ components:
           type: string
       required:
       - id
-      - intergenic_consequences
       - originalVariantQuery
       - variant
       type: object
@@ -5678,6 +5672,17 @@ components:
         variant:
           type: string
         variantClassification:
+          type: string
+      type: object
+    TranscriptConsequence_alphaMissense:
+      description: AlphaMissense pathogenicity prediction
+      properties:
+        score:
+          description: AlphaMissense score
+          format: double
+          type: number
+        pathogenicity:
+          description: AlphaMissense pathogenicity classification
           type: string
       type: object
 x-original-swagger-version: "2.0"

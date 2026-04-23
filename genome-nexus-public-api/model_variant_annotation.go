@@ -37,7 +37,7 @@ type VariantAnnotation struct {
 	// Variant id
 	Id string `json:"id"`
 	// intergenicConsequences
-	IntergenicConsequences []IntergenicConsequences `json:"intergenic_consequences"`
+	IntergenicConsequences []IntergenicConsequences `json:"intergenic_consequences,omitempty"`
 	// Most severe consequence
 	MostSevereConsequence *string `json:"most_severe_consequence,omitempty"`
 	MutationAssessor *MutationAssessorAnnotation `json:"mutation_assessor,omitempty"`
@@ -68,10 +68,9 @@ type _VariantAnnotation VariantAnnotation
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVariantAnnotation(id string, intergenicConsequences []IntergenicConsequences, originalVariantQuery string, variant string) *VariantAnnotation {
+func NewVariantAnnotation(id string, originalVariantQuery string, variant string) *VariantAnnotation {
 	this := VariantAnnotation{}
 	this.Id = id
-	this.IntergenicConsequences = intergenicConsequences
 	this.OriginalVariantQuery = originalVariantQuery
 	this.Variant = variant
 	return &this
@@ -397,26 +396,34 @@ func (o *VariantAnnotation) SetId(v string) {
 	o.Id = v
 }
 
-// GetIntergenicConsequences returns the IntergenicConsequences field value
+// GetIntergenicConsequences returns the IntergenicConsequences field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetIntergenicConsequences() []IntergenicConsequences {
-	if o == nil {
+	if o == nil || IsNil(o.IntergenicConsequences) {
 		var ret []IntergenicConsequences
 		return ret
 	}
-
 	return o.IntergenicConsequences
 }
 
-// GetIntergenicConsequencesOk returns a tuple with the IntergenicConsequences field value
+// GetIntergenicConsequencesOk returns a tuple with the IntergenicConsequences field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetIntergenicConsequencesOk() ([]IntergenicConsequences, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IntergenicConsequences) {
 		return nil, false
 	}
 	return o.IntergenicConsequences, true
 }
 
-// SetIntergenicConsequences sets field value
+// HasIntergenicConsequences returns a boolean if a field has been set.
+func (o *VariantAnnotation) HasIntergenicConsequences() bool {
+	if o != nil && !IsNil(o.IntergenicConsequences) {
+		return true
+	}
+
+	return false
+}
+
+// SetIntergenicConsequences gets a reference to the given []IntergenicConsequences and assigns it to the IntergenicConsequences field.
 func (o *VariantAnnotation) SetIntergenicConsequences(v []IntergenicConsequences) {
 	o.IntergenicConsequences = v
 }
@@ -891,7 +898,9 @@ func (o VariantAnnotation) ToMap() (map[string]interface{}, error) {
 		toSerialize["hotspots"] = o.Hotspots
 	}
 	toSerialize["id"] = o.Id
-	toSerialize["intergenic_consequences"] = o.IntergenicConsequences
+	if !IsNil(o.IntergenicConsequences) {
+		toSerialize["intergenic_consequences"] = o.IntergenicConsequences
+	}
 	if !IsNil(o.MostSevereConsequence) {
 		toSerialize["most_severe_consequence"] = o.MostSevereConsequence
 	}
@@ -939,7 +948,6 @@ func (o *VariantAnnotation) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"intergenic_consequences",
 		"originalVariantQuery",
 		"variant",
 	}
