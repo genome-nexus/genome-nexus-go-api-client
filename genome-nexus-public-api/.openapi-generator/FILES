@@ -1,4 +1,5 @@
 .gitignore
+.openapi-generator-ignore
 .travis.yml
 README.md
 api/openapi.yaml
@@ -166,4 +167,10 @@ model_vep_info.go
 model_version.go
 model_vues.go
 response.go
+test/api_annotation_controller_test.go
+test/api_ensembl_controller_test.go
+test/api_info_controller_test.go
+test/api_pdb_controller_test.go
+test/api_pfam_controller_test.go
+test/api_ptm_controller_test.go
 utils.go

@@ -399,8 +399,9 @@ func (o *GeneXref) UnmarshalJSON(data []byte) (err error) {
 
 	varGeneXref := _GeneXref{}
 
+	// unknown fields are intentionally tolerated: the upstream API can add
+	// response fields ahead of this client without breaking decoding
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varGeneXref)
 
 	if err != nil {

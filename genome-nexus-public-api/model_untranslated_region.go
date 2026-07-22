@@ -194,8 +194,9 @@ func (o *UntranslatedRegion) UnmarshalJSON(data []byte) (err error) {
 
 	varUntranslatedRegion := _UntranslatedRegion{}
 
+	// unknown fields are intentionally tolerated: the upstream API can add
+	// response fields ahead of this client without breaking decoding
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varUntranslatedRegion)
 
 	if err != nil {

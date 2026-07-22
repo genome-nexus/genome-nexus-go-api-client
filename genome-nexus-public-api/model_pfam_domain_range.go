@@ -165,8 +165,9 @@ func (o *PfamDomainRange) UnmarshalJSON(data []byte) (err error) {
 
 	varPfamDomainRange := _PfamDomainRange{}
 
+	// unknown fields are intentionally tolerated: the upstream API can add
+	// response fields ahead of this client without breaking decoding
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varPfamDomainRange)
 
 	if err != nil {

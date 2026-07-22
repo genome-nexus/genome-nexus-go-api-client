@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Clinvar type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Clinvar{}
+
 // Clinvar struct for Clinvar
 type Clinvar struct {
 	AlternateAllele *string `json:"alternateAllele,omitempty"`
@@ -56,7 +59,7 @@ func (o *Clinvar) GetAlternateAllele() string {
 // and a boolean to check if the value has been set.
 func (o *Clinvar) GetAlternateAlleleOk() (*string, bool) {
 	if o == nil || IsNil(o.AlternateAllele) {
-    return nil, false
+		return nil, false
 	}
 	return o.AlternateAllele, true
 }
@@ -88,7 +91,7 @@ func (o *Clinvar) GetChromosome() string {
 // and a boolean to check if the value has been set.
 func (o *Clinvar) GetChromosomeOk() (*string, bool) {
 	if o == nil || IsNil(o.Chromosome) {
-    return nil, false
+		return nil, false
 	}
 	return o.Chromosome, true
 }
@@ -120,7 +123,7 @@ func (o *Clinvar) GetClinicalSignificance() string {
 // and a boolean to check if the value has been set.
 func (o *Clinvar) GetClinicalSignificanceOk() (*string, bool) {
 	if o == nil || IsNil(o.ClinicalSignificance) {
-    return nil, false
+		return nil, false
 	}
 	return o.ClinicalSignificance, true
 }
@@ -152,7 +155,7 @@ func (o *Clinvar) GetClinvarId() int32 {
 // and a boolean to check if the value has been set.
 func (o *Clinvar) GetClinvarIdOk() (*int32, bool) {
 	if o == nil || IsNil(o.ClinvarId) {
-    return nil, false
+		return nil, false
 	}
 	return o.ClinvarId, true
 }
@@ -184,7 +187,7 @@ func (o *Clinvar) GetConflictingClinicalSignificance() string {
 // and a boolean to check if the value has been set.
 func (o *Clinvar) GetConflictingClinicalSignificanceOk() (*string, bool) {
 	if o == nil || IsNil(o.ConflictingClinicalSignificance) {
-    return nil, false
+		return nil, false
 	}
 	return o.ConflictingClinicalSignificance, true
 }
@@ -216,7 +219,7 @@ func (o *Clinvar) GetEndPosition() int32 {
 // and a boolean to check if the value has been set.
 func (o *Clinvar) GetEndPositionOk() (*int32, bool) {
 	if o == nil || IsNil(o.EndPosition) {
-    return nil, false
+		return nil, false
 	}
 	return o.EndPosition, true
 }
@@ -248,7 +251,7 @@ func (o *Clinvar) GetReferenceAllele() string {
 // and a boolean to check if the value has been set.
 func (o *Clinvar) GetReferenceAlleleOk() (*string, bool) {
 	if o == nil || IsNil(o.ReferenceAllele) {
-    return nil, false
+		return nil, false
 	}
 	return o.ReferenceAllele, true
 }
@@ -280,7 +283,7 @@ func (o *Clinvar) GetStartPosition() int32 {
 // and a boolean to check if the value has been set.
 func (o *Clinvar) GetStartPositionOk() (*int32, bool) {
 	if o == nil || IsNil(o.StartPosition) {
-    return nil, false
+		return nil, false
 	}
 	return o.StartPosition, true
 }
@@ -300,6 +303,14 @@ func (o *Clinvar) SetStartPosition(v int32) {
 }
 
 func (o Clinvar) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Clinvar) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AlternateAllele) {
 		toSerialize["alternateAllele"] = o.AlternateAllele
@@ -325,7 +336,7 @@ func (o Clinvar) MarshalJSON() ([]byte, error) {
 	if !IsNil(o.StartPosition) {
 		toSerialize["startPosition"] = o.StartPosition
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableClinvar struct {

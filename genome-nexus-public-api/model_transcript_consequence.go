@@ -1917,8 +1917,9 @@ func (o *TranscriptConsequence) UnmarshalJSON(data []byte) (err error) {
 
 	varTranscriptConsequence := _TranscriptConsequence{}
 
+	// unknown fields are intentionally tolerated: the upstream API can add
+	// response fields ahead of this client without breaking decoding
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varTranscriptConsequence)
 
 	if err != nil {

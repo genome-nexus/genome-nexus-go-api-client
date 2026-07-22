@@ -223,8 +223,9 @@ func (o *GenomicLocation) UnmarshalJSON(data []byte) (err error) {
 
 	varGenomicLocation := _GenomicLocation{}
 
+	// unknown fields are intentionally tolerated: the upstream API can add
+	// response fields ahead of this client without breaking decoding
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varGenomicLocation)
 
 	if err != nil {

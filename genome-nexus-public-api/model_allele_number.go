@@ -330,8 +330,9 @@ func (o *AlleleNumber) UnmarshalJSON(data []byte) (err error) {
 
 	varAlleleNumber := _AlleleNumber{}
 
+	// unknown fields are intentionally tolerated: the upstream API can add
+	// response fields ahead of this client without breaking decoding
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varAlleleNumber)
 
 	if err != nil {

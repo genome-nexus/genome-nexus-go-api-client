@@ -165,8 +165,9 @@ func (o *IntergenicConsequences) UnmarshalJSON(data []byte) (err error) {
 
 	varIntergenicConsequences := _IntergenicConsequences{}
 
+	// unknown fields are intentionally tolerated: the upstream API can add
+	// response fields ahead of this client without breaking decoding
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varIntergenicConsequences)
 
 	if err != nil {

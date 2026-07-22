@@ -501,6 +501,7 @@ func (a *EnsemblControllerAPIService) FetchCanonicalEnsemblTranscriptByHugoSymbo
 		parameterAddToHeaderOrQuery(localVarQueryParams, "isoformOverrideSource", r.isoformOverrideSource, "form", "")
 	} else {
 		var defaultValue string = "uniprot"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "isoformOverrideSource", defaultValue, "form", "")
 		r.isoformOverrideSource = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -621,6 +622,7 @@ func (a *EnsemblControllerAPIService) FetchCanonicalEnsemblTranscriptsByHugoSymb
 		parameterAddToHeaderOrQuery(localVarQueryParams, "isoformOverrideSource", r.isoformOverrideSource, "form", "")
 	} else {
 		var defaultValue string = "uniprot"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "isoformOverrideSource", defaultValue, "form", "")
 		r.isoformOverrideSource = &defaultValue
 	}
 	// to determine the Content-Type header

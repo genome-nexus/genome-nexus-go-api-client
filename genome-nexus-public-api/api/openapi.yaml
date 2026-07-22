@@ -77,7 +77,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/VariantAnnotation'
+                  $ref: "#/components/schemas/VariantAnnotation"
                 type: array
           description: OK
       summary: Retrieves VEP annotation for the provided list of variants
@@ -131,7 +131,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/VariantAnnotation'
+                  $ref: "#/components/schemas/VariantAnnotation"
                 type: array
           description: OK
       summary: Retrieves VEP annotation for the provided list of dbSNP ids
@@ -183,7 +183,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VariantAnnotation'
+                $ref: "#/components/schemas/VariantAnnotation"
           description: OK
       summary: Retrieves VEP annotation for the give dbSNP id
       tags:
@@ -225,7 +225,7 @@ paths:
           application/json:
             schema:
               items:
-                $ref: '#/components/schemas/GenomicLocation'
+                $ref: "#/components/schemas/GenomicLocation"
               type: array
         description: List of Genomic Locations
         required: true
@@ -235,7 +235,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/VariantAnnotation'
+                  $ref: "#/components/schemas/VariantAnnotation"
                 type: array
           description: OK
       summary: Retrieves VEP annotation for the provided list of genomic locations
@@ -287,7 +287,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VariantAnnotation'
+                $ref: "#/components/schemas/VariantAnnotation"
           description: OK
       summary: Retrieves VEP annotation for the provided genomic location
       tags:
@@ -337,7 +337,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VariantAnnotation'
+                $ref: "#/components/schemas/VariantAnnotation"
           description: OK
       summary: Retrieves VEP annotation for the provided variant
       tags:
@@ -361,7 +361,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/EnsemblGene'
+                  $ref: "#/components/schemas/EnsemblGene"
                 type: array
           description: OK
       summary: Retrieves canonical Ensembl Gene ID by Entrez Gene Ids
@@ -385,7 +385,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnsemblGene'
+                $ref: "#/components/schemas/EnsemblGene"
           description: OK
       summary: Retrieves Ensembl canonical gene id by Entrez Gene Id
       tags:
@@ -409,7 +409,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/EnsemblGene'
+                  $ref: "#/components/schemas/EnsemblGene"
                 type: array
           description: OK
       summary: Retrieves canonical Ensembl Gene ID by Hugo Symbols
@@ -433,7 +433,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnsemblGene'
+                $ref: "#/components/schemas/EnsemblGene"
           description: OK
       summary: Retrieves Ensembl canonical gene id by Hugo Symbol
       tags:
@@ -467,7 +467,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/EnsemblTranscript'
+                  $ref: "#/components/schemas/EnsemblTranscript"
                 type: array
           description: OK
       summary: Retrieves Ensembl canonical transcripts by Hugo Symbols
@@ -500,7 +500,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnsemblTranscript'
+                $ref: "#/components/schemas/EnsemblTranscript"
           description: OK
       summary: Retrieves Ensembl canonical transcript by Hugo Symbol
       tags:
@@ -539,7 +539,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/EnsemblTranscript'
+                  $ref: "#/components/schemas/EnsemblTranscript"
                 type: array
           description: OK
       summary: "Retrieves Ensembl Transcripts by protein ID, and gene ID. Retrieves\
@@ -552,7 +552,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/EnsemblFilter'
+              $ref: "#/components/schemas/EnsemblFilter"
         description: "List of Ensembl transcript IDs. For example [\"ENST00000361390\"\
           , \"ENST00000361453\", \"ENST00000361624\"]<br>OR<br>List of Hugo Symbols.\
           \ For example [\"TP53\", \"PIK3CA\", \"BRCA1\"]<br>OR<br>List of Ensembl\
@@ -566,7 +566,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/EnsemblTranscript'
+                  $ref: "#/components/schemas/EnsemblTranscript"
                 type: array
           description: OK
       summary: "Retrieves Ensembl Transcripts by Ensembl transcript IDs, hugo Symbols,\
@@ -591,7 +591,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EnsemblTranscript'
+                $ref: "#/components/schemas/EnsemblTranscript"
           description: OK
       summary: Retrieves the transcript by an Ensembl transcript ID
       tags:
@@ -614,7 +614,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/GeneXref'
+                  $ref: "#/components/schemas/GeneXref"
                 type: array
           description: OK
       summary: Perform lookups of Ensembl identifiers and retrieve their external
@@ -639,7 +639,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/PdbHeader'
+                  $ref: "#/components/schemas/PdbHeader"
                 type: array
           description: OK
       summary: Retrieves PDB header info by a PDB id
@@ -663,7 +663,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PdbHeader'
+                $ref: "#/components/schemas/PdbHeader"
           description: OK
       summary: Retrieves PDB header info by a PDB id
       tags:
@@ -687,7 +687,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/PfamDomain'
+                  $ref: "#/components/schemas/PfamDomain"
                 type: array
           description: OK
       summary: Retrieves PFAM domains by PFAM domain accession IDs
@@ -711,7 +711,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PfamDomain'
+                $ref: "#/components/schemas/PfamDomain"
           description: OK
       summary: Retrieves a PFAM domain by a PFAM domain ID
       tags:
@@ -734,7 +734,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/PostTranslationalModification'
+                  $ref: "#/components/schemas/PostTranslationalModification"
                 type: array
           description: OK
       summary: Retrieves PTM entries by Ensembl Transcript ID
@@ -746,7 +746,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PtmFilter'
+              $ref: "#/components/schemas/PtmFilter"
         description: "List of Ensembl transcript IDs. For example [\"ENST00000420316\"\
           , \"ENST00000646891\", \"ENST00000371953\"]"
         required: true
@@ -756,7 +756,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/PostTranslationalModification'
+                  $ref: "#/components/schemas/PostTranslationalModification"
                 type: array
           description: OK
       summary: Retrieves PTM entries by Ensembl Transcript IDs
@@ -771,7 +771,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AggregateSourceInfo'
+                $ref: "#/components/schemas/AggregateSourceInfo"
           description: OK
       summary: Retrieve Genome Nexus Version
       tags:
@@ -811,12 +811,12 @@ components:
       properties:
         annotationSourcesInfo:
           items:
-            $ref: '#/components/schemas/SourceVersionInfo'
+            $ref: "#/components/schemas/SourceVersionInfo"
           type: array
         genomeNexus:
-          $ref: '#/components/schemas/GenomeNexusInfo'
+          $ref: "#/components/schemas/GenomeNexusInfo"
         vep:
-          $ref: '#/components/schemas/VEPInfo'
+          $ref: "#/components/schemas/VEPInfo"
       type: object
     AlleleCount:
       example:
@@ -999,7 +999,7 @@ components:
       properties:
         abstracts:
           items:
-            $ref: '#/components/schemas/ArticleAbstract'
+            $ref: "#/components/schemas/ArticleAbstract"
           type: array
         pmids:
           items:
@@ -1057,19 +1057,19 @@ components:
           description: cytogenic
           type: string
         gene:
-          $ref: '#/components/schemas/Gene'
+          $ref: "#/components/schemas/Gene"
         hg19:
-          $ref: '#/components/schemas/Hg19'
+          $ref: "#/components/schemas/Hg19"
         hg38:
-          $ref: '#/components/schemas/Hg38'
+          $ref: "#/components/schemas/Hg38"
         hgvs:
-          $ref: '#/components/schemas/Hgvs'
+          $ref: "#/components/schemas/Hgvs"
         license:
           description: license
           type: string
         rcv:
           items:
-            $ref: '#/components/schemas/Rcv'
+            $ref: "#/components/schemas/Rcv"
           type: array
         variantId:
           description: variant_id
@@ -1120,7 +1120,7 @@ components:
           startPosition: 2
       properties:
         annotation:
-          $ref: '#/components/schemas/Clinvar'
+          $ref: "#/components/schemas/Clinvar"
       type: object
     ColocatedVariant:
       example:
@@ -1177,7 +1177,7 @@ components:
           description: cosmic_id
           type: string
         hg19:
-          $ref: '#/components/schemas/Hg19'
+          $ref: "#/components/schemas/Hg19"
         license:
           description: _license
           type: string
@@ -1245,7 +1245,7 @@ components:
         alleles:
           description: alleles
           items:
-            $ref: '#/components/schemas/Alleles'
+            $ref: "#/components/schemas/Alleles"
           type: array
         alt:
           description: alt
@@ -1263,7 +1263,7 @@ components:
             type: string
           type: array
         hg19:
-          $ref: '#/components/schemas/Hg19'
+          $ref: "#/components/schemas/Hg19"
         license:
           description: _license
           type: string
@@ -1439,7 +1439,7 @@ components:
         pfamDomains:
           description: Pfam domains
           items:
-            $ref: '#/components/schemas/PfamDomainRange'
+            $ref: "#/components/schemas/PfamDomainRange"
           type: array
         hugoSymbols:
           description: Hugo symbols
@@ -1455,12 +1455,12 @@ components:
         exons:
           description: Exon information
           items:
-            $ref: '#/components/schemas/Exon'
+            $ref: "#/components/schemas/Exon"
           type: array
         utrs:
           description: UTR information
           items:
-            $ref: '#/components/schemas/UntranslatedRegion'
+            $ref: "#/components/schemas/UntranslatedRegion"
           type: array
       required:
       - geneId
@@ -1591,9 +1591,9 @@ components:
           asn: 5.312489704336296
       properties:
         counts:
-          $ref: '#/components/schemas/SignalPopulationStats'
+          $ref: "#/components/schemas/SignalPopulationStats"
         frequencies:
-          $ref: '#/components/schemas/SignalPopulationStats'
+          $ref: "#/components/schemas/SignalPopulationStats"
       type: object
     GenomeNexusInfo:
       example:
@@ -1605,9 +1605,9 @@ components:
           version: version
       properties:
         database:
-          $ref: '#/components/schemas/Version'
+          $ref: "#/components/schemas/Version"
         server:
-          $ref: '#/components/schemas/Version'
+          $ref: "#/components/schemas/Version"
       type: object
     GenomicLocation:
       example:
@@ -1685,13 +1685,13 @@ components:
           an: 4
       properties:
         alleleCount:
-          $ref: '#/components/schemas/AlleleCount'
+          $ref: "#/components/schemas/AlleleCount"
         alleleFrequency:
-          $ref: '#/components/schemas/AlleleFrequency'
+          $ref: "#/components/schemas/AlleleFrequency"
         alleleNumber:
-          $ref: '#/components/schemas/AlleleNumber'
+          $ref: "#/components/schemas/AlleleNumber"
         homozygotes:
-          $ref: '#/components/schemas/Homozygotes'
+          $ref: "#/components/schemas/Homozygotes"
       type: object
     Hg19:
       example:
@@ -1883,7 +1883,7 @@ components:
         annotation:
           items:
             items:
-              $ref: '#/components/schemas/Hotspot'
+              $ref: "#/components/schemas/Hotspot"
             type: array
           type: array
         license:
@@ -1959,7 +1959,7 @@ components:
           - "NO"
           type: string
         tumorType:
-          $ref: '#/components/schemas/TumorType'
+          $ref: "#/components/schemas/TumorType"
       type: object
     IndicatorQueryResp:
       example:
@@ -2192,7 +2192,7 @@ components:
           type: string
         diagnosticImplications:
           items:
-            $ref: '#/components/schemas/Implication'
+            $ref: "#/components/schemas/Implication"
           type: array
         diagnosticSummary:
           type: string
@@ -2291,7 +2291,7 @@ components:
         lastUpdate:
           type: string
         mutationEffect:
-          $ref: '#/components/schemas/MutationEffectResp'
+          $ref: "#/components/schemas/MutationEffectResp"
         oncogenic:
           type: string
         otherSignificantResistanceLevels:
@@ -2342,15 +2342,15 @@ components:
           type: array
         prognosticImplications:
           items:
-            $ref: '#/components/schemas/Implication'
+            $ref: "#/components/schemas/Implication"
           type: array
         prognosticSummary:
           type: string
         query:
-          $ref: '#/components/schemas/Query'
+          $ref: "#/components/schemas/Query"
         treatments:
           items:
-            $ref: '#/components/schemas/IndicatorQueryTreatment'
+            $ref: "#/components/schemas/IndicatorQueryTreatment"
           type: array
         tumorTypeSummary:
           type: string
@@ -2413,7 +2413,7 @@ components:
       properties:
         abstracts:
           items:
-            $ref: '#/components/schemas/ArticleAbstract'
+            $ref: "#/components/schemas/ArticleAbstract"
           type: array
         alterations:
           items:
@@ -2427,7 +2427,7 @@ components:
           type: string
         drugs:
           items:
-            $ref: '#/components/schemas/Drug'
+            $ref: "#/components/schemas/Drug"
           type: array
         fdaApproved:
           example: false
@@ -2454,7 +2454,7 @@ components:
           - "NO"
           type: string
         levelAssociatedCancerType:
-          $ref: '#/components/schemas/TumorType'
+          $ref: "#/components/schemas/TumorType"
         pmids:
           items:
             type: string
@@ -2659,7 +2659,7 @@ components:
         license: license
       properties:
         annotation:
-          $ref: '#/components/schemas/MutationAssessor'
+          $ref: "#/components/schemas/MutationAssessor"
         license:
           type: string
         functionalImpactPrediction:
@@ -2702,7 +2702,7 @@ components:
         description: description
       properties:
         citations:
-          $ref: '#/components/schemas/Citations'
+          $ref: "#/components/schemas/Citations"
         description:
           type: string
         knownEffect:
@@ -2731,7 +2731,7 @@ components:
           description: cosmic_id
           type: string
         hg19:
-          $ref: '#/components/schemas/Hg19'
+          $ref: "#/components/schemas/Hg19"
         mutpredScore:
           description: mutpred_score
           format: double
@@ -2921,29 +2921,29 @@ components:
           license: license
       properties:
         clinVar:
-          $ref: '#/components/schemas/ClinVar'
+          $ref: "#/components/schemas/ClinVar"
         cosmic:
-          $ref: '#/components/schemas/Cosmic'
+          $ref: "#/components/schemas/Cosmic"
         dbsnp:
-          $ref: '#/components/schemas/Dbsnp'
+          $ref: "#/components/schemas/Dbsnp"
         gnomadExome:
-          $ref: '#/components/schemas/Gnomad'
+          $ref: "#/components/schemas/Gnomad"
         gnomadGenome:
-          $ref: '#/components/schemas/Gnomad'
+          $ref: "#/components/schemas/Gnomad"
         hgvs:
           description: hgvs
           type: string
         mutdb:
-          $ref: '#/components/schemas/Mutdb'
+          $ref: "#/components/schemas/Mutdb"
         query:
           type: string
         snpeff:
-          $ref: '#/components/schemas/Snpeff'
+          $ref: "#/components/schemas/Snpeff"
         variant:
           description: variant
           type: string
         vcf:
-          $ref: '#/components/schemas/Vcf'
+          $ref: "#/components/schemas/Vcf"
         version:
           description: version
           format: int32
@@ -3126,7 +3126,7 @@ components:
         license: license
       properties:
         annotation:
-          $ref: '#/components/schemas/MyVariantInfo'
+          $ref: "#/components/schemas/MyVariantInfo"
         license:
           type: string
       type: object
@@ -3163,7 +3163,7 @@ components:
         license: license
       properties:
         annotation:
-          $ref: '#/components/schemas/NucleotideContext'
+          $ref: "#/components/schemas/NucleotideContext"
         license:
           type: string
       type: object
@@ -3394,7 +3394,7 @@ components:
         license: license
       properties:
         annotation:
-          $ref: '#/components/schemas/IndicatorQueryResp'
+          $ref: "#/components/schemas/IndicatorQueryResp"
         license:
           type: string
       type: object
@@ -3548,7 +3548,7 @@ components:
         annotation:
           items:
             items:
-              $ref: '#/components/schemas/PostTranslationalModification'
+              $ref: "#/components/schemas/PostTranslationalModification"
             type: array
           type: array
         license:
@@ -3793,7 +3793,7 @@ components:
       properties:
         annotation:
           items:
-            $ref: '#/components/schemas/SignalMutation'
+            $ref: "#/components/schemas/SignalMutation"
           type: array
         license:
           type: string
@@ -3878,7 +3878,7 @@ components:
         biallelicCountsByTumorType:
           description: Biallelic Counts by Tumor Type
           items:
-            $ref: '#/components/schemas/CountByTumorType'
+            $ref: "#/components/schemas/CountByTumorType"
           type: array
         chromosome:
           description: Chromosome
@@ -3886,14 +3886,14 @@ components:
         countsByTumorType:
           description: Counts by Tumor Type
           items:
-            $ref: '#/components/schemas/CountByTumorType'
+            $ref: "#/components/schemas/CountByTumorType"
           type: array
         endPosition:
           description: End Position
           format: int64
           type: integer
         generalPopulationStats:
-          $ref: '#/components/schemas/GeneralPopulationStats'
+          $ref: "#/components/schemas/GeneralPopulationStats"
         hugoGeneSymbol:
           description: Hugo Gene Symbol
           type: string
@@ -3916,7 +3916,7 @@ components:
         qcPassCountsByTumorType:
           description: QC Pass Counts by Tumor Type
           items:
-            $ref: '#/components/schemas/CountByTumorType'
+            $ref: "#/components/schemas/CountByTumorType"
           type: array
         referenceAllele:
           description: Reference Allele
@@ -3928,7 +3928,7 @@ components:
         statsByTumorType:
           description: Stats By Tumor Type
           items:
-            $ref: '#/components/schemas/StatsByTumorType'
+            $ref: "#/components/schemas/StatsByTumorType"
           type: array
         variantAllele:
           description: Variant Allele
@@ -4027,7 +4027,7 @@ components:
           format: double
           type: number
         hrdScore:
-          $ref: '#/components/schemas/HrdScore'
+          $ref: "#/components/schemas/HrdScore"
         msiScore:
           description: Msi Score
           format: double
@@ -4262,7 +4262,7 @@ components:
           description: Sequence Ontology variant class
           type: string
         alphaMissense:
-          $ref: '#/components/schemas/TranscriptConsequence_alphaMissense'
+          $ref: "#/components/schemas/TranscriptConsequence_alphaMissense"
       required:
       - transcript_id
       type: object
@@ -4334,7 +4334,7 @@ components:
           format: double
           type: number
         proteinPosition:
-          $ref: '#/components/schemas/IntegerRange'
+          $ref: "#/components/schemas/IntegerRange"
         refSeq:
           description: RefSeq id
           type: string
@@ -4355,7 +4355,7 @@ components:
           description: Variant classification
           type: string
         alphaMissense:
-          $ref: '#/components/schemas/TranscriptConsequenceSummary_alphaMissense'
+          $ref: "#/components/schemas/TranscriptConsequenceSummary_alphaMissense"
       required:
       - transcriptId
       type: object
@@ -4379,7 +4379,7 @@ components:
       properties:
         children:
           additionalProperties:
-            $ref: '#/components/schemas/TumorType'
+            $ref: "#/components/schemas/TumorType"
           type: object
         code:
           type: string
@@ -4392,7 +4392,7 @@ components:
           format: int32
           type: integer
         mainType:
-          $ref: '#/components/schemas/MainType'
+          $ref: "#/components/schemas/MainType"
         name:
           type: string
         parent:
@@ -4444,11 +4444,11 @@ components:
         comment: comment
       properties:
         cache:
-          $ref: '#/components/schemas/Version'
+          $ref: "#/components/schemas/Version"
         comment:
           type: string
         server:
-          $ref: '#/components/schemas/Version'
+          $ref: "#/components/schemas/Version"
       type: object
     VariantAnnotation:
       example:
@@ -5376,15 +5376,15 @@ components:
           description: Annotation data as JSON string
           type: string
         annotation_summary:
-          $ref: '#/components/schemas/VariantAnnotationSummary'
+          $ref: "#/components/schemas/VariantAnnotationSummary"
         assembly_name:
           description: NCBI build number
           type: string
         clinvar:
-          $ref: '#/components/schemas/ClinvarAnnotation'
+          $ref: "#/components/schemas/ClinvarAnnotation"
         colocatedVariants:
           items:
-            $ref: '#/components/schemas/ColocatedVariant'
+            $ref: "#/components/schemas/ColocatedVariant"
           type: array
         end:
           description: End position
@@ -5393,36 +5393,36 @@ components:
         hgvsg:
           type: string
         hotspots:
-          $ref: '#/components/schemas/HotspotAnnotation'
+          $ref: "#/components/schemas/HotspotAnnotation"
         id:
           description: Variant id
           type: string
         intergenic_consequences:
           description: intergenicConsequences
           items:
-            $ref: '#/components/schemas/IntergenicConsequences'
+            $ref: "#/components/schemas/IntergenicConsequences"
           type: array
         most_severe_consequence:
           description: Most severe consequence
           type: string
         mutation_assessor:
-          $ref: '#/components/schemas/MutationAssessorAnnotation'
+          $ref: "#/components/schemas/MutationAssessorAnnotation"
         my_variant_info:
-          $ref: '#/components/schemas/MyVariantInfoAnnotation'
+          $ref: "#/components/schemas/MyVariantInfoAnnotation"
         nucleotide_context:
-          $ref: '#/components/schemas/NucleotideContextAnnotation'
+          $ref: "#/components/schemas/NucleotideContextAnnotation"
         oncokb:
-          $ref: '#/components/schemas/OncokbAnnotation'
+          $ref: "#/components/schemas/OncokbAnnotation"
         originalVariantQuery:
           description: Original variant query
           type: string
         ptms:
-          $ref: '#/components/schemas/PtmAnnotation'
+          $ref: "#/components/schemas/PtmAnnotation"
         seq_region_name:
           description: Chromosome
           type: string
         signalAnnotation:
-          $ref: '#/components/schemas/SignalAnnotation'
+          $ref: "#/components/schemas/SignalAnnotation"
         start:
           description: Start position
           format: int32
@@ -5438,7 +5438,7 @@ components:
         transcript_consequences:
           description: List of transcripts
           items:
-            $ref: '#/components/schemas/TranscriptConsequence'
+            $ref: "#/components/schemas/TranscriptConsequence"
           type: array
         variant:
           description: Variant key
@@ -5601,22 +5601,22 @@ components:
           description: Canonical transcript id
           type: string
         genomicLocation:
-          $ref: '#/components/schemas/GenomicLocation'
+          $ref: "#/components/schemas/GenomicLocation"
         strandSign:
           description: Strand (- or +)
           type: string
         transcriptConsequenceSummaries:
           description: All transcript consequence summaries
           items:
-            $ref: '#/components/schemas/TranscriptConsequenceSummary'
+            $ref: "#/components/schemas/TranscriptConsequenceSummary"
           type: array
         transcriptConsequenceSummary:
-          $ref: '#/components/schemas/TranscriptConsequenceSummary'
+          $ref: "#/components/schemas/TranscriptConsequenceSummary"
         transcriptConsequences:
           description: "(Deprecated) Transcript consequence summaries (list of one\
             \ when using annotation/, multiple when using annotation/summary/"
           items:
-            $ref: '#/components/schemas/TranscriptConsequenceSummary'
+            $ref: "#/components/schemas/TranscriptConsequenceSummary"
           type: array
         variant:
           description: Variant key
@@ -5625,7 +5625,7 @@ components:
           description: Variant type
           type: string
         vues:
-          $ref: '#/components/schemas/Vues'
+          $ref: "#/components/schemas/Vues"
       required:
       - transcriptConsequenceSummaries
       - transcriptConsequenceSummary
