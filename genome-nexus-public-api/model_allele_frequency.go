@@ -331,7 +331,6 @@ func (o *AlleleFrequency) UnmarshalJSON(data []byte) (err error) {
 	varAlleleFrequency := _AlleleFrequency{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varAlleleFrequency)
 
 	if err != nil {

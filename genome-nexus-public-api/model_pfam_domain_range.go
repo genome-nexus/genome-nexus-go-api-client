@@ -166,7 +166,6 @@ func (o *PfamDomainRange) UnmarshalJSON(data []byte) (err error) {
 	varPfamDomainRange := _PfamDomainRange{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varPfamDomainRange)
 
 	if err != nil {

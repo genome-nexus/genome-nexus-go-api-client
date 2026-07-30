@@ -969,7 +969,6 @@ func (o *VariantAnnotation) UnmarshalJSON(data []byte) (err error) {
 	varVariantAnnotation := _VariantAnnotation{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varVariantAnnotation)
 
 	if err != nil {

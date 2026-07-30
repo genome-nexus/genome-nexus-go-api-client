@@ -252,7 +252,6 @@ func (o *NucleotideContext) UnmarshalJSON(data []byte) (err error) {
 	varNucleotideContext := _NucleotideContext{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varNucleotideContext)
 
 	if err != nil {

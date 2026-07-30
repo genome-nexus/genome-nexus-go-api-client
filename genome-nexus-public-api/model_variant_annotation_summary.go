@@ -414,7 +414,6 @@ func (o *VariantAnnotationSummary) UnmarshalJSON(data []byte) (err error) {
 	varVariantAnnotationSummary := _VariantAnnotationSummary{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varVariantAnnotationSummary)
 
 	if err != nil {

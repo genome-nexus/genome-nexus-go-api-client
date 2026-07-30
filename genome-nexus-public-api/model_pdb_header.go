@@ -209,7 +209,6 @@ func (o *PdbHeader) UnmarshalJSON(data []byte) (err error) {
 	varPdbHeader := _PdbHeader{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varPdbHeader)
 
 	if err != nil {

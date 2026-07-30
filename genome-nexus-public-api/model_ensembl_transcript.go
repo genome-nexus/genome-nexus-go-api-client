@@ -461,7 +461,6 @@ func (o *EnsemblTranscript) UnmarshalJSON(data []byte) (err error) {
 	varEnsemblTranscript := _EnsemblTranscript{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varEnsemblTranscript)
 
 	if err != nil {

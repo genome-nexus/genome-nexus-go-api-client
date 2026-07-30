@@ -331,7 +331,6 @@ func (o *Homozygotes) UnmarshalJSON(data []byte) (err error) {
 	varHomozygotes := _Homozygotes{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varHomozygotes)
 
 	if err != nil {

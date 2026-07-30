@@ -195,7 +195,6 @@ func (o *UntranslatedRegion) UnmarshalJSON(data []byte) (err error) {
 	varUntranslatedRegion := _UntranslatedRegion{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varUntranslatedRegion)
 
 	if err != nil {
