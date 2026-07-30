@@ -400,7 +400,6 @@ func (o *GeneXref) UnmarshalJSON(data []byte) (err error) {
 	varGeneXref := _GeneXref{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varGeneXref)
 
 	if err != nil {

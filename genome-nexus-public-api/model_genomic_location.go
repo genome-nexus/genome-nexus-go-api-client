@@ -224,7 +224,6 @@ func (o *GenomicLocation) UnmarshalJSON(data []byte) (err error) {
 	varGenomicLocation := _GenomicLocation{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varGenomicLocation)
 
 	if err != nil {
