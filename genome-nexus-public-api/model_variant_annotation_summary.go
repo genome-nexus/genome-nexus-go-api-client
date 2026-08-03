@@ -30,7 +30,7 @@ type VariantAnnotationSummary struct {
 	StrandSign *string `json:"strandSign,omitempty"`
 	// All transcript consequence summaries
 	TranscriptConsequenceSummaries []TranscriptConsequenceSummary `json:"transcriptConsequenceSummaries"`
-	TranscriptConsequenceSummary TranscriptConsequenceSummary `json:"transcriptConsequenceSummary"`
+	TranscriptConsequenceSummary *TranscriptConsequenceSummary `json:"transcriptConsequenceSummary,omitempty"`
 	// (Deprecated) Transcript consequence summaries (list of one when using annotation/, multiple when using annotation/summary/
 	TranscriptConsequences []TranscriptConsequenceSummary `json:"transcriptConsequences"`
 	// Variant key
@@ -46,10 +46,9 @@ type _VariantAnnotationSummary VariantAnnotationSummary
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVariantAnnotationSummary(transcriptConsequenceSummaries []TranscriptConsequenceSummary, transcriptConsequenceSummary TranscriptConsequenceSummary, transcriptConsequences []TranscriptConsequenceSummary, variant string) *VariantAnnotationSummary {
+func NewVariantAnnotationSummary(transcriptConsequenceSummaries []TranscriptConsequenceSummary, transcriptConsequences []TranscriptConsequenceSummary, variant string) *VariantAnnotationSummary {
 	this := VariantAnnotationSummary{}
 	this.TranscriptConsequenceSummaries = transcriptConsequenceSummaries
-	this.TranscriptConsequenceSummary = transcriptConsequenceSummary
 	this.TranscriptConsequences = transcriptConsequences
 	this.Variant = variant
 	return &this
@@ -215,28 +214,36 @@ func (o *VariantAnnotationSummary) SetTranscriptConsequenceSummaries(v []Transcr
 	o.TranscriptConsequenceSummaries = v
 }
 
-// GetTranscriptConsequenceSummary returns the TranscriptConsequenceSummary field value
+// GetTranscriptConsequenceSummary returns the TranscriptConsequenceSummary field value if set, zero value otherwise.
 func (o *VariantAnnotationSummary) GetTranscriptConsequenceSummary() TranscriptConsequenceSummary {
-	if o == nil {
+	if o == nil || IsNil(o.TranscriptConsequenceSummary) {
 		var ret TranscriptConsequenceSummary
 		return ret
 	}
-
-	return o.TranscriptConsequenceSummary
+	return *o.TranscriptConsequenceSummary
 }
 
-// GetTranscriptConsequenceSummaryOk returns a tuple with the TranscriptConsequenceSummary field value
+// GetTranscriptConsequenceSummaryOk returns a tuple with the TranscriptConsequenceSummary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotationSummary) GetTranscriptConsequenceSummaryOk() (*TranscriptConsequenceSummary, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TranscriptConsequenceSummary) {
 		return nil, false
 	}
-	return &o.TranscriptConsequenceSummary, true
+	return o.TranscriptConsequenceSummary, true
 }
 
-// SetTranscriptConsequenceSummary sets field value
+// HasTranscriptConsequenceSummary returns a boolean if a field has been set.
+func (o *VariantAnnotationSummary) HasTranscriptConsequenceSummary() bool {
+	if o != nil && !IsNil(o.TranscriptConsequenceSummary) {
+		return true
+	}
+
+	return false
+}
+
+// SetTranscriptConsequenceSummary gets a reference to the given TranscriptConsequenceSummary and assigns it to the TranscriptConsequenceSummary field.
 func (o *VariantAnnotationSummary) SetTranscriptConsequenceSummary(v TranscriptConsequenceSummary) {
-	o.TranscriptConsequenceSummary = v
+	o.TranscriptConsequenceSummary = &v
 }
 
 // GetTranscriptConsequences returns the TranscriptConsequences field value
@@ -374,7 +381,9 @@ func (o VariantAnnotationSummary) ToMap() (map[string]interface{}, error) {
 		toSerialize["strandSign"] = o.StrandSign
 	}
 	toSerialize["transcriptConsequenceSummaries"] = o.TranscriptConsequenceSummaries
-	toSerialize["transcriptConsequenceSummary"] = o.TranscriptConsequenceSummary
+	if !IsNil(o.TranscriptConsequenceSummary) {
+		toSerialize["transcriptConsequenceSummary"] = o.TranscriptConsequenceSummary
+	}
 	toSerialize["transcriptConsequences"] = o.TranscriptConsequences
 	toSerialize["variant"] = o.Variant
 	if !IsNil(o.VariantType) {
@@ -392,7 +401,6 @@ func (o *VariantAnnotationSummary) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"transcriptConsequenceSummaries",
-		"transcriptConsequenceSummary",
 		"transcriptConsequences",
 		"variant",
 	}

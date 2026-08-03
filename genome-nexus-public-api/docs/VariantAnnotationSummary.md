@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **GenomicLocation** | Pointer to [**GenomicLocation**](GenomicLocation.md) |  | [optional] 
 **StrandSign** | Pointer to **string** | Strand (- or +) | [optional] 
 **TranscriptConsequenceSummaries** | [**[]TranscriptConsequenceSummary**](TranscriptConsequenceSummary.md) | All transcript consequence summaries | 
-**TranscriptConsequenceSummary** | [**TranscriptConsequenceSummary**](TranscriptConsequenceSummary.md) |  | 
+**TranscriptConsequenceSummary** | Pointer to [**TranscriptConsequenceSummary**](TranscriptConsequenceSummary.md) |  | [optional] 
 **TranscriptConsequences** | [**[]TranscriptConsequenceSummary**](TranscriptConsequenceSummary.md) | (Deprecated) Transcript consequence summaries (list of one when using annotation/, multiple when using annotation/summary/ | 
 **Variant** | **string** | Variant key | 
 **VariantType** | Pointer to **string** | Variant type | [optional] 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewVariantAnnotationSummary
 
-`func NewVariantAnnotationSummary(transcriptConsequenceSummaries []TranscriptConsequenceSummary, transcriptConsequenceSummary TranscriptConsequenceSummary, transcriptConsequences []TranscriptConsequenceSummary, variant string, ) *VariantAnnotationSummary`
+`func NewVariantAnnotationSummary(transcriptConsequenceSummaries []TranscriptConsequenceSummary, transcriptConsequences []TranscriptConsequenceSummary, variant string, ) *VariantAnnotationSummary`
 
 NewVariantAnnotationSummary instantiates a new VariantAnnotationSummary object
 This constructor will assign default values to properties that have it defined,
@@ -173,6 +173,11 @@ and a boolean to check if the value has been set.
 
 SetTranscriptConsequenceSummary sets TranscriptConsequenceSummary field to given value.
 
+### HasTranscriptConsequenceSummary
+
+`func (o *VariantAnnotationSummary) HasTranscriptConsequenceSummary() bool`
+
+HasTranscriptConsequenceSummary returns a boolean if a field has been set.
 
 ### GetTranscriptConsequences
 

@@ -5631,7 +5631,6 @@ components:
           $ref: '#/components/schemas/Vues'
       required:
       - transcriptConsequenceSummaries
-      - transcriptConsequenceSummary
       - transcriptConsequences
       - variant
       type: object
