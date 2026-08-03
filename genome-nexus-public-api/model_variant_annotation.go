@@ -32,10 +32,12 @@ type VariantAnnotation struct {
 	ColocatedVariants []ColocatedVariant `json:"colocatedVariants,omitempty"`
 	// End position
 	End *int32 `json:"end,omitempty"`
+	// Error message explaining why the variant could not be annotated (only present when successfully_annotated is false)
+	ErrorMessage *string `json:"errorMessage,omitempty"`
 	Hgvsg *string `json:"hgvsg,omitempty"`
 	Hotspots *HotspotAnnotation `json:"hotspots,omitempty"`
 	// Variant id
-	Id string `json:"id"`
+	Id *string `json:"id,omitempty"`
 	// intergenicConsequences
 	IntergenicConsequences []IntergenicConsequences `json:"intergenic_consequences,omitempty"`
 	// Most severe consequence
@@ -68,9 +70,8 @@ type _VariantAnnotation VariantAnnotation
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVariantAnnotation(id string, originalVariantQuery string, variant string) *VariantAnnotation {
+func NewVariantAnnotation(originalVariantQuery string, variant string) *VariantAnnotation {
 	this := VariantAnnotation{}
-	this.Id = id
 	this.OriginalVariantQuery = originalVariantQuery
 	this.Variant = variant
 	return &this
@@ -308,6 +309,38 @@ func (o *VariantAnnotation) SetEnd(v int32) {
 	o.End = &v
 }
 
+// GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
+func (o *VariantAnnotation) GetErrorMessage() string {
+	if o == nil || IsNil(o.ErrorMessage) {
+		var ret string
+		return ret
+	}
+	return *o.ErrorMessage
+}
+
+// GetErrorMessageOk returns a tuple with the ErrorMessage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VariantAnnotation) GetErrorMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.ErrorMessage) {
+		return nil, false
+	}
+	return o.ErrorMessage, true
+}
+
+// HasErrorMessage returns a boolean if a field has been set.
+func (o *VariantAnnotation) HasErrorMessage() bool {
+	if o != nil && !IsNil(o.ErrorMessage) {
+		return true
+	}
+
+	return false
+}
+
+// SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
+func (o *VariantAnnotation) SetErrorMessage(v string) {
+	o.ErrorMessage = &v
+}
+
 // GetHgvsg returns the Hgvsg field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetHgvsg() string {
 	if o == nil || IsNil(o.Hgvsg) {
@@ -372,28 +405,36 @@ func (o *VariantAnnotation) SetHotspots(v HotspotAnnotation) {
 	o.Hotspots = &v
 }
 
-// GetId returns the Id field value
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *VariantAnnotation) GetId() string {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-
-	return o.Id
+	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VariantAnnotation) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return &o.Id, true
+	return o.Id, true
 }
 
-// SetId sets field value
+// HasId returns a boolean if a field has been set.
+func (o *VariantAnnotation) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *VariantAnnotation) SetId(v string) {
-	o.Id = v
+	o.Id = &v
 }
 
 // GetIntergenicConsequences returns the IntergenicConsequences field value if set, zero value otherwise.
@@ -891,13 +932,18 @@ func (o VariantAnnotation) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.End) {
 		toSerialize["end"] = o.End
 	}
+	if !IsNil(o.ErrorMessage) {
+		toSerialize["errorMessage"] = o.ErrorMessage
+	}
 	if !IsNil(o.Hgvsg) {
 		toSerialize["hgvsg"] = o.Hgvsg
 	}
 	if !IsNil(o.Hotspots) {
 		toSerialize["hotspots"] = o.Hotspots
 	}
-	toSerialize["id"] = o.Id
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if !IsNil(o.IntergenicConsequences) {
 		toSerialize["intergenic_consequences"] = o.IntergenicConsequences
 	}
@@ -947,7 +993,6 @@ func (o *VariantAnnotation) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"id",
 		"originalVariantQuery",
 		"variant",
 	}

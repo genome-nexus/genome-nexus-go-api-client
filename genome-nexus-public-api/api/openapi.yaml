@@ -5390,6 +5390,10 @@ components:
           description: End position
           format: int32
           type: integer
+        errorMessage:
+          description: Error message explaining why the variant could not be annotated
+            (only present when successfully_annotated is false)
+          type: string
         hgvsg:
           type: string
         hotspots:
@@ -5444,7 +5448,6 @@ components:
           description: Variant key
           type: string
       required:
-      - id
       - originalVariantQuery
       - variant
       type: object

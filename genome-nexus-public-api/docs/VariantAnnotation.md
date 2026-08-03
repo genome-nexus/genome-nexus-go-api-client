@@ -11,9 +11,10 @@ Name | Type | Description | Notes
 **Clinvar** | Pointer to [**ClinvarAnnotation**](ClinvarAnnotation.md) |  | [optional] 
 **ColocatedVariants** | Pointer to [**[]ColocatedVariant**](ColocatedVariant.md) |  | [optional] 
 **End** | Pointer to **int32** | End position | [optional] 
+**ErrorMessage** | Pointer to **string** | Error message explaining why the variant could not be annotated (only present when successfully_annotated is false) | [optional] 
 **Hgvsg** | Pointer to **string** |  | [optional] 
 **Hotspots** | Pointer to [**HotspotAnnotation**](HotspotAnnotation.md) |  | [optional] 
-**Id** | **string** | Variant id | 
+**Id** | Pointer to **string** | Variant id | [optional] 
 **IntergenicConsequences** | Pointer to [**[]IntergenicConsequences**](IntergenicConsequences.md) | intergenicConsequences | [optional] 
 **MostSevereConsequence** | Pointer to **string** | Most severe consequence | [optional] 
 **MutationAssessor** | Pointer to [**MutationAssessorAnnotation**](MutationAssessorAnnotation.md) |  | [optional] 
@@ -34,7 +35,7 @@ Name | Type | Description | Notes
 
 ### NewVariantAnnotation
 
-`func NewVariantAnnotation(id string, originalVariantQuery string, variant string, ) *VariantAnnotation`
+`func NewVariantAnnotation(originalVariantQuery string, variant string, ) *VariantAnnotation`
 
 NewVariantAnnotation instantiates a new VariantAnnotation object
 This constructor will assign default values to properties that have it defined,
@@ -224,6 +225,31 @@ SetEnd sets End field to given value.
 
 HasEnd returns a boolean if a field has been set.
 
+### GetErrorMessage
+
+`func (o *VariantAnnotation) GetErrorMessage() string`
+
+GetErrorMessage returns the ErrorMessage field if non-nil, zero value otherwise.
+
+### GetErrorMessageOk
+
+`func (o *VariantAnnotation) GetErrorMessageOk() (*string, bool)`
+
+GetErrorMessageOk returns a tuple with the ErrorMessage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetErrorMessage
+
+`func (o *VariantAnnotation) SetErrorMessage(v string)`
+
+SetErrorMessage sets ErrorMessage field to given value.
+
+### HasErrorMessage
+
+`func (o *VariantAnnotation) HasErrorMessage() bool`
+
+HasErrorMessage returns a boolean if a field has been set.
+
 ### GetHgvsg
 
 `func (o *VariantAnnotation) GetHgvsg() string`
@@ -293,6 +319,11 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+### HasId
+
+`func (o *VariantAnnotation) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetIntergenicConsequences
 
